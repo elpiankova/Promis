@@ -5,3 +5,5 @@ src/promis_api/build/*
 src/promis_api/.idea/*
 .spyderproject
 src/promis_api/promis_api/settings.py
+.idea/*
+
