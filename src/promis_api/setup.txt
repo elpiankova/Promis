@@ -1,0 +1,71 @@
+  # STEP 1. INSTALL DJANGO AND OTHER
+
+sudo pip install Django
+sudo pip install netCDF4
+
+  # STEP 2. INSTALL POSTGRESQL AND CREATE DATABASE
+
+#2.1
+sudo apt-get install postgresql
+
+#2.2 Create user and allow him to create database
+sudo -u postgres -i createuser
+#OUTPUT:
+Enter name of role to add: USERNAME
+Shall the new role be a superuser? (y/n) n
+Shall the new role be allowed to create databases? (y/n) y
+Shall the new role be allowed to create more new roles? (y/n) n
+CREATE ROLE 
+
+#2.3 Create database
+sudo -u postgres -i createdb DB_NAME
+
+
+#2.4 Grand access to the user for the database
+sudo -u postgres psql
+postgres=#   alter user USERNAME with encrypted password 'PASSWORD';
+postgres=#   grant all privileges on database DB_NAME to USERNAME;
+
+
+  # STEP 3. ADD DB SETTINGS TO DJANGO PROJECT 
+# Copy settings template
+cp settings.py.tpl settings.py
+# Edit file "[promis_project_folder]/promis_api/promis_api/settings.py":
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2', 
+        'NAME': 'DB_NAME',                     
+        'USER': 'USERNAME',
+        'PASSWORD': 'PASSWORD',
+        'HOST': 'localhost',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
+        'PORT': '',                     
+    }
+}
+
+  # STEP 4. CREATE TABLES 
+#You can use file './sql/schema.sql' (recommended) or use Django ORM generating:
+
+# 1ST WAY (RECOMMEMDED)
+psql -h localhost DB_NAME USERNAME -f [promis_project_folder]/sql/schema.sql
+# in [promis_project_folder]/src/promis_api folder perform:
+python manage.py syncdb
+# You’ll get a prompt asking you if you’d like to create a superuser account for the authentication system. DO IT!
+
+# 2ND WAY 
+#This way means that Django ORM generates all tables corresponding to all models of all aplications.
+#But it doesn't create "ON DELETE" and "ON UPDATE" rules for database integrity performing
+#In / folder perform:
+python manage.py syncdb
+# You’ll get a prompt asking you if you’d like to create a superuser account for the authentication system. DO IT!
+
+
+###### LOAD DATA_DB_DUMP (only for Andrew) #########
+# 1st way:
+# Use Django loader (near 9 min)
+python manage.py loaddata dump_with_someEZPoten.json
+
+# 2nd way:
+# Use dump file that was made by pgAdmin: [promis_project_folder]/src/promis_api/db_backup_from_pgAdmin
+
+# 3rd way:
+# Use dump file that was made by pg_dump utility from terminal: [promis_project_folder]/src/promis_api/dbdump_from_cmd

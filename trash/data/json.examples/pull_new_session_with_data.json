@@ -1,0 +1,65 @@
+{
+     "sessions":
+        {
+            "scope" : {
+                "satellites": "Variant",
+                "devices": "telemetria",
+                "channels": "Bz",
+                "parameters": "current",
+                "paramenters_units": "Amper"
+            },
+            "iBegin": 56,
+            "iEnd": 67,
+            "session_options": [
+                {
+                    "title": "ring",
+                    "value": "56"
+                },
+                {
+                    "title": "dollar",
+                    "value": "567"
+                }
+            ],
+            "measurement_points": [
+                {
+                    "time": 234345563.6767,
+                    "latitude": 45.45,
+                    "longitude": 56.56,
+                    "altitude": 3.44
+                },
+                {
+                    "time": 45345563.6767,
+                    "latitude": 45.45,
+                    "longitude": 56.56,
+                    "altitude": 3.44
+                },
+                {
+                    "time": 56745563.6767,
+                    "latitude": 45.45,
+                    "longitude": 56.56,
+                    "altitude": 3.44
+                },
+            ],
+            "measurements": [
+                	                                      
+                        {
+                            "marker": 0,
+                            "measurement": 9.99,
+                            "rError": 0.4,
+                            "lError": 0.4
+                        },
+                        {
+                            "marker": 0,
+                            "measurement": 6.99,
+                            "rError": 0.43,
+                            "lError": 0.43
+                        },
+                        {
+                            "marker": 0,
+                            "measurement": 9.79,
+                            "rError": 0.41,
+                            "lError": 0.41
+                        }
+                    ]
+         }                
+}
