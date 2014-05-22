@@ -39,6 +39,8 @@ class Device(models.Model):
         #In future we want to have Multi-column primary key ("title","satellite_title")
         unique_together = ("title", "satellite")
 
+        ordering = ["title"]
+
 class ChannelManager(models.Manager):
     def get_by_natural_key(self, title):
         return self.get(title=title)  
@@ -71,6 +73,7 @@ class Channel(models.Model):
         #Django creates the next field automatically id as pk
         #But we want to have Multi-column primary key ("title","device") in future:
         unique_together = ("title", "device")
+        ordering = ["title"]
 
 class ChannelOption(models.Model):
     ''' Class representing channel option
