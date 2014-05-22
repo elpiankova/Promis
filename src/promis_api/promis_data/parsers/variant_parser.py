@@ -6,7 +6,7 @@ from promis_data.models import Channel
 
 def parse(path):
 
-    path = os.path.normpath(path) # clear reduntant slashes
+    path = os.path.normpath(path) # clear redundant slashes
     (vitok_path,vitok) = os.path.split(path)
     telemetry_filename = vitok + '.txt'
     telemetry_filename = os.path.join(path, telemetry_filename)
@@ -19,7 +19,7 @@ def parse(path):
             metka_freq = telemetry.index(line)
             print 'found'
 
-    number_of_channels_in_table = channels_from_db.count() - 6 
+    number_of_channels_in_table = channels_from_db.count() - 6 # channels E1, E2, E3 of table can denote different electrical fields: E1,E2,E3 or E4,E5,E6 depending on base(E1 or E3)
     sampling_frequencies = []
     for i in range(number_of_channels_in_table):
         # run through all sampling frequencies and append them to this list in float
