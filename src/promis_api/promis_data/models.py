@@ -73,7 +73,7 @@ class Channel(models.Model):
         #Django creates the next field automatically id as pk
         #But we want to have Multi-column primary key ("title","device") in future:
         unique_together = ("title", "device")
-        ordering = ["title"]
+        ordering = ["title", "device"]
 
 class ChannelOption(models.Model):
     ''' Class representing channel option

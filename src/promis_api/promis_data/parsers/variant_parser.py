@@ -19,18 +19,16 @@ def parse(path):
             metka_freq = telemetry.index(line)
             print 'found'
 
-    Number_of_channels_in_table = channels_from_db.count() - 6
+    number_of_channels_in_table = channels_from_db.count() - 6 
     sampling_frequencies = []
-    for i in range(1, Number_of_channels_in_table+1):
-        sampling_frequencies += [telemetry[metka_freq+i]]# run through all sampling frequencies and append them to this list
-    for freq in sampling_frequencies: # delete all \n and spaces
-        sampling_frequencies[sampling_frequencies.index(freq)] = freq.strip()
-
-    for fr in sampling_frequencies:
-        if fr == '':
-            sampling_frequencies[sampling_frequencies.index(fr)] = None# replace empty lines with None
+    for i in range(number_of_channels_in_table):
+        # run through all sampling frequencies and append them to this list in float
+        # We add None when empty line
+        if telemetry[metka_freq+i+1].strip() == '':
+            sampling_frequencies.append(None)
         else:
-            sampling_frequencies[sampling_frequencies.index(fr)] = float(fr)#convert str into float number
+            sampling_frequencies.append(float(telemetry[metka_freq+i+1]))
+            
     print sampling_frequencies
 
 
@@ -43,5 +41,6 @@ channels_from_db = Channel.objects.filter(device__satellite__title="Variant")
 #print channels_from_db
 
 if __name__ == "__main__":
+#     path = '/home/elena/workspace/promis_from_gitlab/satellite-data/Variant/Data_Release1/597'
     path = '/home/len/Variant/Data_Release1/597'
     parse(path)
