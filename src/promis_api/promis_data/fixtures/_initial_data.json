@@ -447,6 +447,646 @@
 },
 {
     "pk": 1, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Filename in Variant cataloge (Data_Release1)", 
+        "value": "Bx", 
+        "channel": 10, 
+        "title": "Filename"
+    }
+},
+{
+    "pk": 2, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Order number of sampling frequency of this parameter in description file of measurement session", 
+        "value": "0", 
+        "channel": 10, 
+        "title": "Order number"
+    }
+},
+{
+    "pk": 3, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Filename in Variant cataloge (Data_Release1)", 
+        "value": "By", 
+        "channel": 11, 
+        "title": "Filename"
+    }
+},
+{
+    "pk": 4, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Order number of sampling frequency of this parameter in description file of measurement session", 
+        "value": "1", 
+        "channel": 11, 
+        "title": "Order number"
+    }
+},
+{
+    "pk": 5, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Filename in Variant cataloge (Data_Release1)", 
+        "value": "Bz", 
+        "channel": 12, 
+        "title": "Filename"
+    }
+},
+{
+    "pk": 6, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Order number of sampling frequency of this parameter in description file of measurement session", 
+        "value": "2", 
+        "channel": 12, 
+        "title": "Order number"
+    }
+},
+{
+    "pk": 7, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Filename in Variant cataloge (Data_Release1)", 
+        "value": "Ts", 
+        "channel": 36, 
+        "title": "Filename"
+    }
+},
+{
+    "pk": 8, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Order number of sampling frequency of this parameter in description file of measurement session", 
+        "value": "3", 
+        "channel": 36, 
+        "title": "Order number"
+    }
+},
+{
+    "pk": 9, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Filename in Variant cataloge (Data_Release1)", 
+        "value": "Te", 
+        "channel": 37, 
+        "title": "Filename"
+    }
+},
+{
+    "pk": 10, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Order number of sampling frequency of this parameter in description file of measurement session", 
+        "value": "4", 
+        "channel": 37, 
+        "title": "Order number"
+    }
+},
+{
+    "pk": 11, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Filename in Variant cataloge (Data_Release1)", 
+        "value": "JF~", 
+        "channel": 5, 
+        "title": "Filename"
+    }
+},
+{
+    "pk": 12, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Order number of sampling frequency of this parameter in description file of measurement session", 
+        "value": "5", 
+        "channel": 5, 
+        "title": "Order number"
+    }
+},
+{
+    "pk": 13, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Filename in Variant cataloge (Data_Release1)", 
+        "value": "FC1~", 
+        "channel": 7, 
+        "title": "Filename"
+    }
+},
+{
+    "pk": 14, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Order number of sampling frequency of this parameter in description file of measurement session", 
+        "value": "6", 
+        "channel": 7, 
+        "title": "Order number"
+    }
+},
+{
+    "pk": 15, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Filename in Variant cataloge (Data_Release1)", 
+        "value": "FC1=", 
+        "channel": 6, 
+        "title": "Filename"
+    }
+},
+{
+    "pk": 16, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Order number of sampling frequency of this parameter in description file of measurement session\r\n", 
+        "value": "7", 
+        "channel": 6, 
+        "title": "Order number"
+    }
+},
+{
+    "pk": 17, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Filename in Variant cataloge (Data_Release1)", 
+        "value": "FC2~", 
+        "channel": 9, 
+        "title": "Filename"
+    }
+},
+{
+    "pk": 18, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Order number of sampling frequency of this parameter in description file of measurement session", 
+        "value": "8", 
+        "channel": 9, 
+        "title": "Order number"
+    }
+},
+{
+    "pk": 19, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Filename in Variant cataloge (Data_Release1)", 
+        "value": "FC2=", 
+        "channel": 8, 
+        "title": "Filename"
+    }
+},
+{
+    "pk": 20, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Order number of sampling frequency of this parameter in description file of measurement session", 
+        "value": "9", 
+        "channel": 8, 
+        "title": "Order number"
+    }
+},
+{
+    "pk": 21, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Filename in Variant cataloge (Data_Release1)", 
+        "value": "Jyz~", 
+        "channel": 13, 
+        "title": "Filename"
+    }
+},
+{
+    "pk": 22, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Order number of sampling frequency of this parameter in description file of measurement session", 
+        "value": "10", 
+        "channel": 13, 
+        "title": "Order number"
+    }
+},
+{
+    "pk": 23, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Filename in Variant cataloge (Data_Release1)", 
+        "value": "Bx~", 
+        "channel": 14, 
+        "title": "Filename"
+    }
+},
+{
+    "pk": 24, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Order number of sampling frequency of this parameter in description file of measurement session", 
+        "value": "11", 
+        "channel": 14, 
+        "title": "Order number"
+    }
+},
+{
+    "pk": 25, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Filename in Variant cataloge (Data_Release1)", 
+        "value": "Jxz~", 
+        "channel": 15, 
+        "title": "Filename"
+    }
+},
+{
+    "pk": 26, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Order number of sampling frequency of this parameter in description file of measurement session", 
+        "value": "12", 
+        "channel": 15, 
+        "title": "Order number"
+    }
+},
+{
+    "pk": 27, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Filename in Variant cataloge (Data_Release1)", 
+        "value": "By~", 
+        "channel": 16, 
+        "title": "Filename"
+    }
+},
+{
+    "pk": 28, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Order number of sampling frequency of this parameter in description file of measurement session", 
+        "value": "13", 
+        "channel": 16, 
+        "title": "Order number"
+    }
+},
+{
+    "pk": 29, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Filename in Variant cataloge (Data_Release1)", 
+        "value": "E1~", 
+        "channel": 23, 
+        "title": "Filename"
+    }
+},
+{
+    "pk": 30, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Order number of sampling frequency of this parameter in description file of measurement session", 
+        "value": "14", 
+        "channel": 23, 
+        "title": "Order number"
+    }
+},
+{
+    "pk": 31, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Filename in Variant cataloge (Data_Release1)", 
+        "value": "E1=", 
+        "channel": 17, 
+        "title": "Filename"
+    }
+},
+{
+    "pk": 32, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Order number of sampling frequency of this parameter in description file of measurement session", 
+        "value": "15", 
+        "channel": 17, 
+        "title": "Order number"
+    }
+},
+{
+    "pk": 33, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Filename in Variant cataloge (Data_Release1)", 
+        "value": "E2~", 
+        "channel": 24, 
+        "title": "Filename"
+    }
+},
+{
+    "pk": 34, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Order number of sampling frequency of this parameter in description file of measurement session", 
+        "value": "16", 
+        "channel": 18, 
+        "title": "Order number"
+    }
+},
+{
+    "pk": 35, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Filename in Variant cataloge (Data_Release1)", 
+        "value": "E3~", 
+        "channel": 25, 
+        "title": "Filename"
+    }
+},
+{
+    "pk": 36, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Order number of sampling frequency of this parameter in description file of measurement session", 
+        "value": "18", 
+        "channel": 25, 
+        "title": "Order number"
+    }
+},
+{
+    "pk": 37, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Filename in Variant cataloge (Data_Release1)", 
+        "value": "E2=", 
+        "channel": 18, 
+        "title": "Filename"
+    }
+},
+{
+    "pk": 38, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Order number of sampling frequency of this parameter in description file of measurement session", 
+        "value": "17", 
+        "channel": 18, 
+        "title": "Order number"
+    }
+},
+{
+    "pk": 39, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Filename in Variant cataloge (Data_Release1)", 
+        "value": "E3=", 
+        "channel": 19, 
+        "title": "Filename"
+    }
+},
+{
+    "pk": 40, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Order number of sampling frequency of this parameter in description file of measurement session", 
+        "value": "19", 
+        "channel": 19, 
+        "title": "Order number"
+    }
+},
+{
+    "pk": 41, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Filename in Variant cataloge (Data_Release1)", 
+        "value": "E1~", 
+        "channel": 26, 
+        "title": "Filename"
+    }
+},
+{
+    "pk": 42, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Order number of sampling frequency of this parameter in description file of measurement session", 
+        "value": "14", 
+        "channel": 26, 
+        "title": "Order number"
+    }
+},
+{
+    "pk": 43, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Filename in Variant cataloge (Data_Release1)", 
+        "value": "E1=", 
+        "channel": 20, 
+        "title": "Filename"
+    }
+},
+{
+    "pk": 44, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Order number of sampling frequency of this parameter in description file of measurement session", 
+        "value": "15", 
+        "channel": 20, 
+        "title": "Order number"
+    }
+},
+{
+    "pk": 45, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Filename in Variant cataloge (Data_Release1)", 
+        "value": "E2~", 
+        "channel": 27, 
+        "title": "Filename"
+    }
+},
+{
+    "pk": 46, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Order number of sampling frequency of this parameter in description file of measurement session", 
+        "value": "16", 
+        "channel": 27, 
+        "title": "Order number"
+    }
+},
+{
+    "pk": 47, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Filename in Variant cataloge (Data_Release1)", 
+        "value": "E2=", 
+        "channel": 21, 
+        "title": "Filename"
+    }
+},
+{
+    "pk": 48, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Order number of sampling frequency of this parameter in description file of measurement session", 
+        "value": "17", 
+        "channel": 21, 
+        "title": "Order number"
+    }
+},
+{
+    "pk": 49, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Filename in Variant cataloge (Data_Release1)", 
+        "value": "E3~", 
+        "channel": 28, 
+        "title": "Filename"
+    }
+},
+{
+    "pk": 50, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Order number of sampling frequency of this parameter in description file of measurement session", 
+        "value": "18", 
+        "channel": 28, 
+        "title": "Order number"
+    }
+},
+{
+    "pk": 51, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Filename in Variant cataloge (Data_Release1)", 
+        "value": "E3=", 
+        "channel": 22, 
+        "title": "Filename"
+    }
+},
+{
+    "pk": 52, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Order number of sampling frequency of this parameter in description file of measurement session", 
+        "value": "19", 
+        "channel": 22, 
+        "title": "Order number"
+    }
+},
+{
+    "pk": 53, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "", 
+        "value": "EZ1", 
+        "channel": 23, 
+        "title": "Base sensor"
+    }
+},
+{
+    "pk": 54, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "", 
+        "value": "EZ1", 
+        "channel": 17, 
+        "title": "Base sensor"
+    }
+},
+{
+    "pk": 55, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "", 
+        "value": "EZ1", 
+        "channel": 24, 
+        "title": "Base sensor"
+    }
+},
+{
+    "pk": 56, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "", 
+        "value": "EZ1", 
+        "channel": 18, 
+        "title": "Base sensor"
+    }
+},
+{
+    "pk": 57, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "", 
+        "value": "EZ1", 
+        "channel": 25, 
+        "title": "Base sensor"
+    }
+},
+{
+    "pk": 58, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "", 
+        "value": "EZ1", 
+        "channel": 19, 
+        "title": "Base sensor"
+    }
+},
+{
+    "pk": 59, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "", 
+        "value": "EZ3", 
+        "channel": 26, 
+        "title": "Base sensor"
+    }
+},
+{
+    "pk": 60, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "", 
+        "value": "EZ3", 
+        "channel": 20, 
+        "title": "Base sensor"
+    }
+},
+{
+    "pk": 61, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "", 
+        "value": "EZ3", 
+        "channel": 27, 
+        "title": "Base sensor"
+    }
+},
+{
+    "pk": 62, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "", 
+        "value": "EZ3", 
+        "channel": 21, 
+        "title": "Base sensor"
+    }
+},
+{
+    "pk": 63, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "", 
+        "value": "EZ3", 
+        "channel": 28, 
+        "title": "Base sensor"
+    }
+},
+{
+    "pk": 64, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "", 
+        "value": "EZ3", 
+        "channel": 22, 
+        "title": "Base sensor"
+    }
+},
+{
+    "pk": 1, 
     "model": "promis_data.channelshaveparameters", 
     "fields": {
         "parameter": "X-component of magnetic field vector", 
