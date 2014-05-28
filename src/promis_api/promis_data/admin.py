@@ -48,7 +48,11 @@ class ChannelAdmin(admin.ModelAdmin):
 #        ChannelSessionInline,
     ]
 admin.site.register(Channel, ChannelAdmin)
-admin.site.register(ChannelOption)
+
+class ChannelOptionAdmin(admin.ModelAdmin):
+    list_display = ('title', 'value', 'channel')
+    
+admin.site.register(ChannelOption, ChannelOptionAdmin)
 admin.site.register(Parameter)
 admin.site.register(Units)
 
