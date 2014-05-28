@@ -1,5 +1,5 @@
 from django.contrib import admin
-from promis_data.models import Satellite, Device, Channel, Parameter, Units, ChannelsHaveParameters
+from promis_data.models import Satellite, Device, Channel, Parameter, Units, ChannelsHaveParameters, ChannelOption
 
 #class DeviceAdmin(admin.ModelAdmin):
 #    fieldsets =[
@@ -48,6 +48,7 @@ class ChannelAdmin(admin.ModelAdmin):
 #        ChannelSessionInline,
     ]
 admin.site.register(Channel, ChannelAdmin)
+admin.site.register(ChannelOption)
 admin.site.register(Parameter)
 admin.site.register(Units)
 
