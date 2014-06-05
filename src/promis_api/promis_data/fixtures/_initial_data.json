@@ -781,7 +781,7 @@
     "fields": {
         "description": "Order number of sampling frequency of this parameter in description file of measurement session", 
         "value": "16", 
-        "channel": 18, 
+        "channel": 24, 
         "title": "Order number"
     }
 },
