@@ -117,7 +117,7 @@
     "model": "promis_data.channel", 
     "fields": {
         "device": 11, 
-        "description": "Current values \u200b\u200bof current-voltage characteristics on the first electrode", 
+        "description": "Current values of current-voltage characteristics on the first electrode", 
         "title": "I1"
     }
 },
@@ -369,7 +369,7 @@
     "model": "promis_data.channel", 
     "fields": {
         "device": 11, 
-        "description": "Current values \u200b\u200bof current-voltage characteristics on the second electrode", 
+        "description": "Current values of current-voltage characteristics on the second electrode", 
         "title": "I2"
     }
 },
@@ -396,7 +396,7 @@
     "model": "promis_data.channel", 
     "fields": {
         "device": 10, 
-        "description": "Current values \u200b\u200bof current-voltage characteristics on the first electrode", 
+        "description": "Current values of current-voltage characteristics on the first electrode", 
         "title": "I1"
     }
 },
@@ -405,7 +405,7 @@
     "model": "promis_data.channel", 
     "fields": {
         "device": 10, 
-        "description": "Current values \u200b\u200bof current-voltage characteristics on the second electrode", 
+        "description": "Current values of current-voltage characteristics on the second electrode", 
         "title": "I2"
     }
 },
@@ -599,7 +599,7 @@
     "pk": 16, 
     "model": "promis_data.channeloption", 
     "fields": {
-        "description": "Order number of sampling frequency of this parameter in description file of measurement session\r\n", 
+        "description": "Order number of sampling frequency of this parameter in description file of measurement session", 
         "value": "7", 
         "channel": 6, 
         "title": "Order number"
@@ -1086,6 +1086,96 @@
     }
 },
 {
+    "pk": "Ampere", 
+    "model": "promis_data.units", 
+    "fields": {
+        "long_name": "ampere", 
+        "description": "", 
+        "short_name": "A"
+    }
+},
+{
+    "pk": "Kelvin", 
+    "model": "promis_data.units", 
+    "fields": {
+        "long_name": "Kelvin", 
+        "description": "Unit of temperature", 
+        "short_name": "K"
+    }
+},
+{
+    "pk": "Tesla", 
+    "model": "promis_data.units", 
+    "fields": {
+        "long_name": "tesla", 
+        "description": "", 
+        "short_name": "T"
+    }
+},
+{
+    "pk": "Volt", 
+    "model": "promis_data.units", 
+    "fields": {
+        "long_name": "Volt", 
+        "description": "", 
+        "short_name": "V"
+    }
+},
+{
+    "pk": "Current", 
+    "model": "promis_data.parameter", 
+    "fields": {
+        "units": "Ampere", 
+        "description": "", 
+        "short_name": "I"
+    }
+},
+{
+    "pk": "Temperature", 
+    "model": "promis_data.parameter", 
+    "fields": {
+        "units": "Kelvin", 
+        "description": "", 
+        "short_name": "T"
+    }
+},
+{
+    "pk": "Voltage", 
+    "model": "promis_data.parameter", 
+    "fields": {
+        "units": "Volt", 
+        "description": "", 
+        "short_name": "U"
+    }
+},
+{
+    "pk": "X-component of magnetic field vector", 
+    "model": "promis_data.parameter", 
+    "fields": {
+        "units": "Tesla", 
+        "description": "", 
+        "short_name": "Bx"
+    }
+},
+{
+    "pk": "Y-component of magnetic field vector", 
+    "model": "promis_data.parameter", 
+    "fields": {
+        "units": "Tesla", 
+        "description": "", 
+        "short_name": "By"
+    }
+},
+{
+    "pk": "Z-component of magnetic field vector", 
+    "model": "promis_data.parameter", 
+    "fields": {
+        "units": "Tesla", 
+        "description": "", 
+        "short_name": "Bz"
+    }
+},
+{
     "pk": 1, 
     "model": "promis_data.channelshaveparameters", 
     "fields": {
@@ -1347,184 +1437,6 @@
     "fields": {
         "parameter": "Temperature", 
         "channel": 37
-    }
-},
-{
-    "pk": "Current", 
-    "model": "promis_data.parameter", 
-    "fields": {
-        "units": "Ampere", 
-        "description": "", 
-        "short_name": "I"
-    }
-},
-{
-    "pk": "Temperature", 
-    "model": "promis_data.parameter", 
-    "fields": {
-        "units": "Kelvin", 
-        "description": "", 
-        "short_name": "T"
-    }
-},
-{
-    "pk": "Voltage", 
-    "model": "promis_data.parameter", 
-    "fields": {
-        "units": "Volt", 
-        "description": "", 
-        "short_name": "U"
-    }
-},
-{
-    "pk": "X-component of magnetic field vector", 
-    "model": "promis_data.parameter", 
-    "fields": {
-        "units": "Tesla", 
-        "description": "", 
-        "short_name": "Bx"
-    }
-},
-{
-    "pk": "Y-component of magnetic field vector", 
-    "model": "promis_data.parameter", 
-    "fields": {
-        "units": "Tesla", 
-        "description": "", 
-        "short_name": "By"
-    }
-},
-{
-    "pk": "Z-component of magnetic field vector", 
-    "model": "promis_data.parameter", 
-    "fields": {
-        "units": "Tesla", 
-        "description": "", 
-        "short_name": "Bz"
-    }
-},
-{
-    "pk": 1, 
-    "model": "promis_data.session", 
-    "fields": {
-        "time_end": "2011-09-05T15:13:13Z", 
-        "time_begin": "2011-09-05T15:08:16Z"
-    }
-},
-{
-    "pk": 2, 
-    "model": "promis_data.session", 
-    "fields": {
-        "time_end": "2011-09-05T15:13:13Z", 
-        "time_begin": "2011-09-05T15:08:16Z"
-    }
-},
-{
-    "pk": 3, 
-    "model": "promis_data.session", 
-    "fields": {
-        "time_end": "2011-09-05T15:13:13Z", 
-        "time_begin": "2011-09-05T15:08:16Z"
-    }
-},
-{
-    "pk": 4, 
-    "model": "promis_data.session", 
-    "fields": {
-        "time_end": "2011-09-05T15:13:13Z", 
-        "time_begin": "2011-09-05T15:08:16Z"
-    }
-},
-{
-    "pk": 5, 
-    "model": "promis_data.session", 
-    "fields": {
-        "time_end": "2011-09-05T15:13:13Z", 
-        "time_begin": "2011-09-05T15:08:16Z"
-    }
-},
-{
-    "pk": 6, 
-    "model": "promis_data.session", 
-    "fields": {
-        "time_end": "2021-09-05T15:13:13Z", 
-        "time_begin": "2021-09-05T15:08:16Z"
-    }
-},
-{
-    "pk": 1, 
-    "model": "promis_data.measurementpoint", 
-    "fields": {
-        "z_geo": null, 
-        "x_geo": null, 
-        "y_geo": null, 
-        "time": "2011-08-31T18:13:47Z"
-    }
-},
-{
-    "pk": 2, 
-    "model": "promis_data.measurementpoint", 
-    "fields": {
-        "z_geo": null, 
-        "x_geo": null, 
-        "y_geo": null, 
-        "time": "2011-08-31T18:13:47Z"
-    }
-},
-{
-    "pk": 3, 
-    "model": "promis_data.measurementpoint", 
-    "fields": {
-        "z_geo": null, 
-        "x_geo": null, 
-        "y_geo": null, 
-        "time": "2011-08-31T18:13:47Z"
-    }
-},
-{
-    "pk": 4, 
-    "model": "promis_data.measurementpoint", 
-    "fields": {
-        "z_geo": null, 
-        "x_geo": null, 
-        "y_geo": null, 
-        "time": "2011-08-31T18:13:47Z"
-    }
-},
-{
-    "pk": "Ampere", 
-    "model": "promis_data.units", 
-    "fields": {
-        "long_name": "ampere", 
-        "description": "", 
-        "short_name": "A"
-    }
-},
-{
-    "pk": "Kelvin", 
-    "model": "promis_data.units", 
-    "fields": {
-        "long_name": "Kelvin", 
-        "description": "Unit of temperature", 
-        "short_name": "K"
-    }
-},
-{
-    "pk": "Tesla", 
-    "model": "promis_data.units", 
-    "fields": {
-        "long_name": "tesla", 
-        "description": "", 
-        "short_name": "T"
-    }
-},
-{
-    "pk": "Volt", 
-    "model": "promis_data.units", 
-    "fields": {
-        "long_name": "Volt", 
-        "description": "", 
-        "short_name": "V"
     }
 }
 ]
