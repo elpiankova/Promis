@@ -1,6 +1,8 @@
 __author__ = 'len'
 import os, sys
 import dateutil.parser
+import scipy.io
+import numpy
 sys.path.append("/home/len/promis/src/promis_api/")
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "promis_api.settings")
 from promis_data.models import Channel, ChannelOption
@@ -50,12 +52,31 @@ def parse(path):
     #print sampling_frequencies
 
     for channel in channels_from_db:
-            options = channel.channeloption_set.get(title='Order number')
+            order_number = channel.channeloption_set.get(title='Order number')
+            filename = channel.channeloption_set.get(title='Filename')
 
-            i = int(options.value)
-            if sampling_frequencies[i] != None:
-                print options
-                print sampling_frequencies[i]
+            if sampling_frequencies[int(order_number.value)] != None:
+                #print options_order_number
+                print filename.value
+                #print sampling_frequencies[i]
+                if str(filename.value) + '.mat' in os.listdir(path): # mat-files should be checked first because ..
+                # 1) text files have no extension, 2) every mat-file has file with the same name and without extension
+
+                    measurement_file_dict = scipy.io.loadmat(os.path.join(path, str(filename.value)) + '.mat')
+                    for key in measurement_file_dict:# executes search of data and saves it in numpy.ndarray type !!!
+                        if type(measurement_file_dict[key]) == numpy.ndarray:
+                            measurement_file = measurement_file_dict[key]
+                            print type(measurement_file)# type 'numpy.ndarray'
+                elif str(filename.value) in os.listdir(path):
+                    measurement_file = open(os.path.join(path, str(filename.value)))
+                else:
+                    print 'No file "' + str(filename.value) + '" found'
+
+
+
+
+
+
 
     #print ChannelOption.
 
