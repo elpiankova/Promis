@@ -65,25 +65,25 @@ def variant_parser(path):
     channels_from_db = Channel.objects.filter(device__satellite__title="Variant")
 
     for channel in channels_from_db:
-        order_number = channel.channeloption_set.get(title='Order number')
-        filename = channel.channeloption_set.get(title='Filename')
+        channel.order_number = channel.channeloption_set.get(title='Order number').value
+        channel.filename = channel.channeloption_set.get(title='Filename').value
 
-        if sampling_frequencies[int(order_number.value)] != None:
+        if sampling_frequencies[int(channel.order_number)] != None:
             #print options_order_number
-            print filename.value
+            print channel.filename
             #print sampling_frequencies[i]
-            if str(filename.value) + '.mat' in os.listdir(path): # mat-files should be checked first because ..
+            if str(channel.filename) + '.mat' in os.listdir(path): # mat-files should be checked first because ..
             # 1) text files have no extension, 2) every mat-file has file with the same name and without extension
 
-                measurement_file_dict = scipy.io.loadmat(os.path.join(path, str(filename.value)) + '.mat')
+                measurement_file_dict = scipy.io.loadmat(os.path.join(path, str(channel.filename)) + '.mat')
                 for key in measurement_file_dict:# executes search of data and saves it in numpy.ndarray type !!!
                     if type(measurement_file_dict[key]) == numpy.ndarray:
                         measurement_file = measurement_file_dict[key]
                         print type(measurement_file)# type 'numpy.ndarray'
-            elif str(filename.value) in os.listdir(path):
-                measurement_file = open(os.path.join(path, str(filename.value)))
+            elif str(channel.filename) in os.listdir(path):
+                measurement_file = open(os.path.join(path, str(channel.filename)))
             else:
-                print 'No file "' + str(filename.value) + '" found'
+                print 'No file "' + str(channel.filename) + '" found'
 
 
     #print ChannelOption.
@@ -96,4 +96,8 @@ def variant_parser(path):
 if __name__ == "__main__":
 #     path = '/home/elena/workspace/promis_from_gitlab/satellite-data/Variant/Data_Release1/597'
     path = '/home/len/Variant/Data_Release1/597'
-    parse(path)
+    gen = variant_parser(path)
+    print next(gen)
+    print next(gen)
+    
+    
