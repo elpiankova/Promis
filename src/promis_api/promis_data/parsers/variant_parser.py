@@ -40,8 +40,10 @@ def parse_telemetry_file(telemetry_file):
     return (begin_datetime, end_datetime, base, sampling_frequencies)
 
 
-def parse(path):
-    
+def variant_parser(path):
+    """Parse Variant source data file that located in path.
+    Return generator of json structures in Django serialization form
+    """
     path = os.path.normpath(path) # clear redundant slashes
     vitok = os.path.split(path)[1]
     telemetry_file = open(os.path.join(path, vitok + '.txt'), 'r')
@@ -59,7 +61,6 @@ def parse(path):
                                  "time_end": str(end_datetime)
                                 }
                      }])
-    #print session_dict
 
     channels_from_db = Channel.objects.filter(device__satellite__title="Variant")
 
