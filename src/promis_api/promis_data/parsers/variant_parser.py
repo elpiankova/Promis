@@ -4,6 +4,7 @@ import dateutil.parser
 import scipy.io
 import numpy
 import json
+import pytz
 
 sys.path.append("/home/len/promis/src/promis_api/")
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "promis_api.settings")
@@ -56,7 +57,10 @@ def variant_parser(path):
      sampling_frequencies) = parse_telemetry_file(telemetry_file)
     
     #print begin_datetime, end_datetime
-
+    
+    begin_datetime = pytz.utc.localize(begin_datetime)
+    end_datetime = pytz.utc.localize(end_datetime)
+    
     yield json.dumps([{"model": "promis_data.session",
                       "fields": {
                                  "time_begin": str(begin_datetime),
@@ -88,7 +92,7 @@ def variant_parser(path):
 
         if sampling_frequencies[int(channel.order_number)] != None and channel.base_sensor != None:
         #                                                              to skip all channels with wrong base sensor
-            print channel.filename
+#             print channel.filename
 
             if str(channel.filename) + '.mat' in os.listdir(path): # mat-files should be checked first because ..
             # 1) text files have no extension, 2) every mat-file has file with the same name and without extension
@@ -103,7 +107,7 @@ def variant_parser(path):
                 measurement_row = numpy.fromfile(measurement_file, dtype=numpy.float64, sep=' ')
             else:
                 print 'No file "' + str(channel.filename) + '" found'
-            print type(measurement_row)
+#             print type(measurement_row)
 
             period_microsec =  timedelta(microseconds=1/sampling_frequencies[int(channel.order_number)]*10**6)
             measurement_datetime = begin_datetime
@@ -111,35 +115,34 @@ def variant_parser(path):
             for measurement in measurement_row:
 
                 if measurement != 0: #
+                    
+                    
+                    yield json.dumps([{"model": "promis_data.measurementpoint",
+                                       "fields": {
+                                                  "time": str(measurement_datetime)
+                                                 }
+                                       }])
 
 
                     yield json.dumps([{"model": "promis_data.measurement",
-                          "fields": {
-                                    "level_marker": 0,
-                                    "measurement": measurement,
-                                    "parameter": str(parameter_name),
-                                    "channel": [str(channel.title), str(channel.device.title)],
-                                    "measurement_point": [str(measurement_datetime)],
-                                    "session": [str(begin_datetime), str(end_datetime)]
-                                    }
-                         }])
+                                       "fields": {
+                                                  "level_marker": 0,
+                                                  "measurement": measurement,
+                                                  "parameter": str(parameter_name),
+                                                  "channel": [str(channel.title), str(channel.device.title)],
+                                                  "measurement_point": [str(measurement_datetime)],
+                                                  "session": [str(begin_datetime), str(end_datetime)]
+                                                  }
+                                       }])
 
                     measurement_datetime += period_microsec
-                    pass
-
-
-
-
-#print ChannelOption.
-
-
 
 
 #print channels_from_db
 
 if __name__ == "__main__":
 #     path = '/home/elena/workspace/promis_from_gitlab/satellite-data/Variant/Data_Release1/597'
-    path = '/home/len/Variant/Data_Release1/597'
+    path = '/home/elena/workspace/promis_from_gitlab/satellite-data/Variant/Data_Release1/597'
     gen = variant_parser(path)
     print next(gen)
     print next(gen)

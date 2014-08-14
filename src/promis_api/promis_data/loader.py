@@ -8,10 +8,10 @@ from django.core import serializers
     
 def loader(parser, path):
     
-    json_generator = parser.parse(path)
+    json_generator = parser.variant_parser(path)
     for data in json_generator:
         for deserialized_object in serializers.deserialize("json", data):
-            print deserialized_object.object
+            deserialized_object.object.save()
 
 
 path = '/home/elena/workspace/promis_from_gitlab/satellite-data/Variant/Data_Release1/597'
