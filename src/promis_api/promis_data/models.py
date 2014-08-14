@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 
 from django.db import models
 
+
 class Satellite(models.Model):
     ''' Class representing an satellite 
     This is the class storing the satellite name and description
@@ -37,13 +38,15 @@ class Device(models.Model):
     class Meta:
         db_table = 'devices'
         #In future we want to have Multi-column primary key ("title","satellite_title")
-        unique_together = ("title", "satellite")
-
+        unique_together = (("title", "satellite"),)
         ordering = ["title"]
 
+
 class ChannelManager(models.Manager):
-    def get_by_natural_key(self, title):
-        return self.get(title=title)  
+    def get_by_natural_key(self, title, device_name):
+        device = Device.objects.get(title=device_name)
+        return self.get(title=title, device=device)  
+
 
 class Channel(models.Model):
     ''' Class representing measuring channels of devices 
@@ -56,7 +59,7 @@ class Channel(models.Model):
     #Django creates the next field automatically:
     #id = models.AutoField(primary_key=True)
     objects = ChannelManager()
-    title              = models.CharField(max_length=255, unique=True)
+    title              = models.CharField(max_length=255)
     description        = models.TextField(blank=True)
     #sampling_frequency = models.FloatField(null=True, blank=True)
     #frequency_range    = models.CharField(max_length=100, blank=True)
@@ -72,8 +75,9 @@ class Channel(models.Model):
         db_table = 'channels'
         #Django creates the next field automatically id as pk
         #But we want to have Multi-column primary key ("title","device") in future:
-        unique_together = ("title", "device")
+        unique_together = (("title", "device"),)
         ordering = ["title", "device"]
+
 
 class ChannelOption(models.Model):
     ''' Class representing channel option
@@ -108,7 +112,7 @@ class ChannelsHaveParameters(models.Model):
         return u'channel: %s, parameter: %s' % (self.channel.title, self.parameter.title)
     class Meta:
         db_table = 'channels_have_parameters'
-        unique_together = ("channel", "parameter")
+        unique_together = (("channel", "parameter"),)
         verbose_name_plural = 'Channels have Parameters'
 
 
@@ -123,7 +127,7 @@ class ChannelsHaveSessions(models.Model):
         return u'channel: %s, session: %d' % (self.channel.title, self.session.id)
     class Meta:
         db_table = 'channels_have_sessions'
-        unique_together = ("channel", "session")
+        unique_together = (("channel", "session"),)
 
 
 class Parameter(models.Model):
@@ -152,6 +156,7 @@ class Parameter(models.Model):
     class Meta:
         db_table = 'parameters'
 
+
 class ParentChildRel(models.Model):
     ''' Class representing Parent-Child relationship for parameters
     
@@ -167,11 +172,13 @@ class ParentChildRel(models.Model):
         return u'parent: %s, child: %s' % (self.parent.title, self.child.title)
     class Meta:
         db_table = 'parameters_have_parameters'
-        unique_together = ("parent", "child")
+        unique_together = (("parent", "child"),)
+
 
 class SessionManager(models.Manager):
     def get_by_natural_key(self, time_begin, time_end):
         return self.get(time_begin=time_begin, time_end=time_end)
+
 
 class Session(models.Model):
     ''' Class representing session
@@ -216,8 +223,8 @@ class SessionOption(models.Model):
 class MeasurementPointManager(models.Manager):
     def get_by_natural_key(self, time):
         from dateutil import parser as dateutil_parser
-        t = dateutil_parser.parse(time)
-        return self.get(time=t)
+        time = dateutil_parser.parse(time)
+        return self.get(time=time)
 
 
 class MeasurementPoint(models.Model):
@@ -246,6 +253,7 @@ class MeasurementPoint(models.Model):
         return unicode(self.time)
     class Meta:
         db_table = 'measurement_points'
+
 
 class Measurement(models.Model):
     ''' Class representing measurement

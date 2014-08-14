@@ -63,7 +63,8 @@ CREATE TABLE "sessions" (
     "id" serial NOT NULL ,
     "time_begin" timestamp with time zone NOT NULL,
     "time_end" timestamp with time zone NOT NULL,
-     CONSTRAINT "sessions_pkey" PRIMARY KEY ("id")
+     CONSTRAINT "sessions_pkey" PRIMARY KEY ("id"),
+     CONSTRAINT "sessions_time_begin_time_end_key" UNIQUE ("time_begin", "time_end")
 )
 ;
 
@@ -88,7 +89,8 @@ CREATE TABLE "measurement_points" (
     "y_geo" double precision,
     "z_geo" double precision,
 --    "session_id" integer NOT NULL,
-    CONSTRAINT "measurement_points_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "measurement_points_pkey" PRIMARY KEY ("id"),
+    CONSTRAINT "measurement_points_time_unique_key" UNIQUE ("time")
 )
 ;
 
