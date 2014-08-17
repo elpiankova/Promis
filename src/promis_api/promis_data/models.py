@@ -193,11 +193,16 @@ class Session(models.Model):
     time_begin = models.DateTimeField()
     time_end   = models.DateTimeField()
     
+    @property
+    def time_interval(self):
+        return " ".join([str(self.time_begin), str(self.time_end)])
+    
     def __unicode__(self):
         return u'%s - %s' % (str(self.time_begin), str(self.time_end))
     class Meta:
         db_table = 'sessions'
         unique_together = (('time_begin', 'time_end'),)
+        ordering = ['time_begin', 'time_end']
 
 
 class SessionOption(models.Model):

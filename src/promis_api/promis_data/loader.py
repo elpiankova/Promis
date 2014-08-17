@@ -5,14 +5,20 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "promis_api.settings")
 
 from parsers import variant_parser
 from django.core import serializers
+from django.db.utils import IntegrityError
     
 def loader(parser, path):
     
     json_generator = parser.variant_parser(path)
     for data in json_generator:
         for deserialized_object in serializers.deserialize("json", data):
-            deserialized_object.object.save()
+            try:
+                deserialized_object.object.save()
+            except IntegrityError:
+                print "%s already exists" % (deserialized_object.object)
+            except Exception, e:
+                raise Exception(e)
+                
 
-
-path = '/home/elena/workspace/promis_from_gitlab/satellite-data/Variant/Data_Release1/597'
+path = '/home/elena/workspace/Data_Release1_2_session/597/'
 loader(variant_parser, path)
