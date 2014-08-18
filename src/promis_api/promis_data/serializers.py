@@ -1,17 +1,22 @@
-from promis_data.models import Channel, Session, Measurement, MeasurementPoint, Parameter
+from promis_data.models import Channel, Session, Measurement, MeasurementPoint, Parameter, Device
 from rest_framework import serializers
 
 
-class ChannelSerializers(serializers.ModelSerializer):
-    device = serializers.Field(source='device.title')
-    satellite = serializers.Field(source='device.satellite')
+class DeviceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Device
+        fields = ('title', 'satellite')
+
+
+class ChannelSerializer(serializers.ModelSerializer):
+    device = DeviceSerializer()
     
     class Meta:
         model = Channel
-        fields = ('title', 'device', 'satellite')
+        fields = ('title', 'device')
 
       
-class SessionSerializers(serializers.Serializer):
+class SessionSerializer(serializers.Serializer):
     time_begin = serializers.DateTimeField()
     time_end = serializers.DateTimeField()
     time_interval = serializers.Field(source='time_interval')
@@ -29,7 +34,7 @@ class SessionSerializers(serializers.Serializer):
             return None
         
 
-class MeasurementPointSerializers(serializers.ModelSerializer):
+class MeasurementPointSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = MeasurementPoint
@@ -37,10 +42,10 @@ class MeasurementPointSerializers(serializers.ModelSerializer):
 
 
 class MeasurementSerializer(serializers.ModelSerializer):
-    channel = ChannelSerializers()
+    channel = ChannelSerializer()
     parameter = serializers.PrimaryKeyRelatedField()
-    measurement_point = MeasurementPointSerializers(read_only=True)
-    session = SessionSerializers(read_only=True)
+    measurement_point = MeasurementPointSerializer()
+    session = SessionSerializer(read_only=True)
     
     class Meta:
         model = Measurement
@@ -52,10 +57,13 @@ class MeasurementSerializer(serializers.ModelSerializer):
         Given a dictionary of deserialized field values,
         either update an existing model, or create a new instance.
         '''
+        print "HHHHHH"
         if instance is not None:
             instance.level_marker = attrs.get('level_marker', instance.level_marker)
             instance.measurement = attrs.get('measurement', instance.measurement)
             return instance
+        print attrs.get('channel')
+        print type(attrs['channel'])
         channel = Channel.objects.get(title=attrs['channel']['title'],
                                       device__title=attrs['channel']['device'],
                                       device__satellite__title=attrs.pop('channel')['satellite'])
@@ -68,8 +76,10 @@ class MeasurementSerializer(serializers.ModelSerializer):
                                       time_end=attrs.pop('session')['time_end'])
         return Measurement(channel=channel, parameter=parameter, measurement_point=mp,
                            session=session, **attrs)
-#              
-#          
+
+
+
+          
 #         obj.parameter = Parameter.objects.get(title=self.request.DATA.get('parameter'))
 #         obj.channel = Channel.objects.get(title = self.request.DATA['channel']['title'],
 #                                           device__title = self.request.DATA['channel']['device']
@@ -87,14 +97,19 @@ if __name__ == '__main__':
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "promis_api.settings")
     import datetime, pytz
     data={'level_marker': 0, 'measurement': 1575.21216, 
-          'channel': {'title': u'Bx quasiconstant', 'device': u'DC fluxgate magnetometer FZM', 'satellite': u'Variant'}, 
+          'channel': {'title': u'Bx quasiconstant', 'device': {'title': u'DC fluxgate magnetometer FZM', 'satellite': u'Variant'}}, 
           'parameter': u'X-component of magnetic field vector', 
           'measurement_point': {'time': datetime.datetime(2005, 2, 1, 8, 22, 59, tzinfo=pytz.utc), 'x_geo': None, 'y_geo': None, 'z_geo': None}, 
           'session': {'time_begin': datetime.datetime(2005, 2, 1, 8, 22, 59, tzinfo=pytz.utc), 'time_end': datetime.datetime(2005, 2, 1, 8, 43, 29, tzinfo=pytz.utc)}}
 
+#     serializer = MeasurementSerializer(Measurement.objects.first())
+#     print serializer.data
     serializer = MeasurementSerializer(data=data)
-    serializer.is_valid()
+    print serializer.is_valid()
+    print serializer.errors
     print serializer.data
+    
+    
 #     Session.objects.all().delete()
 #     MeasurementPoint.objects.all().delete()
 #     data = [

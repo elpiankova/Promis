@@ -1,7 +1,7 @@
 from promis_data.models import Session, MeasurementPoint, Measurement
 from promis_data.models import Parameter, Channel
-from promis_data.serializers import SessionSerializers, MeasurementPointSerializers
-from promis_data.serializers import MeasurementSerializers
+from promis_data.serializers import SessionSerializer, MeasurementPointSerializer
+from promis_data.serializers import MeasurementSerializer
 from rest_framework import views, status, generics
 from rest_framework.response import Response
 
@@ -14,14 +14,14 @@ class SessionList(views.APIView):
 #     serializer_class = SessionSerializers
     
     def get(self, request, format=None):
-        serializer = SessionSerializers(self.queryset, many=True)
+        serializer = SessionSerializer(self.queryset, many=True)
         return Response(serializer.data)
         
     def post(self, request, format=None):       
         if isinstance(request.DATA, list):
-            serializer = SessionSerializers(data=request.DATA, many=True)
+            serializer = SessionSerializer(data=request.DATA, many=True)
         else:
-            serializer = SessionSerializers(data=request.DATA)
+            serializer = SessionSerializer(data=request.DATA)
             
         if serializer.is_valid():
             serializer.save()
@@ -37,14 +37,14 @@ class MeasurementPointList(views.APIView):
 #     serializer_class = SessionSerializers
     
     def get(self, request, format=None):
-        serializer = MeasurementPointSerializers(self.queryset, many=True)
+        serializer = MeasurementPointSerializer(self.queryset, many=True)
         return Response(serializer.data)
         
     def post(self, request, format=None):       
         if isinstance(request.DATA, list):
-            serializer = MeasurementPointSerializers(data=request.DATA, many=True)
+            serializer = MeasurementPointSerializer(data=request.DATA, many=True)
         else:
-            serializer = MeasurementPointSerializers(data=request.DATA)
+            serializer = MeasurementPointSerializer(data=request.DATA)
             
         if serializer.is_valid():
             serializer.save()
@@ -53,7 +53,7 @@ class MeasurementPointList(views.APIView):
 
 class MeasurementList(generics.ListCreateAPIView):
     queryset = Measurement.objects.all()
-    serializer_class = MeasurementSerializers
+    serializer_class = MeasurementSerializer
     
 #     def pre_save(self, obj):
 #         obj.parameter = Parameter.objects.get(title=self.request.DATA.get('parameter'))
