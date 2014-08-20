@@ -1,18 +1,18 @@
 from mpl_toolkits.basemap import Basemap
-import numpy as np
 import matplotlib.pyplot as plt
-# llcrnrlat,llcrnrlon,urcrnrlat,urcrnrlon
-# are the lat/lon values of the lower left and upper right corners
-# of the map.
-# resolution = 'c' means use crude resolution coastlines.
+import numpy as np
 
-#m = Basemap(llcrnrlon=lons.min(),urcrnrlon=lons.max(),llcrnrlat=lats.min(),urcrnrlat=lats.max(),projection='cyl',resolution='c',fix_aspect=False)
-m = Basemap(projection='cyl', llcrnrlat=-90, urcrnrlat=90, llcrnrlon=-180, urcrnrlon=180, resolution='c')
-m.drawcoastlines()
-m.fillcontinents(color='coral',lake_color='aqua')
-# draw parallels and meridians.
-m.drawparallels(np.arange(-90.,91.,30.))
-m.drawmeridians(np.arange(-180.,181.,60.))
-m.drawmapboundary(fill_color='aqua')
-plt.title("Equidistant Cylindrical Projection")
+ 
+map = Basemap(projection='merc', lat_0 = 57, lon_0 = -135,
+    resolution = 'h', area_thresh = 0.1,
+    llcrnrlon=-136.25, llcrnrlat=56.0,
+    urcrnrlon=-134.25, urcrnrlat=57.75)
+
+
+map.plot([134,135,136],[50,51,52]) 
+map.drawcoastlines()
+map.drawcountries()
+map.fillcontinents(color = 'coral')
+map.drawmapboundary()
+ 
 plt.show()

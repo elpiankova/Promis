@@ -1,30 +1,26 @@
 from mpl_toolkits.basemap import Basemap
 import matplotlib.pyplot as plt
 import numpy as np
+from datetime import datetime
 # setup Lambert Conformal basemap.
 # set resolution=None to skip processing of boundary datasets.
-m = Basemap(projection='cyl',
-            resolution=None, llcrnrlat=-90, urcrnrlat=90, llcrnrlon=-180, urcrnrlon=180)
-# draw a land-sea mask for a map background.
-# lakes=True means plot inland lakes with ocean color.
-#m.drawlsmask(land_color='coral',ocean_color='aqua')
+m = Basemap(projection='cyl', lat_0=50, lon_0=10, resolution='l')
 
-lons = 0
-lats = 0
-i = 0
-for i in [1,2,3,4,5]:
-#while i < 20:
-    x, y = m(lons, lats)
-    m.scatter(x,y,10,marker='o',color='r')
-    #m.plot(xx,yy,linewidth=1.5,color='r')
-    lons += 4
-    lats += 4
-    i += 1
-        
+#xx =
+#yy =
+
+
     
 m.drawparallels(np.arange(-90.,90.,90.))
 m.drawmeridians(np.arange(-180.,180.,60.))
-m.etopo()
-
+#m.etopo()
+m.drawcoastlines()
+m.drawcountries()
+m.fillcontinents(color='coral')
+m.drawmapboundary()
+# shade the night areas, with alpha transparency so the
+# map shows through. Use current time in UTC.
+date = datetime.utcnow()
+CS=m.nightshade(date)
 
 plt.show()
