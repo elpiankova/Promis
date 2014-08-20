@@ -12,11 +12,11 @@ m = Basemap(projection='cyl',
 lons = 0
 lats = 0
 i = 0
-#for i in [1,2,3,4,5]:
-while i < 20:
-    xx, yy = m(lons, lats)
-    #m.scatter(x,y,10,marker='o',color='r')
-    m.plot(xx,yy,linewidth=1.5,color='r')
+for i in [1,2,3,4,5]:
+#while i < 20:
+    x, y = m(lons, lats)
+    m.scatter(x,y,10,marker='o',color='r')
+    #m.plot(xx,yy,linewidth=1.5,color='r')
     lons += 4
     lats += 4
     i += 1
