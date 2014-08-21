@@ -6,10 +6,6 @@ from datetime import datetime
 # set resolution=None to skip processing of boundary datasets.
 m = Basemap(projection='cyl', lat_0=50, lon_0=10, resolution='l')
 
-#xx =
-#yy =
-
-
     
 m.drawparallels(np.arange(-90.,90.,90.))
 m.drawmeridians(np.arange(-180.,180.,60.))
