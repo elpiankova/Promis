@@ -6,7 +6,10 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "promis_api.settings")
 from parsers import variant_parser
 from django.core import serializers
 from django.db.utils import IntegrityError
-    
+from datetime import *
+
+sys.stdout = open(str('log' + str(datetime.now())),'w')
+
 def loader(parser, path):
     
     json_generator = parser.variant_parser(path)
@@ -19,6 +22,6 @@ def loader(parser, path):
             except Exception, e:
                 raise Exception(e)
                 
-
-path = '/home/elena/workspace/Data_Release1_2_session/597/'
+path = '/home/len/Variant/Data_Release1/597'
+#path = '/home/elena/workspace/Data_Release1_2_session/597/'
 loader(variant_parser, path)

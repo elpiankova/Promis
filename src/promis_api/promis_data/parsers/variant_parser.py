@@ -36,7 +36,9 @@ def parse_telemetry_file(telemetry_file):
         # run through all sampling frequencies and append them to this list in float
         # We add None when empty line
         if telemetry[metka_freq+i+1].strip() == '':
-            sampling_frequencies.append(None)
+            sampling_frequencies.\
+
+                append(None)
         else:
             sampling_frequencies.append(float(telemetry[metka_freq+i+1]))
     
@@ -58,9 +60,9 @@ def variant_parser(path):
     
     #print begin_datetime, end_datetime
     
-    begin_datetime = pytz.utc.localize(begin_datetime)
-    end_datetime = pytz.utc.localize(end_datetime)
-    
+    begin_datetime = pytz.utc.localize(begin_datetime) - timedelta(hours=3)
+    end_datetime = pytz.utc.localize(end_datetime) - timedelta(hours=3)
+
     yield json.dumps([{"model": "promis_data.session",
                       "fields": {
                                  "time_begin": str(begin_datetime),
@@ -92,7 +94,7 @@ def variant_parser(path):
 
         if sampling_frequencies[int(channel.order_number)] != None and channel.base_sensor != None:
         #                                                              to skip all channels with wrong base sensor
-#             print channel.filename
+            print str(channel.filename) + "channel is to be loaded"
 
             if str(channel.filename) + '.mat' in os.listdir(path): # mat-files should be checked first because ..
             # 1) text files have no extension, 2) every mat-file has file with the same name and without extension
@@ -136,13 +138,14 @@ def variant_parser(path):
                                        }])
 
                     measurement_datetime += period_microsec
+        print str(channel.filename) + "channel has been loaded"
 
 
 #print channels_from_db
 
 if __name__ == "__main__":
-#     path = '/home/elena/workspace/promis_from_gitlab/satellite-data/Variant/Data_Release1/597'
-    path = '/home/elena/workspace/promis_from_gitlab/satellite-data/Variant/Data_Release1/597'
+    path = '/home/len/Variant/Data_Release1/597'
+#    path = '/home/elena/workspace/promis_from_gitlab/satellite-data/Variant/Data_Release1/597'
     gen = variant_parser(path)
     print next(gen)
     print next(gen)
