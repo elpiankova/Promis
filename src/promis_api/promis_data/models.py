@@ -286,7 +286,7 @@ class Measurement(models.Model):
     session        = models.ForeignKey('Session', on_delete=models.PROTECT)
     
     def __unicode__(self):
-        return unicode(self.measurement)
+        return u'%s, time: %s' % (unicode(self.measurement), unicode(self.measurement_point))
     class Meta:
         db_table = 'measurements'
         

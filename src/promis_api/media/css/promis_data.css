@@ -1,0 +1,120 @@
+body {
+  background-color: #CCCCCC;
+}
+
+.graph {
+  color: #777777;
+}
+
+.graph div {
+  margin: 0 auto;
+  width: 800px;
+}
+
+.toolbox {
+  border-left: 2px white solid;
+  padding-right: 10px;
+  padding-left: 10px;
+  overflow-y: scroll;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000000;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {
+  display: none;
+}
+
+.line {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+
+.structure-item {
+  margin-bottom: 0!important;
+  border-top: 2px white solid;
+}
+
+.data-description {
+  border-top: 2px white solid;
+}
+
+table.combined-control { /*, table.combined-control td, table.combined-control tr { */
+  width: 100%;
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.combined-control button {
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  margin-right: -10px;
+}
+
+.sticked {
+  border-top-left-radius: 0px!important;
+  border-bottom-left-radius: 0px!important;
+}
+
+dd {
+  display: none;
+}
+
+.data-description p {
+  display: none;
+}
+
+/* Rolling loader */
+.glyphicon-refresh-animate {
+  -animation: spin .7s infinite linear;
+  -webkit-animation: spin2 .7s infinite linear;
+  margin-right: 10px;
+  margin-left: 5px;
+  margin-top: 5px;
+}
+
+@-webkit-keyframes spin2 {
+  from { -webkit-transform: rotate(0deg);}
+  to { -webkit-transform: rotate(360deg);}
+}
+
+@keyframes spin {
+  from { transform: scale(1) rotate(0deg);}
+  to { transform: scale(1) rotate(360deg);}
+}
+
+.descriptive-loader {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.35);
+}
+
+/* Detailed explanation: http://www.smashingmagazine.com/2013/08/09/absolute-horizontal-vertical-centering-css/ */
+.descriptive-loader table {
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  width: 300px;
+  /*height: 100px;*/
+  /*border: 2px solid #ffffff;*/
+  /*text-align: center;*/
+  /*background-color: rgba(255, 255, 255, 0.4);*/
+  border-radius: 5px;
+}
+
+.descriptive-loader td:nth-child(1) {
+  border-right: 2px solid #AAAAAA;
+  width: 40px;
+}
+
+.descriptive-loader td:nth-child(2) {
+  padding-left: 20px;
+  width: 300px;
+}

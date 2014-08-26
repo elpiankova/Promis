@@ -1,0 +1,165 @@
+{% spaceless %}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en" ng-app='viewer-app'>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="content-language" content="en">
+    <title>DE 2 data viewer</title>
+    <link href="{{ MEDIA_URL }}css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+    <link href="{{ MEDIA_URL }}css/data_viewer.css" type="text/css" rel="stylesheet" />
+
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery-1.11.1.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/angular.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/bootstrap.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/d3.v3.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/data_viewer.js"></script>
+    {% block head %}{% endblock %}
+    <style>
+        .toolbox {
+            width: 300px;
+        }
+    </style>
+</head>
+
+<body ng-controller="DataViewerCtrl">
+    <div class="descriptive-loader" ng-if="loader_status">
+        <table>
+            <tr>
+                <td>
+                    <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span>
+                </td>
+                <td>
+                    <span class="descriptive-loader-message">[[loader_message]]</span>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div id="content">
+        <div class="pull-left clearfix graph">
+            <div class="center-block">
+                <h1>Please choose data you want to view</h1>
+                <ol>
+                    <li>Choose data source and wait while available source files list would be loaded</li>
+                    <li>Choose source file you want to view</li>
+                </ol>
+            </div>
+        </div>
+        <div class="pull-right clearfix toolbox">
+            <form class="form" role="form" name="data-selection-options">
+                <div class="form-group">
+                    <label class="control-label">Data sources</label>
+                    <select name="data_source" class="form-control" 
+                        ng-model="data_source" 
+                        ng-change="load_source_files()">
+                        {% for value, title in data_sources.items %}
+                            <option value="{{ value }}">{{ title }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Source files</label>
+                    <table class="combined-control">
+                        <tr>
+                            <td>
+                                <button type="button" class="btn btn-info"
+                                 ng-active="source_files_state == 'present'"
+                                 ng-click="ender_plot()">
+                                    <span class="glyphicon glyphicon-refresh" ng-click="ender_plot()"></span>
+                                </button>
+                            </td>
+                            <td>
+                                <select name="source_file_selected" class="form-control sticked" 
+                                    ng-if="source_files_state == 'present'" 
+                                    ng-model="source_file_selected" 
+                                    ng-change="render_plot()">
+                                    <option ng-repeat="item in source_files" value="[[ item.value ]]">
+                                        [[ item.title ]]&nbsp;<i>([[ item.measurements ]])</i>
+                                    </option>
+                                </select>
+
+                                <select class="form-control sticked" ng-if="source_files_state == 'loading'">
+                                    <option disabled="true">Loading data for `[[ data_source_title ]]`</option>
+                                </select>
+
+                                <select class="form-control sticked" ng-if="source_files_state == 'empty'">
+                                    <option disabled="true">Please select data source</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <!-- <div ng-if="data_structure.axis && data_structure.axis.length > 0">
+                <h4>Axis</h4>
+                    <dl>
+                        <span ng-repeat="axis in data_structure.axis">
+                            <dt>
+                                <div class="checkbox structure-item">
+                                    <label>
+                                        <input type="checkbox" name="axis[ [[axis.name]] ]" /><b>[[axis.title]]</b> [<i>[[axis.units]]</i>]
+                                    </label>
+                                </div>
+                            </dt>
+                            <dd>
+                                [[axis.description]]
+                            </dd>
+                        </span>
+                    </dl>
+                </div> -->
+                <!-- <div ng-if="data_structure.data && data_structure.data.length > 0">
+                <h4>Data</h4>
+                <dl>
+                    <span ng-repeat="data_row in data_structure.data">
+                        <dt>
+                            <div class="checkbox structure-item">
+                                <label>
+                                    <input type="checkbox" name="data[ [[data_row.name]] ]" /><b>[[data_row.title]]</b> [<i>[[data_row.units]]</i>]
+                                </label>
+                            </div>
+                        </dt>
+                        <dd>
+                            [[data_row.description]]
+                        </dd>
+                    </span>
+                </dl>
+                </div> -->
+                <div ng-if="data_structure.data && data_structure.data.length > 0" class="hidable-data">
+                <h4>Data</h4>
+                <dl>
+                    <span ng-repeat="data_row in data_structure.data">
+                        <dt>
+                            <div class="radio structure-item">
+                                <label>
+                                    <input type="radio" ng-checked="$first" ng-click="render_plot()" name="data" value="[[data_row.name]]" />
+                                    <button type="button" class="btn btn-xs btn-link" ng-if="data_row.description">
+                                        <span class="glyphicon glyphicon-chevron-down"></span>
+                                    </button>
+                                    <b>[[data_row.title]]</b> [<i>[[data_row.units]]</i>]
+                                </label>
+                            </div>
+                        </dt>
+                        <dd ng-if="data_row.description">
+                            [[data_row.description]]
+                        </dd>
+                    </span>
+                </dl>
+                </div>
+                <!-- <input type="button" class="form-control" ng-if="data_status == 'present' || (source_file_selected && data_status == 'empty')" value="Process" ng-click()>
+                <input type="button" class="form-control" ng-if="data_status == 'empty'" value="Complete selection"> 
+                <input type="button" class="form-control" ng-if="data_status == 'loading'" value="Data loading...">  -->
+                <div ng-if="data_structure.description" class="data-description">
+                    <h4>
+                        <button type="button" class="btn btn-xs btn-link" ng-if="data_structure.description">
+                            <span class="glyphicon glyphicon-chevron-down"></span>
+                        </button>
+                        Device description
+                    </h4>
+                    <p>[[data_structure.description]]</p>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
+{% endspaceless %}
