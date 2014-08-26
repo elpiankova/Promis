@@ -8,12 +8,19 @@ class DeviceSerializer(serializers.ModelSerializer):
         fields = ('title', 'satellite')
 
 
+class ParameterSerializer(serializers.ModelSerializer):
+    units = serializers.Field(source='units.short_name')
+    class Meta:
+        model =Parameter
+        fields = ('title', 'units')
+
 class ChannelSerializer(serializers.ModelSerializer):
     device = DeviceSerializer()
+    parameters = ParameterSerializer()
     
     class Meta:
         model = Channel
-        fields = ('title', 'device')
+        fields = ('title', 'device', 'parameters')
 
       
 class SessionSerializer(serializers.Serializer):

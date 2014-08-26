@@ -73,6 +73,7 @@ function DataViewerCtrl($scope, $http) {
         }).then(function (res) {
                 // $scope.data_structure = res.data.structure;
                 $scope.data.channels.options = res.data;
+                // $scope.data.channels.selected = $scope.data.channels.options[1];
                 // $scope.channel_state = 'present';
                 // $scope.loader_status = false;
                 $scope.loader.pop("channels-loading");
