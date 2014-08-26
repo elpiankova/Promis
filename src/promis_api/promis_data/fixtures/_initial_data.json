@@ -145,7 +145,7 @@
     "fields": {
         "device": 9, 
         "description": "This is a high-frequency channel of electric probe with sampling frequency 1000 Hz", 
-        "title": "U High-frequency"
+        "title": "U high-frequency"
     }
 },
 {
@@ -154,7 +154,7 @@
     "fields": {
         "device": 7, 
         "description": "Rogowski coil forms a channel of AC current density measurement in the frequency range 30 ... 400 Hz, conversion factor is Kp \u2248 8.5e-2 V*sm2/nA.", 
-        "title": "Z current density "
+        "title": "Jz current density "
     }
 },
 {
@@ -163,7 +163,7 @@
     "fields": {
         "device": 5, 
         "description": "This is low-frequency channel that measured electron current density. Conversion factor is 470 mV*sm2/mkA.", 
-        "title": "Electron current density low-frequency "
+        "title": "Electron current density lf (FC1) "
     }
 },
 {
@@ -172,7 +172,7 @@
     "fields": {
         "device": 5, 
         "description": "This is high-frequency channel that measured electron current density. Conversion factor is 4780 mV*sm2/mkA.", 
-        "title": "Electron current density high-frequency"
+        "title": "Electron current density hf (FC1)"
     }
 },
 {
@@ -181,7 +181,7 @@
     "fields": {
         "device": 12, 
         "description": "This is low-frequency channel that measured electron current density. Conversion factor is 470 mV*sm2/mkA.", 
-        "title": " Electron current density low-frequency"
+        "title": " Electron current density lf (FC2)"
     }
 },
 {
@@ -190,7 +190,7 @@
     "fields": {
         "device": 12, 
         "description": "This is high-frequency channel that measured electron current density. Conversion factor is 4780 mV*sm2/mkA.", 
-        "title": "Electron current density high-frequency"
+        "title": "Electron current density hf (FC2)"
     }
 },
 {
@@ -226,7 +226,7 @@
     "fields": {
         "device": 2, 
         "description": "YZ component of current density ", 
-        "title": "YZ current density "
+        "title": "Jyz current density "
     }
 },
 {
@@ -235,7 +235,7 @@
     "fields": {
         "device": 2, 
         "description": "x- component of magnetic field vector", 
-        "title": "X magnetic field"
+        "title": "Bx high-frequency"
     }
 },
 {
@@ -244,7 +244,7 @@
     "fields": {
         "device": 3, 
         "description": "XZ component of current density", 
-        "title": "XZ current density"
+        "title": "Jxz current density"
     }
 },
 {
@@ -253,7 +253,7 @@
     "fields": {
         "device": 3, 
         "description": "Y component of magnetic field vector", 
-        "title": "Y magnetic field"
+        "title": "By high-frequency"
     }
 },
 {
@@ -1086,96 +1086,6 @@
     }
 },
 {
-    "pk": "Ampere", 
-    "model": "promis_data.units", 
-    "fields": {
-        "long_name": "ampere", 
-        "description": "", 
-        "short_name": "A"
-    }
-},
-{
-    "pk": "Kelvin", 
-    "model": "promis_data.units", 
-    "fields": {
-        "long_name": "Kelvin", 
-        "description": "Unit of temperature", 
-        "short_name": "K"
-    }
-},
-{
-    "pk": "Tesla", 
-    "model": "promis_data.units", 
-    "fields": {
-        "long_name": "tesla", 
-        "description": "", 
-        "short_name": "T"
-    }
-},
-{
-    "pk": "Volt", 
-    "model": "promis_data.units", 
-    "fields": {
-        "long_name": "Volt", 
-        "description": "", 
-        "short_name": "V"
-    }
-},
-{
-    "pk": "Current", 
-    "model": "promis_data.parameter", 
-    "fields": {
-        "units": "Ampere", 
-        "description": "", 
-        "short_name": "I"
-    }
-},
-{
-    "pk": "Temperature", 
-    "model": "promis_data.parameter", 
-    "fields": {
-        "units": "Kelvin", 
-        "description": "", 
-        "short_name": "T"
-    }
-},
-{
-    "pk": "Voltage", 
-    "model": "promis_data.parameter", 
-    "fields": {
-        "units": "Volt", 
-        "description": "", 
-        "short_name": "U"
-    }
-},
-{
-    "pk": "X-component of magnetic field vector", 
-    "model": "promis_data.parameter", 
-    "fields": {
-        "units": "Tesla", 
-        "description": "", 
-        "short_name": "Bx"
-    }
-},
-{
-    "pk": "Y-component of magnetic field vector", 
-    "model": "promis_data.parameter", 
-    "fields": {
-        "units": "Tesla", 
-        "description": "", 
-        "short_name": "By"
-    }
-},
-{
-    "pk": "Z-component of magnetic field vector", 
-    "model": "promis_data.parameter", 
-    "fields": {
-        "units": "Tesla", 
-        "description": "", 
-        "short_name": "Bz"
-    }
-},
-{
     "pk": 1, 
     "model": "promis_data.channelshaveparameters", 
     "fields": {
@@ -1437,6 +1347,96 @@
     "fields": {
         "parameter": "Temperature", 
         "channel": 37
+    }
+},
+{
+    "pk": "Current", 
+    "model": "promis_data.parameter", 
+    "fields": {
+        "units": "Ampere", 
+        "description": "", 
+        "short_name": "I"
+    }
+},
+{
+    "pk": "Temperature", 
+    "model": "promis_data.parameter", 
+    "fields": {
+        "units": "Kelvin", 
+        "description": "", 
+        "short_name": "T"
+    }
+},
+{
+    "pk": "Voltage", 
+    "model": "promis_data.parameter", 
+    "fields": {
+        "units": "Volt", 
+        "description": "", 
+        "short_name": "U"
+    }
+},
+{
+    "pk": "X-component of magnetic field vector", 
+    "model": "promis_data.parameter", 
+    "fields": {
+        "units": "Tesla", 
+        "description": "", 
+        "short_name": "Bx"
+    }
+},
+{
+    "pk": "Y-component of magnetic field vector", 
+    "model": "promis_data.parameter", 
+    "fields": {
+        "units": "Tesla", 
+        "description": "", 
+        "short_name": "By"
+    }
+},
+{
+    "pk": "Z-component of magnetic field vector", 
+    "model": "promis_data.parameter", 
+    "fields": {
+        "units": "Tesla", 
+        "description": "", 
+        "short_name": "Bz"
+    }
+},
+{
+    "pk": "Ampere", 
+    "model": "promis_data.units", 
+    "fields": {
+        "long_name": "ampere", 
+        "description": "", 
+        "short_name": "A"
+    }
+},
+{
+    "pk": "Kelvin", 
+    "model": "promis_data.units", 
+    "fields": {
+        "long_name": "Kelvin", 
+        "description": "Unit of temperature", 
+        "short_name": "K"
+    }
+},
+{
+    "pk": "Tesla", 
+    "model": "promis_data.units", 
+    "fields": {
+        "long_name": "tesla", 
+        "description": "", 
+        "short_name": "T"
+    }
+},
+{
+    "pk": "Volt", 
+    "model": "promis_data.units", 
+    "fields": {
+        "long_name": "Volt", 
+        "description": "", 
+        "short_name": "V"
     }
 }
 ]
