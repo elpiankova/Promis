@@ -36,9 +36,7 @@ def parse_telemetry_file(telemetry_file):
         # run through all sampling frequencies and append them to this list in float
         # We add None when empty line
         if telemetry[metka_freq+i+1].strip() == '':
-            sampling_frequencies.\
-
-                append(None)
+            sampling_frequencies.append(None)
         else:
             sampling_frequencies.append(float(telemetry[metka_freq+i+1]))
     
