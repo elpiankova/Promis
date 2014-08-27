@@ -1086,6 +1086,42 @@
     }
 },
 {
+    "pk": "Ampere", 
+    "model": "promis_data.units", 
+    "fields": {
+        "long_name": "ampere", 
+        "description": "", 
+        "short_name": "A"
+    }
+},
+{
+    "pk": "Kelvin", 
+    "model": "promis_data.units", 
+    "fields": {
+        "long_name": "Kelvin", 
+        "description": "Unit of temperature", 
+        "short_name": "K"
+    }
+},
+{
+    "pk": "Tesla", 
+    "model": "promis_data.units", 
+    "fields": {
+        "long_name": "tesla", 
+        "description": "", 
+        "short_name": "T"
+    }
+},
+{
+    "pk": "Volt", 
+    "model": "promis_data.units", 
+    "fields": {
+        "long_name": "Volt", 
+        "description": "", 
+        "short_name": "V"
+    }
+},
+{
     "pk": "Current", 
     "model": "promis_data.parameter", 
     "fields": {
@@ -1401,42 +1437,6 @@
     "fields": {
         "parameter": "Temperature", 
         "channel": 37
-    }
-},
-{
-    "pk": "Ampere", 
-    "model": "promis_data.units", 
-    "fields": {
-        "long_name": "ampere", 
-        "description": "", 
-        "short_name": "A"
-    }
-},
-{
-    "pk": "Kelvin", 
-    "model": "promis_data.units", 
-    "fields": {
-        "long_name": "Kelvin", 
-        "description": "Unit of temperature", 
-        "short_name": "K"
-    }
-},
-{
-    "pk": "Tesla", 
-    "model": "promis_data.units", 
-    "fields": {
-        "long_name": "tesla", 
-        "description": "", 
-        "short_name": "T"
-    }
-},
-{
-    "pk": "Volt", 
-    "model": "promis_data.units", 
-    "fields": {
-        "long_name": "Volt", 
-        "description": "", 
-        "short_name": "V"
     }
 }
 ]

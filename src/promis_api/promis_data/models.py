@@ -99,7 +99,24 @@ class ChannelOption(models.Model):
         db_table = 'channels_options'
 
 
+class Units(models.Model):
+    ''' Class representing parameter units
+        
+    This is the class storing the unique title, short name, long name and 
+    description of units
+    '''
+    title       = models.CharField(max_length=255, primary_key=True)
+    short_name  = models.CharField(max_length=45)
+    long_name   = models.CharField(max_length=100)
+    description = models.TextField(null=True, blank=True)
 
+    def __unicode__(self):
+        return self.title
+    class Meta:
+        db_table = 'units'
+        verbose_name_plural = 'units'
+        
+        
 class Parameter(models.Model):
     ''' Class representing measured parameter
         
@@ -291,21 +308,3 @@ class Measurement(models.Model):
         return u'%s, time: %s' % (unicode(self.measurement), unicode(self.measurement_point))
     class Meta:
         db_table = 'measurements'
-        
-
-class Units(models.Model):
-    ''' Class representing parameter units
-        
-    This is the class storing the unique title, short name, long name and 
-    description of units
-    '''
-    title       = models.CharField(max_length=255, primary_key=True)
-    short_name  = models.CharField(max_length=45)
-    long_name   = models.CharField(max_length=100)
-    description = models.TextField(null=True, blank=True)
-
-    def __unicode__(self):
-        return self.title
-    class Meta:
-        db_table = 'units'
-        verbose_name_plural = 'units'
