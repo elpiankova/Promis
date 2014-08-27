@@ -79,6 +79,7 @@ def potential_parser(path):
     if os.path.exists(os.path.join(path,'ez/lf/0')):
         #U-low-frequency: 1 Hz
         #choose a channel of db to be loaded with data
+        print 'EZ low-frequency channel is to be loaded'
         channel_ez_lf = Channel.objects.get(title="U low-frequency")
         telemetry_filename_lf = glob.glob(os.path.join(path,'ez/lf/0/*mv.set'))[0] # got a name of telemetry-file
         measurements_filename_lf = glob.glob(os.path.join(path,'ez/lf/0/*mv.csv'))[0]
@@ -88,12 +89,14 @@ def potential_parser(path):
         print next(g)
         print next(g)
         print next(g)
+        print 'EZ low-frequency channel has been loaded'
 
 
     if os.path.exists(os.path.join(path,'ez/hf/00')):
 #       U-high-frequency, 1000 Hz
+        print 'EZ high-frequency channel is to be loaded'
 
-        channel_ez_hf = Channel.objects.get(title="U High-frequency")
+        channel_ez_hf = Channel.objects.get(title="U high-frequency")
         telemetry_filename_hf = glob.glob(os.path.join(path,'ez/hf/00/*mv.set'))[0] # got a name of telemetry-file
         measurements_filename_hf = glob.glob(os.path.join(path,'ez/hf/00/*mv.csv'))[0]
         period_hf = timedelta(milliseconds=1)
@@ -102,6 +105,7 @@ def potential_parser(path):
         print next(gen)
         print next(gen)
         print next(gen)
+        print 'EZ high-frequency channel has been loaded'
 
 
 

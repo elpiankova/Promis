@@ -22,6 +22,13 @@ def loader(parser, path):
             except Exception, e:
                 raise Exception(e)
                 
-path = '/home/len/Variant/Data_Release1/597'
+path_general = '/home/len/Variant/Data_Release1'
 #path = '/home/elena/workspace/Data_Release1_2_session/597/'
-loader(variant_parser, path)
+dirs = []
+for folder_name in next(os.walk(path_general))[1]:
+    dirs.append(os.path.join(path_general, folder_name))
+#print dirs
+
+for path in dirs:
+    print '%s directory is loading' % (path)
+    loader(variant_parser, path)

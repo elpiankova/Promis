@@ -107,7 +107,7 @@ def variant_parser(path):
                 measurement_row = numpy.fromfile(measurement_file, dtype=numpy.float64, sep=' ')
             else:
                 print 'No file "' + str(channel.filename) + '" found'
-#             print type(measurement_row)
+            #print type(measurement_row)
 
             period_microsec =  timedelta(microseconds=1/sampling_frequencies[int(channel.order_number)]*10**6)
             measurement_datetime = begin_datetime
