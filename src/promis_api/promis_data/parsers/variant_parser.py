@@ -43,7 +43,7 @@ def parse_telemetry_file(telemetry_file):
     return (begin_datetime, end_datetime, base, sampling_frequencies)
 
 
-def variant_parser(path):
+def parser(path):
     """Parse Variant source data file that located in path.
     Return generator of json structures in Django serialization form
     """
@@ -144,7 +144,7 @@ def variant_parser(path):
 if __name__ == "__main__":
     path = '/home/len/Variant/Data_Release1/597'
 #    path = '/home/elena/workspace/promis_from_gitlab/satellite-data/Variant/Data_Release1/597'
-    gen = variant_parser(path)
+    gen = parser(path)
     print next(gen)
     print next(gen)
     print next(gen)
