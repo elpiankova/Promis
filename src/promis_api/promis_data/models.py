@@ -99,36 +99,6 @@ class ChannelOption(models.Model):
         db_table = 'channels_options'
 
 
-class ChannelsHaveParameters(models.Model):
-    ''' Class representing MANY-TO-MANY relationship 
-        for Channels and Parameters
-    '''
-    channel   = models.ForeignKey('Channel', on_delete=models.PROTECT,
-                                  related_name='+')
-    parameter = models.ForeignKey('Parameter', db_column='parameter_title',
-                                  related_name='+', on_delete=models.PROTECT,)
-    
-    def __unicode__(self):
-        return u'channel: %s, parameter: %s' % (self.channel.title, self.parameter.title)
-    class Meta:
-        db_table = 'channels_have_parameters'
-        unique_together = (("channel", "parameter"),)
-        verbose_name_plural = 'Channels have Parameters'
-
-
-class ChannelsHaveSessions(models.Model):
-    ''' Class representing MANY-TO-MANY relationship 
-        for Channels and Sessions
-    '''
-    channel = models.ForeignKey('Channel', related_name='+', on_delete=models.PROTECT)
-    session = models.ForeignKey('Session', related_name='+', on_delete=models.PROTECT)
-    
-    def __unicode__(self):
-        return u'channel: %s, session: %d' % (self.channel.title, self.session.id)
-    class Meta:
-        db_table = 'channels_have_sessions'
-        unique_together = (("channel", "session"),)
-
 
 class Parameter(models.Model):
     ''' Class representing measured parameter
@@ -173,6 +143,23 @@ class ParentChildRel(models.Model):
     class Meta:
         db_table = 'parameters_have_parameters'
         unique_together = (("parent", "child"),)
+
+
+class ChannelsHaveParameters(models.Model):
+    ''' Class representing MANY-TO-MANY relationship 
+        for Channels and Parameters
+    '''
+    channel   = models.ForeignKey('Channel', on_delete=models.PROTECT,
+                                  related_name='+')
+    parameter = models.ForeignKey('Parameter', db_column='parameter_title',
+                                  related_name='+', on_delete=models.PROTECT,)
+    
+    def __unicode__(self):
+        return u'channel: %s, parameter: %s' % (self.channel.title, self.parameter.title)
+    class Meta:
+        db_table = 'channels_have_parameters'
+        unique_together = (("channel", "parameter"),)
+        verbose_name_plural = 'Channels have Parameters'
 
 
 class SessionManager(models.Manager):
@@ -223,6 +210,21 @@ class SessionOption(models.Model):
         return u'%s: %s' % (self.title, self.value)
     class Meta:
         db_table = 'sessions_options'
+
+
+class ChannelsHaveSessions(models.Model):
+    ''' Class representing MANY-TO-MANY relationship 
+        for Channels and Sessions
+    '''
+    channel = models.ForeignKey('Channel', related_name='+', on_delete=models.PROTECT)
+    session = models.ForeignKey('Session', related_name='+', on_delete=models.PROTECT)
+    
+    def __unicode__(self):
+        return u'channel: %s, session: %d' % (self.channel.title, self.session.id)
+    class Meta:
+        db_table = 'channels_have_sessions'
+        unique_together = (("channel", "session"),)
+
 
 
 class MeasurementPointManager(models.Manager):

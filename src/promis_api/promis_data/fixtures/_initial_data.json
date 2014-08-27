@@ -1086,6 +1086,60 @@
     }
 },
 {
+    "pk": "Current", 
+    "model": "promis_data.parameter", 
+    "fields": {
+        "units": "Ampere", 
+        "description": "", 
+        "short_name": "I"
+    }
+},
+{
+    "pk": "Temperature", 
+    "model": "promis_data.parameter", 
+    "fields": {
+        "units": "Kelvin", 
+        "description": "", 
+        "short_name": "T"
+    }
+},
+{
+    "pk": "Voltage", 
+    "model": "promis_data.parameter", 
+    "fields": {
+        "units": "Volt", 
+        "description": "", 
+        "short_name": "U"
+    }
+},
+{
+    "pk": "X-component of magnetic field vector", 
+    "model": "promis_data.parameter", 
+    "fields": {
+        "units": "Tesla", 
+        "description": "", 
+        "short_name": "Bx"
+    }
+},
+{
+    "pk": "Y-component of magnetic field vector", 
+    "model": "promis_data.parameter", 
+    "fields": {
+        "units": "Tesla", 
+        "description": "", 
+        "short_name": "By"
+    }
+},
+{
+    "pk": "Z-component of magnetic field vector", 
+    "model": "promis_data.parameter", 
+    "fields": {
+        "units": "Tesla", 
+        "description": "", 
+        "short_name": "Bz"
+    }
+},
+{
     "pk": 1, 
     "model": "promis_data.channelshaveparameters", 
     "fields": {
@@ -1347,60 +1401,6 @@
     "fields": {
         "parameter": "Temperature", 
         "channel": 37
-    }
-},
-{
-    "pk": "Current", 
-    "model": "promis_data.parameter", 
-    "fields": {
-        "units": "Ampere", 
-        "description": "", 
-        "short_name": "I"
-    }
-},
-{
-    "pk": "Temperature", 
-    "model": "promis_data.parameter", 
-    "fields": {
-        "units": "Kelvin", 
-        "description": "", 
-        "short_name": "T"
-    }
-},
-{
-    "pk": "Voltage", 
-    "model": "promis_data.parameter", 
-    "fields": {
-        "units": "Volt", 
-        "description": "", 
-        "short_name": "U"
-    }
-},
-{
-    "pk": "X-component of magnetic field vector", 
-    "model": "promis_data.parameter", 
-    "fields": {
-        "units": "Tesla", 
-        "description": "", 
-        "short_name": "Bx"
-    }
-},
-{
-    "pk": "Y-component of magnetic field vector", 
-    "model": "promis_data.parameter", 
-    "fields": {
-        "units": "Tesla", 
-        "description": "", 
-        "short_name": "By"
-    }
-},
-{
-    "pk": "Z-component of magnetic field vector", 
-    "model": "promis_data.parameter", 
-    "fields": {
-        "units": "Tesla", 
-        "description": "", 
-        "short_name": "Bz"
     }
 },
 {
