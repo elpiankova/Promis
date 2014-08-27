@@ -24,9 +24,11 @@ lons = [-9.9413447, -9.9621948, -8.9583439, -7.6770179, -8.3771698,
 -9.8456417, -9.4344939]
 
 x, y = map(lons, lats)
-for i in range(len(lons)):
-     for j in range(len(lons)):
-         if i == j: continue
-         map.plot([x[i],y[i]],[x[j],y[j]],'b')
+#for i in range(len(lons)):
+#     for j in range(len(lons)):
+#         if i == j: continue
+#         map.plot([x[i],y[i]],[x[j],y[j]],'b')
+
+map.plot(x, y, 'D-', markersize=10, linewidth=2, color='k', markerfacecolor='b')
  
 plt.show()
