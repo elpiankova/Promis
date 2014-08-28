@@ -5,6 +5,7 @@ import scipy.io
 import numpy
 import json
 import pytz
+import logging
 
 sys.path.append("/home/len/promis/src/promis_api/")
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "promis_api.settings")
@@ -26,11 +27,12 @@ def parse_telemetry_file(telemetry_file):
             base = "EZ1"
         if "EZ3" in line:
             base = "EZ3"
+
     session_interval_strings = telemetry[-1].split('(')[0].split()
     begin_datetime = dateutil.parser.parse(session_interval_strings[0])
     end_datetime = dateutil.parser.parse(session_interval_strings[1])
     
-    number_of_channels_in_table = Channel.objects.filter(device__satellite__title="Variant").count() - 6 # channels E1, E2, E3 of table can denote different electrical fields: E1,E2,E3 or E4,E5,E6 depending on base(E1 or E3)
+    number_of_channels_in_table = Channel.objects.filter(device__satellite__title="Variant").count() - 6  # channels E1, E2, E3 of table can denote different electrical fields: E1,E2,E3 or E4,E5,E6 depending on base(E1 or E3)
     sampling_frequencies = []
     for i in range(number_of_channels_in_table):
         # run through all sampling frequencies and append them to this list in float
@@ -55,6 +57,9 @@ def parser(path):
      end_datetime, 
      base, 
      sampling_frequencies) = parse_telemetry_file(telemetry_file)
+
+    if not telemetry_file.closed:
+        telemetry_file.close()
     
     #print begin_datetime, end_datetime
     
@@ -92,7 +97,7 @@ def parser(path):
 
         if sampling_frequencies[int(channel.order_number)] != None and channel.base_sensor != None:
         #                                                              to skip all channels with wrong base sensor
-            print str(channel.filename) + "channel is to be loaded"
+            logging.info('%s channel is to be loaded' % channel.filename)
 
             if str(channel.filename) + '.mat' in os.listdir(path): # mat-files should be checked first because ..
             # 1) text files have no extension, 2) every mat-file has file with the same name and without extension
@@ -105,12 +110,16 @@ def parser(path):
             elif str(channel.filename) in os.listdir(path):
                 measurement_file = open(os.path.join(path, str(channel.filename)))
                 measurement_row = numpy.fromfile(measurement_file, dtype=numpy.float64, sep=' ')
+                if not measurement_file.closed:
+                    measurement_file.close()
             else:
-                print 'No file "' + str(channel.filename) + '" found'
-            #print type(measurement_row)
+                logging.warning('No file %s found' % channel.filename)
+            #print type(measurement_file_dict)
 
             period_microsec =  timedelta(microseconds=1/sampling_frequencies[int(channel.order_number)]*10**6)
             measurement_datetime = begin_datetime
+
+            count = 0  # for counting measurements within one channel
 
             for measurement in measurement_row:
 
@@ -136,7 +145,10 @@ def parser(path):
                                        }])
 
                     measurement_datetime += period_microsec
-        print str(channel.filename) + "channel has been loaded"
+                    count += 1
+        logging.info('%s channel has been loaded with %s measurements' % channel.filename, count)
+
+
 
 
 #print channels_from_db

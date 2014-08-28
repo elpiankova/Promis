@@ -1,4 +1,6 @@
-import os, sys
+import os
+import sys
+import logging
 
 sys.path.append("/home/elena/workspace/promis/src/promis_api/")
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "promis_api.settings")
@@ -8,7 +10,11 @@ from django.core import serializers
 from django.db.utils import IntegrityError
 from datetime import *
 
-sys.stdout = open(str('log' + str(datetime.now())),'w')
+#sys.stdout = open(str('log' + str(datetime.now())),'w')
+logging.basicConfig(level=logging.INFO,  # DEBUG massages will be omitted
+                    filename=str(str(datetime.now()) + '.log'),
+                    filemode='w',
+                    format='%(asctime)s %(lineno)s %(levelname)-8s %(message)s')
 
 def loader(parser, path):
     
@@ -18,7 +24,7 @@ def loader(parser, path):
             try:
                 deserialized_object.object.save()
             except IntegrityError:
-                print "%s already exists" % (deserialized_object.object)
+                logging.debug("%s already exists" % str(deserialized_object.object))  # now omitted
             except Exception, e:
                 raise Exception(e)
                 
@@ -30,7 +36,7 @@ for folder_name in next(os.walk(path_variant))[1]:
 #print dirs
 
 for path in dirs_variant:
-    print '%s directory of Variant project is loading' % (path)
+    logging.info('%s directory of Variant project is loading' % path)
     loader(variant_parser, path)
 
 path_potential = '/home/len/Potential/DECODED'
@@ -41,7 +47,5 @@ for folder in next(os.walk(path_potential))[1]:
 #print dirs_potential
 
 for path in dirs_potential:
-    print '%s directory of Potential project is loading' % (path)
+    logging.info('%s directory of Potential project is loading' % path)
     loader(potential_parser, path)
-
-

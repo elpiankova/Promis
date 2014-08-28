@@ -6,6 +6,7 @@ import numpy
 import json
 import pytz
 import glob
+import logging
 
 sys.path.append("/home/len/promis/src/promis_api/")
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "promis_api.settings")
@@ -19,6 +20,8 @@ def parse_ez(channel, telemetry_filename, measurements_filename, period):
 #    period - 1/sampling frequency
     telemetry_file = open(telemetry_filename)
     telemetry = telemetry_file.readlines()
+    if not telemetry_file.closed:
+        telemetry_file.close()
     #getting begin_time and number of measurements
     for line in telemetry:
         if 'utc=' in line:
@@ -30,6 +33,8 @@ def parse_ez(channel, telemetry_filename, measurements_filename, period):
 
     measurements_file = open(measurements_filename)
     measurements_list = measurements_file.readlines()[2:-1]
+    if not measurements_file.closed:
+        telemetry_file.close()
     #setting a name of measured parameter
     for p in channel.parameters.all():
         if not p.parents.all():
@@ -47,6 +52,8 @@ def parse_ez(channel, telemetry_filename, measurements_filename, period):
                              "time_end": str(end_datetime)
                             }
                  }])
+
+    count_of_measurements = 0
 
     for row in measurements_list:
         measurement = float(row.split(',')[0])
@@ -69,6 +76,8 @@ def parse_ez(channel, telemetry_filename, measurements_filename, period):
                                               }
                                    }])
         measurement_datetime += period
+        count_of_measurements += 1
+    logging.info('%s measurements has been downloaded' % count_of_measurements)
 
 def parser(path):
 
@@ -79,7 +88,7 @@ def parser(path):
     if os.path.exists(os.path.join(path,'ez/lf/0')):
         #U-low-frequency: 1 Hz
         #choose a channel of db to be loaded with data
-        print 'EZ low-frequency channel is to be loaded'
+        logging.info('EZ low-frequency channel is to be loaded')
         channel_ez_lf = Channel.objects.get(title="U low-frequency")
         telemetry_filename_lf = glob.glob(os.path.join(path,'ez/lf/0/*mv.set'))[0] # got a name of telemetry-file
         measurements_filename_lf = glob.glob(os.path.join(path,'ez/lf/0/*mv.csv'))[0]
@@ -88,12 +97,12 @@ def parser(path):
         data_generator = parse_ez(channel_ez_lf, telemetry_filename_lf, measurements_filename_lf, period_lf)
         for item in data_generator:
             yield item
-        print 'EZ low-frequency channel has been loaded'
+        logging.info('EZ low-frequency channel has been loaded')
 
 
     if os.path.exists(os.path.join(path,'ez/hf/00')):
 #       U-high-frequency, 1000 Hz
-        print 'EZ high-frequency channel is to be loaded'
+        logging.info('EZ high-frequency channel is to be loaded')
 
         channel_ez_hf = Channel.objects.get(title="U high-frequency")
         telemetry_filename_hf = glob.glob(os.path.join(path,'ez/hf/00/*mv.set'))[0] # got a name of telemetry-file
@@ -103,7 +112,7 @@ def parser(path):
         data_gen = parse_ez(channel_ez_hf, telemetry_filename_hf, measurements_filename_hf, period_hf)
         for item in data_gen:
             yield  item
-        print 'EZ high-frequency channel has been loaded'
+        logging.info('EZ high-frequency channel has been loaded')
 
 
 
