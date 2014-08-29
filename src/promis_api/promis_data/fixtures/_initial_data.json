@@ -1109,8 +1109,8 @@
     "pk": 67, 
     "model": "promis_data.channeloption", 
     "fields": {
-        "description": "Units: 1/m", 
-        "value": "0.1662", 
+        "description": "Units: m", 
+        "value": "6.016", 
         "channel": 23, 
         "title": "Conversion factor"
     }
@@ -1119,8 +1119,8 @@
     "pk": 68, 
     "model": "promis_data.channeloption", 
     "fields": {
-        "description": "Units: 1/m", 
-        "value": "0.1662", 
+        "description": "Units: m", 
+        "value": "6.016", 
         "channel": 17, 
         "title": "Conversion factor"
     }
@@ -1129,8 +1129,8 @@
     "pk": 69, 
     "model": "promis_data.channeloption", 
     "fields": {
-        "description": "Units: 1/m", 
-        "value": "0.1282", 
+        "description": "Units: m", 
+        "value": "7.800", 
         "channel": 24, 
         "title": "Conversion factor"
     }
@@ -1139,8 +1139,8 @@
     "pk": 70, 
     "model": "promis_data.channeloption", 
     "fields": {
-        "description": "Units: 1/m", 
-        "value": "0.1282", 
+        "description": "Units: m", 
+        "value": "7.800", 
         "channel": 18, 
         "title": "Conversion factor"
     }
@@ -1149,8 +1149,8 @@
     "pk": 71, 
     "model": "promis_data.channeloption", 
     "fields": {
-        "description": "Units: 1/m", 
-        "value": "0.1736", 
+        "description": "Units: m", 
+        "value": "5.760", 
         "channel": 25, 
         "title": "Conversion factor"
     }
@@ -1159,8 +1159,8 @@
     "pk": 72, 
     "model": "promis_data.channeloption", 
     "fields": {
-        "description": "Units: 1/m", 
-        "value": "0.1736", 
+        "description": "Units: m", 
+        "value": "5.760", 
         "channel": 19, 
         "title": "Conversion factor"
     }
@@ -1169,8 +1169,8 @@
     "pk": 73, 
     "model": "promis_data.channeloption", 
     "fields": {
-        "description": "Units: 1/m", 
-        "value": "0.1736", 
+        "description": "Units: m", 
+        "value": "5.760", 
         "channel": 26, 
         "title": "Conversion factor"
     }
@@ -1179,8 +1179,8 @@
     "pk": 74, 
     "model": "promis_data.channeloption", 
     "fields": {
-        "description": "Units: 1/m", 
-        "value": "0.1736", 
+        "description": "Units: m", 
+        "value": "5.760", 
         "channel": 20, 
         "title": "Conversion factor"
     }
@@ -1189,8 +1189,8 @@
     "pk": 75, 
     "model": "promis_data.channeloption", 
     "fields": {
-        "description": "Units: 1/m", 
-        "value": "0.1833", 
+        "description": "Units: m", 
+        "value": "5.456", 
         "channel": 27, 
         "title": "Conversion factor"
     }
@@ -1199,8 +1199,8 @@
     "pk": 76, 
     "model": "promis_data.channeloption", 
     "fields": {
-        "description": "Units: 1/m", 
-        "value": "0.1833", 
+        "description": "Units: m", 
+        "value": "5.456", 
         "channel": 21, 
         "title": "Conversion factor"
     }
@@ -1209,8 +1209,8 @@
     "pk": 77, 
     "model": "promis_data.channeloption", 
     "fields": {
-        "description": "Units: 1/m", 
-        "value": "0.1914", 
+        "description": "Units: m", 
+        "value": "5.086", 
         "channel": 28, 
         "title": "Conversion factor"
     }
@@ -1219,8 +1219,8 @@
     "pk": 78, 
     "model": "promis_data.channeloption", 
     "fields": {
-        "description": "Units: 1/m", 
-        "value": "0.1914", 
+        "description": "Units: m", 
+        "value": "5.086", 
         "channel": 22, 
         "title": "Conversion factor"
     }
