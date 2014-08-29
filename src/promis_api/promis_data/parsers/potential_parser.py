@@ -6,6 +6,7 @@ import numpy
 import json
 import pytz
 import glob
+import logging
 
 sys.path.append("/home/len/promis/src/promis_api/")
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "promis_api.settings")
@@ -19,17 +20,21 @@ def parse_ez(channel, telemetry_filename, measurements_filename, period):
 #    period - 1/sampling frequency
     telemetry_file = open(telemetry_filename)
     telemetry = telemetry_file.readlines()
+    if not telemetry_file.closed:
+        telemetry_file.close()
     #getting begin_time and number of measurements
     for line in telemetry:
         if 'utc=' in line:
             begin_datetime = dateutil.parser.parse(line.strip().split('utc=')[-1].replace(' ', 'T'))
-            print begin_datetime, type(begin_datetime)
+            #print begin_datetime, type(begin_datetime)
         if 'samp=' in line:
             number_of_measurements = int(line.strip().split('samp=')[-1])
     #getting a file with measurements
 
     measurements_file = open(measurements_filename)
     measurements_list = measurements_file.readlines()[2:-1]
+    if not measurements_file.closed:
+        telemetry_file.close()
     #setting a name of measured parameter
     for p in channel.parameters.all():
         if not p.parents.all():
@@ -47,6 +52,8 @@ def parse_ez(channel, telemetry_filename, measurements_filename, period):
                              "time_end": str(end_datetime)
                             }
                  }])
+
+    count_of_measurements = 0
 
     for row in measurements_list:
         measurement = float(row.split(',')[0])
@@ -69,8 +76,10 @@ def parse_ez(channel, telemetry_filename, measurements_filename, period):
                                               }
                                    }])
         measurement_datetime += period
+        count_of_measurements += 1
+    logging.info('%s measurements has been downloaded' % count_of_measurements)
 
-def potential_parser(path):
+def parser(path):
 
     #channels_from_db = Channel.objects.filter(device__satellite__title="Potential")
     path = os.path.normpath(path) # clear redundant slashes
@@ -79,33 +88,31 @@ def potential_parser(path):
     if os.path.exists(os.path.join(path,'ez/lf/0')):
         #U-low-frequency: 1 Hz
         #choose a channel of db to be loaded with data
-        print 'EZ low-frequency channel is to be loaded'
+        logging.info('EZ low-frequency channel is to be loaded')
         channel_ez_lf = Channel.objects.get(title="U low-frequency")
         telemetry_filename_lf = glob.glob(os.path.join(path,'ez/lf/0/*mv.set'))[0] # got a name of telemetry-file
         measurements_filename_lf = glob.glob(os.path.join(path,'ez/lf/0/*mv.csv'))[0]
         period_lf = timedelta(seconds=1)# 1/sampling frequency
 
-        g = parse_ez(channel_ez_lf, telemetry_filename_lf, measurements_filename_lf, period_lf)
-        print next(g)
-        print next(g)
-        print next(g)
-        print 'EZ low-frequency channel has been loaded'
+        data_generator = parse_ez(channel_ez_lf, telemetry_filename_lf, measurements_filename_lf, period_lf)
+        for item in data_generator:
+            yield item
+        logging.info('EZ low-frequency channel has been loaded')
 
 
     if os.path.exists(os.path.join(path,'ez/hf/00')):
 #       U-high-frequency, 1000 Hz
-        print 'EZ high-frequency channel is to be loaded'
+        logging.info('EZ high-frequency channel is to be loaded')
 
         channel_ez_hf = Channel.objects.get(title="U high-frequency")
         telemetry_filename_hf = glob.glob(os.path.join(path,'ez/hf/00/*mv.set'))[0] # got a name of telemetry-file
         measurements_filename_hf = glob.glob(os.path.join(path,'ez/hf/00/*mv.csv'))[0]
         period_hf = timedelta(milliseconds=1)
 
-        gen = parse_ez(channel_ez_hf, telemetry_filename_hf, measurements_filename_hf, period_hf)
-        print next(gen)
-        print next(gen)
-        print next(gen)
-        print 'EZ high-frequency channel has been loaded'
+        data_gen = parse_ez(channel_ez_hf, telemetry_filename_hf, measurements_filename_hf, period_hf)
+        for item in data_gen:
+            yield  item
+        logging.info('EZ high-frequency channel has been loaded')
 
 
 
@@ -113,5 +120,7 @@ def potential_parser(path):
 
 if __name__ == "__main__":
     path = '/home/len/Potential/DECODED/20110905/pdata20110905'
-    #g = potential_parser(path)
-    potential_parser(path)
+    gen = parser(path)
+    print next(gen)
+    print next(gen)
+    print next(gen)
