@@ -2,6 +2,7 @@ import os
 import sys
 import logging
 
+
 sys.path.append("/home/elena/workspace/promis/src/promis_api/")
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "promis_api.settings")
 
@@ -9,6 +10,7 @@ from parsers import variant_parser, potential_parser
 from django.core import serializers
 from django.db.utils import IntegrityError
 from datetime import *
+import time
 
 #sys.stdout = open(str('log' + str(datetime.now())),'w')
 logging.basicConfig(level=logging.INFO,  # DEBUG massages will be omitted
@@ -36,8 +38,11 @@ for folder_name in next(os.walk(path_variant))[1]:
 #print dirs
 
 for path in dirs_variant:
+    start = time.clock()
     logging.info('%s directory of Variant project is loading' % path)
     loader(variant_parser, path)
+    logging.info('%s directory of Variant project has been loaded' % path)
+    logging.info('Vitok time: %s' % (time.clock() - start))
 
 path_potential = '/home/len/Potential/DECODED'
 dirs_potential = []
@@ -48,4 +53,4 @@ for folder in next(os.walk(path_potential))[1]:
 
 for path in dirs_potential:
     logging.info('%s directory of Potential project is loading' % path)
-    loader(potential_parser, path)
+    #loader(potential_parser, path)

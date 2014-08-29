@@ -77,10 +77,9 @@ def parser(path):
 
     for channel in channels_from_db:
 
-
         channel.base_sensor = 1 # this variable should exist and != None, the unity was the first choice
         try: # check if option 'Base sensor' exists for current channel
-            channel.base_sensor = channel.channeloption_set.get(title='Base sensor').value # this can arise an exception
+            channel.base_sensor = channel.channeloption_set.get(title='Base sensor').value  # this can arise an exception
             #print ' the base sensor is ' + str(channel.base_sensor)
             if channel.base_sensor != base:
                 channel.base_sensor = None
@@ -89,21 +88,22 @@ def parser(path):
         
         channel.order_number = channel.channeloption_set.get(title='Order number').value
         channel.filename = channel.channeloption_set.get(title='Filename').value
+        channel.conv_factor = float(channel.channeloption_set.get(title='Conversion factor').value)
 
         for p in channel.parameters.all():
             if not p.parents.all():
                 parameter_name = p.title
-
-
-        if sampling_frequencies[int(channel.order_number)] != None and channel.base_sensor != None:
+        count = 0  # for counting measurements within one channel
+        measurement_row = []  #
+        if sampling_frequencies[int(channel.order_number)] is not None and channel.base_sensor is not None:
         #                                                              to skip all channels with wrong base sensor
             logging.info('%s channel is to be loaded' % channel.filename)
 
-            if str(channel.filename) + '.mat' in os.listdir(path): # mat-files should be checked first because ..
+            if str(channel.filename) + '.mat' in os.listdir(path):  # mat-files should be checked first because ..
             # 1) text files have no extension, 2) every mat-file has file with the same name and without extension
 
                 measurement_file_dict = scipy.io.loadmat(os.path.join(path, str(channel.filename)) + '.mat')
-                for key in measurement_file_dict:# executes search of data and saves it in numpy.ndarray type
+                for key in measurement_file_dict:  # executes search of data and saves it in numpy.ndarray type
                     if type(measurement_file_dict[key]) == numpy.ndarray:
                         measurement_file_column = measurement_file_dict[key]
                 measurement_row = measurement_file_column.transpose()[0]
@@ -116,24 +116,23 @@ def parser(path):
                 logging.warning('No file %s found' % channel.filename)
             #print type(measurement_file_dict)
 
-            period_microsec =  timedelta(microseconds=1/sampling_frequencies[int(channel.order_number)]*10**6)
+            period_microsec = timedelta(microseconds=1/sampling_frequencies[int(channel.order_number)]*10**6)
             measurement_datetime = begin_datetime
 
-            count = 0  # for counting measurements within one channel
-
+            block_of_meas_times = []
+            block_of_meas = []
             for measurement in measurement_row:
 
-                if measurement != 0: #
-                    
-                    
-                    yield json.dumps([{"model": "promis_data.measurementpoint",
-                                       "fields": {
-                                                  "time": str(measurement_datetime)
-                                                 }
-                                       }])
+                if measurement != 0:
 
+                    measurement /= channel.conv_factor
 
-                    yield json.dumps([{"model": "promis_data.measurement",
+                    block_of_meas_times.append({"model": "promis_data.measurementpoint",
+                                                "fields": {
+                                                "time": str(measurement_datetime)
+                                                           }
+                                                })
+                    block_of_meas.append({"model": "promis_data.measurement",
                                        "fields": {
                                                   "level_marker": 0,
                                                   "measurement": measurement,
@@ -142,25 +141,25 @@ def parser(path):
                                                   "measurement_point": [str(measurement_datetime)],
                                                   "session": [str(begin_datetime), str(end_datetime)]
                                                   }
-                                       }])
+                                         })
 
                     measurement_datetime += period_microsec
                     count += 1
-        logging.info('%s channel has been loaded with %s measurements' % channel.filename, count)
-
-
-
+                    if count%100 == 0:
+                        yield json.dumps(block_of_meas_times)
+                        block_of_meas_times=[]
+                        yield json.dumps(block_of_meas)
+                        block_of_meas = []
+        yield json.dumps(block_of_meas_times)
+        yield json.dumps(block_of_meas)
+        logging.info('%s channel has been loaded with %s measurements', channel.filename, count)
 
 #print channels_from_db
 
 if __name__ == "__main__":
-    path = '/home/len/Variant/Data_Release1/597'
+    path = '/home/len/Variant/Data_Release1/1056'
 #    path = '/home/elena/workspace/promis_from_gitlab/satellite-data/Variant/Data_Release1/597'
     gen = parser(path)
     print next(gen)
     print next(gen)
     print next(gen)
-
-
-
-    
