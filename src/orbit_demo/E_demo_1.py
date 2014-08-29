@@ -45,6 +45,7 @@ while i =< 40:
     Z0 = 0
     print('X0 = ',X0,' Y0 = ',Y0, ' Z0 = ',Z0)
 # расчет декартовых координат КА
+
     X = (cos(omega_big)*cos(omega_small)-sin(omega_big)*cos(I)*sin(omega_small))*X0 - \
         (cos(omega_big)*sin(omega_small)+sin(omega_big)*cos(I)*cos(omega_small))*Y0 + sin(omega_big)*sin(I)*Z0
     Y = (sin(omega_big)*cos(omega_small)+cos(omega_big)*cos(I)*sin(omega_small))*X0 - \
