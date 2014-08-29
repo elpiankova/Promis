@@ -163,7 +163,7 @@
     "fields": {
         "device": 5, 
         "description": "This is low-frequency channel that measured electron current density. Conversion factor is 470 mV*sm2/mkA.", 
-        "title": "Electron current density lf (FC1) "
+        "title": "Electron current density LF (FC1) "
     }
 },
 {
@@ -172,7 +172,7 @@
     "fields": {
         "device": 5, 
         "description": "This is high-frequency channel that measured electron current density. Conversion factor is 4780 mV*sm2/mkA.", 
-        "title": "Electron current density hf (FC1)"
+        "title": "Electron current density HF (FC1)"
     }
 },
 {
@@ -181,7 +181,7 @@
     "fields": {
         "device": 12, 
         "description": "This is low-frequency channel that measured electron current density. Conversion factor is 470 mV*sm2/mkA.", 
-        "title": " Electron current density lf (FC2)"
+        "title": " Electron current density LF (FC2)"
     }
 },
 {
@@ -190,7 +190,7 @@
     "fields": {
         "device": 12, 
         "description": "This is high-frequency channel that measured electron current density. Conversion factor is 4780 mV*sm2/mkA.", 
-        "title": "Electron current density hf (FC2)"
+        "title": "Electron current density HF (FC2)"
     }
 },
 {
@@ -1104,6 +1104,24 @@
     }
 },
 {
+    "pk": "nanoTesla", 
+    "model": "promis_data.units", 
+    "fields": {
+        "long_name": "nanotesla", 
+        "description": "", 
+        "short_name": "nT"
+    }
+},
+{
+    "pk": "nA/sm^2", 
+    "model": "promis_data.units", 
+    "fields": {
+        "long_name": "nanoAmpere per square sm", 
+        "description": "", 
+        "short_name": "nA/sm^2"
+    }
+},
+{
     "pk": "Tesla", 
     "model": "promis_data.units", 
     "fields": {
@@ -1131,6 +1149,42 @@
     }
 },
 {
+    "pk": "Current density XZ-component", 
+    "model": "promis_data.parameter", 
+    "fields": {
+        "units": "nA/sm^2", 
+        "description": "", 
+        "short_name": "Jxz"
+    }
+},
+{
+    "pk": "Current density YZ-component", 
+    "model": "promis_data.parameter", 
+    "fields": {
+        "units": "nA/sm^2", 
+        "description": "", 
+        "short_name": "Jyz"
+    }
+},
+{
+    "pk": "Current density Z-component", 
+    "model": "promis_data.parameter", 
+    "fields": {
+        "units": "nA/sm^2", 
+        "description": "", 
+        "short_name": "Jz"
+    }
+},
+{
+    "pk": "Electron current density Z-component", 
+    "model": "promis_data.parameter", 
+    "fields": {
+        "units": "nA/sm^2", 
+        "description": "", 
+        "short_name": "Jez"
+    }
+},
+{
     "pk": "Temperature", 
     "model": "promis_data.parameter", 
     "fields": {
@@ -1152,7 +1206,7 @@
     "pk": "X-component of magnetic field vector", 
     "model": "promis_data.parameter", 
     "fields": {
-        "units": "Tesla", 
+        "units": "nanoTesla", 
         "description": "", 
         "short_name": "Bx"
     }
@@ -1161,7 +1215,7 @@
     "pk": "Y-component of magnetic field vector", 
     "model": "promis_data.parameter", 
     "fields": {
-        "units": "Tesla", 
+        "units": "nanoTesla", 
         "description": "", 
         "short_name": "By"
     }
@@ -1170,7 +1224,7 @@
     "pk": "Z-component of magnetic field vector", 
     "model": "promis_data.parameter", 
     "fields": {
-        "units": "Tesla", 
+        "units": "nanoTesla", 
         "description": "", 
         "short_name": "Bz"
     }
@@ -1299,7 +1353,7 @@
     "pk": 16, 
     "model": "promis_data.channelshaveparameters", 
     "fields": {
-        "parameter": "Voltage", 
+        "parameter": "Electron current density Z-component", 
         "channel": 9
     }
 },
@@ -1307,7 +1361,7 @@
     "pk": 17, 
     "model": "promis_data.channelshaveparameters", 
     "fields": {
-        "parameter": "Voltage", 
+        "parameter": "Electron current density Z-component", 
         "channel": 7
     }
 },
@@ -1347,7 +1401,7 @@
     "pk": 22, 
     "model": "promis_data.channelshaveparameters", 
     "fields": {
-        "parameter": "Voltage", 
+        "parameter": "Electron current density Z-component", 
         "channel": 8
     }
 },
@@ -1355,7 +1409,7 @@
     "pk": 23, 
     "model": "promis_data.channelshaveparameters", 
     "fields": {
-        "parameter": "Voltage", 
+        "parameter": "Electron current density Z-component", 
         "channel": 6
     }
 },
@@ -1387,7 +1441,7 @@
     "pk": 27, 
     "model": "promis_data.channelshaveparameters", 
     "fields": {
-        "parameter": "Voltage", 
+        "parameter": "X-component of magnetic field vector", 
         "channel": 14
     }
 },
@@ -1395,7 +1449,7 @@
     "pk": 28, 
     "model": "promis_data.channelshaveparameters", 
     "fields": {
-        "parameter": "Voltage", 
+        "parameter": "Current density XZ-component", 
         "channel": 15
     }
 },
@@ -1403,7 +1457,7 @@
     "pk": 29, 
     "model": "promis_data.channelshaveparameters", 
     "fields": {
-        "parameter": "Voltage", 
+        "parameter": "Y-component of magnetic field vector", 
         "channel": 16
     }
 },
@@ -1411,7 +1465,7 @@
     "pk": 30, 
     "model": "promis_data.channelshaveparameters", 
     "fields": {
-        "parameter": "Voltage", 
+        "parameter": "Current density YZ-component", 
         "channel": 13
     }
 },
@@ -1419,7 +1473,7 @@
     "pk": 31, 
     "model": "promis_data.channelshaveparameters", 
     "fields": {
-        "parameter": "Voltage", 
+        "parameter": "Current density Z-component", 
         "channel": 5
     }
 },
