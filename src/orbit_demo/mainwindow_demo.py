@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*- 
 from PIL import Image, ImageTk, ImageDraw
 from tkinter import Tk, Text, BOTH, W, N, E, S, Canvas, NW
 from tkinter.ttk import Frame, Button, Label, Style
