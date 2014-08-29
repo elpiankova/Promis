@@ -1086,12 +1086,231 @@
     }
 },
 {
+    "pk": 65, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Units: mV/nT", 
+        "value": "100", 
+        "channel": 14, 
+        "title": "Conversion factor"
+    }
+},
+{
+    "pk": 66, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Units: mV/nT", 
+        "value": "100", 
+        "channel": 16, 
+        "title": "Conversion factor"
+    }
+},
+{
+    "pk": 67, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Units: 1/m", 
+        "value": "0.1662", 
+        "channel": 23, 
+        "title": "Conversion factor"
+    }
+},
+{
+    "pk": 68, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Units: 1/m", 
+        "value": "0.1662", 
+        "channel": 17, 
+        "title": "Conversion factor"
+    }
+},
+{
+    "pk": 69, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Units: 1/m", 
+        "value": "0.1282", 
+        "channel": 24, 
+        "title": "Conversion factor"
+    }
+},
+{
+    "pk": 70, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Units: 1/m", 
+        "value": "0.1282", 
+        "channel": 18, 
+        "title": "Conversion factor"
+    }
+},
+{
+    "pk": 71, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Units: 1/m", 
+        "value": "0.1736", 
+        "channel": 25, 
+        "title": "Conversion factor"
+    }
+},
+{
+    "pk": 72, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Units: 1/m", 
+        "value": "0.1736", 
+        "channel": 19, 
+        "title": "Conversion factor"
+    }
+},
+{
+    "pk": 73, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Units: 1/m", 
+        "value": "0.1736", 
+        "channel": 26, 
+        "title": "Conversion factor"
+    }
+},
+{
+    "pk": 74, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Units: 1/m", 
+        "value": "0.1736", 
+        "channel": 20, 
+        "title": "Conversion factor"
+    }
+},
+{
+    "pk": 75, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Units: 1/m", 
+        "value": "0.1833", 
+        "channel": 27, 
+        "title": "Conversion factor"
+    }
+},
+{
+    "pk": 76, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Units: 1/m", 
+        "value": "0.1833", 
+        "channel": 21, 
+        "title": "Conversion factor"
+    }
+},
+{
+    "pk": 77, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Units: 1/m", 
+        "value": "0.1914", 
+        "channel": 28, 
+        "title": "Conversion factor"
+    }
+},
+{
+    "pk": 78, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Units: 1/m", 
+        "value": "0.1914", 
+        "channel": 22, 
+        "title": "Conversion factor"
+    }
+},
+{
+    "pk": 79, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Units: mV*sm^2/nA", 
+        "value": "4.780", 
+        "channel": 7, 
+        "title": "Conversion factor"
+    }
+},
+{
+    "pk": 80, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Units:mV*sm^2/nA", 
+        "value": "4.780", 
+        "channel": 9, 
+        "title": "Conversion factor"
+    }
+},
+{
+    "pk": 81, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Units:mV*sm^2/nA", 
+        "value": "0.470", 
+        "channel": 6, 
+        "title": "Conversion factor"
+    }
+},
+{
+    "pk": 82, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Units:mV*sm^2/nA", 
+        "value": "0.470", 
+        "channel": 8, 
+        "title": "Conversion factor"
+    }
+},
+{
+    "pk": 83, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Units: V*sm^2/nA", 
+        "value": "0.077", 
+        "channel": 15, 
+        "title": "Conversion factor"
+    }
+},
+{
+    "pk": 84, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Units: V*sm^2/nA", 
+        "value": "0.077", 
+        "channel": 13, 
+        "title": "Conversion factor"
+    }
+},
+{
+    "pk": 85, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Units: V*sm^2/nA", 
+        "value": "0.085", 
+        "channel": 5, 
+        "title": "Conversion factor"
+    }
+},
+{
     "pk": "Ampere", 
     "model": "promis_data.units", 
     "fields": {
         "long_name": "ampere", 
         "description": "", 
         "short_name": "A"
+    }
+},
+{
+    "pk": "Celsius", 
+    "model": "promis_data.units", 
+    "fields": {
+        "long_name": "Celsius", 
+        "description": "Unit of temperature", 
+        "short_name": "\u00b0C"
     }
 },
 {
@@ -1128,6 +1347,15 @@
         "long_name": "tesla", 
         "description": "", 
         "short_name": "T"
+    }
+},
+{
+    "pk": "V/m", 
+    "model": "promis_data.units", 
+    "fields": {
+        "long_name": "Volt per meter", 
+        "description": "", 
+        "short_name": "V/m"
     }
 },
 {
@@ -1176,6 +1404,15 @@
     }
 },
 {
+    "pk": "Electric field", 
+    "model": "promis_data.parameter", 
+    "fields": {
+        "units": "V/m", 
+        "description": "", 
+        "short_name": "E"
+    }
+},
+{
     "pk": "Electron current density Z-component", 
     "model": "promis_data.parameter", 
     "fields": {
@@ -1188,7 +1425,7 @@
     "pk": "Temperature", 
     "model": "promis_data.parameter", 
     "fields": {
-        "units": "Kelvin", 
+        "units": "Celsius", 
         "description": "", 
         "short_name": "T"
     }
@@ -1257,7 +1494,7 @@
     "pk": 4, 
     "model": "promis_data.channelshaveparameters", 
     "fields": {
-        "parameter": "Voltage", 
+        "parameter": "Electric field", 
         "channel": 23
     }
 },
@@ -1265,7 +1502,7 @@
     "pk": 5, 
     "model": "promis_data.channelshaveparameters", 
     "fields": {
-        "parameter": "Voltage", 
+        "parameter": "Electric field", 
         "channel": 17
     }
 },
@@ -1273,7 +1510,7 @@
     "pk": 6, 
     "model": "promis_data.channelshaveparameters", 
     "fields": {
-        "parameter": "Voltage", 
+        "parameter": "Electric field", 
         "channel": 24
     }
 },
@@ -1281,7 +1518,7 @@
     "pk": 7, 
     "model": "promis_data.channelshaveparameters", 
     "fields": {
-        "parameter": "Voltage", 
+        "parameter": "Electric field", 
         "channel": 18
     }
 },
@@ -1289,7 +1526,7 @@
     "pk": 8, 
     "model": "promis_data.channelshaveparameters", 
     "fields": {
-        "parameter": "Voltage", 
+        "parameter": "Electric field", 
         "channel": 25
     }
 },
@@ -1297,7 +1534,7 @@
     "pk": 9, 
     "model": "promis_data.channelshaveparameters", 
     "fields": {
-        "parameter": "Voltage", 
+        "parameter": "Electric field", 
         "channel": 19
     }
 },
@@ -1305,7 +1542,7 @@
     "pk": 10, 
     "model": "promis_data.channelshaveparameters", 
     "fields": {
-        "parameter": "Voltage", 
+        "parameter": "Electric field", 
         "channel": 26
     }
 },
@@ -1313,7 +1550,7 @@
     "pk": 11, 
     "model": "promis_data.channelshaveparameters", 
     "fields": {
-        "parameter": "Voltage", 
+        "parameter": "Electric field", 
         "channel": 20
     }
 },
@@ -1321,7 +1558,7 @@
     "pk": 12, 
     "model": "promis_data.channelshaveparameters", 
     "fields": {
-        "parameter": "Voltage", 
+        "parameter": "Electric field", 
         "channel": 27
     }
 },
@@ -1329,7 +1566,7 @@
     "pk": 13, 
     "model": "promis_data.channelshaveparameters", 
     "fields": {
-        "parameter": "Voltage", 
+        "parameter": "Electric field", 
         "channel": 21
     }
 },
@@ -1337,7 +1574,7 @@
     "pk": 14, 
     "model": "promis_data.channelshaveparameters", 
     "fields": {
-        "parameter": "Voltage", 
+        "parameter": "Electric field", 
         "channel": 28
     }
 },
@@ -1345,7 +1582,7 @@
     "pk": 15, 
     "model": "promis_data.channelshaveparameters", 
     "fields": {
-        "parameter": "Voltage", 
+        "parameter": "Electric field", 
         "channel": 22
     }
 },
