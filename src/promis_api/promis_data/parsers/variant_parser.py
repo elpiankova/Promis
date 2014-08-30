@@ -6,6 +6,10 @@ import numpy
 import json
 import pytz
 import logging
+import cProfile, pstats, StringIO
+
+pr = cProfile.Profile()
+
 
 sys.path.append("/home/len/promis/src/promis_api/")
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "promis_api.settings")
@@ -122,7 +126,7 @@ def parser(path):
             block_of_meas_times = []
             block_of_meas = []
             for measurement in measurement_row:
-
+                pr.enable()
                 if measurement != 0:
 
                     measurement /= channel.conv_factor
@@ -145,21 +149,30 @@ def parser(path):
 
                     measurement_datetime += period_microsec
                     count += 1
-                    if count%100 == 0:
+                    if not count%100:
                         yield json.dumps(block_of_meas_times)
                         block_of_meas_times=[]
                         yield json.dumps(block_of_meas)
                         block_of_meas = []
+                pr.disable()
+                s = StringIO.StringIO()
+                sortby = 'cumulative'
+                ps = pstats.Stats(pr, stream=s).sort_stats(sortby)
+                ps.print_stats()
+                logging.info('%s' % s.getvalue())
         yield json.dumps(block_of_meas_times)
         yield json.dumps(block_of_meas)
         logging.info('%s channel has been loaded with %s measurements', channel.filename, count)
 
+
 #print channels_from_db
 
 if __name__ == "__main__":
+    import timeit
     path = '/home/len/Variant/Data_Release1/1056'
 #    path = '/home/elena/workspace/promis_from_gitlab/satellite-data/Variant/Data_Release1/597'
     gen = parser(path)
     print next(gen)
     print next(gen)
     print next(gen)
+    print timeit.timeit('parser("/home/len/Variant/Data_Release1/1056")', 'from __main__ import parser')

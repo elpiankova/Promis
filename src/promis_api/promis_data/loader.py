@@ -11,8 +11,13 @@ from django.core import serializers
 from django.db.utils import IntegrityError
 from datetime import *
 import time
+import cProfile, pstats, StringIO
+import json
 
-#sys.stdout = open(str('log' + str(datetime.now())),'w')
+pr = cProfile.Profile()
+pr.enable()
+
+#sys.stdout = open('logg', 'w')
 logging.basicConfig(level=logging.INFO,  # DEBUG massages will be omitted
                     filename=str(str(datetime.now()) + '.log'),
                     filemode='w',
