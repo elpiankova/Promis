@@ -54,29 +54,39 @@ def parse_ez(channel, telemetry_filename, measurements_filename, period):
                  }])
 
     count_of_measurements = 0
-
+    block_of_meas_times = []
+    block_of_meas = []
+    
     for row in measurements_list:
         measurement = float(row.split(',')[0])
 
-        yield json.dumps([{"model": "promis_data.measurementpoint",
+        block_of_meas_times.append({"model": "promis_data.measurementpoint",
                                    "fields": {
                                               "time": str(measurement_datetime)
                                              }
-                                   }])
+                                    })
 
 
-        yield json.dumps([{"model": "promis_data.measurement",
-                                   "fields": {
-                                              "level_marker": 0,
-                                              "measurement": measurement,
-                                              "parameter": str(parameter_name),
-                                              "channel": [str(channel.title), str(channel.device.title)],
-                                              "measurement_point": [str(measurement_datetime)],
-                                              "session": [str(begin_datetime), str(end_datetime)]
-                                              }
-                                   }])
+        block_of_meas.append({"model": "promis_data.measurement",
+                              "fields": {
+                                         "level_marker": 0,
+                                         "measurement": measurement,
+                                         "parameter": str(parameter_name),
+                                         "channel": [str(channel.title), str(channel.device.title)],
+                                         "measurement_point": [str(measurement_datetime)],
+                                         "session": [str(begin_datetime), str(end_datetime)]
+                                        }
+                              })
         measurement_datetime += period
         count_of_measurements += 1
+        if not count_of_measurements%100:
+            yield json.dumps(block_of_meas_times)
+            block_of_meas_times=[]
+            yield json.dumps(block_of_meas)
+            block_of_meas = []
+    yield json.dumps(block_of_meas_times)
+    yield json.dumps(block_of_meas)
+        
     logging.info('%s measurements has been downloaded' % count_of_measurements)
 
 def parser(path):
