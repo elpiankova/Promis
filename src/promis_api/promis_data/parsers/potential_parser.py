@@ -79,7 +79,7 @@ def parse_ez(channel, telemetry_filename, measurements_filename, period):
                               })
         measurement_datetime += period
         count_of_measurements += 1
-        if not count_of_measurements%100:
+        if count_of_measurements%100 == 0:
             yield json.dumps(block_of_meas_times)
             block_of_meas_times=[]
             yield json.dumps(block_of_meas)
