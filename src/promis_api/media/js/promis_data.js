@@ -18,7 +18,7 @@ function DataViewerCtrl($scope, $http) {
         data_source: '',//'Variant',
         channels: {
             options: [],
-            selected: {},
+            selected: '',
             //{
             //     device: {
             //         satellite: "Variant",
@@ -30,7 +30,8 @@ function DataViewerCtrl($scope, $http) {
         time: {
             begin: '2004-02-01T08:21:58Z',
             end: '2006-02-01T08:23:10Z'
-        }
+        },
+        data: []
     };
 
     $scope.requestConditionsCorrect = function () {
@@ -39,6 +40,10 @@ function DataViewerCtrl($scope, $http) {
             $scope.data.time.begin !== '',
             $scope.data.time.end !== '',
         ].every(Boolean);
+    };
+
+    $scope.downloadFileConditionCorrect = function () {
+        return Boolean($scope.data.data.length)
     };
 
     $scope.loader = {
@@ -95,18 +100,49 @@ function DataViewerCtrl($scope, $http) {
                 format: 'json'
             }
         }).then(function (res){
-            $scope.loader.pop("data-loading");
+            $scope.data.data = res.data
+            $scope.blob = new Blob([ '$scope.data.data' ], { type : 'text/plain' });
+            $scope.url = (window.URL || window.webkitURL).createObjectURL( $scope.blob );
             console.log(res.data);
             $scope.drawData(res.data);
+            $scope.loader.pop("data-loading");
             return res.data;
-        }).then(function (res) {
-            // console.log(res);
-            // $scope.drawData(res);
-            return res;
-        });
+        })
+        // }).then(function (res) {
+        //     // console.log(res);
+        //     // $scope.drawData(res);
+        //     return res;
+        // });
     };
 
+    // $scope.filename = $scope.data.channels.selected.title + $scope.data.time.begin + ".txt"
 
+    $scope.downloadData = function () {
+        filename = $scope.data.channels.selected.title + $scope.data.time.begin + ".txt"
+        
+        $scope.data.data.forEach(function(d) {
+            d.line = String(d.measurement_point.time) + ' ' + String(d.measurement) + '\n'
+        });
+
+        // function join(previous, current, i) {
+        //     current.line = previous.line + current.line;
+        //     return current.line
+        // }
+
+        var text_to_file = '';
+        for (var i=0; i<$scope.data.data.length; i++){
+            text_to_file += $scope.data.data[i].line
+        }
+
+        // $scope.data.data.forEach(function(d) {
+        //     String(d.measurement) + 
+        // });
+
+        var pom = document.createElement('a');
+        pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text_to_file));
+        pom.setAttribute('download', filename);
+        pom.click();
+    }
         // // @TODO: remove this dirty fix
         // // probably: http://gurustop.net/blog/2014/01/28/common-problems-and-solutions-when-using-select-elements-with-angular-js-ng-options-initial-selection/
         // $scope.source_file_selected = $('[name="source_file_selected"]').val();

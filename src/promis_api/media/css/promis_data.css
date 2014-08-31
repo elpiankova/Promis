@@ -52,9 +52,9 @@ table.combined-control { /*, table.combined-control td, table.combined-control t
 }
 
 .combined-control button {
-  border-top-right-radius: 0px;
-  border-bottom-right-radius: 0px;
-  margin-right: -10px;
+/*  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;*/
+/*  margin-right: -10px;*/
 }
 
 .sticked {
