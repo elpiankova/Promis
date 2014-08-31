@@ -45,44 +45,44 @@ class MeasurementPointSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = MeasurementPoint
-        fields =('time', 'x_geo', 'y_geo', 'z_geo')
+        fields =('time',) #, 'x_geo', 'y_geo', 'z_geo')
 
 
 class MeasurementSerializer(serializers.ModelSerializer):
-    channel = ChannelSerializer()
-    parameter = serializers.PrimaryKeyRelatedField()
+#     channel = ChannelSerializer()
+#     parameter = serializers.PrimaryKeyRelatedField()
     measurement_point = MeasurementPointSerializer()
-    session = SessionSerializer(read_only=True)
+#     session = SessionSerializer(read_only=True)
     
     class Meta:
         model = Measurement
-        fields = ('level_marker', 'measurement', 'relative_error', 
-                  'channel', 'parameter', 'measurement_point', 'session')
-        
-    def restore_object(self, attrs, instance=None):
-        '''
-        Given a dictionary of deserialized field values,
-        either update an existing model, or create a new instance.
-        '''
-        print "HHHHHH"
-        if instance is not None:
-            instance.level_marker = attrs.get('level_marker', instance.level_marker)
-            instance.measurement = attrs.get('measurement', instance.measurement)
-            return instance
-        print attrs.get('channel')
-        print type(attrs['channel'])
-        channel = Channel.objects.get(title=attrs['channel']['title'],
-                                      device__title=attrs['channel']['device'],
-                                      device__satellite__title=attrs.pop('channel')['satellite'])
-        parameter = Parameter.objects.get(title=attrs.pop('parameter'))
-        mp = MeasurementPoint.objects.get(time=attrs['measurement_point']['time'],
-                                          x_geo=attrs['measurement_point'].get('x_geo'),
-                                          y_geo=attrs['measurement_point'].get('y_geo'),
-                                          z_geo=attrs.pop('measurement_point').get('z_geo'))
-        session = Session.objects.get(time_begin=attrs['session']['time_bigin'],
-                                      time_end=attrs.pop('session')['time_end'])
-        return Measurement(channel=channel, parameter=parameter, measurement_point=mp,
-                           session=session, **attrs)
+        fields = ('measurement', 'measurement_point',  )
+        #'relative_error', 'level_marker','channel', 'parameter', 'session')
+#         
+#     def restore_object(self, attrs, instance=None):
+#         '''
+#         Given a dictionary of deserialized field values,
+#         either update an existing model, or create a new instance.
+#         '''
+#         print "HHHHHH"
+#         if instance is not None:
+#             instance.level_marker = attrs.get('level_marker', instance.level_marker)
+#             instance.measurement = attrs.get('measurement', instance.measurement)
+#             return instance
+#         print attrs.get('channel')
+#         print type(attrs['channel'])
+#         channel = Channel.objects.get(title=attrs['channel']['title'],
+#                                       device__title=attrs['channel']['device'],
+#                                       device__satellite__title=attrs.pop('channel')['satellite'])
+#         parameter = Parameter.objects.get(title=attrs.pop('parameter'))
+#         mp = MeasurementPoint.objects.get(time=attrs['measurement_point']['time'],
+#                                           x_geo=attrs['measurement_point'].get('x_geo'),
+#                                           y_geo=attrs['measurement_point'].get('y_geo'),
+#                                           z_geo=attrs.pop('measurement_point').get('z_geo'))
+#         session = Session.objects.get(time_begin=attrs['session']['time_bigin'],
+#                                       time_end=attrs.pop('session')['time_end'])
+#         return Measurement(channel=channel, parameter=parameter, measurement_point=mp,
+#                            session=session, **attrs)
 
 
 

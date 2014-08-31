@@ -110,10 +110,12 @@ class MeasurementList(generics.ListAPIView):
 #             channel = Channel.objects.get(title=channel_title,
 #                                           device__satellite=satellite)
             (time_begin, time_end) = map(dateutil.parser.parse,time_interval.split('_'))
-            queryset = Measurement.objects.filter(channel__device__satellite__title=satellite_title,
+            queryset = Measurement.objects.filter(
+                                                  channel__device__satellite__title=satellite_title,
                                                   channel__title=channel_title,
                                                   measurement_point__time__gte=time_begin,
-                                                  measurement_point__time__lte=time_end)
+                                                  measurement_point__time__lte=time_end
+                                                  ).order_by('measurement_point__time')
         else:
             queryset = Measurement.objects.all()
         return queryset

@@ -161,6 +161,8 @@ function DataViewerCtrl($scope, $http) {
         var width = g.width() - margin.left - margin.right;
         var height = g.height() - margin.top - margin.bottom;
 
+
+        var parseDateWithMs = d3.time.format("%Y-%m-%dT%H:%M:%S.%LZ").parse;
         var parseDate = d3.time.format("%Y-%m-%dT%H:%M:%SZ").parse;
 
         var x = d3.time.scale()
@@ -189,7 +191,11 @@ function DataViewerCtrl($scope, $http) {
 
         // drawing data
         data.forEach(function(d) {
-            d.x = parseDate(d.measurement_point.time);
+            if (d.measurement_point.time.length == 20){
+                d.x = parseDate(d.measurement_point.time);
+            } else {
+                d.x = parseDateWithMs(d.measurement_point.time);
+            }
         });
 
 
