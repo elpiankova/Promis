@@ -26,11 +26,7 @@ lats = [13.915867912505632, 10.514139996976748, 7.103504783642812, 3.68125142404
 -39.59366053967854, -42.6191871112062, -45.547845712229005, -48.35696157493297, -51.01489127822661]
 
 x, y = map(lons, lats)
-#for i in range(len(lons)):
-#     for j in range(len(lons)):
-#         if i == j: continue
-#         map.plot([x[i],y[i]],[x[j],y[j]],'b')
 
-map.plot(x, y, 'bo-', markersize=1, linewidth=2, color='b', markerfacecolor='b')
+map.plot(x, y, '-', markersize=1, linewidth=2, color='b', markerfacecolor='b')
  
 plt.show()
