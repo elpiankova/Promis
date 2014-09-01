@@ -100,9 +100,9 @@ function DataViewerCtrl($scope, $http) {
                 format: 'json'
             }
         }).then(function (res){
-            $scope.data.data = res.data
-            $scope.blob = new Blob([ '$scope.data.data' ], { type : 'text/plain' });
-            $scope.url = (window.URL || window.webkitURL).createObjectURL( $scope.blob );
+            $scope.data.data = res.data;
+            // $scope.blob = new Blob([ '$scope.data.data' ], { type : 'text/plain' });
+            // $scope.url = (window.URL || window.webkitURL).createObjectURL( $scope.blob );
             console.log(res.data);
             $scope.drawData(res.data);
             $scope.loader.pop("data-loading");
@@ -193,13 +193,22 @@ function DataViewerCtrl($scope, $http) {
 
         g.html('');
 
-        var margin = {top: 20, right: 20, bottom: 30, left: 150};
+        var margin = {top: 30, right: 20, bottom: 70, left: 150};
         var width = g.width() - margin.left - margin.right;
         var height = g.height() - margin.top - margin.bottom;
 
 
         var parseDateWithMs = d3.time.format("%Y-%m-%dT%H:%M:%S.%LZ").parse;
         var parseDate = d3.time.format("%Y-%m-%dT%H:%M:%SZ").parse;
+
+                // drawing data
+        data.forEach(function(d) {
+            if (d.measurement_point.time.length == 20){
+                d.x = parseDate(d.measurement_point.time);
+            } else {
+                d.x = parseDateWithMs(d.measurement_point.time);
+            }
+        });
 
         var x = d3.time.scale()
             .range([0, width]);
@@ -208,8 +217,9 @@ function DataViewerCtrl($scope, $http) {
             .range([height, 0]);
 
         var xAxis = d3.svg.axis()
-            .scale(x)
-            .orient("bottom");
+            .scale(x).ticks(10)
+            .orient("bottom")
+            .tickFormat(d3.time.format('%X.%L'));
 
         var yAxis = d3.svg.axis()
             .scale(y)
@@ -225,15 +235,6 @@ function DataViewerCtrl($scope, $http) {
             .append("g")
                 .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-        // drawing data
-        data.forEach(function(d) {
-            if (d.measurement_point.time.length == 20){
-                d.x = parseDate(d.measurement_point.time);
-            } else {
-                d.x = parseDateWithMs(d.measurement_point.time);
-            }
-        });
-
 
         x.domain(d3.extent(data, function(d) { return d.x; }));
         y.domain(d3.extent(data, function(d) { return d.measurement; }));
@@ -241,13 +242,23 @@ function DataViewerCtrl($scope, $http) {
         svg.append("g")
             .attr("class", "x axis")
             .attr("transform", "translate(0," + height + ")")
-            .call(xAxis);
-            // .append("text")
+            .call(xAxis)
+            .selectAll("text")  
+                .style("text-anchor", "end")
+                .attr("dx", "-.8em")
+                .attr("dy", ".15em")
+                .attr("transform", function(d) {
+                    return "rotate(-30)" 
+                })
+
+         svg.append("text")
+            .attr("transform", "translate(0," + height + ")")
             // .attr("transform", "rotate(-90)")
-            // .attr("x", 6)
-            // .attr("dx", ".71em")
-            // .style("text-anchor", "start")
-            // .text("Date");
+             //.attr("x", width - 150)
+             .attr("y", -10)
+             .attr("dx", ".71em")
+            .style("text-anchor", "start")
+            .text('Start Date: ' + data[0].measurement_point.time.slice(0,10));
 
         svg.append("g")
             .attr("class", "y axis")
@@ -257,7 +268,7 @@ function DataViewerCtrl($scope, $http) {
             .attr("y", 6)
             .attr("dy", ".71em")
             .style("text-anchor", "end")
-            .text($scope.data.channels.selected.title);
+            .text($scope.data.channels.selected.title + ', '+ $scope.data.channels.selected.parameters[0].units);
 
         $scope.svg = svg;
 
