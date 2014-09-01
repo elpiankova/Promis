@@ -17,10 +17,10 @@ from django.core.exceptions import ObjectDoesNotExist
 from datetime import timedelta,datetime
 from django.db.utils import IntegrityError
 
-logging.basicConfig(level=logging.INFO,  # DEBUG massages will be omitted
-                    filename=str(str(datetime.now()) + '.log'),
-                    filemode='w',
-                    format='%(asctime)s %(lineno)s %(levelname)-8s %(message)s')
+#logging.basicConfig(level=logging.INFO,  # DEBUG massages will be omitted
+#                    filename=str(str(datetime.now()) + '.log'),
+#                    filemode='w',
+#                    format='%(asctime)s %(lineno)s %(levelname)-8s %(message)s')
 
 def parse_telemetry_file(telemetry_file):
     """Parse info file (i.e. 597.txt) with session information.

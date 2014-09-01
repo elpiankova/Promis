@@ -101,7 +101,7 @@ def parser(path):
         measurement_row = []  #
         if sampling_frequencies[int(channel.order_number)] is not None and channel.base_sensor is not None:
         #                                                              to skip all channels with wrong base sensor
-            logging.info('%s channel is to be loaded' % channel.filename)
+
 
             if str(channel.filename) + '.mat' in os.listdir(path):  # mat-files should be checked first because ..
             # 1) text files have no extension, 2) every mat-file has file with the same name and without extension
@@ -119,47 +119,49 @@ def parser(path):
             else:
                 logging.warning('No file %s found' % channel.filename)
             #print type(measurement_file_dict)
+            logging.info('%s channel is to be loaded with %s measurements', channel.filename, len(measurement_row))
 
             period_microsec = timedelta(microseconds=1/sampling_frequencies[int(channel.order_number)]*10**6)
             measurement_datetime = begin_datetime
 
             block_of_meas_times = []
             block_of_meas = []
-            for measurement in measurement_row:
-                pr.enable()
-                if measurement != 0:
+            if len(measurement_row) < 10000:
+                for measurement in measurement_row:
+                    #pr.enable()
+                    if measurement != 0:
 
-                    measurement /= channel.conv_factor
+                        measurement /= channel.conv_factor
 
-                    block_of_meas_times.append({"model": "promis_data.measurementpoint",
-                                                "fields": {
-                                                "time": str(measurement_datetime)
-                                                           }
-                                                })
-                    block_of_meas.append({"model": "promis_data.measurement",
-                                       "fields": {
-                                                  "level_marker": 0,
-                                                  "measurement": measurement,
-                                                  "parameter": str(parameter_name),
-                                                  "channel": [str(channel.title), str(channel.device.title)],
-                                                  "measurement_point": [str(measurement_datetime)],
-                                                  "session": [str(begin_datetime), str(end_datetime)]
-                                                  }
-                                         })
+                        block_of_meas_times.append({"model": "promis_data.measurementpoint",
+                                                    "fields": {
+                                                    "time": str(measurement_datetime)
+                                                               }
+                                                    })
+                        block_of_meas.append({"model": "promis_data.measurement",
+                                           "fields": {
+                                                      "level_marker": 0,
+                                                      "measurement": measurement,
+                                                      "parameter": str(parameter_name),
+                                                      "channel": [str(channel.title), str(channel.device.title)],
+                                                      "measurement_point": [str(measurement_datetime)],
+                                                      "session": [str(begin_datetime), str(end_datetime)]
+                                                      }
+                                             })
 
-                    measurement_datetime += period_microsec
-                    count += 1
-                    if count%100 == 0:
-                        yield json.dumps(block_of_meas_times)
-                        block_of_meas_times=[]
-                        yield json.dumps(block_of_meas)
-                        block_of_meas = []
-                pr.disable()
-                s = StringIO.StringIO()
-                sortby = 'cumulative'
-                ps = pstats.Stats(pr, stream=s).sort_stats(sortby)
-                ps.print_stats()
-                logging.info('%s' % s.getvalue())
+                        measurement_datetime += period_microsec
+                        count += 1
+                        if count%100 == 0:
+                            yield json.dumps(block_of_meas_times)
+                            block_of_meas_times=[]
+                            yield json.dumps(block_of_meas)
+                            block_of_meas = []
+                    #pr.disable()
+                    #s = StringIO.StringIO()
+                    #sortby = 'cumulative'
+                    #ps = pstats.Stats(pr, stream=s).sort_stats(sortby)
+                    #ps.print_stats()
+                    #logging.info('%s' % s.getvalue())
         yield json.dumps(block_of_meas_times)
         yield json.dumps(block_of_meas)
         logging.info('%s channel has been loaded with %s measurements', channel.filename, count)

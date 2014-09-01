@@ -1,9 +1,9 @@
 __author__ = 'len'
 import os, sys
 import dateutil.parser
-import scipy.io
-import numpy
-import json
+#import scipy.io
+#import numpy
+#import json
 import pytz
 import glob
 import logging
@@ -11,13 +11,23 @@ import logging
 sys.path.append("/home/len/promis/src/promis_api/")
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "promis_api.settings")
 
-from promis_data.models import Channel, ChannelOption, Parameter, ChannelsHaveParameters
+from promis_data.models import Channel, ChannelOption, Parameter, ChannelsHaveParameters, Session, MeasurementPoint, Measurement
 from datetime import timedelta
+from django.db.utils import IntegrityError
+from datetime import datetime
+
+logging.basicConfig(level=logging.INFO,  # DEBUG massages will be omitted
+                    filename=str(str(datetime.now()) + '.log'),
+                    filemode='w',
+                    format='%(asctime)s %(lineno)s %(levelname)-8s %(message)s')
+
 
 def parse_ez(channel, telemetry_filename, measurements_filename, period):
-#    parse data of EZ
-#    channel -  db-channel object
-#    period - 1/sampling frequency
+    '''
+    parse data of EZ
+    channel -  db-channel object
+    period - 1/sampling frequency
+    '''
     telemetry_file = open(telemetry_filename)
     telemetry = telemetry_file.readlines()
     if not telemetry_file.closed:
@@ -38,7 +48,7 @@ def parse_ez(channel, telemetry_filename, measurements_filename, period):
     #setting a name of measured parameter
     for p in channel.parameters.all():
         if not p.parents.all():
-            parameter_name = p.title
+            parameter = p
 
     begin_datetime = pytz.utc.localize(begin_datetime)
     #`setting  end of session and time of the first measurement
@@ -46,50 +56,40 @@ def parse_ez(channel, telemetry_filename, measurements_filename, period):
     end_datetime = begin_datetime + (number_of_measurements - 1)*period
     measurement_datetime = begin_datetime
 
+    try:
+        Session.objects.create(time_begin=begin_datetime, time_end=end_datetime)
+        logging.info('Session %s - %s has been created successfully' % (begin_datetime, end_datetime))
+    except IntegrityError:
+        logging.warning('session %s - %s already exists' % (begin_datetime, end_datetime))
+    session = Session.objects.get(time_begin=begin_datetime, time_end=end_datetime)
 
-
-    yield json.dumps([{"model": "promis_data.session",
-                  "fields": {
-                             "time_begin": str(begin_datetime),
-                             "time_end": str(end_datetime)
-                            }
-                 }])
 
     count_of_measurements = 0
-    block_of_meas_times = []
-    block_of_meas = []
-    
-    for row in measurements_list:
-        measurement = float(row.split(',')[0])
+    if len(measurements_list) < 10000:
+        for row in measurements_list:
+            measurement = float(row.split(',')[0])
 
-        block_of_meas_times.append({"model": "promis_data.measurementpoint",
-                                   "fields": {
-                                              "time": str(measurement_datetime)
-                                             }
-                                    })
+            try:
+                MeasurementPoint.objects.create(time=measurement_datetime)
+            except IntegrityError:
+                logging.warning('Measurement point %s already exists', measurement_datetime)
 
+            meas_point = MeasurementPoint.objects.get(time=measurement_datetime)
 
-        block_of_meas.append({"model": "promis_data.measurement",
-                              "fields": {
-                                         "level_marker": 0,
-                                         "measurement": measurement,
-                                         "parameter": str(parameter_name),
-                                         "channel": [str(channel.title), str(channel.device.title)],
-                                         "measurement_point": [str(measurement_datetime)],
-                                         "session": [str(begin_datetime), str(end_datetime)]
-                                        }
-                              })
-        measurement_datetime += period
-        count_of_measurements += 1
-        if count_of_measurements%100 == 0:
-            yield json.dumps(block_of_meas_times)
-            block_of_meas_times=[]
-            yield json.dumps(block_of_meas)
-            block_of_meas = []
-    yield json.dumps(block_of_meas_times)
-    yield json.dumps(block_of_meas)
-        
-    logging.info('%s measurements has been downloaded' % count_of_measurements)
+            try:
+                Measurement.objects.create(level_marker=0,
+                                           measurement=measurement,
+                                           parameter=parameter,
+                                           channel=channel,
+                                           measurement_point=meas_point,
+                                           session=session)
+            except IntegrityError:
+                logging.warning('Measurement %s of %s channel already exists', measurement_datetime, channel)
+
+            measurement_datetime += period
+            count_of_measurements += 1
+
+        logging.info('%s measurements has been downloaded' % count_of_measurements)
 
 def parser(path):
 
@@ -106,9 +106,7 @@ def parser(path):
         measurements_filename_lf = glob.glob(os.path.join(path,'ez/lf/0/*mv.csv'))[0]
         period_lf = timedelta(seconds=1)# 1/sampling frequency
 
-        data_generator = parse_ez(channel_ez_lf, telemetry_filename_lf, measurements_filename_lf, period_lf)
-        for item in data_generator:
-            yield item
+        parse_ez(channel_ez_lf, telemetry_filename_lf, measurements_filename_lf, period_lf)
         logging.info('EZ low-frequency channel has been loaded')
 
 
@@ -121,18 +119,9 @@ def parser(path):
         measurements_filename_hf = glob.glob(os.path.join(path,'ez/hf/00/*mv.csv'))[0]
         period_hf = timedelta(milliseconds=1)
 
-        data_gen = parse_ez(channel_ez_hf, telemetry_filename_hf, measurements_filename_hf, period_hf)
-        for item in data_gen:
-            yield  item
+        parse_ez(channel_ez_hf, telemetry_filename_hf, measurements_filename_hf, period_hf)
         logging.info('EZ high-frequency channel has been loaded')
-
-
-
-
 
 if __name__ == "__main__":
     path = '/home/len/Potential/DECODED/20110905/pdata20110905'
-    gen = parser(path)
-    print next(gen)
-    print next(gen)
-    print next(gen)
+    parser(path)

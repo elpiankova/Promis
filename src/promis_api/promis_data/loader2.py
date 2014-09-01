@@ -5,7 +5,7 @@ import logging
 sys.path.append("/home/elena/workspace/promis/src/promis_api/")
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "promis_api.settings")
 
-from parsers import variant_parser2, potential_parser
+from parsers import variant_parser2, potential_parser2
 #from django.core import serializers
 from django.db.utils import IntegrityError
 from datetime import *
@@ -46,5 +46,5 @@ for folder in next(os.walk(path_potential))[1]:
 
 for path in dirs_potential:
     logging.info('%s directory of Potential project is loading' % path)
-    loader(potential_parser, path)
+    loader(potential_parser2, path)
     logging.info('%s directory of Potential project has been loaded' % path)
