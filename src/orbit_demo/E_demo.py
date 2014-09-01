@@ -3,16 +3,16 @@
 from math import *
 # Кеплеры и другие элементы
 # Константы для расчета
-T0 = 2456794.500000000 #(Julian day number), эпохальное время
-n = 0.06458028291792567 # (degrees/sec), угловая частота вращения КА
-e = 0.0006636160892353949 # экцентриситет
+T0 = 2456896.500000000 #(Julian day number), эпохальное время
+n = 6.457576287408390e-02 # (degrees/sec), угловая частота вращения КА
+e = 1.637994365076186e-03 # экцентриситет
 eps = 0.0000001# ошибка
-a = 6795.076999205232#(km)
-omega_big = 239.4100727837198*pi/180#(rad)
-omega_small = 87.64322621108833*pi/180#(rad)
-I = 61.02565356512720*pi/180#(rad)
+a = 6.795394080891185e+03#(km)
+omega_big = 1.224602531823290e+02*pi/180#(rad)
+omega_small = 5.823934876750221e+01*pi/180#(rad)
+I = 6.198649551806115e+01*pi/180#(rad)
 # Велечины в расчетном цикле
-T = 2456794.471266817767 #(Julian day number), текущее время
+T = 2456896.507593647577 #(Julian day number), текущее время
 E = 0
 E0 = 0.5 # произвольное начальное значение экцентрической аномалии
 M = n*((T0 - T)*24*3600)#(degrees)
@@ -22,8 +22,8 @@ while M*pi/180 > 2*pi:
     M = M - 360
     
 
-while M < 0:
-    M = M + 2*pi
+while M*pi/180 < 0:
+    M = M + 360
 
 print(M)  
 
@@ -48,7 +48,7 @@ X = (cos(omega_big)*cos(omega_small)-sin(omega_big)*cos(I)*sin(omega_small))*X0 
 Y = (sin(omega_big)*cos(omega_small)+cos(omega_big)*cos(I)*sin(omega_small))*X0 - \
     (sin(omega_small)*sin(omega_big)-cos(omega_big)*cos(I)*cos(omega_small))*Y0 - cos(omega_big)*sin(I)*Z0
 Z = sin(I)*sin(omega_small)*X0 + sin(I)*cos(omega_small)*Y0 + cos(I)*Z0
-print(X, Y, Z) # -1.332128873099773E+03  3.747324942804415E+03 -5.514869586944249E+03
+print(X, Y, Z) # -4.235979037564202E+03  5.047623264279154E+03  1.625968398167413E+03
 # переход из декартовых в сферические координаты
 fi = (180/pi)*atan2(Y, X) # долгота
 teta = (180/pi)*atan2(Z, sqrt(X**2 + Y**2)) # широта
