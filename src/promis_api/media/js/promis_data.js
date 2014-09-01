@@ -28,8 +28,8 @@ function DataViewerCtrl($scope, $http) {
             // },
         },
         time: {
-            begin: '2004-02-01T08:21:58Z',
-            end: '2006-02-01T08:23:10Z'
+            begin: '', //'2004-02-01T08:21:58Z',
+            end: '' //2006-02-01T08:23:10Z'
         },
         data: []
     };
@@ -104,8 +104,11 @@ function DataViewerCtrl($scope, $http) {
             // $scope.blob = new Blob([ '$scope.data.data' ], { type : 'text/plain' });
             // $scope.url = (window.URL || window.webkitURL).createObjectURL( $scope.blob );
             console.log(res.data);
-            $scope.drawData(res.data);
+            if ($scope.data.data.length){
+                $scope.drawData(res.data);
+            }
             $scope.loader.pop("data-loading");
+            // $scope.loader.push("no-data", 'There are no data of this time period')
             return res.data;
         })
         // }).then(function (res) {
