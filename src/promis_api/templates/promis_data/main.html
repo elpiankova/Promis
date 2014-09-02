@@ -17,7 +17,7 @@
     {% block head %}{% endblock %}
     <style>
         .toolbox {
-            width: 385px;
+            width: 410px;
         }
     </style>
 </head>
@@ -114,7 +114,7 @@
                 </dl>
                 </div>
 
-               <table class="combined-control">
+               <!-- <table class="combined-control">
                     <tr>
                         <td>
                             <button type="button" 
@@ -122,22 +122,27 @@
                                     ng-disabled="!requestConditionsCorrect()"
                                     ng-click="loadData()">Load data</button>
                         </td>
-                <!-- <input type="button" class="form-control" ng-if="data_status == 'present' || (source_file_selected && data_status == 'empty')" value="Process" ng-click()>
-                <input type="button" class="form-control" ng-if="data_status == 'empty'" value="Complete selection"> 
-                <input type="button" class="form-control" ng-if="data_status == 'loading'" value="Data loading...">  -->
                         <td>
                             <button type="button" 
                                     class="btn btn-primary"
                                     ng-disabled="!downloadFileConditionCorrect()"
                                     ng-click="downloadData()">Download</button>
-                            <!-- <a class="btn btn-primary " role="button"
-                               ng-disabled="!downloadFileConditionCorrect()"
-                               download="content.txt"
-                               ng-href="[[ url ]]">Download</a> -->
                         </td>
                     </tr>
-                </table>
-
+                </table> -->
+                <div class="distance-bottom">
+                <button type="button" 
+                        class="btn btn-primary"
+                        ng-disabled="!requestConditionsCorrect()"
+                        ng-click="loadData()">Load data</button>
+                </div>
+                <div>
+                <button type="button" 
+                                    class="btn btn-primary "
+                                    ng-disabled="!downloadFileConditionCorrect()"
+                                    ng-click="downloadData()">Download</button>
+                </div>
+                                
                 <div ng-if="data_structure.description" class="data-description">
                     <h4>
                         <button type="button" class="btn btn-xs btn-link" ng-if="data_structure.description">
