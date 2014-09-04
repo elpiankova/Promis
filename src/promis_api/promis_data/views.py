@@ -38,8 +38,8 @@ class ChannelList(generics.ListAPIView):
             queryset = Channel.objects.filter(
                           device__satellite=satellite
                        ).exclude(title__contains='E4'
-                       ).exclude(title__contains='E5'
-                       ).exclude(title__contains='E6'
+#                        ).exclude(title__contains='E5'
+#                        ).exclude(title__contains='E6'
                        ).exclude(title__startswith='T')
         else:
             queryset = Channel.objects.all()
@@ -93,6 +93,7 @@ class MeasurementPointList(views.APIView):
 
 class MeasurementList(generics.ListAPIView):
     serializer_class = MeasurementSerializer
+    ordering = ('username',)
     
     def get_queryset(self):
         '''
