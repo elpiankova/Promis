@@ -37,9 +37,9 @@ class ChannelList(generics.ListAPIView):
                 return
             queryset = Channel.objects.filter(
                           device__satellite=satellite
-                       ).exclude(title__contains='E4'
-#                        ).exclude(title__contains='E5'
-#                        ).exclude(title__contains='E6'
+#                        ).exclude(title__contains='E4'
+                        ).exclude(title__contains='E5'
+                        ).exclude(title__contains='E6'
                        ).exclude(title__startswith='T')
         else:
             queryset = Channel.objects.all()
