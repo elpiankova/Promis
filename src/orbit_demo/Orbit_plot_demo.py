@@ -2,21 +2,9 @@
 from mpl_toolkits.basemap import Basemap
 import matplotlib.pyplot as plt
 import numpy as np
-from E_demo_1 import Orbit_calculate
-from math import *
 
-class Data_orbit(Orbit_calculate):
-    T0 = 2456896.500000000 #(Julian day number), эпохальное время
-    n = 6.457576287408390e-02 # (degrees/sec), угловая частота вращения КА
-    e = 1.637994365076186e-03 # экцентриситет
-    eps = 0.0000001# ошибка
-    a = 6.795394080891185e+03#(km)
-    omega_big = 1.224602531823290e+02*pi/180#(rad)
-    omega_small = 5.823934876750221e+01*pi/180#(rad)
-    I = 6.198649551806115e+01*pi/180#(rad)
-    T = 2456896.507593647577 #(Julian day number), текущее время
-    def _init_(T0, n, e, eps, a, omega_big, omega_small, I, T):
-        Orbit_calculate.all_orbit(T0, n, e, eps, a, omega_big, omega_small, I, T)
+
+
         
 
 # make sure the value of resolution is a lowercase L,
