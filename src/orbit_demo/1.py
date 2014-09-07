@@ -17,32 +17,49 @@ map.drawmeridians(np.arange(0, 360, 30))
 map.drawparallels(np.arange(-90, 90, 30))
 
 
-begin = 0
-end = 0
-end1 = 0
+Lon2 = []
+Lat2 = []
 
-for i in range(len(Lon)):
-    if end == 0:
-        if Lon[i] < 180 and Lon[i] > 0:
-            end = i
+
+while len(Lon) > 0:
+        
+    begin = 0
+    end = 0
+    end1 = 0
+
+    for i in range(len(Lon)):
+        if end == 0:
+            if Lon[i] < 180 and Lon[i] > 0:
+                end = i
+            else: pass
         else: pass
-    else: pass
 
-Lon1 = Lon[end:]
+    Lon1 = Lon[end:]
 
-for i in range(len(Lon1)):
-    if end1 == 0:
-        if Lon1[i] < 0:
-            end1 = i
-        else: pass
-    else: pass    
-end = end1 + end 
+    for i in range(len(Lon1)):
+        if end1 == 0:
+            if Lon1[i] < 0 or Lon1[i] == Lon1[-1] :
+                end1 = i
+            else: pass
+            if Lon1[i] == Lon1[-1]:
+                end += 1
+            else: pass
+        else: pass    
+    end = end1 + end 
+    
+    Lon2.append(Lon[begin:end])
+    Lat2.append(Lat[begin:end])
 
-Lon = Lon[begin:end]
-Lat = Lat[begin:end]
+    Lon = Lon[end:]
+    Lat = Lat[end:]
 
-x, y = map(Lon, Lat)
+#print(Lon2)
+#print(Lat2)
 
-map.plot(x, y, '-', markersize=1, linewidth=2, color='b', markerfacecolor='b')
+for i in range(len(Lon2)) and range(len(Lat2)):
+    
+    x, y = map(Lon2[i], Lat2[i])
+
+    map.plot(x, y, '-', markersize=1, linewidth=2, color='b', markerfacecolor='b')
 
 plt.show()
