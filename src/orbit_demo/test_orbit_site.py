@@ -1,8 +1,5 @@
 # -*- coding: utf-8 -*- 
 from math import *
-from mpl_toolkits.basemap import Basemap
-import matplotlib.pyplot as plt
-import numpy as np
 
 # Расчет координат пролета спутника
 
@@ -21,7 +18,7 @@ T = 2456896.507593647577 #(Julian day number), текущее время
 i = 0
 Lon = []
 Lat = []
-time = 3000
+time = 1200
 while i <= time:
 #hgjhjkhk
     E = 0
@@ -101,28 +98,28 @@ while len(Lon) > 0:
     Lon = Lon[end:]
     Lat = Lat[end:]
     
-# Отрисовка карты Земли с трассой спутника
+#формирование конечного массива с координатами
 
-# make sure the value of resolution is a lowercase L,
-#  for 'low', not a numeral 1
-map = Basemap(projection='cyl', lat_0=0, lon_0=0,
-              resolution='l', area_thresh=2000.0)
- 
-map.drawcoastlines()
-map.drawcountries()
-map.fillcontinents(color='coral')
-map.drawmapboundary()
+block_j = []
+block_i = []
+coordinatelane = []
+fh = open("/home/yakim/PROJECTS/django_learn/form_learn/form/templates/planelatlong.js", "w")
+fh.write("var planelatlong = ")
+fh.close()
 
-map.drawmeridians(np.arange(0, 360, 30))
-map.drawparallels(np.arange(-90, 90, 30))
+for i in range(len(Lon2)) and range(len(Lat2)):   
+    for j in range(len(Lon2[i])) and range(len(Lat2[i])):
+        block_j.append(Lat2[i][j])
+        block_j.append(Lon2[i][j])
+        block_i.append(block_j)
+        block_j = []
+    coordinatelane.append(block_i)
+    block_i = []
+    
+coord_srt = str(coordinatelane)
 
-for i in range(len(Lon2)) and range(len(Lat2)):    
-    x, y = map(Lon2[i], Lat2[i])
-    map.plot(x, y, '-', markersize=1, linewidth=2, color='b', markerfacecolor='b')
+fh = open("/home/yakim/PROJECTS/django_learn/form_learn/form/templates/planelatlong.js", "a")
+fh.write(coord_srt)
+fh.close()
 
-print Lon2
-print Lat2
-print len(Lon2)
-print len(Lat2)
-
-plt.show()
+print coord_srt

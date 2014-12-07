@@ -141,7 +141,7 @@ for i in range(len(Lon)) and range(len(Lat)):
     coordinatelane.append(blok)
     blok = []
     
-#print coordinatelane
+print coordinatelane
 
 coord_srt = str(coordinatelane)
 
