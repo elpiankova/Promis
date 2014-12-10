@@ -21,7 +21,7 @@ T = 2456896.507593647577 #(Julian day number), текущее время
 i = 0
 Lon = []
 Lat = []
-time = 3000
+time = 2000
 while i <= time:
 #hgjhjkhk
     E = 0
@@ -68,31 +68,36 @@ while i <= time:
 
 Lon2 = []
 Lat2 = []
-
+print len(Lon)
 while len(Lon) > 0:
-        
+       
     begin = 0
     end = 0
     end1 = 0
 
     for i in range(len(Lon)):
         if end == 0:
-            if Lon[i] < 180 and Lon[i] > 0:
+            if Lon[i] > 0 and Lon[i] < 180:
                 end = i
             else: pass
         else: pass
 
     Lon1 = Lon[end:]
 
-    for i in range(len(Lon1)):
-        if end1 == 0:
-            if Lon1[i] < 0 or Lon1[i] == Lon1[-1] :
-                end1 = i
-            else: pass
-            if Lon1[i] == Lon1[-1]:
-                end += 1
-            else: pass
-        else: pass    
+    if end != 0:
+        for i in range(len(Lon1)):
+            
+                if end1 == 0:
+                    if Lon1[i] < 0 or Lon1[i] == Lon1[-1] :
+                        end1 = i
+                    else: pass
+                    if Lon1[i] == Lon1[-1]:
+                        end += 1
+                    else: pass
+                else: pass
+    else:
+        end1 = len(Lon)
+                 
     end = end1 + end 
     
     Lon2.append(Lon[begin:end])
@@ -100,6 +105,7 @@ while len(Lon) > 0:
 
     Lon = Lon[end:]
     Lat = Lat[end:]
+    
     
 # Отрисовка карты Земли с трассой спутника
 

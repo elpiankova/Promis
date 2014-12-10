@@ -17,7 +17,7 @@ I = 6.198649551806115e+01*pi/180           #(rad) inclination
 T = 2456896.507593647577                   #(Julian day number), present time
 
 # Time data for calculating
-time = 2000                               # (min) Calculation time
+time = 1000                               # (min) Calculation time
 time_divider = 8                           # If time_divider = 1 => time discreteness = 1 min
 
 # This class calculate arrays with coordinates
@@ -92,7 +92,7 @@ class CoordinatesArrayMaker:
             i += 1
             self.T += 0.000694444/self.time_divider # time = 1/n min
     
-        #return self.Lat, self.Lon
+        return self.Lat, self.Lon
 
     #This function return array of coordinate divided to revolutions
     def orbital_revolutions(self):
@@ -110,22 +110,26 @@ class CoordinatesArrayMaker:
         
             for i in range(len(self.Lon)):
                 if end == 0:
-                    if self.Lon[i] < 180 and self.Lon[i] > 0:
+                    if self.Lon[i] > 0 and self.Lon[i] < 180:
                         end = i
                     else: pass
                 else: pass
-        
+
             Lon1 = self.Lon[end:]
-        
-            for i in range(len(Lon1)):
-                if end1 == 0:
-                    if Lon1[i] < 0 or Lon1[i] == Lon1[-1] :
-                        end1 = i
+
+            if end != 0:
+                for i in range(len(Lon1)):
+                    if end1 == 0:
+                        if Lon1[i] < 0 or Lon1[i] == Lon1[-1] :
+                            end1 = i
+                        else: pass
+                        if Lon1[i] == Lon1[-1]:
+                            end += 1
+                        else: pass
                     else: pass
-                    if Lon1[i] == Lon1[-1]:
-                        end += 1
-                    else: pass
-                else: pass    
+            else:
+                end1 = len(self.Lon)
+                 
             end = end1 + end 
             
             Lon2.append(self.Lon[begin:end])
@@ -137,7 +141,7 @@ class CoordinatesArrayMaker:
         self.Lon = Lon2
         self.Lat = Lat2
         
-        #return self.Lat, self.Lon
+        return self.Lat, self.Lon
 
     #This function make array with pair of Lon and Lat for each orbital revolution
     def final_arrays_maker(self):
@@ -147,10 +151,7 @@ class CoordinatesArrayMaker:
         block_j = []
         block_i = []
         coordinatelane = []
-        # Create file for save coordinates
-        fh = open("/home/yakim/PROJECTS/django_learn/form_learn/form/templates/planelatlong.js", "w")
-        fh.write("var planelatlong = ")
-        fh.close()
+
         # Create pair of coordinate 
         for i in range(len(self.Lon)) and range(len(self.Lat)):   
             for j in range(len(self.Lon[i])) and range(len(self.Lat[i])):
@@ -161,14 +162,25 @@ class CoordinatesArrayMaker:
             coordinatelane.append(block_i)
             block_i = []
             
-        self.coord_srt = str(coordinatelane)
-        # Save coordinates to file
-        fh = open("/home/yakim/PROJECTS/django_learn/form_learn/form/templates/planelatlong.js", "a")
-        fh.write(self.coord_srt)
-        fh.close()
-        
+        self.coord_srt = coordinatelane
+
         return self.coord_srt
+    
+    def revolutions_dict(self):
+        self.final_arrays_maker()
+        
+        D = {}
+        j = 1
+        
+        for i in range(len(self.coord_srt)):
+            D[j] = self.coord_srt[i]
+            j += 1
+        
+        return D
     
 
 arrays = CoordinatesArrayMaker(T0, n, e, eps, a, omega_big, omega_small, I, T, time, time_divider)
-print arrays.final_arrays_maker()
+#print arrays.coordinate_calculate()
+#print arrays.orbital_revolutions()
+#print arrays.final_arrays_maker()
+print arrays.revolutions_dict()
