@@ -3,6 +3,9 @@ from math import *
 from mpl_toolkits.basemap import Basemap
 import matplotlib.pyplot as plt
 import numpy as np
+from datetime import datetime
+from decimal import Decimal, getcontext
+getcontext().prec = 19
 
 # Расчет координат пролета спутника
 
@@ -15,8 +18,40 @@ a = 6.795394080891185e+03#(km)
 omega_big = 1.224602531823290e+02*pi/180#(rad)
 omega_small = 5.823934876750221e+01*pi/180#(rad)
 I = 6.198649551806115e+01*pi/180#(rad)
-T = 2456896.507593647577 #(Julian day number), текущее время
 
+#(Julian day number), текущее время
+def julian_day_number():
+    d= datetime.utcnow()
+    r = d.timetuple()
+    
+    D = []
+    for it in r:
+        D.append(it)
+        
+    year = D[0]
+    month = D[1]
+    day = D[2]
+    hour = D[3]
+    minute = D[4]
+    sec = D[5]
+    
+    julian_day = day - 32075 + 1461*(year + 4800 + (month - 14)/12)/4 + \
+                 367*(month - 2 - (month - 14)/12*12)/12 - 3*((year + 4900 + \
+                 (month - 14)/12)/100)/4
+                 
+    if hour >= 12 and hour < 24:
+        hour = hour - 12
+    else:
+        hour = hour + 12
+    
+    
+    fractional_part = float(hour*3600+minute*60+sec)/(86400)
+    julian_day = Decimal(julian_day) + Decimal(fractional_part)
+    
+    return julian_day
+
+T = julian_day_number() #(Julian day number), текущее время
+#print T
 
 i = 0
 Lon = []
@@ -26,7 +61,7 @@ while i <= time:
 #hgjhjkhk
     E = 0
     E0 = 0.5 # произвольное начальное значение экцентрической аномалии
-    M = n*((T - T0)*24*3600)#(degrees)
+    M = n*float((T - Decimal(T0))*24*3600)#(degrees)
         #расчет средней аномалии (М)
     while M*pi/180 > 2*pi:
         M = M - 360
@@ -64,7 +99,7 @@ while i <= time:
     Lat.append(teta)
 
     i += 1
-    T += 0.000694444/8 # дискредетация 1/8 минуты
+    T += Decimal(0.000694444/8) # дискредетация 1/8 минуты
 
 Lon2 = []
 Lat2 = []
@@ -130,5 +165,6 @@ print Lon2
 print Lat2
 print len(Lon2)
 print len(Lat2)
+
 
 plt.show()
