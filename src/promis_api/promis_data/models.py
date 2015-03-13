@@ -308,3 +308,4 @@ class Measurement(models.Model):
         return u'%s, time: %s' % (unicode(self.measurement), unicode(self.measurement_point))
     class Meta:
         db_table = 'measurements'
+

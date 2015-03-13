@@ -121,42 +121,33 @@ def parser(path):
                     measurement_file.close()
             else:
                 logging.warning('No file %s found' % channel.filename)
-            #print type(measurement_file_dict)
 
             logging.info('%s channel is to be loaded with %s measurements' % (channel.filename, len(measurement_row)))
 
             period_microsec = timedelta(microseconds=1/sampling_frequencies[int(channel.order_number)]*10**6)
             measurement_datetime = begin_datetime
-            if len(measurement_row) < 10000:
-                for measurement in measurement_row:
-                    #pr.enable()
-                    if measurement != 0:
+ #           if len(measurement_row) < 10000:
+            for measurement in measurement_row:
 
-                        measurement *= channel.conv_factor
-                        try:
-                            MeasurementPoint.objects.create(time=measurement_datetime)
-                        except IntegrityError:
-                            logging.warning('Measurement point %s already exists', measurement_datetime)
+                measurement *= channel.conv_factor
+                try:
+                    MeasurementPoint.objects.create(time=measurement_datetime)
+                except IntegrityError:
+                    logging.warning('Measurement point %s already exists', measurement_datetime)
 
-                        meas_point = MeasurementPoint.objects.get(time=measurement_datetime)
+                meas_point = MeasurementPoint.objects.get(time=measurement_datetime)
 
-                        try:
-                            Measurement.objects.create(level_marker=0,
-                                                       measurement=measurement,
-                                                       parameter=parameter,
-                                                       channel=channel,
-                                                       measurement_point=meas_point,
-                                                       session=session)
-                        except IntegrityError:
-                            logging.warning('Measurement %s of %s channel already exists', measurement_datetime, channel)
-                        measurement_datetime += period_microsec
-                        count += 1
-                    #pr.disable()
-                    #s = StringIO.StringIO()
-                    #sortby = 'cumulative'
-                    #ps = pstats.Stats(pr, stream=s).sort_stats(sortby)
-                    #ps.print_stats()
-                    #logging.info('%s' % s.getvalue())
+                try:
+                    Measurement.objects.create(level_marker=0,
+                                               measurement=measurement,
+                                               parameter=parameter,
+                                               channel=channel,
+                                               measurement_point=meas_point,
+                                               session=session)
+                except IntegrityError:
+                    logging.warning('Measurement %s of %s channel already exists', measurement_datetime, channel)
+                measurement_datetime += period_microsec
+                count += 1
 
         logging.info('%s channel has been loaded with %s measurements', channel.filename, count)
 
@@ -168,5 +159,3 @@ if __name__ == "__main__":
     path = '/home/len/Variant/Data_Release1/1056'
 #    path = '/home/elena/workspace/promis_from_gitlab/satellite-data/Variant/Data_Release1/597'
     parser(path)
-
-    print timeit.timeit('parser("/home/len/Variant/Data_Release1/1056")', 'from __main__ import parser')
