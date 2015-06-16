@@ -1,10 +1,18 @@
+# Ignoring python bite code files and other temp files:
 *.pyc
 *.txt~
 *.py~
-src/promis_api/build/*
-src/promis_api/.idea/*
-.spyderproject
+
+# Ignoring IDE project and settings files: 
+.*project
+.idea/*
+.settings/*
+
+# Ignoring Django settings file and initial_data.json file for database (we have copy _initial_data.json)
 src/promis_api/promis_api/settings.py
 src/promis_api/promis_data/fixtures/initial_data.json
-.idea/*
+
+# I can't remember now what it is
+src/promis_api/build/*
+
 
