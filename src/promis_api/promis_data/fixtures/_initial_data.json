@@ -1,0 +1,1733 @@
+[
+{
+    "pk": "Potential", 
+    "model": "promis_data.satellite", 
+    "fields": {
+        "description": "Space scientific experiment on board Sich-2"
+    }
+},
+{
+    "pk": "Variant", 
+    "model": "promis_data.satellite", 
+    "fields": {
+        "description": "Ionospheric scientific project on Sich-1M satellite (2004-2005 years) "
+    }
+},
+{
+    "pk": 1, 
+    "model": "promis_data.device", 
+    "fields": {
+        "satellite": "Variant", 
+        "description": "", 
+        "title": "DC fluxgate magnetometer FZM"
+    }
+},
+{
+    "pk": 2, 
+    "model": "promis_data.device", 
+    "fields": {
+        "satellite": "Variant", 
+        "description": "Eave probe WZ1 measured the AC X-component of the magnetic field and current density YZ component. Sensor axis is parallel to the X axis.  The normal to the probe gap angled 45 \u00b0 relative to the axes Y and Z, therefore this sensor measured inclined projection of the current vector.", 
+        "title": "Wave probe WZ1"
+    }
+},
+{
+    "pk": 3, 
+    "model": "promis_data.device", 
+    "fields": {
+        "satellite": "Variant", 
+        "description": "Wave probe WZ2 measured the AC Y-component of the magnetic field and current density XZ component. Sensor axis is parallel to the Y axis.  The normal to the probe gap angled 45 \u00b0 relative to the axes X and Z, therefore this sensor measured inclined projection of the current vector.", 
+        "title": "Wave probe WZ2"
+    }
+},
+{
+    "pk": 4, 
+    "model": "promis_data.device", 
+    "fields": {
+        "satellite": "Variant", 
+        "description": "Electric probe complex consists of 4 electric probes located on separate beams: EZ1, EZ2, EZ3, EZ4. In order to obtain the three components of the electric field, sensor signals of EZ1, EZ2, EZ3, EZ4 were fed through a switch to the inputs of the differential amplifier to subtract. EZ1 or EZ3 were selected as a base sensor therefore there are 6 channels of electric field:\r\nE1=EZ1-EZ4,   E2=EZ1-EZ2,   E3=EZ1-EZ3;\r\nE4=EZ3-EZ1,   E5=EZ3-EZ2,   E6=EZ3-EZ4.\r\nCoordinates of electric probe are: EZ1 (2.687, 2.687, 0.340), EZ2 (-2.828, -2.828, 0.260), EZ3 (0.168, -0.675, 4.280), EZ4 (2.100, -3.300, 0.375) meters in coordinate system associated with the satellite.", 
+        "title": "Electric probe complex EZ"
+    }
+},
+{
+    "pk": 5, 
+    "model": "promis_data.device", 
+    "fields": {
+        "satellite": "Variant", 
+        "description": "The FC1 sensor is located above the probe FC2 along Z-axis and its window is facing upward.", 
+        "title": "Faraday cup FC1"
+    }
+},
+{
+    "pk": 7, 
+    "model": "promis_data.device", 
+    "fields": {
+        "satellite": "Variant", 
+        "description": "", 
+        "title": "Rogovsky coil ZF"
+    }
+},
+{
+    "pk": 8, 
+    "model": "promis_data.device", 
+    "fields": {
+        "satellite": "Potential", 
+        "description": "", 
+        "title": "Fluxgate magnetometers LEMI-016M"
+    }
+},
+{
+    "pk": 9, 
+    "model": "promis_data.device", 
+    "fields": {
+        "satellite": "Potential", 
+        "description": "", 
+        "title": "Electric probe EZ"
+    }
+},
+{
+    "pk": 10, 
+    "model": "promis_data.device", 
+    "fields": {
+        "satellite": "Potential", 
+        "description": "This device has as output the current-voltage characteristics from which ITM team can obtain a neutral gas density and a pressure. ", 
+        "title": "Neutral gase parameters sensor NCP"
+    }
+},
+{
+    "pk": 11, 
+    "model": "promis_data.device", 
+    "fields": {
+        "satellite": "Potential", 
+        "description": "This device has as output the current-voltage characteristics from which ITM team can obtain a plasma density and an electron temperature.", 
+        "title": "Plasma parameters sensor ECP"
+    }
+},
+{
+    "pk": 12, 
+    "model": "promis_data.device", 
+    "fields": {
+        "satellite": "Variant", 
+        "description": "The FC2 sensor is located below the probe FC2 along Z-axis and its window is facing downward.", 
+        "title": "Faraday cup FC2"
+    }
+},
+{
+    "pk": 1, 
+    "model": "promis_data.channel", 
+    "fields": {
+        "device": 11, 
+        "description": "Current values of current-voltage characteristics on the first electrode", 
+        "title": "I1"
+    }
+},
+{
+    "pk": 2, 
+    "model": "promis_data.channel", 
+    "fields": {
+        "device": 10, 
+        "description": "Unknown channel from unknown device by ITM", 
+        "title": "HVT"
+    }
+},
+{
+    "pk": 3, 
+    "model": "promis_data.channel", 
+    "fields": {
+        "device": 9, 
+        "description": "This is a low-frequency channel of electric probe with sampling frequency 1 Hz", 
+        "title": "U low-frequency"
+    }
+},
+{
+    "pk": 4, 
+    "model": "promis_data.channel", 
+    "fields": {
+        "device": 9, 
+        "description": "This is a high-frequency channel of electric probe with sampling frequency 1000 Hz", 
+        "title": "U high-frequency"
+    }
+},
+{
+    "pk": 5, 
+    "model": "promis_data.channel", 
+    "fields": {
+        "device": 7, 
+        "description": "Rogowski coil forms a channel of AC current density measurement in the frequency range 30 ... 400 Hz, conversion factor is Kp \u2248 8.5e-2 V*sm2/nA.", 
+        "title": "Jz current density "
+    }
+},
+{
+    "pk": 6, 
+    "model": "promis_data.channel", 
+    "fields": {
+        "device": 5, 
+        "description": "This is low-frequency channel that measured electron current density. Conversion factor is 470 mV*sm2/mkA.", 
+        "title": "Electron current density LF (FC1) "
+    }
+},
+{
+    "pk": 7, 
+    "model": "promis_data.channel", 
+    "fields": {
+        "device": 5, 
+        "description": "This is high-frequency channel that measured electron current density. Conversion factor is 4780 mV*sm2/mkA.", 
+        "title": "Electron current density HF (FC1)"
+    }
+},
+{
+    "pk": 8, 
+    "model": "promis_data.channel", 
+    "fields": {
+        "device": 12, 
+        "description": "This is low-frequency channel that measured electron current density. Conversion factor is 470 mV*sm2/mkA.", 
+        "title": " Electron current density LF (FC2)"
+    }
+},
+{
+    "pk": 9, 
+    "model": "promis_data.channel", 
+    "fields": {
+        "device": 12, 
+        "description": "This is high-frequency channel that measured electron current density. Conversion factor is 4780 mV*sm2/mkA.", 
+        "title": "Electron current density HF (FC2)"
+    }
+},
+{
+    "pk": 10, 
+    "model": "promis_data.channel", 
+    "fields": {
+        "device": 1, 
+        "description": "", 
+        "title": "Bx quasiconstant"
+    }
+},
+{
+    "pk": 11, 
+    "model": "promis_data.channel", 
+    "fields": {
+        "device": 1, 
+        "description": "", 
+        "title": "By quasiconstant"
+    }
+},
+{
+    "pk": 12, 
+    "model": "promis_data.channel", 
+    "fields": {
+        "device": 1, 
+        "description": "", 
+        "title": "Bz quasiconstant"
+    }
+},
+{
+    "pk": 13, 
+    "model": "promis_data.channel", 
+    "fields": {
+        "device": 2, 
+        "description": "YZ component of current density ", 
+        "title": "Jyz current density "
+    }
+},
+{
+    "pk": 14, 
+    "model": "promis_data.channel", 
+    "fields": {
+        "device": 2, 
+        "description": "x- component of magnetic field vector", 
+        "title": "Bx high-frequency"
+    }
+},
+{
+    "pk": 15, 
+    "model": "promis_data.channel", 
+    "fields": {
+        "device": 3, 
+        "description": "XZ component of current density", 
+        "title": "Jxz current density"
+    }
+},
+{
+    "pk": 16, 
+    "model": "promis_data.channel", 
+    "fields": {
+        "device": 3, 
+        "description": "Y component of magnetic field vector", 
+        "title": "By high-frequency"
+    }
+},
+{
+    "pk": 17, 
+    "model": "promis_data.channel", 
+    "fields": {
+        "device": 4, 
+        "description": "Channel value was obtained by differential amplifier subtraction of EZ1 and EZ4 probes value: E1 = EZ1-EZ4 and by using the low pass filter. \r\nCoordinates of probes are:  EZ1 (2.687, 2.687, 0.340) and EZ4 (2.100, -3.300, 0.375)", 
+        "title": "E1 low-frequency"
+    }
+},
+{
+    "pk": 18, 
+    "model": "promis_data.channel", 
+    "fields": {
+        "device": 4, 
+        "description": "Channel value was obtained by differential amplifier subtraction of EZ1 and EZ2 probes value: E2=EZ1-EZ2 and by using the low pass filter.  \r\nCoordinates of probes are:  EZ1 (2.687, 2.687, 0.340) and EZ2 (-2.828, -2.828, 0.260)", 
+        "title": "E2 low-frequency"
+    }
+},
+{
+    "pk": 19, 
+    "model": "promis_data.channel", 
+    "fields": {
+        "device": 4, 
+        "description": "Channel value was obtained by differential amplifier subtraction of EZ1 and EZ3 probes value: E3=EZ1-EZ3 and by using the low pass filter. \r\nCoordinates of probes are:  EZ1 (2.687, 2.687, 0.340) and EZ3 (0.168, -0.675, 4.280)", 
+        "title": "E3 low-frequency"
+    }
+},
+{
+    "pk": 20, 
+    "model": "promis_data.channel", 
+    "fields": {
+        "device": 4, 
+        "description": "Channel value was obtained by differential amplifier subtraction of EZ3 and EZ1 probes value: E4=EZ3-EZ1 and by using the low pass filter. \r\nCoordinates of probes are:  EZ1 (2.687, 2.687, 0.340) and EZ3 (0.168, -0.675, 4.280)", 
+        "title": "E4 low-frequency"
+    }
+},
+{
+    "pk": 21, 
+    "model": "promis_data.channel", 
+    "fields": {
+        "device": 4, 
+        "description": "Channel value was obtained by differential amplifier subtraction of EZ3 and EZ2 probes value: E5=EZ3-EZ2 and by using the low pass filter. \r\nCoordinates of probes are:  EZ3 (0.168, -0.675, 4.280) and EZ2 (-2.828, -2.828, 0.260)", 
+        "title": "E5 low-frequency"
+    }
+},
+{
+    "pk": 22, 
+    "model": "promis_data.channel", 
+    "fields": {
+        "device": 4, 
+        "description": "Channel value was obtained by differential amplifier subtraction of EZ3 and EZ4 probes value: E6=EZ3-EZ4 and by using the low pass filter. \r\nCoordinates of probes are:  EZ3 (0.168, -0.675, 4.280) and EZ4 (2.100, -3.300, 0.375)", 
+        "title": "E6 low-frequency"
+    }
+},
+{
+    "pk": 23, 
+    "model": "promis_data.channel", 
+    "fields": {
+        "device": 4, 
+        "description": "Channel value was obtained by differential amplifier subtraction of EZ1 and EZ4 probes value: E1 = EZ1-EZ4 and using a high pass filter. \r\nCoordinates of probes are:  EZ1 (2.687, 2.687, 0.340) and EZ4 (2.100, -3.300, 0.375)", 
+        "title": "E1 high-frequency"
+    }
+},
+{
+    "pk": 24, 
+    "model": "promis_data.channel", 
+    "fields": {
+        "device": 4, 
+        "description": "Channel value was obtained by differential amplifier subtraction of EZ1 and EZ2 probes value: E2=EZ1-EZ2 and using a high pass filter.. \r\nCoordinates of probes are:  EZ1 (2.687, 2.687, 0.340) and EZ2 (-2.828, -2.828, 0.260)", 
+        "title": "E2 high-frequency"
+    }
+},
+{
+    "pk": 25, 
+    "model": "promis_data.channel", 
+    "fields": {
+        "device": 4, 
+        "description": "Channel value was obtained by differential amplifier subtraction of EZ1 and EZ3 probes value: E3=EZ1-EZ3 and using a high pass filter. \r\nCoordinates of probes are:  EZ1 (2.687, 2.687, 0.340) and EZ3 (0.168, -0.675, 4.280)", 
+        "title": "E3 high-frequency"
+    }
+},
+{
+    "pk": 26, 
+    "model": "promis_data.channel", 
+    "fields": {
+        "device": 4, 
+        "description": "Channel value was obtained by differential amplifier subtraction of EZ3 and EZ1 probes value: E4=EZ3-EZ1 and using a high pass filter. \r\nCoordinates of probes are:  EZ1 (2.687, 2.687, 0.340) and EZ3 (0.168, -0.675, 4.280)", 
+        "title": "E4 high-frequency"
+    }
+},
+{
+    "pk": 27, 
+    "model": "promis_data.channel", 
+    "fields": {
+        "device": 4, 
+        "description": "Channel value was obtained by differential amplifier subtraction of EZ3 and EZ2 probes value: E5=EZ3-EZ2 and using a high pass filter. \r\nCoordinates of probes are:  EZ3 (0.168, -0.675, 4.280) and EZ2 (-2.828, -2.828, 0.260)", 
+        "title": "E5 high-frequency"
+    }
+},
+{
+    "pk": 28, 
+    "model": "promis_data.channel", 
+    "fields": {
+        "device": 4, 
+        "description": "Channel value was obtained by differential amplifier subtraction of EZ3 and EZ4 probes value: E6=EZ3-EZ4 and using a high pass filter. \r\nCoordinates of probes are:  EZ3 (0.168, -0.675, 4.280) and EZ4 (2.100, -3.300, 0.375)", 
+        "title": "E6 high-frequency"
+    }
+},
+{
+    "pk": 29, 
+    "model": "promis_data.channel", 
+    "fields": {
+        "device": 11, 
+        "description": "Current values of current-voltage characteristics on the second electrode", 
+        "title": "I2"
+    }
+},
+{
+    "pk": 30, 
+    "model": "promis_data.channel", 
+    "fields": {
+        "device": 11, 
+        "description": "Voltage values of current-voltage characteristics", 
+        "title": "V"
+    }
+},
+{
+    "pk": 31, 
+    "model": "promis_data.channel", 
+    "fields": {
+        "device": 10, 
+        "description": "Unknown channel from unknown device by ITM", 
+        "title": "HVI"
+    }
+},
+{
+    "pk": 32, 
+    "model": "promis_data.channel", 
+    "fields": {
+        "device": 10, 
+        "description": "Current values of current-voltage characteristics on the first electrode", 
+        "title": "I1"
+    }
+},
+{
+    "pk": 33, 
+    "model": "promis_data.channel", 
+    "fields": {
+        "device": 10, 
+        "description": "Current values of current-voltage characteristics on the second electrode", 
+        "title": "I2"
+    }
+},
+{
+    "pk": 34, 
+    "model": "promis_data.channel", 
+    "fields": {
+        "device": 10, 
+        "description": "Temperature of the first electrod", 
+        "title": "T1"
+    }
+},
+{
+    "pk": 35, 
+    "model": "promis_data.channel", 
+    "fields": {
+        "device": 10, 
+        "description": "Temperature of the second electrod", 
+        "title": "T2"
+    }
+},
+{
+    "pk": 36, 
+    "model": "promis_data.channel", 
+    "fields": {
+        "device": 1, 
+        "description": "Temperature of FZM device", 
+        "title": "Ts"
+    }
+},
+{
+    "pk": 37, 
+    "model": "promis_data.channel", 
+    "fields": {
+        "device": 1, 
+        "description": "Temperature of FZM electronic unit", 
+        "title": "Te"
+    }
+},
+{
+    "pk": 1, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Filename in Variant cataloge (Data_Release1)", 
+        "value": "Bx", 
+        "channel": 10, 
+        "title": "Filename"
+    }
+},
+{
+    "pk": 2, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Order number of sampling frequency of this parameter in description file of measurement session", 
+        "value": "0", 
+        "channel": 10, 
+        "title": "Order number"
+    }
+},
+{
+    "pk": 3, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Filename in Variant cataloge (Data_Release1)", 
+        "value": "By", 
+        "channel": 11, 
+        "title": "Filename"
+    }
+},
+{
+    "pk": 4, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Order number of sampling frequency of this parameter in description file of measurement session", 
+        "value": "1", 
+        "channel": 11, 
+        "title": "Order number"
+    }
+},
+{
+    "pk": 5, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Filename in Variant cataloge (Data_Release1)", 
+        "value": "Bz", 
+        "channel": 12, 
+        "title": "Filename"
+    }
+},
+{
+    "pk": 6, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Order number of sampling frequency of this parameter in description file of measurement session", 
+        "value": "2", 
+        "channel": 12, 
+        "title": "Order number"
+    }
+},
+{
+    "pk": 7, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Filename in Variant cataloge (Data_Release1)", 
+        "value": "Ts", 
+        "channel": 36, 
+        "title": "Filename"
+    }
+},
+{
+    "pk": 8, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Order number of sampling frequency of this parameter in description file of measurement session", 
+        "value": "3", 
+        "channel": 36, 
+        "title": "Order number"
+    }
+},
+{
+    "pk": 9, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Filename in Variant cataloge (Data_Release1)", 
+        "value": "Te", 
+        "channel": 37, 
+        "title": "Filename"
+    }
+},
+{
+    "pk": 10, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Order number of sampling frequency of this parameter in description file of measurement session", 
+        "value": "4", 
+        "channel": 37, 
+        "title": "Order number"
+    }
+},
+{
+    "pk": 11, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Filename in Variant cataloge (Data_Release1)", 
+        "value": "JF~", 
+        "channel": 5, 
+        "title": "Filename"
+    }
+},
+{
+    "pk": 12, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Order number of sampling frequency of this parameter in description file of measurement session", 
+        "value": "5", 
+        "channel": 5, 
+        "title": "Order number"
+    }
+},
+{
+    "pk": 13, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Filename in Variant cataloge (Data_Release1)", 
+        "value": "FC1~", 
+        "channel": 7, 
+        "title": "Filename"
+    }
+},
+{
+    "pk": 14, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Order number of sampling frequency of this parameter in description file of measurement session", 
+        "value": "6", 
+        "channel": 7, 
+        "title": "Order number"
+    }
+},
+{
+    "pk": 15, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Filename in Variant cataloge (Data_Release1)", 
+        "value": "FC1=", 
+        "channel": 6, 
+        "title": "Filename"
+    }
+},
+{
+    "pk": 16, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Order number of sampling frequency of this parameter in description file of measurement session", 
+        "value": "7", 
+        "channel": 6, 
+        "title": "Order number"
+    }
+},
+{
+    "pk": 17, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Filename in Variant cataloge (Data_Release1)", 
+        "value": "FC2~", 
+        "channel": 9, 
+        "title": "Filename"
+    }
+},
+{
+    "pk": 18, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Order number of sampling frequency of this parameter in description file of measurement session", 
+        "value": "8", 
+        "channel": 9, 
+        "title": "Order number"
+    }
+},
+{
+    "pk": 19, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Filename in Variant cataloge (Data_Release1)", 
+        "value": "FC2=", 
+        "channel": 8, 
+        "title": "Filename"
+    }
+},
+{
+    "pk": 20, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Order number of sampling frequency of this parameter in description file of measurement session", 
+        "value": "9", 
+        "channel": 8, 
+        "title": "Order number"
+    }
+},
+{
+    "pk": 21, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Filename in Variant cataloge (Data_Release1)", 
+        "value": "Jyz~", 
+        "channel": 13, 
+        "title": "Filename"
+    }
+},
+{
+    "pk": 22, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Order number of sampling frequency of this parameter in description file of measurement session", 
+        "value": "10", 
+        "channel": 13, 
+        "title": "Order number"
+    }
+},
+{
+    "pk": 23, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Filename in Variant cataloge (Data_Release1)", 
+        "value": "Bx~", 
+        "channel": 14, 
+        "title": "Filename"
+    }
+},
+{
+    "pk": 24, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Order number of sampling frequency of this parameter in description file of measurement session", 
+        "value": "11", 
+        "channel": 14, 
+        "title": "Order number"
+    }
+},
+{
+    "pk": 25, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Filename in Variant cataloge (Data_Release1)", 
+        "value": "Jxz~", 
+        "channel": 15, 
+        "title": "Filename"
+    }
+},
+{
+    "pk": 26, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Order number of sampling frequency of this parameter in description file of measurement session", 
+        "value": "12", 
+        "channel": 15, 
+        "title": "Order number"
+    }
+},
+{
+    "pk": 27, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Filename in Variant cataloge (Data_Release1)", 
+        "value": "By~", 
+        "channel": 16, 
+        "title": "Filename"
+    }
+},
+{
+    "pk": 28, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Order number of sampling frequency of this parameter in description file of measurement session", 
+        "value": "13", 
+        "channel": 16, 
+        "title": "Order number"
+    }
+},
+{
+    "pk": 29, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Filename in Variant cataloge (Data_Release1)", 
+        "value": "E1~", 
+        "channel": 23, 
+        "title": "Filename"
+    }
+},
+{
+    "pk": 30, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Order number of sampling frequency of this parameter in description file of measurement session", 
+        "value": "14", 
+        "channel": 23, 
+        "title": "Order number"
+    }
+},
+{
+    "pk": 31, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Filename in Variant cataloge (Data_Release1)", 
+        "value": "E1=", 
+        "channel": 17, 
+        "title": "Filename"
+    }
+},
+{
+    "pk": 32, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Order number of sampling frequency of this parameter in description file of measurement session", 
+        "value": "15", 
+        "channel": 17, 
+        "title": "Order number"
+    }
+},
+{
+    "pk": 33, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Filename in Variant cataloge (Data_Release1)", 
+        "value": "E2~", 
+        "channel": 24, 
+        "title": "Filename"
+    }
+},
+{
+    "pk": 34, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Order number of sampling frequency of this parameter in description file of measurement session", 
+        "value": "16", 
+        "channel": 24, 
+        "title": "Order number"
+    }
+},
+{
+    "pk": 35, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Filename in Variant cataloge (Data_Release1)", 
+        "value": "E3~", 
+        "channel": 25, 
+        "title": "Filename"
+    }
+},
+{
+    "pk": 36, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Order number of sampling frequency of this parameter in description file of measurement session", 
+        "value": "18", 
+        "channel": 25, 
+        "title": "Order number"
+    }
+},
+{
+    "pk": 37, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Filename in Variant cataloge (Data_Release1)", 
+        "value": "E2=", 
+        "channel": 18, 
+        "title": "Filename"
+    }
+},
+{
+    "pk": 38, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Order number of sampling frequency of this parameter in description file of measurement session", 
+        "value": "17", 
+        "channel": 18, 
+        "title": "Order number"
+    }
+},
+{
+    "pk": 39, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Filename in Variant cataloge (Data_Release1)", 
+        "value": "E3=", 
+        "channel": 19, 
+        "title": "Filename"
+    }
+},
+{
+    "pk": 40, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Order number of sampling frequency of this parameter in description file of measurement session", 
+        "value": "19", 
+        "channel": 19, 
+        "title": "Order number"
+    }
+},
+{
+    "pk": 41, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Filename in Variant cataloge (Data_Release1)", 
+        "value": "E1~", 
+        "channel": 26, 
+        "title": "Filename"
+    }
+},
+{
+    "pk": 42, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Order number of sampling frequency of this parameter in description file of measurement session", 
+        "value": "14", 
+        "channel": 26, 
+        "title": "Order number"
+    }
+},
+{
+    "pk": 43, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Filename in Variant cataloge (Data_Release1)", 
+        "value": "E1=", 
+        "channel": 20, 
+        "title": "Filename"
+    }
+},
+{
+    "pk": 44, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Order number of sampling frequency of this parameter in description file of measurement session", 
+        "value": "15", 
+        "channel": 20, 
+        "title": "Order number"
+    }
+},
+{
+    "pk": 45, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Filename in Variant cataloge (Data_Release1)", 
+        "value": "E2~", 
+        "channel": 27, 
+        "title": "Filename"
+    }
+},
+{
+    "pk": 46, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Order number of sampling frequency of this parameter in description file of measurement session", 
+        "value": "16", 
+        "channel": 27, 
+        "title": "Order number"
+    }
+},
+{
+    "pk": 47, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Filename in Variant cataloge (Data_Release1)", 
+        "value": "E2=", 
+        "channel": 21, 
+        "title": "Filename"
+    }
+},
+{
+    "pk": 48, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Order number of sampling frequency of this parameter in description file of measurement session", 
+        "value": "17", 
+        "channel": 21, 
+        "title": "Order number"
+    }
+},
+{
+    "pk": 49, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Filename in Variant cataloge (Data_Release1)", 
+        "value": "E3~", 
+        "channel": 28, 
+        "title": "Filename"
+    }
+},
+{
+    "pk": 50, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Order number of sampling frequency of this parameter in description file of measurement session", 
+        "value": "18", 
+        "channel": 28, 
+        "title": "Order number"
+    }
+},
+{
+    "pk": 51, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Filename in Variant cataloge (Data_Release1)", 
+        "value": "E3=", 
+        "channel": 22, 
+        "title": "Filename"
+    }
+},
+{
+    "pk": 52, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Order number of sampling frequency of this parameter in description file of measurement session", 
+        "value": "19", 
+        "channel": 22, 
+        "title": "Order number"
+    }
+},
+{
+    "pk": 53, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "", 
+        "value": "EZ1", 
+        "channel": 23, 
+        "title": "Base sensor"
+    }
+},
+{
+    "pk": 54, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "", 
+        "value": "EZ1", 
+        "channel": 17, 
+        "title": "Base sensor"
+    }
+},
+{
+    "pk": 55, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "", 
+        "value": "EZ1", 
+        "channel": 24, 
+        "title": "Base sensor"
+    }
+},
+{
+    "pk": 56, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "", 
+        "value": "EZ1", 
+        "channel": 18, 
+        "title": "Base sensor"
+    }
+},
+{
+    "pk": 57, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "", 
+        "value": "EZ1", 
+        "channel": 25, 
+        "title": "Base sensor"
+    }
+},
+{
+    "pk": 58, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "", 
+        "value": "EZ1", 
+        "channel": 19, 
+        "title": "Base sensor"
+    }
+},
+{
+    "pk": 59, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "", 
+        "value": "EZ3", 
+        "channel": 26, 
+        "title": "Base sensor"
+    }
+},
+{
+    "pk": 60, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "", 
+        "value": "EZ3", 
+        "channel": 20, 
+        "title": "Base sensor"
+    }
+},
+{
+    "pk": 61, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "", 
+        "value": "EZ3", 
+        "channel": 27, 
+        "title": "Base sensor"
+    }
+},
+{
+    "pk": 62, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "", 
+        "value": "EZ3", 
+        "channel": 21, 
+        "title": "Base sensor"
+    }
+},
+{
+    "pk": 63, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "", 
+        "value": "EZ3", 
+        "channel": 28, 
+        "title": "Base sensor"
+    }
+},
+{
+    "pk": 64, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "", 
+        "value": "EZ3", 
+        "channel": 22, 
+        "title": "Base sensor"
+    }
+},
+{
+    "pk": 65, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Units: mV/nT", 
+        "value": "100", 
+        "channel": 14, 
+        "title": "Conversion factor"
+    }
+},
+{
+    "pk": 66, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Units: mV/nT", 
+        "value": "100", 
+        "channel": 16, 
+        "title": "Conversion factor"
+    }
+},
+{
+    "pk": 67, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Units: m", 
+        "value": "6.016", 
+        "channel": 23, 
+        "title": "Conversion factor"
+    }
+},
+{
+    "pk": 68, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Units: m", 
+        "value": "6.016", 
+        "channel": 17, 
+        "title": "Conversion factor"
+    }
+},
+{
+    "pk": 69, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Units: m", 
+        "value": "7.800", 
+        "channel": 24, 
+        "title": "Conversion factor"
+    }
+},
+{
+    "pk": 70, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Units: m", 
+        "value": "7.800", 
+        "channel": 18, 
+        "title": "Conversion factor"
+    }
+},
+{
+    "pk": 71, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Units: m", 
+        "value": "5.760", 
+        "channel": 25, 
+        "title": "Conversion factor"
+    }
+},
+{
+    "pk": 72, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Units: m", 
+        "value": "5.760", 
+        "channel": 19, 
+        "title": "Conversion factor"
+    }
+},
+{
+    "pk": 73, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Units: m", 
+        "value": "5.760", 
+        "channel": 26, 
+        "title": "Conversion factor"
+    }
+},
+{
+    "pk": 74, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Units: m", 
+        "value": "5.760", 
+        "channel": 20, 
+        "title": "Conversion factor"
+    }
+},
+{
+    "pk": 75, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Units: m", 
+        "value": "5.456", 
+        "channel": 27, 
+        "title": "Conversion factor"
+    }
+},
+{
+    "pk": 76, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Units: m", 
+        "value": "5.456", 
+        "channel": 21, 
+        "title": "Conversion factor"
+    }
+},
+{
+    "pk": 77, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Units: m", 
+        "value": "5.086", 
+        "channel": 28, 
+        "title": "Conversion factor"
+    }
+},
+{
+    "pk": 78, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Units: m", 
+        "value": "5.086", 
+        "channel": 22, 
+        "title": "Conversion factor"
+    }
+},
+{
+    "pk": 79, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Units: mV*sm^2/nA", 
+        "value": "4.780", 
+        "channel": 7, 
+        "title": "Conversion factor"
+    }
+},
+{
+    "pk": 80, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Units:mV*sm^2/nA", 
+        "value": "4.780", 
+        "channel": 9, 
+        "title": "Conversion factor"
+    }
+},
+{
+    "pk": 81, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Units:mV*sm^2/nA", 
+        "value": "0.470", 
+        "channel": 6, 
+        "title": "Conversion factor"
+    }
+},
+{
+    "pk": 82, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Units:mV*sm^2/nA", 
+        "value": "0.470", 
+        "channel": 8, 
+        "title": "Conversion factor"
+    }
+},
+{
+    "pk": 83, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Units: V*sm^2/nA", 
+        "value": "0.077", 
+        "channel": 15, 
+        "title": "Conversion factor"
+    }
+},
+{
+    "pk": 84, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Units: V*sm^2/nA", 
+        "value": "0.077", 
+        "channel": 13, 
+        "title": "Conversion factor"
+    }
+},
+{
+    "pk": 85, 
+    "model": "promis_data.channeloption", 
+    "fields": {
+        "description": "Units: V*sm^2/nA", 
+        "value": "0.085", 
+        "channel": 5, 
+        "title": "Conversion factor"
+    }
+},
+{
+    "pk": "Ampere", 
+    "model": "promis_data.units", 
+    "fields": {
+        "long_name": "ampere", 
+        "description": "", 
+        "short_name": "A"
+    }
+},
+{
+    "pk": "Celsius", 
+    "model": "promis_data.units", 
+    "fields": {
+        "long_name": "Celsius", 
+        "description": "Unit of temperature", 
+        "short_name": "\u00b0C"
+    }
+},
+{
+    "pk": "Kelvin", 
+    "model": "promis_data.units", 
+    "fields": {
+        "long_name": "Kelvin", 
+        "description": "Unit of temperature", 
+        "short_name": "K"
+    }
+},
+{
+    "pk": "nanoTesla", 
+    "model": "promis_data.units", 
+    "fields": {
+        "long_name": "nanotesla", 
+        "description": "", 
+        "short_name": "nT"
+    }
+},
+{
+    "pk": "nA/sm^2", 
+    "model": "promis_data.units", 
+    "fields": {
+        "long_name": "nanoAmpere per square sm", 
+        "description": "", 
+        "short_name": "nA/sm^2"
+    }
+},
+{
+    "pk": "Tesla", 
+    "model": "promis_data.units", 
+    "fields": {
+        "long_name": "tesla", 
+        "description": "", 
+        "short_name": "T"
+    }
+},
+{
+    "pk": "V/m", 
+    "model": "promis_data.units", 
+    "fields": {
+        "long_name": "Volt per meter", 
+        "description": "", 
+        "short_name": "V/m"
+    }
+},
+{
+    "pk": "Volt", 
+    "model": "promis_data.units", 
+    "fields": {
+        "long_name": "Volt", 
+        "description": "", 
+        "short_name": "V"
+    }
+},
+{
+    "pk": "Current", 
+    "model": "promis_data.parameter", 
+    "fields": {
+        "units": "Ampere", 
+        "description": "", 
+        "short_name": "I"
+    }
+},
+{
+    "pk": "Current density XZ-component", 
+    "model": "promis_data.parameter", 
+    "fields": {
+        "units": "nA/sm^2", 
+        "description": "", 
+        "short_name": "Jxz"
+    }
+},
+{
+    "pk": "Current density YZ-component", 
+    "model": "promis_data.parameter", 
+    "fields": {
+        "units": "nA/sm^2", 
+        "description": "", 
+        "short_name": "Jyz"
+    }
+},
+{
+    "pk": "Current density Z-component", 
+    "model": "promis_data.parameter", 
+    "fields": {
+        "units": "nA/sm^2", 
+        "description": "", 
+        "short_name": "Jz"
+    }
+},
+{
+    "pk": "Electric field", 
+    "model": "promis_data.parameter", 
+    "fields": {
+        "units": "V/m", 
+        "description": "", 
+        "short_name": "E"
+    }
+},
+{
+    "pk": "Electron current density Z-component", 
+    "model": "promis_data.parameter", 
+    "fields": {
+        "units": "nA/sm^2", 
+        "description": "", 
+        "short_name": "Jez"
+    }
+},
+{
+    "pk": "Temperature", 
+    "model": "promis_data.parameter", 
+    "fields": {
+        "units": "Celsius", 
+        "description": "", 
+        "short_name": "T"
+    }
+},
+{
+    "pk": "Voltage", 
+    "model": "promis_data.parameter", 
+    "fields": {
+        "units": "Volt", 
+        "description": "", 
+        "short_name": "U"
+    }
+},
+{
+    "pk": "X-component of magnetic field vector", 
+    "model": "promis_data.parameter", 
+    "fields": {
+        "units": "nanoTesla", 
+        "description": "", 
+        "short_name": "Bx"
+    }
+},
+{
+    "pk": "Y-component of magnetic field vector", 
+    "model": "promis_data.parameter", 
+    "fields": {
+        "units": "nanoTesla", 
+        "description": "", 
+        "short_name": "By"
+    }
+},
+{
+    "pk": "Z-component of magnetic field vector", 
+    "model": "promis_data.parameter", 
+    "fields": {
+        "units": "nanoTesla", 
+        "description": "", 
+        "short_name": "Bz"
+    }
+},
+{
+    "pk": 1, 
+    "model": "promis_data.channelshaveparameters", 
+    "fields": {
+        "parameter": "X-component of magnetic field vector", 
+        "channel": 10
+    }
+},
+{
+    "pk": 2, 
+    "model": "promis_data.channelshaveparameters", 
+    "fields": {
+        "parameter": "Y-component of magnetic field vector", 
+        "channel": 11
+    }
+},
+{
+    "pk": 3, 
+    "model": "promis_data.channelshaveparameters", 
+    "fields": {
+        "parameter": "Z-component of magnetic field vector", 
+        "channel": 12
+    }
+},
+{
+    "pk": 4, 
+    "model": "promis_data.channelshaveparameters", 
+    "fields": {
+        "parameter": "Electric field", 
+        "channel": 23
+    }
+},
+{
+    "pk": 5, 
+    "model": "promis_data.channelshaveparameters", 
+    "fields": {
+        "parameter": "Electric field", 
+        "channel": 17
+    }
+},
+{
+    "pk": 6, 
+    "model": "promis_data.channelshaveparameters", 
+    "fields": {
+        "parameter": "Electric field", 
+        "channel": 24
+    }
+},
+{
+    "pk": 7, 
+    "model": "promis_data.channelshaveparameters", 
+    "fields": {
+        "parameter": "Electric field", 
+        "channel": 18
+    }
+},
+{
+    "pk": 8, 
+    "model": "promis_data.channelshaveparameters", 
+    "fields": {
+        "parameter": "Electric field", 
+        "channel": 25
+    }
+},
+{
+    "pk": 9, 
+    "model": "promis_data.channelshaveparameters", 
+    "fields": {
+        "parameter": "Electric field", 
+        "channel": 19
+    }
+},
+{
+    "pk": 10, 
+    "model": "promis_data.channelshaveparameters", 
+    "fields": {
+        "parameter": "Electric field", 
+        "channel": 26
+    }
+},
+{
+    "pk": 11, 
+    "model": "promis_data.channelshaveparameters", 
+    "fields": {
+        "parameter": "Electric field", 
+        "channel": 20
+    }
+},
+{
+    "pk": 12, 
+    "model": "promis_data.channelshaveparameters", 
+    "fields": {
+        "parameter": "Electric field", 
+        "channel": 27
+    }
+},
+{
+    "pk": 13, 
+    "model": "promis_data.channelshaveparameters", 
+    "fields": {
+        "parameter": "Electric field", 
+        "channel": 21
+    }
+},
+{
+    "pk": 14, 
+    "model": "promis_data.channelshaveparameters", 
+    "fields": {
+        "parameter": "Electric field", 
+        "channel": 28
+    }
+},
+{
+    "pk": 15, 
+    "model": "promis_data.channelshaveparameters", 
+    "fields": {
+        "parameter": "Electric field", 
+        "channel": 22
+    }
+},
+{
+    "pk": 16, 
+    "model": "promis_data.channelshaveparameters", 
+    "fields": {
+        "parameter": "Electron current density Z-component", 
+        "channel": 9
+    }
+},
+{
+    "pk": 17, 
+    "model": "promis_data.channelshaveparameters", 
+    "fields": {
+        "parameter": "Electron current density Z-component", 
+        "channel": 7
+    }
+},
+{
+    "pk": 18, 
+    "model": "promis_data.channelshaveparameters", 
+    "fields": {
+        "parameter": "Current", 
+        "channel": 32
+    }
+},
+{
+    "pk": 19, 
+    "model": "promis_data.channelshaveparameters", 
+    "fields": {
+        "parameter": "Current", 
+        "channel": 1
+    }
+},
+{
+    "pk": 20, 
+    "model": "promis_data.channelshaveparameters", 
+    "fields": {
+        "parameter": "Current", 
+        "channel": 33
+    }
+},
+{
+    "pk": 21, 
+    "model": "promis_data.channelshaveparameters", 
+    "fields": {
+        "parameter": "Current", 
+        "channel": 29
+    }
+},
+{
+    "pk": 22, 
+    "model": "promis_data.channelshaveparameters", 
+    "fields": {
+        "parameter": "Electron current density Z-component", 
+        "channel": 8
+    }
+},
+{
+    "pk": 23, 
+    "model": "promis_data.channelshaveparameters", 
+    "fields": {
+        "parameter": "Electron current density Z-component", 
+        "channel": 6
+    }
+},
+{
+    "pk": 24, 
+    "model": "promis_data.channelshaveparameters", 
+    "fields": {
+        "parameter": "Voltage", 
+        "channel": 4
+    }
+},
+{
+    "pk": 25, 
+    "model": "promis_data.channelshaveparameters", 
+    "fields": {
+        "parameter": "Voltage", 
+        "channel": 3
+    }
+},
+{
+    "pk": 26, 
+    "model": "promis_data.channelshaveparameters", 
+    "fields": {
+        "parameter": "Voltage", 
+        "channel": 30
+    }
+},
+{
+    "pk": 27, 
+    "model": "promis_data.channelshaveparameters", 
+    "fields": {
+        "parameter": "X-component of magnetic field vector", 
+        "channel": 14
+    }
+},
+{
+    "pk": 28, 
+    "model": "promis_data.channelshaveparameters", 
+    "fields": {
+        "parameter": "Current density XZ-component", 
+        "channel": 15
+    }
+},
+{
+    "pk": 29, 
+    "model": "promis_data.channelshaveparameters", 
+    "fields": {
+        "parameter": "Y-component of magnetic field vector", 
+        "channel": 16
+    }
+},
+{
+    "pk": 30, 
+    "model": "promis_data.channelshaveparameters", 
+    "fields": {
+        "parameter": "Current density YZ-component", 
+        "channel": 13
+    }
+},
+{
+    "pk": 31, 
+    "model": "promis_data.channelshaveparameters", 
+    "fields": {
+        "parameter": "Current density Z-component", 
+        "channel": 5
+    }
+},
+{
+    "pk": 32, 
+    "model": "promis_data.channelshaveparameters", 
+    "fields": {
+        "parameter": "Temperature", 
+        "channel": 36
+    }
+},
+{
+    "pk": 33, 
+    "model": "promis_data.channelshaveparameters", 
+    "fields": {
+        "parameter": "Temperature", 
+        "channel": 37
+    }
+}
+]

@@ -1,0 +1,161 @@
+{% spaceless %}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en" ng-app='viewer-app'>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="content-language" content="en">
+    <title>PROMIS data viewer</title>
+    <link href="{{ MEDIA_URL }}css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+    <link href="{{ MEDIA_URL }}css/promis_data.css" type="text/css" rel="stylesheet" />
+
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery-1.11.1.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/angular.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/bootstrap.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/d3.v3.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/promis_data.js"></script>
+    {% block head %}{% endblock %}
+    <style>
+        .toolbox {
+            width: 410px;
+        }
+    </style>
+</head>
+
+<body ng-controller="DataViewerCtrl">
+    <div class="descriptive-loader" ng-if="loader.length">
+        <table>
+            <tr>
+                <td>
+                    <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span>
+                </td>
+                <td>
+                    <div ng-repeat="(code, message) in loader.messages track by code" class="descriptive-loader-message">[[message]]</span>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div id="content">
+        <div class="pull-left clearfix graph">
+            <div class="center-block">
+                <h1>Please choose data you want to view</h1>
+                <ol>
+                    <li>Choose data source (satellite) and wait while available parameters (channels) list would be loaded</li>
+                    <li>Choose time interval</li>
+                    <li>Choose parameter you want to view or load and press "Load data" button</li>
+                </ol>
+                <p>When data will be loaded, you'll see a data quicklook. You can download data by pressing "Download" button</p> 
+            </div>
+        </div>
+        <div class="pull-right clearfix toolbox">
+            <form class="form" role="form" name="data-selection-options">
+                <div class="form-group">
+                    <label class="control-label">Data sources</label>
+                    <select name="data_source" class="form-control" 
+                        ng-model="data.data_source">
+                        {% for title in data_sources %}
+                            <option value="{{ title }}">{{ title }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <table class="combined-control">
+                    <tr>
+                        <td>
+                            <div class="form-group">
+                                <label class="control-label">Begin time</label>
+                                <input class="form-control" 
+                                    type="dateTimeLocal"
+                                    ng-model="data.time.begin"
+                                    placeholder="yyyy-MM-ddTHH:mm:ssZ">
+                                </input>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <label class="control-label">End time</label>
+                                <input class="form-control" 
+                                    type="dateTimeLocal"
+                                    ng-model="data.time.end"
+                                    placeholder="yyyy-MM-ddTHH:mm:ssZ">
+                                </input>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+
+<!--            <div class="form-group">
+                    <label class="control-label">Channel list</label>
+                    <select class="form-control" 
+                        ng-model="data.channels.selected" 
+                        ng-options="channel.title for channel in data.channels.options">
+                    </select>
+                </div> -->
+                <div ng-if="data.channels.options.length" class="hidable-data">
+                <h4>Channel list</h4>
+                <dl>
+                    <span ng-repeat="channel in data.channels.options">
+                        <dt>
+                            <div class="radio structure-item">
+                                <label>
+                                    <input type="radio" name="data" ng-value=[[channel]]
+                                           ng-model="data.channels.selected"  />
+                                    <button type="button" class="btn btn-xs btn-link" ng-if="data_row.description">
+                                        <span class="glyphicon glyphicon-chevron-down"></span>
+                                    </button>
+                                    <b>[[channel.title]]</b> [<i>[[channel.parameters[0].units]]</i>]
+                                </label>
+                            </div>
+                        </dt>
+                        <dd ng-if="data_row.description">
+                            [[data_row.description]]
+                        </dd>
+                    </span>
+                </dl>
+                </div>
+
+               <!-- <table class="combined-control">
+                    <tr>
+                        <td>
+                            <button type="button" 
+                                    class="btn btn-primary"
+                                    ng-disabled="!requestConditionsCorrect()"
+                                    ng-click="loadData()">Load data</button>
+                        </td>
+                        <td>
+                            <button type="button" 
+                                    class="btn btn-primary"
+                                    ng-disabled="!downloadFileConditionCorrect()"
+                                    ng-click="downloadData()">Download</button>
+                        </td>
+                    </tr>
+                </table> -->
+                <div class="distance-bottom">
+                <button type="button" 
+                        class="btn btn-primary"
+                        ng-disabled="!requestConditionsCorrect()"
+                        ng-click="loadData()">Load data</button>
+                </div>
+                <div>
+                <button type="button" 
+                                    class="btn btn-primary "
+                                    ng-disabled="!downloadFileConditionCorrect()"
+                                    ng-click="downloadData()">Download</button>
+                </div>
+                                
+                <div ng-if="data_structure.description" class="data-description">
+                    <h4>
+                        <button type="button" class="btn btn-xs btn-link" ng-if="data_structure.description">
+                            <span class="glyphicon glyphicon-chevron-down"></span>
+                        </button>
+                        Device description
+                    </h4>
+                    <p>[[data_structure.description]]</p>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
+{% endspaceless %}

@@ -1,0 +1,27 @@
+netcdf FILE_NAME {
+dimensions:
+	time = UNLIMITED ; // (N currently)
+variables:
+	double time(time) ;
+		time:standard_name = "time" ;
+		time:session_begin = "1981-08-08T13:40:02Z" ;
+		time:session_end = "1981-08-08T13:40:15Z" ;
+		time:units = "seconds since 1981-08-08T13:40:02Z" ;
+	double parameter_name(time) ;
+		parameter_name:standard_name = "time" ;
+		parameter_name:units = "Volts" ;
+		parameter_name:channel = "channel_name" ;
+		parameter_name:device = "device_name" ;
+		parameter_name:satellite = "satellite_name" ;
+		parameter_name:parent_parameter = " " ;
+	double parameter_name_2(time) ;
+// --//--//--
+
+// global attributes:
+
+
+data:
+time = 42898.434, 42899.435, 42900.435, 42901.435, 42902.435, 42903.435;
+
+parameter_name = 5.325722e-14, 5.298651e-14, 5.28933e-14, 5.291723e-14, 
+    5.300551e-14, 5.311579e-14 ;
