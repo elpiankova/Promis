@@ -21,3 +21,7 @@ body {
 .container .text-muted {
     margin: 20px 0;
 }
+
+label {
+    font-family: 'Josefin Sans', sans-serif;
+}
