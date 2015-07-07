@@ -1,0 +1,5 @@
+# Ignoring python bite code files and other temp files:
+*.pyc 
+# Ignoring IDE project and settings files:
+.*project .idea/*
+.settings/*
