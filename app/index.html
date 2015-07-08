@@ -9,7 +9,7 @@
   <script src="bower_components/angular/angular.js"></script>
   <script src="js/controllers.js"></script>
 </head>
-<body ng-controller="СlaimInfoCtrl">
+<body ng-controller="claimInfoCtrl">
   <!-- Початок вмісту сторінки -->
   <div class="container">
     <div class="page-header">
@@ -45,9 +45,7 @@
       <label>Признак ветви:</label>
       <input type="text" list="team_list2" class="form-control">
       <datalist id="team_list2">
-        <option>Восходящая</option>
-        <option>Нисходящая</option>
-        <option>Не имеет значения</option>
+        <option ng-repeat="branche in branches">{{branche.name}}</option>
         <!-- и т.д. -->
       </datalist>
     </div>
@@ -76,15 +74,7 @@
           <label>Назва приладу:</label>
           <input type="text" list="team_list" class="form-control">
           <datalist id="team_list">
-            <option>Волновые зонды WP</option>
-            <option>Электрический зонд</option>
-            <option>Радиочастотный анализатор</option>
-            <option>Датчик нейтрального компонента плазмы</option>
-            <option>Блок датчиков электронного компонента плазмы</option>
-            <option>Феррозондовый магнитометр постоянного поля</option>
-            <option>Измеритель полного электронного содержания</option>
-            <option>Система сбора научной информации</option>
-            <!-- и т.д. -->
+            <option ng-repeat="applic in appliance">{{applic.name}}</option>
           </datalist>
         </div>
 
@@ -92,14 +82,7 @@
           <label>Режим роботи:</label>
           <input type="text" list="team_list3" class="form-control">
           <datalist id="team_list3">
-            <option>Режим1</option>
-            <option>Режим2</option>
-            <option>Режим3</option>
-            <option>Режим4</option>
-            <option>Режим5</option>
-            <option>Режим6</option>
-            <option>Режим7</option>
-            <option>Режим8</option>
+            <option ng-repeat="branch in branches">{{branch.name}}</option>
           </datalist>
         </div>
         <div class="row form-group">
@@ -134,7 +117,7 @@
         <span class="glyphicon glyphicon-ok"></span>
         Згенерувати заявку
       </button>
-      <a href="KNA.zp" class="btn btn-success btn-lg btn-block" download="KNAddmmyynnnn.zp"><span class="glyphicon glyphicon-download-alt"></span> Скачать </a>
+      <a href="KNA.zp" class="btn btn-success btn-lg btn-block" download="KNA"><span class="glyphicon glyphicon-download-alt"></span> Скачать </a>
     </div>
   </form>
 
