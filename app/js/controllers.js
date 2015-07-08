@@ -41,7 +41,7 @@ requestKNA.controller('claimInfoCtrl', function($scope){
         {   'name' : 'Система сбора научной информации',
             'atr' : 'SSNI00'},
     ];
-    $scope.branches = [
+    $scope.behavior = [
         {   'name' : 'Моніторинг',
             'atr' : 'M'},
         {   'name' : 'MONITOR1',
