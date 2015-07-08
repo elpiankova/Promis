@@ -3,6 +3,13 @@
 /* Controllers */
 var requestKNA = angular.module('requestKNA', []);
 
+requestKNA.config(function($interpolateProvider) {
+    $interpolateProvider.startSymbol('[[');
+    $interpolateProvider.endSymbol(']]');
+});
+
+
+
 requestKNA.controller('claimInfoCtrl', function($scope){
     $scope.maindata =
         {   'kna' : 'KNA',
