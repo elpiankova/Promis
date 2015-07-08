@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" ng-app="phonecatApp">
+<html lang="en" ng-app="requestKNA">
 <head>
   <meta charset="utf-8">
   <title>My HTML File</title>
@@ -9,11 +9,11 @@
   <script src="bower_components/angular/angular.js"></script>
   <script src="js/controllers.js"></script>
 </head>
-<body ng-controller="PhoneListCtrl">
+<body ng-controller="СlaimInfoCtrl">
   <!-- Початок вмісту сторінки -->
   <div class="container">
     <div class="page-header">
-      <h1>Створення заявки</h1>
+      <h1>Створення заявки {{}}</h1>
     </div>
     <p class="lead">Створення заявки на політ та коротке описання що саме ми робимо...
       це все буде знаходитись тут після того як ми самі зрозуміємо що ми самі хочемо</p>
@@ -22,14 +22,14 @@
     <div class="panel panel-default">
 
       <div class="panel-heading"><b>Оформлення заявки</b></div>
-      <div class="panel-body">
+      <div class="panel-body" >
     <div class="form-group">
       <label>Признак комплекса</label>
-      <input type="text" class="form-control" value="KNA">
+      <input type="text" class="form-control" ng-model="maindata.kna">
     </div>
     <div class="form-group">
       <label >Номер заявки (буде приписуватись з сервера автоматично)</label>
-      <input type="text" class="form-control" value="0002">
+      <input type="text" class="form-control" ng-model="maindata.appnumber">
     </div>
     <div class="row form-group">
       <div class="col-sm-6">
@@ -134,12 +134,17 @@
         <span class="glyphicon glyphicon-ok"></span>
         Згенерувати заявку
       </button>
+      <a href="KNA.zp" class="btn btn-success btn-lg btn-block" download="KNAddmmyynnnn.zp"><span class="glyphicon glyphicon-download-alt"></span> Скачать </a>
     </div>
   </form>
+
+
+
   <footer class="footer">
     <div class="container">
       <p class="text-muted">Копірайти та може контакти чи ще щось</p>
     </div>
   </footer>
+
 </body>
 </html>
