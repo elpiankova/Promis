@@ -10,8 +10,15 @@ requestKNA.config(function($interpolateProvider) {
 
 
 
-requestKNA.controller('claimInfoCtrl', function($scope){
-    $scope.maindata =
+requestKNA.controller('claimInfoCtrl', function($scope, $http){
+
+    $http.get('behavior/appliance.json').success(function(data, status, headers, config){
+        console.log('Data:',data,'\n\n Status:',status,'\n\n Headers:', headers,'\n\nConfig:',config);
+        $scope.appliance = data;
+    }).error(function(){
+        console.log('Error');
+    });
+    /*$scope.maindata =
         {   'kna' : 'KNA',
             'appnumber' : '0003'
         }
@@ -52,5 +59,5 @@ requestKNA.controller('claimInfoCtrl', function($scope){
             'atr' : 'M10'},
         {   'name' : 'SPECTRUM',
             'atr' : 'SPECTRUM'},
-    ];
+    ];*/
 });
