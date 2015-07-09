@@ -1,12 +1,12 @@
 [
-  { 'name' : 'Моніторинг',
-    'atr' : 'M'},
-  { 'name' : 'MONITOR1',
-    'atr' : 'MONITOR1'},
-  { 'name' : 'M10',
-    'atr' : 'M10'},
-  { 'name' : 'M10',
-    'atr' : 'M10'},
-  { 'name' : 'SPECTRUM',
-    'atr' : 'SPECTRUM'},
+  { "name" : "Моніторинг",
+    "atr" : "M"},
+  { "name" : "MONITOR1",
+    "atr" : "MONITOR1"},
+  { "name" : "M10",
+    "atr" : "M10"},
+  { "name" : "M10",
+    "atr" : "M10"},
+  { "name" : "SPECTRUM",
+    "atr" : "SPECTRUM"}
 ]

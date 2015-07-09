@@ -10,54 +10,19 @@ requestKNA.config(function($interpolateProvider) {
 
 
 
-requestKNA.controller('claimInfoCtrl', function($scope, $http){
-
-    $http.get('behavior/appliance.json').success(function(data, status, headers, config){
-        console.log('Data:',data,'\n\n Status:',status,'\n\n Headers:', headers,'\n\nConfig:',config);
+requestKNA.controller('claimInfoCtrl',['$scope','$http', function($scope, $http) {
+    $http.get('behavior/appliance.json').success(function(data, status, headers, config) {
+        console.log('This is Data:',data,'\n\nThis is Status:',status,'\n\nThis is Headers:',headers,'\n\nThis is config:',config);
         $scope.appliance = data;
-    }).error(function(){
-        console.log('Error');
     });
-    /*$scope.maindata =
-        {   'kna' : 'KNA',
-            'appnumber' : '0003'
-        }
-    $scope.branches = [
-        {   'name' : 'Восходящая',
-            'atr' : 'v'},
-        {   'name' : 'Нисходящая',
-            'atr' : 'n'},
-        {   'name' : 'Не имеет значения',
-            'atr' : 'p'}
-    ];
-    $scope.appliance = [
-        {   'name' : 'Волновые зонды WP',
-            'atr' : 'WP0000'},
-        {   'name' : 'Электрический зонд',
-            'atr' : 'EP0000'},
-        {   'name' : 'Радиочастотный анализатор',
-            'atr' : 'RFA000'},
-        {   'name' : 'Датчик нейтрального компонента плазмы',
-            'atr' : 'DN0000'},
-        {   'name' : 'Блок датчиков электронного компонента плазмы',
-            'atr' : 'DE0000'},
-        {   'name' : 'Феррозондовый магнитометр постоянного поля',
-            'atr' : 'FGM000'},
-        {   'name' : 'Измеритель полного электронного содержания',
-            'atr' : 'PES000'},
-        {   'name' : 'Система сбора научной информации',
-            'atr' : 'SSNI00'},
-    ];
-    $scope.behavior = [
-        {   'name' : 'Моніторинг',
-            'atr' : 'M'},
-        {   'name' : 'MONITOR1',
-            'atr' : 'MONITOR1'},
-        {   'name' : 'M10',
-            'atr' : 'M10'},
-        {   'name' : 'M10',
-            'atr' : 'M10'},
-        {   'name' : 'SPECTRUM',
-            'atr' : 'SPECTRUM'},
-    ];*/
-});
+
+    $http.get('behavior/behavior.json').success(function(data, status, headers, config) {
+        console.log('This is Data:',data,'\n\nThis is Status:',status,'\n\nThis is Headers:',headers,'\n\nThis is config:',config);
+        $scope.behavior = data;
+    });
+
+    $http.get('behavior/branches.json').success(function(data, status, headers, config) {
+        console.log('This is Data:',data,'\n\nThis is Status:',status,'\n\nThis is Headers:',headers,'\n\nThis is config:',config);
+        $scope.branches = data;
+    });
+}]);
