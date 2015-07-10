@@ -8,6 +8,8 @@
   <link rel="stylesheet" href="css/main.css">
   <script src="bower_components/angular/angular.js"></script>
   <script src="js/controllers.js"></script>
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+
 </head>
 <body ng-controller="claimInfoCtrl">
   <!-- Початок вмісту сторінки -->
@@ -24,87 +26,83 @@
       <div class="panel-heading"><b>Оформлення заявки</b></div>
       <div class="panel-body" >
     <div class="form-group">
-      <label>Признак комплекса</label>
-      <input type="text" class="form-control" ng-model="maindata.kna">
-    </div>
-    <div class="form-group">
       <label >Номер заявки (буде приписуватись з сервера автоматично)</label>
-      <input type="text" class="form-control" ng-model="maindata.appnumber">
+      <input type="text" class="form-control" ng-model="maindata.appnumber" required>
     </div>
     <div class="row form-group">
       <div class="col-sm-6">
         <label>Дата початку</label>
-        <input type="date" class="form-control">
+        <input type="date" class="form-control" required>
       </div>
       <div class="col-sm-6">
         <label>Дата кінця</label>
-        <input type="date" class="form-control">
+        <input type="date" class="form-control" required>
       </div>
     </div>
     <div class="form-group">
       <label>Признак ветви:</label>
-      <input type="text" list="team_list2" class="form-control">
-      <datalist id="team_list2">
+      <select class="form-control" required>
         <option ng-repeat="branche in branches">[[branche.name]]</option>
+      </select>
         <!-- и т.д. -->
       </datalist>
     </div>
 
     <div class="form-group">
       <label>Широта начальной точки сеанса работы</label>
-      <input type="number" value="0" min="-82.0" max="82.0" step="0.1" class="form-control" >
+      <input type="number" value="0" min="-82.0" max="82.0" step="0.1" class="form-control" required>
     </div>
 
     <div class="row form-group">
       <div class="col-sm-6">
         <label>Лівий кордон діапазону</label>
-        <input type="number" value="180" min="0" max="359.0" step="0.1" class="form-control">
+        <input type="number" value="180" min="0" max="359.0" step="0.1" class="form-control" required>
       </div>
       <div class="col-sm-6">
         <label>Правий кордон діапазону</label>
-        <input type="number" value="180" min="0" max="359.0" step="0.1" class="form-control">
+        <input type="number" value="180" min="0" max="359.0" step="0.1" class="form-control" required>
       </div>
     </div>
-    <div class="panel panel-default">
+        <div id="hello">
+          <div class="panel panel-default" >
 
-      <div class="panel-heading"><b>Пристрій 1</b></div>
-      <div class="panel-body">
+            <div class="panel-heading"><b>Пристрій 1</b></div>
+            <div class="panel-body">
 
-        <div class="form-group">
-          <label>Назва приладу:</label>
-          <input type="text" list="team_list" class="form-control">
-          <datalist id="team_list">
-            <option ng-repeat="applic in appliance">[[applic.name]]</option>
-          </datalist>
-        </div>
+              <div class="form-group">
+                <label>Назва приладу:</label>
+                <select class="form-control">
+                  <option ng-repeat="applic in appliance" required>[[applic.name]]</option>
+                </select>
+              </div>
 
-        <div class="form-group">
-          <label>Режим роботи:</label>
-          <input type="text" list="team_list3" class="form-control">
-          <datalist id="team_list3">
-            <option ng-repeat="behavior in behavior">[[behavior.name]]</option>
-          </datalist>
-        </div>
-        <div class="row form-group">
-          <div class="col-sm-6">
-            <label>Час затримки</label>
-            <input type="time" class="form-control">
+              <div class="form-group">
+                <label>Режим роботи:</label>
+                <select class="form-control">
+                  <option ng-repeat="behavior in behavior" required>[[behavior.name]]</option>
+                </select>
+              </div>
+              <div class="row form-group">
+                <div class="col-sm-6">
+                  <label>Час затримки</label>
+                  <input type="time" class="form-control" required>
+                </div>
+                <div class="col-sm-6">
+                  <label>Час роботи</label>
+                  <input type="time" class="form-control" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Код для програматора</label>
+                <textarea class="form-control" rows="3"></textarea>
+              </div>
+            </div>
           </div>
-          <div class="col-sm-6">
-            <label>Час роботи</label>
-            <input type="time" class="form-control">
-          </div>
         </div>
-        <div class="form-group">
-          <label>Код для програматора</label>
-          <textarea class="form-control" rows="3"></textarea>
-        </div>
-
-      </div>
-    </div>
     <div class="form-group">
       <button type="button"
-              class="btn btn-primary btn-lg btn-block">
+              class="btn btn-primary btn-lg btn-block"
+              onclick="addYellowSquare();">
         <span class="glyphicon glyphicon-plus"></span>
         Добавити ще один пристрій
       </button>
@@ -117,17 +115,44 @@
         <span class="glyphicon glyphicon-ok"></span>
         Згенерувати заявку
       </button>
-      <a href="KNA.zp" class="btn btn-success btn-lg btn-block" download="KNA"><span class="glyphicon glyphicon-download-alt"></span> Скачать </a>
+      <!--<a href="KNA.zp" class="btn btn-success btn-lg btn-block" download="KNA"><span class="glyphicon glyphicon-download-alt"></span> Скачать </a> -->
     </div>
   </form>
-
-
-
   <footer class="footer">
     <div class="container">
       <p class="text-muted">Копірайти та може контакти чи ще щось</p>
     </div>
   </footer>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+  <script>function addYellowSquare(){ $("#hello").append("<div class='panel panel-default' >" +
+          "<div class='panel-heading'><b>Пристрій 1</b></div>" +
+          "<div class='panel-body'>" +
+            "<div class='form-group'>" +
+              "<label>Назва приладу:</label>" +
+              "<select class='form-control'>" +
+                "<option ng-repeat='applic in appliance' required>[[applic.name]]</option>" +
+              "</select>" +
+            "</div>"+
+            "<div class='form-group'>"+
+              "<label>Режим роботи:</label>" +
+              "<select class='form-control'>" +
+                "<option ng-repeat='behavior in behavior' required>[[behavior.name]]</option>"+
+              "</select>" +
+            "</div>" +
+            "<div class='row form-group'>" +
+              "<div class='col-sm-6'>" +
+                "<label>Час затримки</label>" +
+                "<input type='time' class='form-control' required>" +
+              "</div>" +
+              "<div class='col-sm-6'>" +
+                "<label>Час роботи</label>" +
+                "<input type='time' class='form-control' required>" +
+              "</div>" +
+            "</div>" +
+            "<div class='form-group'>" +
+              "<label>Код для програматора</label>" +
+              "<textarea class='form-control' rows='3'></textarea>" +
+            "</div>" +
+          "</div>" +
+          "</div>"); }</script>
 </body>
 </html>

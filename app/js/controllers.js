@@ -25,4 +25,5 @@ requestKNA.controller('claimInfoCtrl',['$scope','$http', function($scope, $http)
         console.log('This is Data:',data,'\n\nThis is Status:',status,'\n\nThis is Headers:',headers,'\n\nThis is config:',config);
         $scope.branches = data;
     });
+
 }]);
