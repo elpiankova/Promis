@@ -26,7 +26,8 @@ class Request(models.Model):
                                           validators=[request_max_longitude_validator,
                                                       request_min_longitude_validator])
 
-    device_amount = models.SmallIntegerField(validators=[device_amount_validator])
+    device_amount = models.SmallIntegerField(validators=[device_amount_max_val_validator,
+                                                         device_amount_min_val_validator])
     request_file = models.FilePathField(path=BASE_DIR+'/request_files', validators=[request_file_validator])
     creation_date = models.DateTimeField(auto_now_add=True)
     update_date = models.DateTimeField(auto_now=True)
@@ -43,8 +44,26 @@ class Request(models.Model):
         super(Request, self).save(*args, **kwargs)
 
 class Device(models.Model):
+    WP0000 = 'WP0000'
+    EP0000 = 'EP0000'
+    RFA000 = 'RFA000'
+    DN0000 = 'DN0000'
+    DE0000 = 'DE0000'
+    FGM000 = 'FGM000'
+    PES000 = 'PES000'
+    SSNI00 = 'SSNI00'
+    PROBES = (
+        (WP0000, 'Wave probe WP(count3)'),
+        (EP0000, 'Electric  probe'),
+        (RFA000, 'Radio frequency analyser'),
+        (DN0000, 'Neutral component plasma probe'),
+        (DE0000, 'Electric component plasma probes'),
+        (FGM000, 'Flux-Gate magnetometer constant field'),
+        (PES000, 'Total electron content'),
+        (SSNI00, 'System for gathering scientific information'),
+    )
     name = models.CharField(max_length=255)
-    code = models.CharField(max_length=6)
+    code = models.CharField(max_length=6, choices=PROBES)
     description = models.TextField(null=True, blank=True)
 
     class Meta:
