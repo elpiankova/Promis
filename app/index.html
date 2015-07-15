@@ -27,7 +27,7 @@
       <div class="panel-body" >
     <div class="form-group">
       <label >Номер заявки (буде приписуватись з сервера автоматично)</label>
-      <input type="text" class="form-control" ng-model="number" required>
+      <input type="number" min="0" max="9999" step="1" class="form-control" ng-model="number" required>
     </div>
     <div class="row form-group">
       <div class="col-sm-6">
@@ -105,7 +105,7 @@
         Добавити пристрій
       </button>
     </div>
-          <textarea class="form-control" rows="3">KNA [[number]] [[dateStart | date:'ddMMyy']] [[dateEnd | date:'ddMMyy']] [[ mybranches.atr ]] [[startPoint]] [[borderLeft]] [[borderRight]] [[todoList.todos.length]]</textarea>
+          <textarea class="form-control" rows="3">KNA [[number]] [[dateStart | date:'ddMMyy']] [[dateEnd | date:'ddMMyy']] [[ mybranches.atr ]] [[startPoint]] [[borderLeft | number:1]] [[borderRight | number:4]] [[todoList.todos.length]]</textarea>
         </div>
         </div>
       </div>
