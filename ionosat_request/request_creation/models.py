@@ -44,14 +44,14 @@ class Request(models.Model):
         super(Request, self).save(*args, **kwargs)
 
 class Device(models.Model):
-    WP0000 = 'WP0000'
-    EP0000 = 'EP0000'
-    RFA000 = 'RFA000'
-    DN0000 = 'DN0000'
-    DE0000 = 'DE0000'
-    FGM000 = 'FGM000'
-    PES000 = 'PES000'
-    SSNI00 = 'SSNI00'
+    WP0000 = 'Wave probe WP(count3)'
+    EP0000 = 'Electric  probe'
+    RFA000 = 'Radio frequency analyser'
+    DN0000 = 'Neutral component plasma probe'
+    DE0000 = 'Electric component plasma probes'
+    FGM000 = 'Flux-Gate magnetometer constant field'
+    PES000 = 'Total electron content'
+    SSNI00 = 'System for gathering scientific information'
     PROBES = (
         (WP0000, 'Wave probe WP(count3)'),
         (EP0000, 'Electric  probe'),
@@ -62,15 +62,15 @@ class Device(models.Model):
         (PES000, 'Total electron content'),
         (SSNI00, 'System for gathering scientific information'),
     )
-    name = models.CharField(max_length=255)
-    code = models.CharField(max_length=6, choices=PROBES)
+    name = models.CharField(max_length=255, choices=PROBES)
+    code = models.CharField(max_length=6)
     description = models.TextField(null=True, blank=True)
 
     class Meta:
         db_table = 'devices'
 
     def __str__(self):
-        return self.device_name
+        return self.name
 
 class DeviceMode(models.Model):
     name = models.CharField(max_length=255)
