@@ -12,18 +12,27 @@ requestKNA.config(function($interpolateProvider) {
 
 requestKNA.controller('claimInfoCtrl',['$scope','$http', function($scope, $http) {
     $http.get('behavior/appliance.json').success(function(data, status, headers, config) {
-        console.log('This is Data:',data,'\n\nThis is Status:',status,'\n\nThis is Headers:',headers,'\n\nThis is config:',config);
         $scope.appliance = data;
     });
 
     $http.get('behavior/behavior.json').success(function(data, status, headers, config) {
-        console.log('This is Data:',data,'\n\nThis is Status:',status,'\n\nThis is Headers:',headers,'\n\nThis is config:',config);
         $scope.behavior = data;
     });
 
     $http.get('behavior/branches.json').success(function(data, status, headers, config) {
-        console.log('This is Data:',data,'\n\nThis is Status:',status,'\n\nThis is Headers:',headers,'\n\nThis is config:',config);
         $scope.branches = data;
     });
 
+
+
 }]);
+
+requestKNA.controller('TodoListController', function() {
+    var todoList = this;
+    todoList.todos = [];
+
+    todoList.addTodo = function() {
+        todoList.todos.push({todoList});
+    };
+
+});

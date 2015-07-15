@@ -63,22 +63,22 @@
         <input type="number" value="180" min="0" max="359.0" step="0.1" class="form-control" required>
       </div>
     </div>
-        <div id="hello">
-          <div class="panel panel-default" >
+        <div id="hello" ng-controller="TodoListController as todoList">
+          <div class="panel panel-default" ng-repeat="todo in todoList.todos">
 
-            <div class="panel-heading"><b>Пристрій 1</b></div>
+            <div class="panel-heading"><b> Прилад : [[ applianceName ]]</b></div>
             <div class="panel-body">
 
               <div class="form-group">
                 <label>Назва приладу:</label>
-                <select class="form-control">
-                  <option ng-repeat="applic in appliance" required>[[applic.name]]</option>
+                <select class="form-control" required ng-model="applianceName" >
+                  <option ng-repeat="applic in appliance" required>[[ applic.name ]]</option>
                 </select>
               </div>
 
               <div class="form-group">
                 <label>Режим роботи:</label>
-                <select class="form-control">
+                <select class="form-control" required>
                   <option ng-repeat="behavior in behavior" required>[[behavior.name]]</option>
                 </select>
               </div>
@@ -98,15 +98,16 @@
               </div>
             </div>
           </div>
-        </div>
+
     <div class="form-group">
-      <button type="button"
-              class="btn btn-primary btn-lg btn-block"
-              onclick="addYellowSquare();">
+      <button ng-click="todoList.addTodo()"
+              type="button"
+              class="btn btn-primary btn-lg btn-block">
         <span class="glyphicon glyphicon-plus"></span>
-        Добавити ще один пристрій
+        Добавити пристрій
       </button>
     </div>
+        </div>
         </div>
       </div>
     <div class="form-group">
@@ -123,36 +124,10 @@
       <p class="text-muted">Копірайти та може контакти чи ще щось</p>
     </div>
   </footer>
-  <script>function addYellowSquare(){ $("#hello").append("<div class='panel panel-default' >" +
-          "<div class='panel-heading'><b>Пристрій 1</b></div>" +
-          "<div class='panel-body'>" +
-            "<div class='form-group'>" +
-              "<label>Назва приладу:</label>" +
-              "<select class='form-control'>" +
-                "<option ng-repeat='applic in appliance' required>[[applic.name]]</option>" +
-              "</select>" +
-            "</div>"+
-            "<div class='form-group'>"+
-              "<label>Режим роботи:</label>" +
-              "<select class='form-control'>" +
-                "<option ng-repeat='behavior in behavior' required>[[behavior.name]]</option>"+
-              "</select>" +
-            "</div>" +
-            "<div class='row form-group'>" +
-              "<div class='col-sm-6'>" +
-                "<label>Час затримки</label>" +
-                "<input type='time' class='form-control' required>" +
-              "</div>" +
-              "<div class='col-sm-6'>" +
-                "<label>Час роботи</label>" +
-                "<input type='time' class='form-control' required>" +
-              "</div>" +
-            "</div>" +
-            "<div class='form-group'>" +
-              "<label>Код для програматора</label>" +
-              "<textarea class='form-control' rows='3'></textarea>" +
-            "</div>" +
-          "</div>" +
-          "</div>"); }</script>
+  
+    <script async="" src="https://cdn.rawgit.com/eligrey/Blob.js/master/Blob.js"/>
+    <script async="" src="https://cdn.rawgit.com/eligrey/canvas-toBlob.js/master/canvas-toBlob.js"/>
+    <script async="" src="https://cdn.rawgit.com/eligrey/FileSaver.js/master/FileSaver.js"/>
+    <script async="" src="https://cdn.rawgit.com/eligrey/FileSaver.js/master/demo/demo.js"/>
 </body>
 </html>
