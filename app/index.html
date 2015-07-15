@@ -40,10 +40,8 @@
       </div>
     </div>
     <div class="form-group">
-      <label>Признак ветви:</label>
-      <select class="form-control" required>
-        <option ng-repeat="branche in branches">[[branche.name]]</option>
-      </select>
+      <label>Признак ветви: [[ mybranches.atr ]]</label>
+      <select ng-model="mybranches" ng-options="branch.name for branch in branches" class="form-control" required></select>
         <!-- и т.д. -->
       </datalist>
     </div>

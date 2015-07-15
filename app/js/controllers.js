@@ -21,6 +21,7 @@ requestKNA.controller('claimInfoCtrl',['$scope','$http', function($scope, $http)
 
     $http.get('behavior/branches.json').success(function(data, status, headers, config) {
         $scope.branches = data;
+        console.log(data);
     });
 
 
