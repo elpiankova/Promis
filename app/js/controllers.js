@@ -1,15 +1,6 @@
 'use strict';
 
 /* Controllers */
-var requestKNA = angular.module('requestKNA', []);
-
-requestKNA.config(function($interpolateProvider) {
-    $interpolateProvider.startSymbol('[[');
-    $interpolateProvider.endSymbol(']]');
-});
-
-
-
 requestKNA.controller('claimInfoCtrl',['$scope','$http', function($scope, $http) {
     $http.get('behavior/appliance.json').success(function(data, status, headers, config) {
         $scope.appliance = data;
@@ -23,9 +14,6 @@ requestKNA.controller('claimInfoCtrl',['$scope','$http', function($scope, $http)
         $scope.branches = data;
         console.log(data);
     });
-
-
-
 }]);
 
 requestKNA.controller('TodoListController', function() {
@@ -35,5 +23,5 @@ requestKNA.controller('TodoListController', function() {
     todoList.addTodo = function() {
         todoList.todos.push({todoList});
     };
-
 });
+
