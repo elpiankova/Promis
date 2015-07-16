@@ -16,12 +16,23 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from django.views.generic import TemplateView
-from request_creation.api import DeviceResource
-device_resource = DeviceResource()
+#from request_creation.api import DeviceResource, DeviceModeResource
+#device_resource = DeviceResource()
+#device_mode_resource = DeviceModeResource()
+from rest_framework import routers
+from request_creation import views
+
+router = routers.DefaultRouter()
+router.register(r'devices', views.DeviceViewSet)
+router.register(r'request', views.RequestViewSet)
+router.register(r'devswitch', views.DeviceSwitchViewSet)
+
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', TemplateView.as_view(template_name="request_creation/index.html")),
-    url(r'^api/', include(device_resource.urls))
+    url(r'^', include(router.urls)),
+    url(r'^number', views.view_get_number),
+    url(r'^orbit_flag', views.view_orbit_flag),
 ]
 

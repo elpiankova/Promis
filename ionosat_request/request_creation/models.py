@@ -37,7 +37,7 @@ class Request(models.Model):
         db_table = 'requests'
 
     def __str__(self):
-        return self.number
+        return str(self.number)
 
     def save(self, *args, **kwargs):
         self.clean_fields()
@@ -75,13 +75,13 @@ class Device(models.Model):
 class DeviceMode(models.Model):
     name = models.CharField(max_length=255)
     code = models.CharField(max_length=6)
-    device = models.ForeignKey('Device')
+    device = models.ForeignKey('Device', related_name='modes')
 
     class Meta:
         db_table = 'device_modes'
 
     def __str__(self):
-        return self.mode_name
+        return self.name
 
 class DeviceSwitch(models.Model):
     argument_part_len = models.SmallIntegerField() #limit duration in validator 10
@@ -90,7 +90,7 @@ class DeviceSwitch(models.Model):
     argument_part = models.CharField(max_length=620)
     device = models.ForeignKey('Device')
     mode = models.ForeignKey('DeviceMode') # limit to choice to
-    request = models.ForeignKey('Request') # limit to choice
+    request = models.ForeignKey('Request', related_name='switches') # limit to choice
 
     class Meta:
         db_table = 'device_switches'
