@@ -64,21 +64,17 @@
         <div id="hello" ng-controller="TodoListController as todoList">
           <div class="panel panel-default" ng-repeat="todo in todoList.todos">
 
-            <div class="panel-heading"><b> Прилад : [[ applianceName ]]</b></div>
+            <div class="panel-heading"><b> Прилад : [[ myapplic.name ]]</b></div>
             <div class="panel-body">
 
               <div class="form-group">
-                <label>Назва приладу:</label>
-                <select class="form-control" required ng-model="applianceName" >
-                  <option ng-repeat="applic in appliance" required>[[ applic.name ]]</option>
-                </select>
+                <label>Назва приладу:[[ myapplic.atr ]]</label>
+                <select ng-model="myapplic" ng-options="applic.name for applic in appliance" class="form-control" required></select>
               </div>
 
               <div class="form-group">
-                <label>Режим роботи:</label>
-                <select class="form-control" required>
-                  <option ng-repeat="behavior in behavior" required>[[behavior.name]]</option>
-                </select>
+                <label>Режим роботи:[[ mybehav.atr ]]</label>
+                <select ng-model="mybehav" ng-options="behav.name for behav in behavior" class="form-control" required></select>
               </div>
               <div class="row form-group">
                 <div class="col-sm-6">
@@ -92,7 +88,7 @@
               </div>
               <div class="form-group">
                 <label>Код для програматора</label>
-                <textarea class="form-control" rows="3"></textarea>
+                <textarea class="form-control" rows="3">[[ myapplic.atr ]] [[ mybehav.atr ]]</textarea>
               </div>
             </div>
           </div>
@@ -105,8 +101,8 @@
         Добавити пристрій
       </button>
     </div>
-          <textarea class="form-control" rows="3">KNA [[number]] [[dateStart | date:'ddMMyy']] [[dateEnd | date:'ddMMyy']] [[ mybranches.atr ]] [[startPoint]] [[borderLeft | number:1]] [[borderRight | number:4]] [[todoList.todos.length]]</textarea>
-        </div>
+          <div>KNA [[number]] [[dateStart | date:'ddMMyy']] [[dateEnd | date:'ddMMyy']] [[ mybranches.atr ]] [[startPoint]] [[borderLeft | number:1]] [[borderRight | number:4]] [[todoList.todos.length]]<br>
+            <span>Масив з пристроями [[ myapplic.atr ]] [[ mybehav.atr ]]<br></span></div>
         </div>
       </div>
     <div class="form-group">
