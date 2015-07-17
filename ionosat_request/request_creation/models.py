@@ -12,7 +12,7 @@ class Request(models.Model):
         (DOWNWARD_ORBIT, 'downward'),
         (ANY_ORBIT, 'any'),
     )
-    number = models.SmallIntegerField(validators=[request_max_number_validator])
+    number = models.SmallIntegerField(validators=[request_max_number_validator], unique=True)
     date_start = models.DateField()
     date_end = models.DateField()
     orbit_flag = models.CharField(max_length=1, choices=ORBIT_FLAG, default=ANY_ORBIT)
@@ -31,6 +31,7 @@ class Request(models.Model):
     request_file = models.FilePathField(path=BASE_DIR+'/request_files', validators=[request_file_validator])
     creation_date = models.DateTimeField(auto_now_add=True)
     update_date = models.DateTimeField(auto_now=True)
+
 ##  device_switch_list = models.ManyToManyField('DeviceSwitch')
 
     class Meta:
@@ -62,8 +63,8 @@ class Device(models.Model):
         (PES000, 'Total electron content'),
         (SSNI00, 'System for gathering scientific information'),
     )
-    name = models.CharField(max_length=255, choices=PROBES)
-    code = models.CharField(max_length=6)
+    name = models.CharField(max_length=255, choices=PROBES, unique=True)
+    code = models.CharField(max_length=6, unique=True)
     description = models.TextField(null=True, blank=True)
 
     class Meta:
@@ -79,6 +80,7 @@ class DeviceMode(models.Model):
 
     class Meta:
         db_table = 'device_modes'
+        unique_together = ("device", "name")
 
     def __str__(self):
         return self.name
@@ -94,8 +96,9 @@ class DeviceSwitch(models.Model):
 
     class Meta:
         db_table = 'device_switches'
+        unique_together = ("device", "request")
 
     def __str__(self):
-        return self.time_duration
+        return str(self.time_duration)
 # Create your models here.
 
