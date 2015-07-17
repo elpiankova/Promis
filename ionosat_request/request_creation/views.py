@@ -5,6 +5,7 @@ from rest_framework import viewsets
 from .serializers import DeviceSerializer, RequestSerializer, DeviceSwitchSerializer
 from django.http import HttpResponse
 import json
+from django.views.decorators.http import require_GET
 
 
 class DeviceViewSet(viewsets.ReadOnlyModelViewSet):
@@ -25,15 +26,16 @@ class DeviceSwitchViewSet(viewsets.ModelViewSet):
     queryset = DeviceSwitch.objects.all()
     serializer_class = DeviceSwitchSerializer
 
-
+@require_GET()
 def view_get_number(request):
     last_object = Request.objects.last()
 
-    if last_object != None:
-        return HttpResponse(last_object.number+1)
-    else:
+    if last_object:
         return HttpResponse(1)
+    else:
+        return HttpResponse(last_object.number+1)
 
+@require_GET()
 def view_orbit_flag(request):
     list_orbit_flag = []
     for i in Request.ORBIT_FLAG:
