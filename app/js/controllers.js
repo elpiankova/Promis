@@ -14,6 +14,12 @@ requestKNA.controller('claimInfoCtrl',['$scope','$http', function($scope, $http)
         $scope.branches = data;
         console.log(data);
     });
+
+    $scope.numberval = '1';
+    $scope.startPointval = '1';
+
+    $scope.borderLeftval = '1';
+    $scope.borderRightval = '1';
 }]);
 
 requestKNA.controller('TodoListController', function() {
