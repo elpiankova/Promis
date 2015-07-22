@@ -21,7 +21,7 @@ requestKNA.controller('TodoListController', function() {
     todoList.todos = [];
 
     todoList.addTodo = function() {
-        todoList.todos.push({todoList});
+        todoList.todos.push({ todoList });
     };
 });
 

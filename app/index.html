@@ -17,10 +17,9 @@
   <!-- Початок вмісту сторінки -->
   <div class="container">
     <div class="page-header">
-      <h1>Створення заявки </h1>
+      <h1>Заявки на проведение научных экспериментов КНА "Ионосат-Микро" </h1>
     </div>
-    <p class="lead">Створення заявки на політ та коротке описання що саме ми робимо...
-      це все буде знаходитись тут після того як ми самі зрозуміємо що ми самі хочемо</p>
+    <p class="lead">Принять формат файла заявки на проведение научных экспериментов КНА "Ионосат-Микро"</p>
   </div>
   <form role="form" class="container">
     <div class="panel panel-default">
@@ -44,18 +43,17 @@
     <div class="form-group">
       <label>Признак ветви: </label>
       <select ng-model="mybranches" ng-options="branch.name for branch in branches" class="form-control" required></select>
-        <!-- и т.д. -->
       </datalist>
     </div>
 
     <div class="form-group">
-      <label>Широта начальной точки сеанса работы!!!!</label>
+      <label>Широта начальной точки сеанса работы</label>
       <input type="number" value="0" min="-82.0" max="82.0" step="0.1" class="form-control" ng-model="startPoint" required>
     </div>
 
     <div class="row form-group">
       <div class="col-sm-6">
-        <label>Лівий кордон діапазону!!!</label>
+        <label>Лівий кордон діапазону</label>
         <input type="number" value="180" min="0" max="359.0" step="0.1" class="form-control" ng-model="borderLeft" required>
       </div>
       <div class="col-sm-6">
@@ -91,8 +89,6 @@
               <div class="form-group">
                 <label>Код для програматора</label>
                 <textarea class="form-control" rows="3" ng-model="text">[[ device ]]</textarea>
-
-                <span>[[ myapplic.atr ]] [[ mybehav.atr ]] [[ timedelay  | date:'HHmmss']] [[ timework   | date:'HHmmss']] [[text.split('\n').length]]<br></span>
               </div>
             </div>
           </div>
@@ -105,9 +101,6 @@
         Добавити пристрій
       </button>
     </div>
-          <div>KNA [[number | numberFilter]] [[dateStart | date:'ddMMyy']] [[dateEnd | date:'ddMMyy']] [[ mybranches.atr ]] [[startPoint]] [[borderLeft | number:1]] [[borderRight | number:4]] [[todoList.todos.length]]<br>
-            <span>Масив з пристроями [[ myapplic.atr ]] [[ mybehav.atr ]]<br></span></div>
-        </div>
       </div>
     <div class="form-group">
       <button type="button"
@@ -117,7 +110,7 @@
       </button>
       <!--<a href="KNA.zp" class="btn btn-success btn-lg btn-block" download="KNA"><span class="glyphicon glyphicon-download-alt"></span> Скачать </a> -->
     </div>
-  </form>
+   </form>
   <footer class="footer">
     <div class="container">
       <p class="text-muted">Копірайти та може контакти чи ще щось</p>
