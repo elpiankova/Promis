@@ -4,4 +4,4 @@ Promis
 
 PROcessed Measurements of Ionospheric Satellites (Ukrainian ionospheric satellites)
 
-[test site](http://promis.hol.es/ "Тестовий сайт")
+[Test site](http://promis.hol.es/ "Тестовий сайт")
