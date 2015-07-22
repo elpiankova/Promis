@@ -30,4 +30,3 @@ requestKNA.controller('TodoListController', function() {
         todoList.todos.push({ todoList });
     };
 });
-
