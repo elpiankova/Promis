@@ -28,7 +28,7 @@
       <div class="panel-body" >
     <div class="form-group">
       <label >Номер заявки (буде приписуватись з сервера автоматично)</label>
-      <input ng-model="numberval" ng-pattern="/^\d+$/" type="number" min="0" max="9999" step="1" class="form-control my-input" required>
+      <input type="number" min="0" max="9999" step="1" class="form-control" required>
     </div>
     <div class="row form-group">
       <div class="col-sm-6">
@@ -48,17 +48,17 @@
 
     <div class="form-group">
       <label>Широта начальной точки сеанса работы</label>
-      <input ng-model="startPointval" type="number" value="0" min="-82.0" max="82.0" step="0.1" class="form-control my-input" required>
+      <input type="number" value="0" min="-82.0" max="82.0" step="0.1" class="form-control" required>
     </div>
 
     <div class="row form-group">
       <div class="col-sm-6">
         <label>Лівий кордон діапазону</label>
-        <input ng-model="borderLeftval" type="number" value="180" min="0" max="359.0" step="0.1" class="form-control my-input" required>
+        <input type="number" value="180" min="0" max="359.0" step="0.1" class="form-control" required>
       </div>
       <div class="col-sm-6">
         <label>Правий кордон діапазону!!!</label>
-        <input ng-model="borderRightval" type="number" value="180" min="0" max="359.0" step="0.1" class="form-control my-input" required>
+        <input type="number" value="180" min="0" max="359.0" step="0.1" class="form-control" required>
       </div>
     </div>
         <div id="hello" ng-controller="TodoListController as todoList">
