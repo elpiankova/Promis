@@ -7,12 +7,18 @@ from ionosat_request.settings import BASE_DIR
 
 
 class DeviceModeSerializer(serializers.ModelSerializer):
+    """
+    This class collects serialization methods for device modes and attributes from model DeviceMode
+    """
     class Meta:
         model = DeviceMode
         fields = ('name', 'code')
 
 
 class DeviceSerializer(serializers.ModelSerializer):
+    """
+    This class collects serialization methods for devices and attributes from model Device
+    """
     modes = DeviceModeSerializer(many=True, read_only=True)
 
     class Meta:
@@ -21,6 +27,9 @@ class DeviceSerializer(serializers.ModelSerializer):
 
 
 class DeviceSwitchSerializer(serializers.ModelSerializer):
+    """
+    This class collects serialization methods for device switches and attributes from model DeviceSwitch
+    """
     device = serializers.SlugRelatedField(slug_field='name', queryset=Device.objects.all())
     mode = serializers.SlugRelatedField(slug_field='name', queryset=DeviceMode.objects.all())
 
@@ -32,7 +41,7 @@ class DeviceSwitchSerializer(serializers.ModelSerializer):
 
 class RequestSerializer(serializers.ModelSerializer):
     """
-
+    This class collects serialization methods for request creation and attributes from model Request
     """
     switches = DeviceSwitchSerializer(many=True)
 
@@ -53,16 +62,15 @@ class RequestSerializer(serializers.ModelSerializer):
         list_device_name = []
         for device_switch in device_switches_data:
 
-            """This block is validate a presence of one unique device
-            in request.
-            """
+            # This block is validate a presence of one unique device
+            # in request.
+
             device_name = device_switch["device"]
             if device_name in list_device_name:
                 raise ValidationError("Can not present more than one unique device")
             else:
                 list_device_name.append(device_name)
-            """This block are validate data consistency in argument part
-            """
+            # This block are validate data consistency in argument part
 
             argument_part = device_switch["argument_part"].split("\r\n")
             if len(argument_part) > 10:
@@ -71,9 +79,8 @@ class RequestSerializer(serializers.ModelSerializer):
                 if len(line) > 60:
                     raise ValidationError("Every line of the argument part must be shorter than 60 symbols")
 
-        """This block is calculate the amount of devices presented in request form verify argument part length
-           and create objects in data_base with validates fields.
-        """
+        # This block is calculate the amount of devices presented in request form verify argument part length
+        # and create objects in data_base with validates fields.
 
         device_amount = len(device_switches_data)
         request_file = self.create_file(validated_data, device_amount, device_switches_data)
@@ -88,11 +95,11 @@ class RequestSerializer(serializers.ModelSerializer):
 
     def create_file(self, validated_data, device_amount, device_switches_data):
         """
-
-        :param validated_data:
-        :param device_amount:
-        :param device_switches_data:
-        :return:
+        Create request file with defined structure
+        :param validated_data: data from REST, dictionary with fields in Meta without read_only_fields
+        :param device_amount: total amount of devices in one request
+        :param device_switches_data: total amount of the switches in one request
+        :return: file name of the operational request
         """
         number = validated_data["number"]
         date_start = validated_data["date_start"]
@@ -101,6 +108,7 @@ class RequestSerializer(serializers.ModelSerializer):
         date_end = datetime.date.strftime(date_end, "%d%m%y")
         request_file = 'KNA%(date_start)s%(number)04d.zp' % {"date_start": date_start,
                                                              "number": number}
+        # This block writes first line of request file
         file_data = open(BASE_DIR + '/request_files/' + request_file, 'w')
         first_line = ('KNA %(number)04d %(date_start)s %(date_end)s'
                       ' %(orbit_flag)s %(latitude_start)+04.1f'
@@ -117,6 +125,7 @@ class RequestSerializer(serializers.ModelSerializer):
                       })
         file_data.write(first_line)
 
+        # This block writes all another lines to request file
         for device_switch in device_switches_data:
             device = Device.objects.get(name=device_switch['device'])
             mode = DeviceMode.objects.get(name=device_switch['mode'], device=device)
@@ -132,6 +141,7 @@ class RequestSerializer(serializers.ModelSerializer):
                     })
             file_data.write(line)
 
+            # This block writes correct end of lines in argument part
             arg_lines = device_switch["argument_part"]
             if arg_lines[-2:] != '\r\n':
                 if arg_lines[-1] == '\n':

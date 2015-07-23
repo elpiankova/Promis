@@ -26,7 +26,7 @@ class DeviceSwitchViewSet(viewsets.ModelViewSet):
     queryset = DeviceSwitch.objects.all()
     serializer_class = DeviceSwitchSerializer
 
-@require_GET()
+#@require_GET()
 def view_get_number(request):
     last_object = Request.objects.last()
 
@@ -35,7 +35,7 @@ def view_get_number(request):
     else:
         return HttpResponse(last_object.number+1)
 
-@require_GET()
+#@require_GET()
 def view_orbit_flag(request):
     list_orbit_flag = []
     for i in Request.ORBIT_FLAG:

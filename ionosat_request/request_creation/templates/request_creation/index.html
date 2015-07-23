@@ -1,6 +1,6 @@
 {% load staticfiles %}
 <!doctype html>
-<html lang="en" ng-app="phonecatApp">
+<html lang="en" ng-app="requestKNA">
 <head>
   <meta charset="utf-8">
   <title>My HTML File</title>
@@ -8,126 +8,99 @@
   <link rel="stylesheet" href="{% static 'request_creation/css/app.css' %}">
   <link rel="stylesheet" href="{% static 'request_creation/css/main.css' %}">
   <script src="{% static 'request_creation/bower_components/angular/angular.js' %}"></script>
+  <script src="{% static 'request_creation/js/app.js' %}"></script>
   <script src="{%  static 'request_creation/js/controllers.js' %}"></script>
+  <script src="{% static 'request_creation/js/filters.js' %}"></script>
+  <script src="{% static 'request_creation/bower_components/jquery/dist/jquery.js' %}"></script>
 </head>
-<body ng-controller="PhoneListCtrl">
+<body ng-controller="claimInfoCtrl">
   <!-- Початок вмісту сторінки -->
   <div class="container">
     <div class="page-header">
-      <h1>Створення заявки</h1>
+      <h1>Заявки на проведение научных экспериментов КНА "Ионосат-Микро" </h1>
     </div>
-    <p class="lead">Створення заявки на політ та коротке описання що саме ми робимо...
-      це все буде знаходитись тут після того як ми самі зрозуміємо що ми самі хочемо</p>
+    <p class="lead">Принять формат файла заявки на проведение научных экспериментов КНА "Ионосат-Микро"</p>
   </div>
   <form role="form" class="container">
     <div class="panel panel-default">
 
       <div class="panel-heading"><b>Оформлення заявки</b></div>
-      <div class="panel-body">
-    <div class="form-group">
-      <label>Признак комплекса</label>
-      <input type="text" class="form-control" value="KNA">
-    </div>
+      <div class="panel-body" >
     <div class="form-group">
       <label >Номер заявки (буде приписуватись з сервера автоматично)</label>
-      <input type="text" class="form-control" value="0002">
+      <input type="number" min="0" max="9999" step="1" class="form-control" required>
     </div>
     <div class="row form-group">
       <div class="col-sm-6">
         <label>Дата початку</label>
-        <input type="date" class="form-control">
+        <input type="date" class="form-control" ng-model="dateStart" required>
       </div>
       <div class="col-sm-6">
         <label>Дата кінця</label>
-        <input type="date" class="form-control">
+        <input type="date" class="form-control" ng-model="dateEnd" required>
       </div>
     </div>
     <div class="form-group">
-      <label>Признак ветви:</label>
-      <input type="text" list="team_list2" class="form-control">
-      <datalist id="team_list2">
-        <option>Восходящая</option>
-        <option>Нисходящая</option>
-        <option>Не имеет значения</option>
-        <!-- и т.д. -->
+      <label>Признак ветви: </label>
+      <select ng-model="mybranches" ng-options="branch.name for branch in branches" class="form-control" required></select>
       </datalist>
     </div>
 
     <div class="form-group">
-      <label for="exampleInputEmail1">Широта начальной точки сеанса работы</label>
-      <input type="text" class="form-control" id="exampleInputEmail1"  pattern="+|-\d{3}\.\d">
+      <label>Широта начальной точки сеанса работы</label>
+      <input type="number" value="0" min="-82.0" max="82.0" step="0.1" class="form-control" required>
     </div>
 
     <div class="row form-group">
       <div class="col-sm-6">
         <label>Лівий кордон діапазону</label>
-        <input type="text" class="form-control">
+        <input type="number" value="180" min="0" max="359.0" step="0.1" class="form-control" required>
       </div>
       <div class="col-sm-6">
-        <label>Правий кордон діапазону</label>
-        <input type="text" class="form-control">
+        <label>Правий кордон діапазону!!!</label>
+        <input type="number" value="180" min="0" max="359.0" step="0.1" class="form-control" required>
       </div>
     </div>
-    <div class="panel panel-default">
+        <div id="hello" ng-controller="TodoListController as todoList">
+          <div class="panel panel-default" ng-repeat="todo in todoList.todos">
 
-      <div class="panel-heading"><b>Пристрій 1</b></div>
-      <div class="panel-body">
+            <div class="panel-heading"><b> Прилад : [[ myapplic.name ]]</b></div>
+            <div class="panel-body">
 
-        <div class="form-group">
-          <label>Назва приладу:</label>
-          <input type="text" list="team_list" class="form-control">
-          <datalist id="team_list">
-            <option>Волновые зонды WP</option>
-            <option>Электрический зонд</option>
-            <option>Радиочастотный анализатор</option>
-            <option>Датчик нейтрального компонента плазмы</option>
-            <option>Блок датчиков электронного компонента плазмы</option>
-            <option>Феррозондовый магнитометр постоянного поля</option>
-            <option>Измеритель полного электронного содержания</option>
-            <option>Система сбора научной информации</option>
-            <!-- и т.д. -->
-          </datalist>
-        </div>
+              <div class="form-group">
+                <label>Назва приладу:[[ myapplic.atr ]]</label>
+                <select ng-model="myapplic" ng-options="applic.name for applic in appliance" class="form-control" required></select>
+              </div>
 
-        <div class="form-group">
-          <label>Режим роботи:</label>
-          <input type="text" list="team_list3" class="form-control">
-          <datalist id="team_list3">
-            <option>Режим1</option>
-            <option>Режим2</option>
-            <option>Режим3</option>
-            <option>Режим4</option>
-            <option>Режим5</option>
-            <option>Режим6</option>
-            <option>Режим7</option>
-            <option>Режим8</option>
-          </datalist>
-        </div>
-        <div class="row form-group">
-          <div class="col-sm-6">
-            <label>Час затримки</label>
-            <input type="time" class="form-control">
+              <div class="form-group">
+                <label>Режим роботи:[[ mybehav.atr ]]</label>
+                <select ng-model="mybehav" ng-options="behav.name for behav in myapplic.modes" class="form-control" required></select>
+              </div>
+              <div class="row form-group">
+                <div class="col-sm-6">
+                  <label>Час затримки</label>
+                  <input type="time" step="1" class="form-control" ng-model="timedelay" required>
+                </div>
+                <div class="col-sm-6">
+                  <label>Час роботи</label>
+                  <input type="time" step="1" class="form-control" ng-model="timework" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Код для програматора</label>
+                <textarea class="form-control" rows="3" ng-model="text">[[ device ]]</textarea>
+              </div>
+            </div>
           </div>
-          <div class="col-sm-6">
-            <label>Час роботи</label>
-            <input type="time" class="form-control">
-          </div>
-        </div>
-        <div class="form-group">
-          <label>Код для програматора</label>
-          <textarea class="form-control" rows="3"></textarea>
-        </div>
 
-      </div>
-    </div>
     <div class="form-group">
-      <button type="button"
+      <button ng-click="todoList.addTodo()"
+              type="button"
               class="btn btn-primary btn-lg btn-block">
         <span class="glyphicon glyphicon-plus"></span>
-        Добавити ще один пристрій
+        Добавити пристрій
       </button>
     </div>
-        </div>
       </div>
     <div class="form-group">
       <button type="button"
@@ -135,12 +108,18 @@
         <span class="glyphicon glyphicon-ok"></span>
         Згенерувати заявку
       </button>
+      <!--<a href="KNA.zp" class="btn btn-success btn-lg btn-block" download="KNA"><span class="glyphicon glyphicon-download-alt"></span> Скачать </a> -->
     </div>
-  </form>
+   </form>
   <footer class="footer">
     <div class="container">
       <p class="text-muted">Копірайти та може контакти чи ще щось</p>
     </div>
   </footer>
+  
+    <script async="" src="https://cdn.rawgit.com/eligrey/Blob.js/master/Blob.js"/>
+    <script async="" src="https://cdn.rawgit.com/eligrey/canvas-toBlob.js/master/canvas-toBlob.js"/>
+    <script async="" src="https://cdn.rawgit.com/eligrey/FileSaver.js/master/FileSaver.js"/>
+    <script async="" src="https://cdn.rawgit.com/eligrey/FileSaver.js/master/demo/demo.js"/>
 </body>
 </html>

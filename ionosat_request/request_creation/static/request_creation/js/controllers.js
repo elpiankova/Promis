@@ -1,45 +1,20 @@
 'use strict';
 
 /* Controllers */
-var phonecatApp = angular.module('phonecatApp', []);
+requestKNA.controller('claimInfoCtrl',['$scope','$http', function($scope, $http) {
+    $http.get('/devices').success(function(data, status, headers, config) {
+        $scope.appliance = data;
+    });
+    $http.get('behavior/branches.json').success(function(data, status, headers, config) {
+        $scope.branches = data;
+    });
+}]);
 
-phonecatApp.controller('PhoneListCtrl', function($scope, $http){
+requestKNA.controller('TodoListController', function() {
+    var todoList = this;
+    todoList.todos = [];
 
-    //Масив даних
-    $scope.title = "Телефони";
-    $http.get('phones/phones.json').succsess(function() {
-
-    }).error()
-
-    //Дата
-    var date = new Date();
-    $scope.today = date;
-
-    //Фільтр
-    $scope.doneAddFilter = function(phoneItem) {
-        return phoneItem.name && phoneItem.priority > 1 && phoneItem.status === true;
-    }
-
-    //Сортування
-    $scope.sortFiled = undefined;
-    $scope.reverse = false;
-
-    $scope.sort = function(filedName){
-        if ($scope.sortFiled === filedName) {
-            $scope.sortFiled = !$scope.reverse;
-        }
-        else{
-            $scope.sortFiled = filedName;
-            $scope.reverse = false;
-        }
-    };
-
-    //Іконка сортування яка показує напрямок сортування файлів
-
-    $scope.isSortDown = function(filedName){
-        return $scope.sortFiled === filedName && $scope.reverse;
-    };
-    $scope.isSortUp = function(filedName){
-        return $scope.sortFiled === filedName && !$scope.reverse;
+    todoList.addTodo = function() {
+        todoList.todos.push({ todoList });
     };
 });
