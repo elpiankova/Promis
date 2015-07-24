@@ -28,7 +28,7 @@
       <div class="panel-body" >
     <div class="form-group">
       <label >Номер заявки (буде приписуватись з сервера автоматично)</label>
-      <input type="number" min="0" max="9999" step="1" class="form-control" ng-value="number">
+      <input type="number" min="0" max="9999" step="1" class="form-control" ng-value="number" mg-model="number">
     </div>
     <div class="row form-group">
       <div class="col-sm-6">
@@ -103,20 +103,21 @@
     </div>
       </div>
     <div class="form-group">
-      <button type="button"
-              class="btn btn-success btn-lg btn-block">
+      <button type="submit"
+              class="btn btn-success btn-lg btn-block"
+              ng-click="save(answer, answerForm)"
+              >
         <span class="glyphicon glyphicon-ok"></span>
         Згенерувати заявку
       </button>
       <!--<a href="KNA.zp" class="btn btn-success btn-lg btn-block" download="KNA"><span class="glyphicon glyphicon-download-alt"></span> Скачать </a> -->
     </div>
-   </form>
   <footer class="footer">
     <div class="container">
       <p class="text-muted">Копірайти та може контакти чи ще щось</p>
     </div>
   </footer>
-  
+
     <script async="" src="https://cdn.rawgit.com/eligrey/Blob.js/master/Blob.js"/>
     <script async="" src="https://cdn.rawgit.com/eligrey/canvas-toBlob.js/master/canvas-toBlob.js"/>
     <script async="" src="https://cdn.rawgit.com/eligrey/FileSaver.js/master/FileSaver.js"/>
