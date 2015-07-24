@@ -28,7 +28,7 @@
       <div class="panel-body" >
     <div class="form-group">
       <label >Номер заявки (буде приписуватись з сервера автоматично)</label>
-      <input type="number" min="0" max="9999" step="1" class="form-control" required>
+      <input type="number" min="0" max="9999" step="1" class="form-control" ng-value="number">
     </div>
     <div class="row form-group">
       <div class="col-sm-6">
@@ -41,7 +41,7 @@
       </div>
     </div>
     <div class="form-group">
-      <label>Признак ветви: </label>
+      <label>Признак ветви:[[mybranches.code]] </label>
       <select ng-model="mybranches" ng-options="branch.name for branch in branches" class="form-control" required></select>
       </datalist>
     </div>
