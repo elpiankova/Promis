@@ -12,9 +12,10 @@ requestKNA.controller('claimInfoCtrl',['$scope','$http', function($scope, $http)
     $http.get('/number').success(function(data, status, headers, config) {
         $scope.number = data;
   });
-    $scope.name = {};
+
+    $scope.dataReqest=function(){
     var datareqest = {
-     "number": "12",
+     "number": $scope.number,
      "date_start": "2015-07-15",
      "date_end": "2015-07-16",
      "orbit_flag": "y",
@@ -31,24 +32,17 @@ requestKNA.controller('claimInfoCtrl',['$scope','$http', function($scope, $http)
          }
      ]
  };
-    var req = {
- method: 'POST',
- url: '/request/',
- headers: {
-   'Content-Type' : 'application/json'
- },
- data: datareqest
-}
-    $http(req).
+    $http.post('/request/', datareqest).
   success(function(data, status, headers, config) {
           console.log(status);
            console.log(headers);
   }).
   error(function(data, status, headers, config) {
            console.warn(status);
-            console.warn(headers);
-  });
+            console.warn(user.number);
 
+  });
+}
 }]);
 
 requestKNA.controller('TodoListController', function() {
