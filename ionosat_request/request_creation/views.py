@@ -31,9 +31,9 @@ def view_get_number(request):
     last_object = Request.objects.last()
 
     if last_object:
-        return HttpResponse(1)
-    else:
         return HttpResponse(last_object.number+1)
+    else:
+        return HttpResponse(1)
 
 #@require_GET()
 def view_orbit_flag(request):
