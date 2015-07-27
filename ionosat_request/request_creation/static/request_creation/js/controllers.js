@@ -34,12 +34,10 @@ requestKNA.controller('claimInfoCtrl',['$scope','$http', function($scope, $http)
  };
     $http.post('/request/', datareqest).
   success(function(data, status, headers, config) {
-          console.log(status);
-           console.log(headers);
+          console.log(datareqest);
   }).
   error(function(data, status, headers, config) {
-           console.warn(status);
-            console.warn(user.number);
+           console.warn(datareqest);
 
   });
 }
