@@ -28,7 +28,7 @@
       <div class="panel-body" >
     <div class="form-group">
       <label >Номер заявки (буде приписуватись з сервера автоматично)</label>
-      <input type="number" min="0" max="9999" step="1" class="form-control" required>
+      <input type="number" min="0" max="9999" step="1" class="form-control" ng-model="fields.name" required>
     </div>
     <div class="row form-group">
       <div class="col-sm-6">
@@ -111,15 +111,15 @@
       <!--<a href="KNA.zp" class="btn btn-success btn-lg btn-block" download="KNA"><span class="glyphicon glyphicon-download-alt"></span> Скачать </a> -->
     </div>
    </form>
-  <footer class="footer">
-    <div class="container">
-      <p class="text-muted">Копірайти та може контакти чи ще щось</p>
-    </div>
-  </footer>
-  
-    <script async="" src="https://cdn.rawgit.com/eligrey/Blob.js/master/Blob.js"/>
-    <script async="" src="https://cdn.rawgit.com/eligrey/canvas-toBlob.js/master/canvas-toBlob.js"/>
-    <script async="" src="https://cdn.rawgit.com/eligrey/FileSaver.js/master/FileSaver.js"/>
-    <script async="" src="https://cdn.rawgit.com/eligrey/FileSaver.js/master/demo/demo.js"/>
+
+  <div ng-controller="FormController">
+    <form sf-schema="schema" sf-form="form" sf-model="model"></form>
+  </div>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+    <script src="bower_components/tv4/tv4.js"></script>
+    <script src="bower_components/objectpath/lib/ObjectPath.js"></script>
+    <script src="bower_components/angular-schema-form/dist/schema-form.min.js"></script>
+    <script src="bower_components/angular-schema-form/dist/bootstrap-decorator.js"></script>
 </body>
 </html>
