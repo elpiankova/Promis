@@ -41,54 +41,55 @@
       </div>
     </div>
     <div class="form-group">
-      <label>Признак ветви:[[mybranches.code]] </label>
-      <select ng-model="orbit_flag" ng-options="branch.name for branch in branches" class="form-control" required></select>
+      <label>[[user.orbit_flag]]Признак ветви: </label>
+      <select ng-model="user.orbit_flag" ng-options="branch.code as branch.name for branch in branches" class="form-control" ng-value="branch.code" required></select>
       </datalist>
     </div>
 
     <div class="form-group">
-      <label>Широта начальной точки сеанса работы</label>
-      <input type="number" value="0" min="-82.0" max="82.0" step="0.1" class="form-control" ng-model="name.latitude_start" required>
+      <label>Широта начальной точки сеанса работы[[name.latitude_start]]</label>
+      <input type="number" value="0" min="-82.0" max="82.0" step="0.1" class="form-control" ng-model="user.latitude_start" required>
     </div>
 
     <div class="row form-group">
       <div class="col-sm-6">
         <label>Лівий кордон діапазону</label>
-        <input type="number" value="180" min="0" max="359.0" step="0.1" class="form-control" ng-model="name.longitude_left" required>
+        <input type="number" value="180" min="0" max="359.0" step="0.1" class="form-control" ng-model="user.longitude_left" required>
       </div>
       <div class="col-sm-6">
         <label>Правий кордон діапазону!!!</label>
-        <input type="number" value="180" min="0" max="359.0" step="0.1" class="form-control"ng-model="name.longitude_right" required>
+        <input type="number" value="180" min="0" max="359.0" step="0.1" class="form-control" ng-model="user.longitude_right" required>
       </div>
     </div>
         <div id="hello" ng-controller="TodoListController as todoList">
           <div class="panel panel-default" ng-repeat="todo in todoList.todos">
 
-            <div class="panel-heading"><b> Прилад : [[ myapplic.name ]]</b></div>
+            <div class="panel-heading"><b ng-model="user.switches"> Прилад : [[ switches]]</b></div>
             <div class="panel-body">
 
               <div class="form-group">
-                <label>Назва приладу:[[ myapplic.atr ]]</label>
-                <select ng-model="myapplic" ng-options="applic.name for applic in appliance" class="form-control" required></select>
+                <label>Назва приладу</label>
+                <select ng-model="switches.device" ng-options=" applic.name for applic in appliance" class="form-control" required></select>
+
               </div>
 
               <div class="form-group">
                 <label>Режим роботи:[[ mybehav.atr ]]</label>
-                <select ng-model="mybehav" ng-options="behav.name for behav in myapplic.modes" class="form-control" required></select>
+                <select ng-model="switches.mode" ng-options="behav.name as behav.name for behav in switches.device.modes" class="form-control" required></select>
               </div>
               <div class="row form-group">
                 <div class="col-sm-6">
                   <label>Час затримки</label>
-                  <input type="time" step="1" class="form-control" ng-model="name.switches.time_delay" required>
+                  <input ng-model="switches.time_delay" type="time" step="1" class="form-control" ng-model="user.time_delay" required>
                 </div>
                 <div class="col-sm-6">
                   <label>Час роботи</label>
-                  <input type="time" step="1" class="form-control" ng-model="timework" required>
+                  <input ng-model="switches.duration" type="time" step="1" class="form-control" ng-model="user.timework" required>
                 </div>
               </div>
               <div class="form-group">
                 <label>Код для програматора</label>
-                <textarea class="form-control" rows="3" ng-model="text">[[ device ]]</textarea>
+                <textarea ng-model="switches.argument_part" class="form-control" rows="3" ng-model="text">[[ device ]]</textarea>
               </div>
             </div>
           </div>
