@@ -19,8 +19,10 @@ from django.views.generic import TemplateView
 #from request_creation.api import DeviceResource, DeviceModeResource
 #device_resource = DeviceResource()
 #device_mode_resource = DeviceModeResource()
+from django.conf import settings
 from rest_framework import routers
 from request_creation import views
+from django.conf.urls.static import static
 
 router = routers.DefaultRouter()
 router.register(r'devices', views.DeviceViewSet)
@@ -34,5 +36,5 @@ urlpatterns = [
     url(r'^', include(router.urls)),
     url(r'^number', views.view_get_number),
     url(r'^orbit_flag', views.view_orbit_flag),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

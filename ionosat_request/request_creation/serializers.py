@@ -4,7 +4,7 @@ from rest_framework.validators import UniqueTogetherValidator
 from rest_framework.validators import ValidationError
 import dateutil.parser, datetime
 from ionosat_request.settings import BASE_DIR
-
+import os
 
 class DeviceModeSerializer(serializers.ModelSerializer):
     """
@@ -30,6 +30,7 @@ class DeviceSwitchSerializer(serializers.ModelSerializer):
     """
     This class collects serialization methods for device switches and attributes from model DeviceSwitch
     """
+    #device = DeviceSerializer()
     device = serializers.SlugRelatedField(slug_field='name', queryset=Device.objects.all())
     mode = serializers.SlugRelatedField(slug_field='name', queryset=DeviceMode.objects.all())
 
@@ -39,11 +40,20 @@ class DeviceSwitchSerializer(serializers.ModelSerializer):
         read_only_fields = ('argument_part_len',)
 
 
+class FileNameField(serializers.CharField):
+    """
+    FilePathField is serializated as file name
+    """
+    def to_representation(self, obj):
+        return os.path.basename(obj)
+
 class RequestSerializer(serializers.ModelSerializer):
     """
     This class collects serialization methods for request creation and attributes from model Request
     """
     switches = DeviceSwitchSerializer(many=True)
+    request_file = FileNameField()
+
 
     class Meta:
         model = Request
@@ -89,6 +99,7 @@ class RequestSerializer(serializers.ModelSerializer):
             argument_part_len = len(device_switch["argument_part"].split("\r\n"))
             device = Device.objects.get(name=device_switch.pop('device'))
             mode = DeviceMode.objects.get(name=device_switch.pop('mode'), device=device)
+            #data_amount += mode.data_speed*
             DeviceSwitch.objects.create(request=request, device=device, mode=mode, argument_part_len=argument_part_len,
                                         **device_switch)
         return request
@@ -109,7 +120,7 @@ class RequestSerializer(serializers.ModelSerializer):
         request_file = 'KNA%(date_start)s%(number)04d.zp' % {"date_start": date_start,
                                                              "number": number}
         # This block writes first line of request file
-        file_data = open(BASE_DIR + '/request_files/' + request_file, 'w')
+        file_data = open(os.path.join(BASE_DIR, 'request_files', request_file), 'w')
         first_line = ('KNA %(number)04d %(date_start)s %(date_end)s'
                       ' %(orbit_flag)s %(latitude_start)+04.1f'
                       ' %(longitude_left)05.1f %(longitude_right)05.1f %(device_amount)1d\r\n'

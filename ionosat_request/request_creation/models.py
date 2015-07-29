@@ -1,7 +1,7 @@
 from django.db import models
 from ionosat_request.settings import BASE_DIR
 from request_creation.validators import *
-
+import os
 
 class Request(models.Model):
     UPWARD_ORBIT = 'y'
@@ -28,9 +28,11 @@ class Request(models.Model):
 
     device_amount = models.SmallIntegerField(validators=[device_amount_max_val_validator,
                                                          device_amount_min_val_validator])
-    request_file = models.FilePathField(path=BASE_DIR+'/request_files', validators=[request_file_validator])
+    request_file = models.FilePathField(path=os.path.join(BASE_DIR, 'request_files'), validators=[request_file_validator])
     creation_date = models.DateTimeField(auto_now_add=True)
     update_date = models.DateTimeField(auto_now=True)
+    total_data_amount = models.FloatField(default=0.001)
+    total_power_amount = models.FloatField(default=0.001)
 
 ##  device_switch_list = models.ManyToManyField('DeviceSwitch')
 
@@ -76,6 +78,8 @@ class Device(models.Model):
 class DeviceMode(models.Model):
     name = models.CharField(max_length=255)
     code = models.CharField(max_length=6)
+    power = models.FloatField(null=True)
+    data_speed = models.SmallIntegerField(null=True)
     device = models.ForeignKey('Device', related_name='modes')
 
     class Meta:
@@ -91,8 +95,10 @@ class DeviceSwitch(models.Model):
     time_duration = models.DurationField()
     argument_part = models.CharField(max_length=620)
     device = models.ForeignKey('Device')
-    mode = models.ForeignKey('DeviceMode') # limit to choice to
+    mode = models.ForeignKey('DeviceMode') #limit to choice to
     request = models.ForeignKey('Request', related_name='switches') # limit to choice
+    data_amount = models.FloatField(null=True)
+    power_amount = models.FloatField(null=True)
 
     class Meta:
         db_table = 'device_switches'

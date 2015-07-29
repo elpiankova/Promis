@@ -42,5 +42,6 @@ def view_orbit_flag(request):
         list_orbit_flag.append({"code": i[0], "name": i[1]})
 
     return HttpResponse(json.dumps(list_orbit_flag))
+
 # def view_last_request(request):
 #     last_request =
