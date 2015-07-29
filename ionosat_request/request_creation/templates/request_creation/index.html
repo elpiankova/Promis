@@ -64,32 +64,34 @@
         <div id="hello" ng-controller="TodoListController as todoList">
           <div class="panel panel-default" ng-repeat="todo in todoList.todos">
 
-            <div class="panel-heading"><b ng-model="user.switches"> Прилад : [[ switches]]</b></div>
+            <div class="panel-heading"><b ng-model="user.switches"> Прилад : [[user]]</b></div>
             <div class="panel-body">
 
               <div class="form-group">
                 <label>Назва приладу</label>
-                <select ng-model="switches.device" ng-options=" applic.name for applic in appliance" class="form-control" required></select>
+                <select ng-model="user.switches.device" ng-options="applic.name as applic.name for applic in appliance" class="form-control" required></select>
+
+                <select ng-model="heloow" ng-options=" applic.name for applic in appliance" class="form-control" required></select>
 
               </div>
 
               <div class="form-group">
                 <label>Режим роботи:[[ mybehav.atr ]]</label>
-                <select ng-model="switches.mode" ng-options="behav.name as behav.name for behav in switches.device.modes" class="form-control" required></select>
+                <select ng-model="user.switches.mode" ng-options="behav.name as behav.name for behav in heloow.modes" class="form-control" required></select>
               </div>
               <div class="row form-group">
                 <div class="col-sm-6">
                   <label>Час затримки</label>
-                  <input ng-model="switches.time_delay" type="time" step="1" class="form-control" ng-model="user.time_delay" required>
+                  <input ng-model="user.switches.time_delay" type="time" step="1" class="form-control" ng-model="user.time_delay" required>
                 </div>
                 <div class="col-sm-6">
                   <label>Час роботи</label>
-                  <input ng-model="switches.duration" type="time" step="1" class="form-control" ng-model="user.timework" required>
+                  <input ng-model="user.switches.duration" type="time" step="1" class="form-control" ng-model="user.timework" required>
                 </div>
               </div>
               <div class="form-group">
                 <label>Код для програматора</label>
-                <textarea ng-model="switches.argument_part" class="form-control" rows="3" ng-model="text">[[ device ]]</textarea>
+                <textarea ng-model="user.switches.argument_part" class="form-control" rows="3" ng-model="text">[[ device ]]</textarea>
               </div>
             </div>
           </div>

@@ -45,9 +45,10 @@ requestKNA.controller('claimInfoCtrl',['$scope','$http', function($scope, $http)
 
 requestKNA.controller('TodoListController', function() {
     var todoList = this;
-    todoList.todos = [];
+    todoList.todos = [0];
 
     todoList.addTodo = function() {
-        todoList.todos.push({ todoList });
+        todoList.todos.push({});
     };
+
 });
