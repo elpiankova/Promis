@@ -13,7 +13,7 @@
   <script src="{% static 'request_creation/js/filters.js' %}"></script>
   <script src="{% static 'request_creation/bower_components/jquery/dist/jquery.js' %}"></script>
 </head>
-<body ng-controller="claimInfoCtrl">
+<body ng-controller="claimInfoCtrl as claimInfo">
   <!-- Початок вмісту сторінки -->
   <div class="container">
     <div class="page-header">
@@ -24,11 +24,11 @@
   <form class="container">
     <div class="panel panel-default">
 
-      <div class="panel-heading"><b>Оформлення заявки</b></div>
+      <div class="panel-heading"><b>Оформлення заявки[[claimInfo.title]]</b></div>
       <div class="panel-body" >
     <div class="form-group">
       <label >Номер заявки (буде приписуватись з сервера автоматично)[[user]]</label>
-      <input type="number" min="0" max="9999" step="1" class="form-control" ng-value="number" ng-model="user.number">
+      <input type="number" min="0" max="9999" step="1" class="form-control" ng-value="claimInfo.number" ng-model="user.number">
     </div>
     <div class="row form-group">
       <div class="col-sm-6">
@@ -42,7 +42,7 @@
     </div>
     <div class="form-group">
       <label>[[user.orbit_flag]]Признак ветви: </label>
-      <select ng-model="user.orbit_flag" ng-options="branch.code as branch.name for branch in branches" class="form-control" ng-value="branch.code" required></select>
+      <select ng-model="user.orbit_flag" ng-options="branch.code as branch.name for branch in claimInfo.branches" class="form-control" ng-value="claimInfo.branch" required></select>
       </datalist>
     </div>
 
@@ -53,23 +53,23 @@
 
     <div class="row form-group">
       <div class="col-sm-6">
-        <label>Лівий кордон діапазону</label>
+        <label>Ліве межа довготи</label>
         <input type="number" value="180" min="0" max="359.0" step="0.1" class="form-control" ng-model="user.longitude_left" required>
       </div>
       <div class="col-sm-6">
-        <label>Правий кордон діапазону!!!</label>
+        <label>Права межа довготи</label>
         <input type="number" value="180" min="0" max="359.0" step="0.1" class="form-control" ng-model="user.longitude_right" required>
       </div>
     </div>
         <div id="hello" ng-controller="TodoListController as todoList">
           <div class="panel panel-default" ng-repeat="todo in todoList.todos">
 
-            <div class="panel-heading"><b ng-model="user.switches"> Прилад : [[user]]</b></div>
+            <div class="panel-heading"><b ng-model="user.switches"> Прилад : [[todoList.title]]</b></div>
             <div class="panel-body">
 
               <div class="form-group">
                 <label>Назва приладу</label>
-                <select ng-model="user.switches.device" ng-options="applic.name as applic.name for applic in appliance" class="form-control" required></select>
+                <select ng-model="switches.device" ng-options="applic.name as applic.name for applic in claimInfo.appliance" class="form-control" required></select>
 
                 <select ng-model="heloow" ng-options=" applic.name for applic in appliance" class="form-control" required></select>
 
@@ -77,22 +77,30 @@
 
               <div class="form-group">
                 <label>Режим роботи:[[ mybehav.atr ]]</label>
-                <select ng-model="user.switches.mode" ng-options="behav.name as behav.name for behav in heloow.modes" class="form-control" required></select>
+                <select ng-model="switches.mode" ng-options="behav.name as behav.name for behav in heloow.modes" class="form-control" required></select>
               </div>
               <div class="row form-group">
                 <div class="col-sm-6">
                   <label>Час затримки</label>
-                  <input ng-model="user.switches.time_delay" type="time" step="1" class="form-control" ng-model="user.time_delay" required>
+                  <input ng-model="switches.time_delay" type="time" step="1" class="form-control" ng-model="user.time_delay" required>
                 </div>
                 <div class="col-sm-6">
                   <label>Час роботи</label>
-                  <input ng-model="user.switches.duration" type="time" step="1" class="form-control" ng-model="user.timework" required>
+                  <input ng-model="switches.duration" type="time" step="1" class="form-control" ng-model="user.timework" required>
                 </div>
               </div>
               <div class="form-group">
                 <label>Код для програматора</label>
-                <textarea ng-model="user.switches.argument_part" class="form-control" rows="3" ng-model="text">[[ device ]]</textarea>
+                <textarea ng-model="switches.argument_part" class="form-control" rows="3" ng-model="text">[[ device ]]</textarea>
               </div>
+                <div class="form-group">
+                    <button ng-click="todoList.Save()"
+                            type="button"
+                            class="btn btn-success btn-lg btn-block">
+                        <span class="glyphicon glyphicon-edit"></span>
+                        Зберегти пристрій
+                    </button>
+                </div>
             </div>
           </div>
 

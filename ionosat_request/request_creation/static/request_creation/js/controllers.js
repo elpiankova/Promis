@@ -1,19 +1,20 @@
 'use strict';
 
 /* Controllers */
-requestKNA.controller('claimInfoCtrl',['$scope','$http', function($scope, $http) {
+requestKNA.controller('claimInfoCtrl', function($http) {
+    var claim = this;
     $http.get('/devices').success(function(data, status, headers, config) {
-        $scope.appliance = data;
+        claim.appliance = data;
     });
     $http.get('/orbit_flag').success(function(data, status, headers, config) {
-        $scope.branches = data;
+        claim.branches = data;
     });
 
     $http.get('/number').success(function(data, status, headers, config) {
-        $scope.number = data;
+        claim.number = data;
   });
 
-    $scope.dataReqest=function(){
+    claim.dataReqest=function(){
     var datareqest = {
      "number": $scope.number,
      "date_start": "2015-07-15",
@@ -34,21 +35,27 @@ requestKNA.controller('claimInfoCtrl',['$scope','$http', function($scope, $http)
  };
     $http.post('/request/', datareqest).
   success(function(data, status, headers, config) {
-          console.log(datareqest);
   }).
   error(function(data, status, headers, config) {
-           console.warn(datareqest);
 
   });
+        console.warn(claim.user);
 }
-}]);
+
+    claim.title = 'Some titl';
+});
 
 requestKNA.controller('TodoListController', function() {
     var todoList = this;
-    todoList.todos = [0];
+    todoList.todos = [];
 
+    this.title = 'Some title';
     todoList.addTodo = function() {
         todoList.todos.push({});
     };
 
+    todoList.Save = function() {
+       var save = this.switches;
+        console.log(save);
+    };
 });
