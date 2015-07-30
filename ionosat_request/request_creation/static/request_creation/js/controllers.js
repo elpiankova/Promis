@@ -1,3 +1,4 @@
+//Created by mammut
 'use strict';
 
 /* Controllers */
@@ -42,14 +43,12 @@ requestKNA.controller('claimInfoCtrl', function($http) {
         console.warn(claim.user);
 }
 
-    claim.title = 'Some titl';
 });
 
 requestKNA.controller('TodoListController', function() {
     var todoList = this;
     todoList.todos = [];
 
-    this.title = 'Some title';
     todoList.addTodo = function() {
         todoList.todos.push({});
     };
