@@ -30,42 +30,43 @@
                 <div class="form-group" ng-class="{'has-error': loginForm.number.$invalid}">
                     <label>Номер заявки (буде приписуватись з сервера автоматично)[[user]]</label>
                     <input type="number" name="number" min="0" max="9999" step="1" class="form-control"
-                           ng-value="claimInfo.number" ng-model="number">
+                           ng-value="claimInfo.number" ng-model="user.number">
                 </div>
                 <div class="row form-group">
-                    <div class="col-sm-6 ng-class: { 'has-success' : user.date_start}">
+                    <div class="col-sm-6 " ng-class="{'has-error': loginForm.date_start.$invalid}">
                         <label>Дата початку</label>
-                        <input type="date" class="form-control" ng-model="user.date_start" required>
+                        <input type="date" class="form-control" name="date_start" ng-model="user.date_start" required>
                     </div>
-                    <div class="col-sm-6 ng-class: { 'has-success' : user.date_end}">
+                    <div class="col-sm-6" ng-class="{'has-error': loginForm.date_end.$invalid}">
                         <label>Дата кінця</label>
-                        <input type="date" class="form-control" ng-model="user.date_end" required>
+                        <input type="date" class="form-control" name="date_end" ng-model="user.date_end" required>
                     </div>
                 </div>
-                <div class="form-group ng-class: { 'has-success' : user.orbit_flag}">
+                <div class="form-group" ng-class="{'has-error': loginForm.orbit_flag.$invalid}">
                     <label>[[user.orbit_flag]]Признак ветви: </label>
                     <select ng-model="user.orbit_flag"
+                            name="orbit_flag"
                             ng-options="branch.code as branch.name for branch in claimInfo.branches"
                             class="form-control"
                             ng-value="claimInfo.branch" required></select>
                     </datalist>
                 </div>
 
-                <div class="form-group ng-class: { 'has-success' : user.latitude_start}">
+                <div class="form-group" ng-class="{'has-error': loginForm.latitude_start.$invalid}">
                     <label>Широта начальной точки сеанса работы[[name.latitude_start]]</label>
-                    <input type="number" value="0" min="-82.0" max="82.0" step="0.1" class="form-control"
+                    <input type="number" name="latitude_start" value="0" min="-82.0" max="82.0" step="0.1" class="form-control"
                            ng-model="user.latitude_start" required>
                 </div>
 
                 <div class="row form-group">
-                    <div class="col-sm-6 ng-class: { 'has-success' : user.longitude_left}">
+                    <div class="col-sm-6" ng-class="{'has-error': loginForm.longitude_left.$invalid}">
                         <label>Ліве межа довготи</label>
-                        <input type="number" value="180" min="0" max="359.0" step="0.1" class="form-control"
+                        <input type="number" name="longitude_left" value="180" min="0" max="359.0" step="0.1" class="form-control"
                                ng-model="user.longitude_left" required>
                     </div>
-                    <div class="col-sm-6 ng-class: { 'has-success' : user.longitude_right}">
+                    <div class="col-sm-6" ng-class="{'has-error': loginForm.longitude_right.$invalid}">
                         <label>Права межа довготи</label>
-                        <input type="number" value="180" min="0" max="359.0" step="0.1" class="form-control"
+                        <input type="number" name="longitude_right" value="180" min="0" max="359.0" step="0.1" class="form-control"
                                ng-model="user.longitude_right" required>
                     </div>
                 </div>
@@ -124,7 +125,8 @@
                     <div class="form-group">
                         <button ng-click="todoList.addTodo()"
                                 type="button"
-                                class="btn btn-warning btn-lg btn-block">
+                                class="btn btn-lg btn-block"
+                                 ng-class="{'btn-warning ': loginForm.$invalid}">
                             <span class="glyphicon glyphicon-time"></span>
                             Добавити пристрій
                         </button>
@@ -141,15 +143,16 @@
                     <!--<a href="KNA.zp" class="btn btn-success btn-lg btn-block" download="KNA"><span class="glyphicon glyphicon-download-alt"></span> Скачать </a> -->
                 </div>
             </div>
-</form>
-<footer class="footer container">
-    Копірайти та може контакти чи ще щось Created by mammut
+        </div>
+    </div>
+    <footer class="footer container">
+        Копірайти та може контакти чи ще щось Created by mammut
 
-</footer>
+    </footer>
 
-<script async="" src="https://cdn.rawgit.com/eligrey/Blob.js/master/Blob.js"/>
-<script async="" src="https://cdn.rawgit.com/eligrey/canvas-toBlob.js/master/canvas-toBlob.js"/>
-<script async="" src="https://cdn.rawgit.com/eligrey/FileSaver.js/master/FileSaver.js"/>
-<script async="" src="https://cdn.rawgit.com/eligrey/FileSaver.js/master/demo/demo.js"/>
+    <script async="" src="https://cdn.rawgit.com/eligrey/Blob.js/master/Blob.js"/>
+    <script async="" src="https://cdn.rawgit.com/eligrey/canvas-toBlob.js/master/canvas-toBlob.js"/>
+    <script async="" src="https://cdn.rawgit.com/eligrey/FileSaver.js/master/FileSaver.js"/>
+    <script async="" src="https://cdn.rawgit.com/eligrey/FileSaver.js/master/demo/demo.js"/>
 </body>
 </html>
