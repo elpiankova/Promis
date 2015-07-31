@@ -4,7 +4,7 @@
 /* App Module */
 var requestKNA = angular.module('requestKNA', []);
 
-requestKNA.config(function($interpolateProvider) {
+requestKNA.config(function ($interpolateProvider) {
     $interpolateProvider.startSymbol('[[');
     $interpolateProvider.endSymbol(']]');
 });
