@@ -125,9 +125,9 @@
                     <div class="form-group">
                         <button ng-click="todoList.addTodo()"
                                 type="button"
-                                class="btn btn-lg btn-block"
-                                 ng-class="{'btn-warning ': loginForm.$invalid}">
-                            <span class="glyphicon glyphicon-time"></span>
+                                class="btn btn-lg btn-primary btn-block"
+                                 ng-class="{'btn-warning disabled': loginForm.$invalid}">
+                            <span class="glyphicon glyphicon-plus"></span>
                             Добавити пристрій
                         </button>
                     </div>

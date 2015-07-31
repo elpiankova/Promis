@@ -17,7 +17,7 @@ requestKNA.controller('claimInfoCtrl', function ($http) {
 
     claim.dataReqest = function () {
         var datareqest = {
-            "number": $scope.number,
+            "number": 34,
             "date_start": "2015-07-15",
             "date_end": "2015-07-16",
             "orbit_flag": "y",
