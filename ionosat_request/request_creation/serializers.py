@@ -37,7 +37,7 @@ class DeviceSwitchSerializer(serializers.ModelSerializer):
         model = DeviceSwitch
         fields = ('argument_part_len', 'time_delay', 'time_duration', 'argument_part', 'device', 'mode', 'power_amount',
                   'data_amount', 'request_number')
-        read_only_fields = ('argument_part_len', 'power_amount', 'data_amount')
+        read_only_fields = ('argument_part_len')
 
     def create(self, validated_data):
         #     # This block is validate a presence of one unique device
@@ -84,7 +84,8 @@ class RequestSerializer(serializers.ModelSerializer):
     """
     This class collects serialization methods for request creation and attributes from model Request
     """
-    request_file = FileNameField()
+    request_file = FileNameField(read_only=True)
+
     class Meta:
         model = Request
         fields = ('number', 'date_start', 'date_end', 'orbit_flag', 'latitude_start',
