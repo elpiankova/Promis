@@ -1,122 +1,155 @@
 {% load staticfiles %}
 <!doctype html>
-<html lang="en" ng-app="requestKNA">
+<html lang="en" ng-app="requestKNA" xmlns="http://www.w3.org/1999/html">
 <head>
-  <meta charset="utf-8">
-  <title>My HTML File</title>
-  <link rel="stylesheet" href="{% static 'request_creation/bower_components/bootstrap/dist/css/bootstrap.css' %}">
-  <link rel="stylesheet" href="{% static 'request_creation/css/app.css' %}">
-  <link rel="stylesheet" href="{% static 'request_creation/css/main.css' %}">
-  <script src="{% static 'request_creation/bower_components/angular/angular.js' %}"></script>
-  <script src="{% static 'request_creation/js/app.js' %}"></script>
-  <script src="{%  static 'request_creation/js/controllers.js' %}"></script>
-  <script src="{% static 'request_creation/js/filters.js' %}"></script>
-  <script src="{% static 'request_creation/bower_components/jquery/dist/jquery.js' %}"></script>
+    <meta charset="utf-8">
+    <title>My HTML File</title>
+    <link rel="stylesheet" href="{% static 'request_creation/bower_components/bootstrap/dist/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'request_creation/css/app.css' %}">
+    <link rel="stylesheet" href="{% static 'request_creation/css/main.css' %}">
+    <script src="{% static 'request_creation/bower_components/angular/angular.js' %}"></script>
+    <script src="{% static 'request_creation/js/app.js' %}"></script>
+    <script src="{% static 'request_creation/js/controllers.js' %}"></script>
+    <script src="{% static 'request_creation/js/filters.js' %}"></script>
+    <script src="{% static 'request_creation/bower_components/jquery/dist/jquery.js' %}"></script>
 </head>
-<body ng-controller="claimInfoCtrl">
-  <!-- Початок вмісту сторінки -->
-  <div class="container">
-    <div class="page-header">
-      <h1>Заявки на проведение научных экспериментов КНА "Ионосат-Микро" </h1>
-    </div>
-    <p class="lead">Принять формат файла заявки на проведение научных экспериментов КНА "Ионосат-Микро"</p>
-  </div>
-  <form role="form" class="container">
-    <div class="panel panel-default">
+<body ng-controller="claimInfoCtrl as claimInfo">
+<!-- Created by mammut -->
 
-      <div class="panel-heading"><b>Оформлення заявки</b></div>
-      <div class="panel-body" >
-    <div class="form-group">
-      <label >Номер заявки (буде приписуватись з сервера автоматично)</label>
-      <input type="number" min="0" max="9999" step="1" class="form-control" required>
-    </div>
-    <div class="row form-group">
-      <div class="col-sm-6">
-        <label>Дата початку</label>
-        <input type="date" class="form-control" ng-model="dateStart" required>
-      </div>
-      <div class="col-sm-6">
-        <label>Дата кінця</label>
-        <input type="date" class="form-control" ng-model="dateEnd" required>
-      </div>
-    </div>
-    <div class="form-group">
-      <label>Признак ветви: </label>
-      <select ng-model="mybranches" ng-options="branch.name for branch in branches" class="form-control" required></select>
-      </datalist>
-    </div>
-
-    <div class="form-group">
-      <label>Широта начальной точки сеанса работы</label>
-      <input type="number" value="0" min="-82.0" max="82.0" step="0.1" class="form-control" required>
-    </div>
-
-    <div class="row form-group">
-      <div class="col-sm-6">
-        <label>Лівий кордон діапазону</label>
-        <input type="number" value="180" min="0" max="359.0" step="0.1" class="form-control" required>
-      </div>
-      <div class="col-sm-6">
-        <label>Правий кордон діапазону!!!</label>
-        <input type="number" value="180" min="0" max="359.0" step="0.1" class="form-control" required>
-      </div>
-    </div>
-        <div id="hello" ng-controller="TodoListController as todoList">
-          <div class="panel panel-default" ng-repeat="todo in todoList.todos">
-
-            <div class="panel-heading"><b> Прилад : [[ myapplic.name ]]</b></div>
-            <div class="panel-body">
-
-              <div class="form-group">
-                <label>Назва приладу:[[ myapplic.atr ]]</label>
-                <select ng-model="myapplic" ng-options="applic.name for applic in appliance" class="form-control" required></select>
-              </div>
-
-              <div class="form-group">
-                <label>Режим роботи:[[ mybehav.atr ]]</label>
-                <select ng-model="mybehav" ng-options="behav.name for behav in myapplic.modes" class="form-control" required></select>
-              </div>
-              <div class="row form-group">
-                <div class="col-sm-6">
-                  <label>Час затримки</label>
-                  <input type="time" step="1" class="form-control" ng-model="timedelay" required>
-                </div>
-                <div class="col-sm-6">
-                  <label>Час роботи</label>
-                  <input type="time" step="1" class="form-control" ng-model="timework" required>
-                </div>
-              </div>
-              <div class="form-group">
-                <label>Код для програматора</label>
-                <textarea class="form-control" rows="3" ng-model="text">[[ device ]]</textarea>
-              </div>
-            </div>
-          </div>
-
-    <div class="form-group">
-      <button ng-click="todoList.addTodo()"
-              type="button"
-              class="btn btn-primary btn-lg btn-block">
-        <span class="glyphicon glyphicon-plus"></span>
-        Добавити пристрій
-      </button>
-    </div>
-      </div>
-    <div class="form-group">
-      <button type="button"
-              class="btn btn-success btn-lg btn-block">
-        <span class="glyphicon glyphicon-ok"></span>
-        Згенерувати заявку
-      </button>
-      <!--<a href="KNA.zp" class="btn btn-success btn-lg btn-block" download="KNA"><span class="glyphicon glyphicon-download-alt"></span> Скачать </a> -->
-    </div>
-   </form>
-  <footer class="footer">
+<form name="loginForm" novalidate>
     <div class="container">
-      <p class="text-muted">Копірайти та може контакти чи ще щось</p>
+        <div class="page-header">
+            <h1>Заявки на проведение научных экспериментов КНА "Ионосат-Микро" </h1>
+        </div>
+        <p class="lead">Принять формат файла заявки на проведение научных экспериментов КНА "Ионосат-Микро"</p>
+
+        <div class="panel panel-default">
+
+            <div class="panel-heading"><b>Оформлення заявки[[claimInfo.title]]</b></div>
+            <div class="panel-body">
+                <div class="form-group" ng-class="{'has-error': loginForm.number.$invalid}">
+                    <label>Номер заявки (буде приписуватись з сервера автоматично)[[user]]</label>
+                    <input type="number" name="number" min="0" max="9999" step="1" class="form-control"
+                           ng-value="claimInfo.number" ng-model="user.number">
+                </div>
+                <div class="row form-group">
+                    <div class="col-sm-6 " ng-class="{'has-error': loginForm.date_start.$invalid}">
+                        <label>Дата початку</label>
+                        <input type="date" class="form-control" name="date_start" ng-model="user.date_start" required>
+                    </div>
+                    <div class="col-sm-6" ng-class="{'has-error': loginForm.date_end.$invalid}">
+                        <label>Дата кінця</label>
+                        <input type="date" class="form-control" name="date_end" ng-model="user.date_end" required>
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{'has-error': loginForm.orbit_flag.$invalid}">
+                    <label>[[user.orbit_flag]]Признак ветви: </label>
+                    <select ng-model="user.orbit_flag"
+                            name="orbit_flag"
+                            ng-options="branch.code as branch.name for branch in claimInfo.branches"
+                            class="form-control"
+                            ng-value="claimInfo.branch" required></select>
+                    </datalist>
+                </div>
+
+                <div class="form-group" ng-class="{'has-error': loginForm.latitude_start.$invalid}">
+                    <label>Широта начальной точки сеанса работы[[name.latitude_start]]</label>
+                    <input type="number" name="latitude_start" value="0" min="-82.0" max="82.0" step="0.1" class="form-control"
+                           ng-model="user.latitude_start" required>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-sm-6" ng-class="{'has-error': loginForm.longitude_left.$invalid}">
+                        <label>Ліве межа довготи</label>
+                        <input type="number" name="longitude_left" value="180" min="0" max="359.0" step="0.1" class="form-control"
+                               ng-model="user.longitude_left" required>
+                    </div>
+                    <div class="col-sm-6" ng-class="{'has-error': loginForm.longitude_right.$invalid}">
+                        <label>Права межа довготи</label>
+                        <input type="number" name="longitude_right" value="180" min="0" max="359.0" step="0.1" class="form-control"
+                               ng-model="user.longitude_right" required>
+                    </div>
+                </div>
+                <div id="hello" ng-controller="TodoListController as todoList">
+                    <div class="panel panel-default" ng-repeat="todo in todoList.todos">
+
+                        <div class="panel-heading"><b ng-model="user.switches"> Прилад : [[todoList.title]]</b></div>
+                        <div class="panel-body">
+
+                            <div class="form-group ">
+                                <label>Назва приладу</label>
+                                <select ng-model="switches.device"
+                                        ng-options="applic.name as applic.name for applic in claimInfo.appliance"
+                                        class="form-control" required></select>
+
+                                <select ng-model="heloow" ng-options=" applic.name for applic in appliance"
+                                        class="form-control" required></select>
+
+                            </div>
+
+                            <div class="form-group">
+                                <label>Режим роботи:[[ mybehav.atr ]]</label>
+                                <select ng-model="switches.mode"
+                                        ng-options="behav.name as behav.name for behav in heloow.modes"
+                                        class="form-control"
+                                        required></select>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-sm-6">
+                                    <label>Час затримки</label>
+                                    <input ng-model="switches.time_delay" type="time" step="1" class="form-control"
+                                           ng-model="user.time_delay" required>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label>Час роботи</label>
+                                    <input ng-model="switches.duration" type="time" step="1" class="form-control"
+                                           ng-model="user.timework" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Код для програматора</label>
+                                <textarea ng-model="switches.argument_part" class="form-control" rows="3"
+                                          ng-model="text">[[ device ]]</textarea>
+                            </div>
+                            <div class="form-group">
+                                <button ng-click="todoList.Save()"
+                                        type="button"
+                                        class="btn btn-success btn-lg btn-block">
+                                    <span class="glyphicon glyphicon-edit"></span>
+                                    Зберегти пристрій
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <button ng-click="todoList.addTodo()"
+                                type="button"
+                                class="btn btn-lg btn-primary btn-block"
+                                 ng-class="{'btn-warning disabled': loginForm.$invalid}">
+                            <span class="glyphicon glyphicon-plus"></span>
+                            Добавити пристрій
+                        </button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button
+                            class="btn btn-success btn-lg btn-block"
+                            ng-click="dataReqest()"
+                            >
+                        <span class="glyphicon glyphicon-ok"></span>
+                        Згенерувати заявку
+                    </button>
+                    <!--<a href="KNA.zp" class="btn btn-success btn-lg btn-block" download="KNA"><span class="glyphicon glyphicon-download-alt"></span> Скачать </a> -->
+                </div>
+            </div>
+        </div>
     </div>
-  </footer>
-  
+    <footer class="footer container">
+        Копірайти та може контакти чи ще щось Created by mammut
+
+    </footer>
+
     <script async="" src="https://cdn.rawgit.com/eligrey/Blob.js/master/Blob.js"/>
     <script async="" src="https://cdn.rawgit.com/eligrey/canvas-toBlob.js/master/canvas-toBlob.js"/>
     <script async="" src="https://cdn.rawgit.com/eligrey/FileSaver.js/master/FileSaver.js"/>

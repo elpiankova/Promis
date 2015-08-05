@@ -1,10 +1,13 @@
+/*Created by mammut*/
 html {
     position: relative;
     min-height: 100%;
 }
+
 body {
     margin-bottom: 60px;
 }
+
 .footer {
     position: absolute;
     bottom: 0;
@@ -18,6 +21,7 @@ body {
     max-width: 680px;
     padding: 0 15px;
 }
+
 .container .text-muted {
     margin: 20px 0;
 }
@@ -27,11 +31,20 @@ label {
 }
 
 .my-input {
-    -webkit-transition:all linear 0.5s;
-    transition:all linear 0.5s;
+    -webkit-transition: all linear 0.5s;
+    transition: all linear 0.5s;
     background: transparent;
 }
-.my-input.ng-invalid {
-    color:white;
+
+.hello {
+    color: white;
     background: red;
 }
+
+/*.ng-invalid {*/
+/*background-color: red;*/
+/*}*/
+
+/*.ng-valid {*/
+/*background-color: green;*/
+/*}*/
