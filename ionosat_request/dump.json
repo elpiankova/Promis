@@ -1,0 +1,1225 @@
+[
+{
+    "pk": 1,
+    "fields": {
+        "app_label": "admin",
+        "model": "logentry"
+    },
+    "model": "contenttypes.contenttype"
+},
+{
+    "pk": 2,
+    "fields": {
+        "app_label": "auth",
+        "model": "permission"
+    },
+    "model": "contenttypes.contenttype"
+},
+{
+    "pk": 3,
+    "fields": {
+        "app_label": "auth",
+        "model": "group"
+    },
+    "model": "contenttypes.contenttype"
+},
+{
+    "pk": 4,
+    "fields": {
+        "app_label": "auth",
+        "model": "user"
+    },
+    "model": "contenttypes.contenttype"
+},
+{
+    "pk": 5,
+    "fields": {
+        "app_label": "contenttypes",
+        "model": "contenttype"
+    },
+    "model": "contenttypes.contenttype"
+},
+{
+    "pk": 6,
+    "fields": {
+        "app_label": "sessions",
+        "model": "session"
+    },
+    "model": "contenttypes.contenttype"
+},
+{
+    "pk": 7,
+    "fields": {
+        "app_label": "request_creation",
+        "model": "request"
+    },
+    "model": "contenttypes.contenttype"
+},
+{
+    "pk": 8,
+    "fields": {
+        "app_label": "request_creation",
+        "model": "device"
+    },
+    "model": "contenttypes.contenttype"
+},
+{
+    "pk": 9,
+    "fields": {
+        "app_label": "request_creation",
+        "model": "devicemode"
+    },
+    "model": "contenttypes.contenttype"
+},
+{
+    "pk": 10,
+    "fields": {
+        "app_label": "request_creation",
+        "model": "deviceswitch"
+    },
+    "model": "contenttypes.contenttype"
+},
+{
+    "pk": "284lw3n6vg2b3z3lzbx2oymxo1d568qk",
+    "fields": {
+        "expire_date": "2015-08-12T12:54:17.764Z",
+        "session_data": "ZTZhZmVmNWJkYWQyZTUyNjcyMTFiNWQ5ODhiZDRlZjcxOGM0M2ViNzp7Il9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9pZCI6IjIiLCJfYXV0aF91c2VyX2hhc2giOiIzYzdkZWQzNjhhMDkyMmRjNmIwY2NmMzYxYjY0MTQwZTI5ODBkYzdmIn0="
+    },
+    "model": "sessions.session"
+},
+{
+    "pk": "kom7rlkrtdf8h1tq71pbyoyjgzy6cqdr",
+    "fields": {
+        "expire_date": "2015-07-29T09:18:28.994Z",
+        "session_data": "Y2RkMmY5NjY4MGJiMWVlZjliNDBhYmI1N2Y1ZDdlMmFhOWE2NDQ0ZDp7Il9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9oYXNoIjoiYmJlM2U0NTFkOWNjZmYxZDdjOGJjNzQ4MTlkMTk2NDNlM2NhMGM5YiIsIl9hdXRoX3VzZXJfaWQiOiIxIn0="
+    },
+    "model": "sessions.session"
+},
+{
+    "pk": 1,
+    "fields": {
+        "device_amount": 1,
+        "total_data_amount": 0.001,
+        "number": 1,
+        "date_start": "2015-07-15",
+        "creation_date": "2015-07-15T14:08:06.593Z",
+        "update_date": "2015-07-15T14:08:06.593Z",
+        "request_file": "/home/evgeniy/Promis/ionosat_request/request_files/KNA3012170000.zp",
+        "date_end": "2015-07-16",
+        "longitude_right": "359.0",
+        "total_power_amount": 0.001,
+        "orbit_flag": "y",
+        "longitude_left": "0.0",
+        "latitude_start": "30.0"
+    },
+    "model": "request_creation.request"
+},
+{
+    "pk": 2,
+    "fields": {
+        "device_amount": 1,
+        "total_data_amount": 0.001,
+        "number": 2,
+        "date_start": "2015-07-15",
+        "creation_date": "2015-07-16T10:42:30.991Z",
+        "update_date": "2015-07-16T10:42:30.991Z",
+        "request_file": "/home/evgeniy/Promis/ionosat_request/request_files/KNA3012170000.zp",
+        "date_end": "2015-07-16",
+        "longitude_right": "359.0",
+        "total_power_amount": 0.001,
+        "orbit_flag": "y",
+        "longitude_left": "0.0",
+        "latitude_start": "30.0"
+    },
+    "model": "request_creation.request"
+},
+{
+    "pk": 7,
+    "fields": {
+        "device_amount": 1,
+        "total_data_amount": 0.001,
+        "number": 3,
+        "date_start": "2015-07-15",
+        "creation_date": "2015-07-16T11:54:29.813Z",
+        "update_date": "2015-07-16T11:54:29.813Z",
+        "request_file": "/home/evgeniy/Promis/ionosat_request/request_files/KNA3012170000.zp",
+        "date_end": "2015-07-16",
+        "longitude_right": "359.0",
+        "total_power_amount": 0.001,
+        "orbit_flag": "y",
+        "longitude_left": "0.0",
+        "latitude_start": "30.0"
+    },
+    "model": "request_creation.request"
+},
+{
+    "pk": 19,
+    "fields": {
+        "device_amount": 1,
+        "total_data_amount": 0.001,
+        "number": 25,
+        "date_start": "2015-07-15",
+        "creation_date": "2015-07-17T14:23:54.079Z",
+        "update_date": "2015-07-17T14:23:54.079Z",
+        "request_file": "KNA1507150025.zp",
+        "date_end": "2015-07-16",
+        "longitude_right": "359.0",
+        "total_power_amount": 0.001,
+        "orbit_flag": "y",
+        "longitude_left": "0.0",
+        "latitude_start": "30.0"
+    },
+    "model": "request_creation.request"
+},
+{
+    "pk": 21,
+    "fields": {
+        "device_amount": 2,
+        "total_data_amount": 0.001,
+        "number": 31,
+        "date_start": "2015-07-15",
+        "creation_date": "2015-07-17T15:30:28.380Z",
+        "update_date": "2015-07-17T15:30:28.380Z",
+        "request_file": "KNA1507150031.zp",
+        "date_end": "2015-07-16",
+        "longitude_right": "359.0",
+        "total_power_amount": 0.001,
+        "orbit_flag": "y",
+        "longitude_left": "0.0",
+        "latitude_start": "30.0"
+    },
+    "model": "request_creation.request"
+},
+{
+    "pk": 22,
+    "fields": {
+        "device_amount": 7,
+        "total_data_amount": 0.001,
+        "number": 32,
+        "date_start": "2015-07-15",
+        "creation_date": "2015-07-30T11:38:40.304Z",
+        "update_date": "2015-07-30T13:09:15.497Z",
+        "request_file": "KNA1507150032.zp",
+        "date_end": "2015-07-16",
+        "longitude_right": "359.0",
+        "total_power_amount": 0.001,
+        "orbit_flag": "y",
+        "longitude_left": "0.0",
+        "latitude_start": "30.0"
+    },
+    "model": "request_creation.request"
+},
+{
+    "pk": 23,
+    "fields": {
+        "device_amount": 0,
+        "total_data_amount": 0.001,
+        "number": 33,
+        "date_start": "2015-07-15",
+        "creation_date": "2015-08-04T07:33:00.982Z",
+        "update_date": "2015-08-04T07:33:00.982Z",
+        "request_file": "KNA1507150033.zp",
+        "date_end": "2015-07-16",
+        "longitude_right": "359.0",
+        "total_power_amount": 0.001,
+        "orbit_flag": "y",
+        "longitude_left": "0.0",
+        "latitude_start": "30.0"
+    },
+    "model": "request_creation.request"
+},
+{
+    "pk": 24,
+    "fields": {
+        "device_amount": 0,
+        "total_data_amount": 0.001,
+        "number": 34,
+        "date_start": "2015-07-15",
+        "creation_date": "2015-08-04T07:37:04.622Z",
+        "update_date": "2015-08-04T07:37:04.622Z",
+        "request_file": "KNA1507150034.zp",
+        "date_end": "2015-07-16",
+        "longitude_right": "359.0",
+        "total_power_amount": 0.001,
+        "orbit_flag": "y",
+        "longitude_left": "0.0",
+        "latitude_start": "30.0"
+    },
+    "model": "request_creation.request"
+},
+{
+    "pk": 25,
+    "fields": {
+        "device_amount": 0,
+        "total_data_amount": 0.001,
+        "number": 35,
+        "date_start": "2015-07-15",
+        "creation_date": "2015-08-04T07:37:32.065Z",
+        "update_date": "2015-08-04T07:37:32.065Z",
+        "request_file": "KNA1507150035.zp",
+        "date_end": "2015-07-16",
+        "longitude_right": "359.0",
+        "total_power_amount": 0.001,
+        "orbit_flag": "y",
+        "longitude_left": "0.0",
+        "latitude_start": "30.0"
+    },
+    "model": "request_creation.request"
+},
+{
+    "pk": 1,
+    "fields": {
+        "name": "Wave probe WP(count3)",
+        "code": "WP0000",
+        "description": ""
+    },
+    "model": "request_creation.device"
+},
+{
+    "pk": 2,
+    "fields": {
+        "name": "Electric  probe",
+        "code": "EP0000",
+        "description": ""
+    },
+    "model": "request_creation.device"
+},
+{
+    "pk": 3,
+    "fields": {
+        "name": "Radio frequency analyser",
+        "code": "RFA000",
+        "description": ""
+    },
+    "model": "request_creation.device"
+},
+{
+    "pk": 4,
+    "fields": {
+        "name": "Neutral component plasma probe",
+        "code": "DN0000",
+        "description": ""
+    },
+    "model": "request_creation.device"
+},
+{
+    "pk": 5,
+    "fields": {
+        "name": "Electric component plasma probes",
+        "code": "DE0000",
+        "description": ""
+    },
+    "model": "request_creation.device"
+},
+{
+    "pk": 6,
+    "fields": {
+        "name": "Flux-Gate magnetometer constant field",
+        "code": "FGM000",
+        "description": ""
+    },
+    "model": "request_creation.device"
+},
+{
+    "pk": 7,
+    "fields": {
+        "name": "Total electron content",
+        "code": "PES000",
+        "description": ""
+    },
+    "model": "request_creation.device"
+},
+{
+    "pk": 8,
+    "fields": {
+        "name": "System for gathering scientific information",
+        "code": "SSNI00",
+        "description": ""
+    },
+    "model": "request_creation.device"
+},
+{
+    "pk": 1,
+    "fields": {
+        "name": "5KHz Frequency",
+        "code": "MODE2",
+        "data_speed": 0,
+        "device": 6,
+        "power": 0.0
+    },
+    "model": "request_creation.devicemode"
+},
+{
+    "pk": 2,
+    "fields": {
+        "name": "700 Hz Frequency",
+        "code": "MODE1",
+        "data_speed": 50,
+        "device": 1,
+        "power": 4.0
+    },
+    "model": "request_creation.devicemode"
+},
+{
+    "pk": 3,
+    "fields": {
+        "name": "400 Hz mode",
+        "code": "mode3",
+        "data_speed": 0,
+        "device": 1,
+        "power": 0.0
+    },
+    "model": "request_creation.devicemode"
+},
+{
+    "pk": 1,
+    "fields": {
+        "mode": 1,
+        "power_amount": 0.0,
+        "device": 1,
+        "time_duration": "00:00:30",
+        "data_amount": 0,
+        "time_delay": "00:00:01",
+        "argument_part_len": 1,
+        "request": 2,
+        "argument_part": "qwe"
+    },
+    "model": "request_creation.deviceswitch"
+},
+{
+    "pk": 3,
+    "fields": {
+        "mode": 1,
+        "power_amount": 0.0,
+        "device": 1,
+        "time_duration": "00:00:30",
+        "data_amount": 0,
+        "time_delay": "00:00:01",
+        "argument_part_len": 1,
+        "request": 7,
+        "argument_part": "qwe"
+    },
+    "model": "request_creation.deviceswitch"
+},
+{
+    "pk": 14,
+    "fields": {
+        "mode": 1,
+        "power_amount": 0.0,
+        "device": 1,
+        "time_duration": "00:00:30",
+        "data_amount": 0,
+        "time_delay": "00:00:01",
+        "argument_part_len": 2,
+        "request": 19,
+        "argument_part": "qwe\n\r"
+    },
+    "model": "request_creation.deviceswitch"
+},
+{
+    "pk": 16,
+    "fields": {
+        "mode": 2,
+        "power_amount": 0.0,
+        "device": 1,
+        "time_duration": "00:00:30",
+        "data_amount": 0,
+        "time_delay": "00:00:01",
+        "argument_part_len": 1,
+        "request": 21,
+        "argument_part": "qwe"
+    },
+    "model": "request_creation.deviceswitch"
+},
+{
+    "pk": 17,
+    "fields": {
+        "mode": 1,
+        "power_amount": 0.0,
+        "device": 6,
+        "time_duration": "00:00:30",
+        "data_amount": 0,
+        "time_delay": "00:00:01",
+        "argument_part_len": 3,
+        "request": 21,
+        "argument_part": "qwe\r\nasdasd\r\n asdasasdasd"
+    },
+    "model": "request_creation.deviceswitch"
+},
+{
+    "pk": 27,
+    "fields": {
+        "mode": 2,
+        "power_amount": 120.0,
+        "device": 1,
+        "time_duration": "00:00:30",
+        "data_amount": 1500,
+        "time_delay": "00:00:01",
+        "argument_part_len": 3,
+        "request": 22,
+        "argument_part": "qwe\r\nasdasd\r\n asdasasdasd"
+    },
+    "model": "request_creation.deviceswitch"
+},
+{
+    "pk": 1,
+    "fields": {
+        "name": "Can add log entry",
+        "codename": "add_logentry",
+        "content_type": 1
+    },
+    "model": "auth.permission"
+},
+{
+    "pk": 2,
+    "fields": {
+        "name": "Can change log entry",
+        "codename": "change_logentry",
+        "content_type": 1
+    },
+    "model": "auth.permission"
+},
+{
+    "pk": 3,
+    "fields": {
+        "name": "Can delete log entry",
+        "codename": "delete_logentry",
+        "content_type": 1
+    },
+    "model": "auth.permission"
+},
+{
+    "pk": 4,
+    "fields": {
+        "name": "Can add permission",
+        "codename": "add_permission",
+        "content_type": 2
+    },
+    "model": "auth.permission"
+},
+{
+    "pk": 5,
+    "fields": {
+        "name": "Can change permission",
+        "codename": "change_permission",
+        "content_type": 2
+    },
+    "model": "auth.permission"
+},
+{
+    "pk": 6,
+    "fields": {
+        "name": "Can delete permission",
+        "codename": "delete_permission",
+        "content_type": 2
+    },
+    "model": "auth.permission"
+},
+{
+    "pk": 7,
+    "fields": {
+        "name": "Can add group",
+        "codename": "add_group",
+        "content_type": 3
+    },
+    "model": "auth.permission"
+},
+{
+    "pk": 8,
+    "fields": {
+        "name": "Can change group",
+        "codename": "change_group",
+        "content_type": 3
+    },
+    "model": "auth.permission"
+},
+{
+    "pk": 9,
+    "fields": {
+        "name": "Can delete group",
+        "codename": "delete_group",
+        "content_type": 3
+    },
+    "model": "auth.permission"
+},
+{
+    "pk": 10,
+    "fields": {
+        "name": "Can add user",
+        "codename": "add_user",
+        "content_type": 4
+    },
+    "model": "auth.permission"
+},
+{
+    "pk": 11,
+    "fields": {
+        "name": "Can change user",
+        "codename": "change_user",
+        "content_type": 4
+    },
+    "model": "auth.permission"
+},
+{
+    "pk": 12,
+    "fields": {
+        "name": "Can delete user",
+        "codename": "delete_user",
+        "content_type": 4
+    },
+    "model": "auth.permission"
+},
+{
+    "pk": 13,
+    "fields": {
+        "name": "Can add content type",
+        "codename": "add_contenttype",
+        "content_type": 5
+    },
+    "model": "auth.permission"
+},
+{
+    "pk": 14,
+    "fields": {
+        "name": "Can change content type",
+        "codename": "change_contenttype",
+        "content_type": 5
+    },
+    "model": "auth.permission"
+},
+{
+    "pk": 15,
+    "fields": {
+        "name": "Can delete content type",
+        "codename": "delete_contenttype",
+        "content_type": 5
+    },
+    "model": "auth.permission"
+},
+{
+    "pk": 16,
+    "fields": {
+        "name": "Can add session",
+        "codename": "add_session",
+        "content_type": 6
+    },
+    "model": "auth.permission"
+},
+{
+    "pk": 17,
+    "fields": {
+        "name": "Can change session",
+        "codename": "change_session",
+        "content_type": 6
+    },
+    "model": "auth.permission"
+},
+{
+    "pk": 18,
+    "fields": {
+        "name": "Can delete session",
+        "codename": "delete_session",
+        "content_type": 6
+    },
+    "model": "auth.permission"
+},
+{
+    "pk": 19,
+    "fields": {
+        "name": "Can add request",
+        "codename": "add_request",
+        "content_type": 7
+    },
+    "model": "auth.permission"
+},
+{
+    "pk": 20,
+    "fields": {
+        "name": "Can change request",
+        "codename": "change_request",
+        "content_type": 7
+    },
+    "model": "auth.permission"
+},
+{
+    "pk": 21,
+    "fields": {
+        "name": "Can delete request",
+        "codename": "delete_request",
+        "content_type": 7
+    },
+    "model": "auth.permission"
+},
+{
+    "pk": 22,
+    "fields": {
+        "name": "Can add device",
+        "codename": "add_device",
+        "content_type": 8
+    },
+    "model": "auth.permission"
+},
+{
+    "pk": 23,
+    "fields": {
+        "name": "Can change device",
+        "codename": "change_device",
+        "content_type": 8
+    },
+    "model": "auth.permission"
+},
+{
+    "pk": 24,
+    "fields": {
+        "name": "Can delete device",
+        "codename": "delete_device",
+        "content_type": 8
+    },
+    "model": "auth.permission"
+},
+{
+    "pk": 25,
+    "fields": {
+        "name": "Can add device mode",
+        "codename": "add_devicemode",
+        "content_type": 9
+    },
+    "model": "auth.permission"
+},
+{
+    "pk": 26,
+    "fields": {
+        "name": "Can change device mode",
+        "codename": "change_devicemode",
+        "content_type": 9
+    },
+    "model": "auth.permission"
+},
+{
+    "pk": 27,
+    "fields": {
+        "name": "Can delete device mode",
+        "codename": "delete_devicemode",
+        "content_type": 9
+    },
+    "model": "auth.permission"
+},
+{
+    "pk": 28,
+    "fields": {
+        "name": "Can add device switch",
+        "codename": "add_deviceswitch",
+        "content_type": 10
+    },
+    "model": "auth.permission"
+},
+{
+    "pk": 29,
+    "fields": {
+        "name": "Can change device switch",
+        "codename": "change_deviceswitch",
+        "content_type": 10
+    },
+    "model": "auth.permission"
+},
+{
+    "pk": 30,
+    "fields": {
+        "name": "Can delete device switch",
+        "codename": "delete_deviceswitch",
+        "content_type": 10
+    },
+    "model": "auth.permission"
+},
+{
+    "pk": 1,
+    "fields": {
+        "is_active": true,
+        "user_permissions": [],
+        "first_name": "",
+        "username": "admin",
+        "password": "pbkdf2_sha256$20000$aykZ40mTuFwo$nqevClPBY1nR1wHHv4o4klKhJ3g4ium4gUxQxJYnec8=",
+        "is_superuser": true,
+        "email": "udodovevgeniy@gmail.com",
+        "date_joined": "2015-07-14T15:44:32.158Z",
+        "last_login": "2015-07-15T09:18:28.989Z",
+        "last_name": "",
+        "is_staff": true,
+        "groups": []
+    },
+    "model": "auth.user"
+},
+{
+    "pk": 2,
+    "fields": {
+        "is_active": true,
+        "user_permissions": [],
+        "first_name": "",
+        "username": "evgeniy",
+        "password": "pbkdf2_sha256$20000$esjtRC0RvpiU$siiBu5vgiFX+7x7UpFkNabtayjaHIIs+K/nsnB10rr4=",
+        "is_superuser": true,
+        "email": "udodovevgeniy@gmail.com",
+        "date_joined": "2015-07-29T12:54:07.837Z",
+        "last_login": "2015-07-29T12:54:17.755Z",
+        "last_name": "",
+        "is_staff": true,
+        "groups": []
+    },
+    "model": "auth.user"
+},
+{
+    "pk": 1,
+    "fields": {
+        "object_repr": "Wave probe WP(count3)",
+        "object_id": "1",
+        "user": 1,
+        "action_time": "2015-07-14T15:53:26.729Z",
+        "content_type": 8,
+        "change_message": "",
+        "action_flag": 1
+    },
+    "model": "admin.logentry"
+},
+{
+    "pk": 2,
+    "fields": {
+        "object_repr": "Electric  probe",
+        "object_id": "2",
+        "user": 1,
+        "action_time": "2015-07-14T15:53:56.983Z",
+        "content_type": 8,
+        "change_message": "",
+        "action_flag": 1
+    },
+    "model": "admin.logentry"
+},
+{
+    "pk": 3,
+    "fields": {
+        "object_repr": "Radio frequency analyser",
+        "object_id": "3",
+        "user": 1,
+        "action_time": "2015-07-14T15:54:11.124Z",
+        "content_type": 8,
+        "change_message": "",
+        "action_flag": 1
+    },
+    "model": "admin.logentry"
+},
+{
+    "pk": 4,
+    "fields": {
+        "object_repr": "Neutral component plasma probe",
+        "object_id": "4",
+        "user": 1,
+        "action_time": "2015-07-14T15:54:27.065Z",
+        "content_type": 8,
+        "change_message": "",
+        "action_flag": 1
+    },
+    "model": "admin.logentry"
+},
+{
+    "pk": 5,
+    "fields": {
+        "object_repr": "Electric component plasma probes",
+        "object_id": "5",
+        "user": 1,
+        "action_time": "2015-07-14T15:55:47.982Z",
+        "content_type": 8,
+        "change_message": "",
+        "action_flag": 1
+    },
+    "model": "admin.logentry"
+},
+{
+    "pk": 6,
+    "fields": {
+        "object_repr": "Flux-Gate magnetometer constant field",
+        "object_id": "6",
+        "user": 1,
+        "action_time": "2015-07-14T15:56:05.041Z",
+        "content_type": 8,
+        "change_message": "",
+        "action_flag": 1
+    },
+    "model": "admin.logentry"
+},
+{
+    "pk": 7,
+    "fields": {
+        "object_repr": "Total electron content",
+        "object_id": "7",
+        "user": 1,
+        "action_time": "2015-07-14T15:56:30.267Z",
+        "content_type": 8,
+        "change_message": "",
+        "action_flag": 1
+    },
+    "model": "admin.logentry"
+},
+{
+    "pk": 8,
+    "fields": {
+        "object_repr": "System for gathering scientific information",
+        "object_id": "8",
+        "user": 1,
+        "action_time": "2015-07-14T15:56:44.862Z",
+        "content_type": 8,
+        "change_message": "",
+        "action_flag": 1
+    },
+    "model": "admin.logentry"
+},
+{
+    "pk": 9,
+    "fields": {
+        "object_repr": "700 Hz Frequency",
+        "object_id": "1",
+        "user": 1,
+        "action_time": "2015-07-15T10:47:06.391Z",
+        "content_type": 9,
+        "change_message": "",
+        "action_flag": 1
+    },
+    "model": "admin.logentry"
+},
+{
+    "pk": 10,
+    "fields": {
+        "object_repr": "1",
+        "object_id": "1",
+        "user": 1,
+        "action_time": "2015-07-15T14:08:06.595Z",
+        "content_type": 7,
+        "change_message": "",
+        "action_flag": 1
+    },
+    "model": "admin.logentry"
+},
+{
+    "pk": 11,
+    "fields": {
+        "object_repr": "3",
+        "object_id": "6",
+        "user": 1,
+        "action_time": "2015-07-16T11:45:09.006Z",
+        "content_type": 7,
+        "change_message": "",
+        "action_flag": 3
+    },
+    "model": "admin.logentry"
+},
+{
+    "pk": 12,
+    "fields": {
+        "object_repr": "3",
+        "object_id": "5",
+        "user": 1,
+        "action_time": "2015-07-16T11:45:09.023Z",
+        "content_type": 7,
+        "change_message": "",
+        "action_flag": 3
+    },
+    "model": "admin.logentry"
+},
+{
+    "pk": 13,
+    "fields": {
+        "object_repr": "3",
+        "object_id": "4",
+        "user": 1,
+        "action_time": "2015-07-16T11:45:09.028Z",
+        "content_type": 7,
+        "change_message": "",
+        "action_flag": 3
+    },
+    "model": "admin.logentry"
+},
+{
+    "pk": 14,
+    "fields": {
+        "object_repr": "3",
+        "object_id": "3",
+        "user": 1,
+        "action_time": "2015-07-16T11:45:09.032Z",
+        "content_type": 7,
+        "change_message": "",
+        "action_flag": 3
+    },
+    "model": "admin.logentry"
+},
+{
+    "pk": 15,
+    "fields": {
+        "object_repr": "7",
+        "object_id": "11",
+        "user": 1,
+        "action_time": "2015-07-16T13:12:12.124Z",
+        "content_type": 7,
+        "change_message": "",
+        "action_flag": 3
+    },
+    "model": "admin.logentry"
+},
+{
+    "pk": 16,
+    "fields": {
+        "object_repr": "6",
+        "object_id": "10",
+        "user": 1,
+        "action_time": "2015-07-16T13:12:12.134Z",
+        "content_type": 7,
+        "change_message": "",
+        "action_flag": 3
+    },
+    "model": "admin.logentry"
+},
+{
+    "pk": 17,
+    "fields": {
+        "object_repr": "5",
+        "object_id": "9",
+        "user": 1,
+        "action_time": "2015-07-16T13:12:12.140Z",
+        "content_type": 7,
+        "change_message": "",
+        "action_flag": 3
+    },
+    "model": "admin.logentry"
+},
+{
+    "pk": 18,
+    "fields": {
+        "object_repr": "4",
+        "object_id": "8",
+        "user": 1,
+        "action_time": "2015-07-16T13:12:12.146Z",
+        "content_type": 7,
+        "change_message": "",
+        "action_flag": 3
+    },
+    "model": "admin.logentry"
+},
+{
+    "pk": 19,
+    "fields": {
+        "object_repr": "34",
+        "object_id": "13",
+        "user": 1,
+        "action_time": "2015-07-16T15:42:36.664Z",
+        "content_type": 7,
+        "change_message": "",
+        "action_flag": 3
+    },
+    "model": "admin.logentry"
+},
+{
+    "pk": 20,
+    "fields": {
+        "object_repr": "19",
+        "object_id": "12",
+        "user": 1,
+        "action_time": "2015-07-16T15:42:36.681Z",
+        "content_type": 7,
+        "change_message": "",
+        "action_flag": 3
+    },
+    "model": "admin.logentry"
+},
+{
+    "pk": 21,
+    "fields": {
+        "object_repr": "12",
+        "object_id": "11",
+        "user": 1,
+        "action_time": "2015-07-16T15:42:36.685Z",
+        "content_type": 7,
+        "change_message": "",
+        "action_flag": 3
+    },
+    "model": "admin.logentry"
+},
+{
+    "pk": 22,
+    "fields": {
+        "object_repr": "11",
+        "object_id": "10",
+        "user": 1,
+        "action_time": "2015-07-16T15:42:36.689Z",
+        "content_type": 7,
+        "change_message": "",
+        "action_flag": 3
+    },
+    "model": "admin.logentry"
+},
+{
+    "pk": 23,
+    "fields": {
+        "object_repr": "6",
+        "object_id": "9",
+        "user": 1,
+        "action_time": "2015-07-16T15:42:36.694Z",
+        "content_type": 7,
+        "change_message": "",
+        "action_flag": 3
+    },
+    "model": "admin.logentry"
+},
+{
+    "pk": 24,
+    "fields": {
+        "object_repr": "7",
+        "object_id": "8",
+        "user": 1,
+        "action_time": "2015-07-16T15:42:36.698Z",
+        "content_type": 7,
+        "change_message": "",
+        "action_flag": 3
+    },
+    "model": "admin.logentry"
+},
+{
+    "pk": 25,
+    "fields": {
+        "object_repr": "22",
+        "object_id": "15",
+        "user": 1,
+        "action_time": "2015-07-17T13:47:24.356Z",
+        "content_type": 7,
+        "change_message": "",
+        "action_flag": 3
+    },
+    "model": "admin.logentry"
+},
+{
+    "pk": 26,
+    "fields": {
+        "object_repr": "25",
+        "object_id": "18",
+        "user": 1,
+        "action_time": "2015-07-17T14:23:31.641Z",
+        "content_type": 7,
+        "change_message": "",
+        "action_flag": 3
+    },
+    "model": "admin.logentry"
+},
+{
+    "pk": 27,
+    "fields": {
+        "object_repr": "24",
+        "object_id": "17",
+        "user": 1,
+        "action_time": "2015-07-17T14:23:31.650Z",
+        "content_type": 7,
+        "change_message": "",
+        "action_flag": 3
+    },
+    "model": "admin.logentry"
+},
+{
+    "pk": 28,
+    "fields": {
+        "object_repr": "22",
+        "object_id": "16",
+        "user": 1,
+        "action_time": "2015-07-17T14:23:31.656Z",
+        "content_type": 7,
+        "change_message": "",
+        "action_flag": 3
+    },
+    "model": "admin.logentry"
+},
+{
+    "pk": 29,
+    "fields": {
+        "object_repr": "21",
+        "object_id": "14",
+        "user": 1,
+        "action_time": "2015-07-17T14:23:31.661Z",
+        "content_type": 7,
+        "change_message": "",
+        "action_flag": 3
+    },
+    "model": "admin.logentry"
+},
+{
+    "pk": 30,
+    "fields": {
+        "object_repr": "5KHz Frequency",
+        "object_id": "1",
+        "user": 1,
+        "action_time": "2015-07-17T15:24:14.969Z",
+        "content_type": 9,
+        "change_message": "Changed name and code.",
+        "action_flag": 2
+    },
+    "model": "admin.logentry"
+},
+{
+    "pk": 31,
+    "fields": {
+        "object_repr": "700 Hz Frequency",
+        "object_id": "2",
+        "user": 1,
+        "action_time": "2015-07-17T15:25:26.383Z",
+        "content_type": 9,
+        "change_message": "",
+        "action_flag": 1
+    },
+    "model": "admin.logentry"
+},
+{
+    "pk": 32,
+    "fields": {
+        "object_repr": "30",
+        "object_id": "20",
+        "user": 1,
+        "action_time": "2015-07-17T15:29:50.197Z",
+        "content_type": 7,
+        "change_message": "",
+        "action_flag": 3
+    },
+    "model": "admin.logentry"
+},
+{
+    "pk": 33,
+    "fields": {
+        "object_repr": "5KHz Frequency",
+        "object_id": "1",
+        "user": 1,
+        "action_time": "2015-07-17T15:30:23.449Z",
+        "content_type": 9,
+        "change_message": "Changed device.",
+        "action_flag": 2
+    },
+    "model": "admin.logentry"
+},
+{
+    "pk": 34,
+    "fields": {
+        "object_repr": "400 Hz mode",
+        "object_id": "3",
+        "user": 1,
+        "action_time": "2015-07-23T13:20:58.469Z",
+        "content_type": 9,
+        "change_message": "",
+        "action_flag": 1
+    },
+    "model": "admin.logentry"
+},
+{
+    "pk": 35,
+    "fields": {
+        "object_repr": "700 Hz Frequency",
+        "object_id": "2",
+        "user": 2,
+        "action_time": "2015-07-30T13:00:16.515Z",
+        "content_type": 9,
+        "change_message": "Changed power and data_speed.",
+        "action_flag": 2
+    },
+    "model": "admin.logentry"
+}
+]

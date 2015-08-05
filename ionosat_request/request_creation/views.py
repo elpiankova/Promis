@@ -43,5 +43,8 @@ def view_orbit_flag(request):
 
     return HttpResponse(json.dumps(list_orbit_flag))
 
+
+#def last_switch_in_request()
+
 # def view_last_request(request):
 #     last_request =

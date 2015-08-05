@@ -26,13 +26,15 @@ class Request(models.Model):
                                           validators=[request_max_longitude_validator,
                                                       request_min_longitude_validator])
 
-    device_amount = models.SmallIntegerField(validators=[device_amount_max_val_validator,
+    device_amount = models.SmallIntegerField(null=True, validators=[device_amount_max_val_validator,
                                                          device_amount_min_val_validator])
-    request_file = models.FilePathField(path=os.path.join(BASE_DIR, 'request_files'), validators=[request_file_validator])
+    request_file = models.FilePathField(path=os.path.join(BASE_DIR, 'request_files'),
+                                        validators=[request_file_validator], null=True)
     creation_date = models.DateTimeField(auto_now_add=True)
     update_date = models.DateTimeField(auto_now=True)
-    total_data_amount = models.FloatField(default=0.001)
-    total_power_amount = models.FloatField(default=0.001)
+    total_data_amount = models.BigIntegerField(default=0)
+    total_power_amount = models.FloatField(default=0)
+
 
 ##  device_switch_list = models.ManyToManyField('DeviceSwitch')
 
@@ -78,8 +80,8 @@ class Device(models.Model):
 class DeviceMode(models.Model):
     name = models.CharField(max_length=255)
     code = models.CharField(max_length=6)
-    power = models.FloatField(null=True)
-    data_speed = models.SmallIntegerField(null=True)
+    power = models.FloatField(default=0)
+    data_speed = models.IntegerField(default=0)
     device = models.ForeignKey('Device', related_name='modes')
 
     class Meta:
@@ -97,8 +99,8 @@ class DeviceSwitch(models.Model):
     device = models.ForeignKey('Device')
     mode = models.ForeignKey('DeviceMode') #limit to choice to
     request = models.ForeignKey('Request', related_name='switches') # limit to choice
-    data_amount = models.FloatField(null=True)
-    power_amount = models.FloatField(null=True)
+    data_amount = models.BigIntegerField(default=0)
+    power_amount = models.FloatField(default=0)
 
     class Meta:
         db_table = 'device_switches'
@@ -106,5 +108,3 @@ class DeviceSwitch(models.Model):
 
     def __str__(self):
         return str(self.time_duration)
-# Create your models here.
-
