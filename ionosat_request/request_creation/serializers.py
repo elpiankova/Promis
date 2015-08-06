@@ -37,7 +37,7 @@ class DeviceSwitchSerializer(serializers.ModelSerializer):
         model = DeviceSwitch
         fields = ('argument_part_len', 'time_delay', 'time_duration', 'argument_part', 'device', 'mode', 'power_amount',
                   'data_amount', 'request_number')
-        read_only_fields = ('argument_part_len')
+        read_only_fields = ('argument_part_len',)
 
     def create(self, validated_data):
         #     # This block is validate a presence of one unique device
