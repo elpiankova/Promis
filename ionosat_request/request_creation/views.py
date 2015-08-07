@@ -3,9 +3,10 @@ from django.shortcuts import render
 from .models import Device, Request, DeviceSwitch
 from rest_framework import viewsets
 from .serializers import DeviceSerializer, RequestSerializer, DeviceSwitchSerializer
-from django.http import HttpResponse
-import json
+from django.http import HttpResponse, HttpResponseRedirect
+import json, os
 from django.views.decorators.http import require_GET
+from request_creation.create_file import create_file
 
 
 class DeviceViewSet(viewsets.ReadOnlyModelViewSet):
@@ -44,7 +45,9 @@ def view_orbit_flag(request):
     return HttpResponse(json.dumps(list_orbit_flag))
 
 
-#def last_switch_in_request()
-
-# def view_last_request(request):
-#     last_request =
+def view_generate_file(request, file_name):
+    request_obj = Request.objects.get(request_file=file_name)
+    request_file = request_obj.request_file
+    create_file(request_obj)
+    path_request_file = '/media/' + request_file
+    return HttpResponseRedirect(path_request_file)
