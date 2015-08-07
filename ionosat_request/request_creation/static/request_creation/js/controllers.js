@@ -8,6 +8,7 @@ requestKNA.controller(
 		$http.get('/devices').success(
 			function (data) {
 				claim.appliance = data;
+				console.log(data)
 			}
 		);
 		$http.get('/orbit_flag').success(
@@ -18,8 +19,12 @@ requestKNA.controller(
 
 		$http.get('/number').success(
 			function (data) {
-				claim.number = data;
-				console.log(data);
+				claim.number = parseInt(data);
+				claim.user =
+				{
+					"number": claim.number
+				};
+				console.log(claim.user.number);
 			}
 		);
 
