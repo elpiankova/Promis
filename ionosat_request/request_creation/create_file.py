@@ -4,8 +4,7 @@ from ionosat_request.settings import BASE_DIR
 import os
 
 
-def create_file(request_number):
-    request = Request.objects.get(number=request_number)
+def create_file(request):
     device_switches = request.switches.all()
 
     date_start = date.strftime(request.date_start, "%d%m%y")
@@ -15,8 +14,10 @@ def create_file(request_number):
         "number": request.number
     }
 
+    file_path = os.path.join(BASE_DIR, 'request_files', file_name)
+
     # This block writes first line of request file
-    file_data = open(os.path.join(BASE_DIR, 'request_files', file_name), 'w')
+    file = open(file_path, 'w')
     first_line = ('KNA %(number)04d %(date_start)s %(date_end)s'
                   ' %(orbit_flag)s %(latitude_start)+04.1f'
                   ' %(longitude_left)05.1f %(longitude_right)05.1f'
@@ -31,7 +32,7 @@ def create_file(request_number):
                       "longitude_right": float(request.longitude_right),
                       "device_amount": request.device_amount
                   })
-    file_data.write(first_line)
+    file.write(first_line)
 
     # This block writes all another lines to request file
     for device_switch in device_switches:
@@ -47,7 +48,7 @@ def create_file(request_number):
                     "time_duration": device_switch.time_duration.total_seconds(),
                     "argument_part_len": argument_part_len
                 })
-        file_data.write(line)
+        file.write(line)
 
         # This block writes correct end of lines in argument part
         arg_lines = device_switch.argument_part
@@ -56,8 +57,8 @@ def create_file(request_number):
                 arg_lines = arg_lines.rstrip('\n')
             arg_lines += '\r\n'
 
-        file_data.write(arg_lines)
+        file.write(arg_lines)
 
-    file_data.close()
+    file.close()
 
     return file_name

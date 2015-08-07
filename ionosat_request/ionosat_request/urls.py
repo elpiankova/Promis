@@ -36,5 +36,5 @@ urlpatterns = [
     url(r'^', include(router.urls)),
     url(r'^number', views.view_get_number),
     url(r'^orbit_flag', views.view_orbit_flag),
+    url(r'^get_file/([A-Z]{3}\d{10}\.zp)/$', views.view_generate_file),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
