@@ -41,7 +41,7 @@ requestKNA.controller(
 
 					"device": "Wave probe WP(count3)",
 
-					"mode": "5KHz Frequency",
+					"mode": "400 Hz mode",
 
 					"power_amount": 0,
 
@@ -56,9 +56,9 @@ requestKNA.controller(
 
 					"argument_part": "qwe",
 
-					"device": "Wave probe WP(count3)",
+					"device": "Electric  probe",
 
-					"mode": "5KHz Frequency",
+					"mode": "700 Hz Frequency",
 
 					"power_amount": 0,
 
@@ -72,7 +72,7 @@ requestKNA.controller(
 
 					"argument_part": "qwe",
 
-					"device": "Wave probe WP(count3)",
+					"device": "Radio frequency analyser",
 
 					"mode": "5KHz Frequency",
 
@@ -83,22 +83,13 @@ requestKNA.controller(
 			];
 			var index;
 			for (index = 0; index < devswitch.length; ++index) {
-				console.log(devswitch[index]);
 			}
 			$http.post('/request/', request).
 				success(
 				function () {
 					var index;
 					for (index = 0; index < devswitch.length; ++index) {
-
-						$http.post('/devswitch/', devswitch[index]).
-							success(
-							console.log(devswitch[index])
-						).
-							error(
-							function (status) {
-							}
-						);
+						$http.post('/devswitch/', devswitch[index]);
 					}
 				}
 			).
