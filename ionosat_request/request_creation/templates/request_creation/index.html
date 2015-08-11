@@ -12,13 +12,16 @@
 	      href = "{% static 'request_creation/css/app.css' %}">
 	<link rel = "stylesheet"
 	      href = "{% static 'request_creation/css/main.css' %}">
+	<link rel = "stylesheet"
+	      href = "{% static 'request_creation/bower_components/jquery-ui/themes/pepper-grinder/jquery-ui.min.css' %}">
+
+	<script src = "{% static 'request_creation/bower_components/jquery/dist/jquery.js' %}"></script>
+	<script src = "{% static 'request_creation/bower_components/jquery-ui/jquery-ui.js' %}"></script>
 	<script src = "{% static 'request_creation/bower_components/angular/angular.js' %}"></script>
 	<script src = "{% static 'request_creation/js/app.js' %}"></script>
 	<script src = "{% static 'request_creation/js/controllers.js' %}"></script>
 	<script src = "{% static 'request_creation/js/filters.js' %}"></script>
 	<script src = "{% static 'request_creation/js/directives.js' %}"></script>
-	<script src = "{% static 'request_creation/bower_components/jquery/dist/jquery.js' %}"></script>
-	<script src = "{% static 'request_creation/bower_components/jquery-ui/jquery-ui.js' %}"></script>
 </head>
 <body ng-controller = "claimInfoCtrl as claimInfo">
 <!-- Created by mammut -->
@@ -52,20 +55,24 @@
 					<div class = "col-sm-6 "
 					     ng-class = "{'has-error': loginForm.date_start.$invalid}">
 						<label>Дата початку</label>
-						<input type = "date"
+						<input type = "text"
 						       class = "form-control"
+						       id = "from"
 						       name = "date_start"
 						       ng-model = "claimInfo.user.date_start"
-						       required>
+						       required
+						       datepicker>
 					</div>
 					<div class = "col-sm-6"
 					     ng-class = "{'has-error': loginForm.date_end.$invalid}">
 						<label>Дата кінця</label>
-						<input type = "date"
+						<input type = "text"
+						       id = "to"
 						       class = "form-control"
 						       name = "date_end"
 						       ng-model = "claimInfo.user.date_end"
-						       required>
+						       required
+						       datepicker>
 					</div>
 				</div>
 				<div class = "form-group"
@@ -135,7 +142,7 @@
 							     role = "alert">Живлення:[[todoList.modes.power *
 							                    todoList.switches.duration | date: "HH"]]<br>
 							                    Інформація:[[todoList.modes.data_speed]]<br>
-								[[claimInfo.user]]
+							                    [[claimInfo.user]]
 							</div>
 							<div class = "form-group ">
 								<label>Назва приладу</label>
