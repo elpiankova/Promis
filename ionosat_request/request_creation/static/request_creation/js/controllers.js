@@ -41,7 +41,7 @@ requestKNA.controller(
 				"longitude_left": "0.0",
 
 				"longitude_right": "359.0"
-			}
+			};
 			var devswitch = {
 				"request_number": claim.number,
 
@@ -61,11 +61,9 @@ requestKNA.controller(
 			};
 			$http.post('/request/', request).
 				success(
-				function (data) {
+				function () {
 					$http.post('/devswitch/', devswitch).
 						success(
-						function (data) {
-						}
 					).
 						error(
 						function (status) {
@@ -90,11 +88,6 @@ requestKNA.controller(
 		todoList.todos = [];
 		todoList.addTodo = function () {
 			todoList.todos.push({});
-		};
-
-		todoList.Save = function () {
-			var save = this.switches;
-			console.log(save);
 		};
 	}
 );
