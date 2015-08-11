@@ -129,104 +129,109 @@
 						       required>
 					</div>
 				</div>
-				<div id = "hello"
-				     ng-controller = "TodoListController as todoList">
-					<div class = "panel panel-default"
-					     ng-repeat = "todo in todoList.todos">
+				<div class = "panel panel-default"
+				     ng-repeat = "switch in claimInfo.todos">
 
-						<div class = "panel-heading"><b ng-model = "user.switches"> Прилад :
-						                                                            [[todoList.switches]]</b>
+					<div class = "panel-heading"><b ng-model = "user.switches"> Прилад :
+					                                                            [[switch]]</b>
+					</div>
+					<div class = "panel-body">
+						<div class = "alert alert-success"
+						     role = "alert">Живлення:[[claimInfo.modes.power *
+						                    claimInfo.switches.duration | date: "HH"]]<br>
+						                    Інформація:[[claimInfo.modes.data_speed]]<br>
+						                    [[claimInfo.user]]
 						</div>
-						<div class = "panel-body">
-							<div class = "alert alert-success"
-							     role = "alert">Живлення:[[todoList.modes.power *
-							                    todoList.switches.duration | date: "HH"]]<br>
-							                    Інформація:[[todoList.modes.data_speed]]<br>
-							                    [[claimInfo.user]]
-							</div>
-							<div class = "form-group ">
-								<label>Назва приладу</label>
-								<select ng-model = "todoList.switches.device"
-								        ng-options = "applic.name as applic.name for applic in claimInfo.appliance"
-								        class = "form-control"
-								        required></select>
+						<div class = "form-group ">
+							<label>Назва приладу</label>
+							<select ng-model = "switch.device"
+							        ng-options = "applic.name as applic.name for applic in claimInfo.appliance"
+							        class = "form-control"
+							        required></select>
 
-								<select ng-model = "heloow"
-								        ng-options = " applic.name for applic in claimInfo.appliance"
-								        class = "form-control"
-								        required></select>
+							<select ng-model = "heloow"
+							        ng-options = " applic.name for applic in claimInfo.appliance"
+							        class = "form-control"
+							        required></select>
 
-							</div>
+						</div>
 
-							<div class = "form-group">
-								<label>Режим роботи:[[ mybehav.atr ]]</label>
-								<select ng-model = "todoList.modes"
-								        ng-options = "behav.name for behav in heloow.modes"
-								        class = "form-control"
-								        required></select>
-								<select ng-model = "todoList.switches.mode"
-								        ng-options = "behav.name as behav.name for behav in heloow.modes"
-								        class = "form-control"
-								        required></select>
+						<div class = "form-group">
+							<label>Режим роботи:[[ mybehav.atr ]]</label>
+							<select ng-model = "todo.modes"
+							        ng-options = "behav.name for behav in heloow.modes"
+							        class = "form-control"
+							        required></select>
+							<select ng-model = "switch.mode"
+							        ng-options = "behav.name as behav.name for behav in heloow.modes"
+							        class = "form-control"
+							        required></select>
+						</div>
+						<div class = "row form-group">
+							<div class = "col-sm-6">
+								<label>Час затримки</label>
+								<input ng-model = "switch.time_delay"
+								       type = "time"
+								       step = "1"
+								       class = "form-control"
+								       ng-model = "user.time_delay"
+								       required>
 							</div>
-							<div class = "row form-group">
-								<div class = "col-sm-6">
-									<label>Час затримки</label>
-									<input ng-model = "todoList.switches.time_delay"
-									       type = "time"
-									       step = "1"
-									       class = "form-control"
-									       ng-model = "user.time_delay"
-									       required>
-								</div>
-								<div class = "col-sm-6">
-									<label>Час роботи</label>
-									<input ng-model = "todoList.switches.duration"
-									       type = "time"
-									       step = "1"
-									       class = "form-control"
-									       ng-model = "user.timework"
-									       required>
-								</div>
+							<div class = "col-sm-6">
+								<label>Час роботи</label>
+								<input ng-model = "switch.duration"
+								       type = "time"
+								       step = "1"
+								       class = "form-control"
+								       ng-model = "user.timework"
+								       required>
 							</div>
-							<div class = "form-group">
-								<label>Код для програматора</label>
-                                <textarea ng-model = "todoList.switches.argument_part"
+						</div>
+						<div class = "form-group">
+							<label>Код для програматора</label>
+                                <textarea ng-model = "switch.argument_part"
                                           class = "form-control"
                                           rows = "3"
                                           ng-model = "text">[[ device ]]</textarea>
-							</div>
 						</div>
 					</div>
-
 					<div class = "form-group">
-						<button ng-click = "todoList.addTodo()"
+						<button ng-click = "claimInfo.saveTodo()"
 						        type = "button"
-						        class = "btn btn-lg btn-primary btn-block"
-						        ng-class = "{'btn-warning disabled': loginForm.$invalid}">
+						        class = "btn btn-lg btn-primary btn-block">
 							<span class = "glyphicon glyphicon-plus"></span>
-							Добавити пристрій
+							Зберегти пристрій
 						</button>
 					</div>
-					<div class = "form-group">
-						<button ng-click = "todoList.addTodo()"
-						        type = "button"
-						        class = "btn btn-lg btn-primary btn-block"
+				</div>
+
+				<div class = "form-group">
+					<button ng-click = "claimInfo.addTodo()"
+					        type = "button"
+					        class = "btn btn-lg btn-primary btn-block"
+					        ng-class = "{'btn-warning disabled': loginForm.$invalid}">
 						<span class = "glyphicon glyphicon-plus"></span>
 						Добавити пристрій
-						</button>
-					</div>
+					</button>
 				</div>
 				<div class = "form-group">
-					<button
-							class = "btn btn-success btn-lg btn-block"
-							ng-click = "claimInfo.dataReqest()"
-							>
-						<span class = "glyphicon glyphicon-ok"></span>
-						Згенерувати заявку
+					<button ng-click = "claimInfo.addTodo()"
+					        type = "button"
+					        class = "btn btn-lg btn-primary btn-block">
+						<span class = "glyphicon glyphicon-plus"></span>
+						Добавити пристрій
 					</button>
-					<!--<a href="KNA.zp" class="btn btn-success btn-lg btn-block" download="KNA"><span class="glyphicon glyphicon-download-alt"></span> Скачать </a> -->
 				</div>
+			</div>
+			<div class = "form-group">
+				<button
+						class = "btn btn-success btn-lg btn-block"
+						ng-click = "claimInfo.dataReqest()"
+						>
+					<span class = "glyphicon glyphicon-ok"></span>
+					Згенерувати заявку
+				</button>
+				<!--<a href="KNA.zp" class="btn btn-success btn-lg btn-block" download="KNA"><span class="glyphicon glyphicon-download-alt"></span> Скачать </a> -->
 			</div>
 		</div>
 	</div>

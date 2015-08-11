@@ -26,64 +26,23 @@ requestKNA.controller(
 			}
 		);
 
+		claim.todos = [];
+		claim.addTodo = function () {
+			claim.todos.push({});
+		};
+
 		claim.dataReqest = function () {
+
 			var request = claim.user;
 			console.log(request);
-			var devswitch = [
-				{
-					"request_number": claim.number,
-
-					"time_delay": "00:00:01",
-
-					"time_duration": "00:00:30",
-
-					"argument_part": "qwe",
-
-					"device": "Wave probe WP(count3)",
-
-					"mode": "400 Hz mode",
-
-					"power_amount": 0,
-
-					"data_amount": 0
-				},
-				{
-					"request_number": claim.number,
-
-					"time_delay": "00:00:01",
-
-					"time_duration": "00:00:30",
-
-					"argument_part": "qwe",
-
-					"device": "Electric  probe",
-
-					"mode": "700 Hz Frequency",
-
-					"power_amount": 0,
-
-					"data_amount": 0
-				}, {
-					"request_number": claim.number,
-
-					"time_delay": "00:00:01",
-
-					"time_duration": "00:00:30",
-
-					"argument_part": "qwe",
-
-					"device": "Radio frequency analyser",
-
-					"mode": "5KHz Frequency",
-
-					"power_amount": 0,
-
-					"data_amount": 0
-				}
-			];
 			var index;
-			for (index = 0; index < devswitch.length; ++index) {
+			for (index = 0; index < claim.todos.length; ++index) {
+				claim.todos[index]["request_number"] = claim.user.number;
 			}
+
+			var devswitch = claim.todos;
+			console.log(devswitch);
+
 			$http.post('/request/', request).
 				success(
 				function () {
@@ -101,12 +60,3 @@ requestKNA.controller(
 	}
 );
 
-requestKNA.controller(
-	'TodoListController', function () {
-		var todoList = this;
-		todoList.todos = [];
-		todoList.addTodo = function () {
-			todoList.todos.push({});
-		};
-	}
-);
