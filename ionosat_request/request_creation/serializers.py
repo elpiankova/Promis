@@ -56,8 +56,14 @@ class DeviceSwitchSerializer(serializers.ModelSerializer):
         for line in argument_part:
             if len(line) > 60:
                 raise ValidationError("Every line of the argument part must be shorter than 60 symbols")
-        device = Device.objects.get(name=device_name)
-        mode = DeviceMode.objects.get(name=device_mode, device=device)
+        try:
+            device = Device.objects.get(name=device_name)
+        except ObjectDoesNotExist:
+            raise  ValidationError("There is not such device in Database")
+        try:
+            mode = DeviceMode.objects.get(name=device_mode, device=device)
+        except ObjectDoesNotExist:
+            raise ValidationError("Such device have not this mode! Please try anouther")
         try:
             request = Request.objects.get(number=request['number'])
         except ObjectDoesNotExist:
