@@ -27,58 +27,86 @@ requestKNA.controller(
 		);
 
 		claim.dataReqest = function () {
-			var request = {
-				"number": claim.number,
+			var request = claim.user;
+			console.log(request);
+			var devswitch = [
+				{
+					"request_number": claim.number,
 
-				"date_start": "2015-07-15",
+					"time_delay": "00:00:01",
 
-				"date_end": "2015-07-16",
+					"time_duration": "00:00:30",
 
-				"orbit_flag": "y",
+					"argument_part": "qwe",
 
-				"latitude_start": "30.0",
+					"device": "Wave probe WP(count3)",
 
-				"longitude_left": "0.0",
+					"mode": "5KHz Frequency",
 
-				"longitude_right": "359.0"
-			};
-			var devswitch = {
-				"request_number": claim.number,
+					"power_amount": 0,
 
-				"time_delay": "00:00:01",
+					"data_amount": 0
+				},
+				{
+					"request_number": claim.number,
 
-				"time_duration": "00:00:30",
+					"time_delay": "00:00:01",
 
-				"argument_part": "qwe",
+					"time_duration": "00:00:30",
 
-				"device": "Wave probe WP(count3)",
+					"argument_part": "qwe",
 
-				"mode": "5KHz Frequency",
+					"device": "Wave probe WP(count3)",
 
-				"power_amount": 0,
+					"mode": "5KHz Frequency",
 
-				"data_amount": 0
-			};
+					"power_amount": 0,
+
+					"data_amount": 0
+				}, {
+					"request_number": claim.number,
+
+					"time_delay": "00:00:01",
+
+					"time_duration": "00:00:30",
+
+					"argument_part": "qwe",
+
+					"device": "Wave probe WP(count3)",
+
+					"mode": "5KHz Frequency",
+
+					"power_amount": 0,
+
+					"data_amount": 0
+				}
+			];
+			var index;
+			for (index = 0; index < devswitch.length; ++index) {
+				console.log(devswitch[index]);
+			}
 			$http.post('/request/', request).
 				success(
 				function () {
-					$http.post('/devswitch/', devswitch).
-						success(
-					).
-						error(
-						function (status) {
-						}
-					);
+					var index;
+					for (index = 0; index < devswitch.length; ++index) {
+
+						$http.post('/devswitch/', devswitch[index]).
+							success(
+							console.log(devswitch[index])
+						).
+							error(
+							function (status) {
+							}
+						);
+					}
 				}
 			).
 				error(
 				function (status) {
 				}
 			);
-
-
 		}
-
 	}
 );
 
