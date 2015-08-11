@@ -8,7 +8,6 @@ requestKNA.controller(
 		$http.get('/devices').success(
 			function (data) {
 				claim.appliance = data;
-				console.log(data)
 			}
 		);
 		$http.get('/orbit_flag').success(
@@ -24,7 +23,6 @@ requestKNA.controller(
 				{
 					"number": claim.number
 				};
-				console.log(claim.user.number);
 			}
 		);
 
@@ -43,7 +41,7 @@ requestKNA.controller(
 				"longitude_left": "0.0",
 
 				"longitude_right": "359.0"
-			};
+			}
 			var devswitch = {
 				"request_number": claim.number,
 
@@ -61,28 +59,22 @@ requestKNA.controller(
 
 				"data_amount": 0
 			};
-			console.log
 			$http.post('/request/', request).
 				success(
 				function (data) {
 					$http.post('/devswitch/', devswitch).
 						success(
 						function (data) {
-
-							console.log(data);
 						}
 					).
 						error(
 						function (status) {
-							console.log('geg');
 						}
 					);
-					console.log(data);
 				}
 			).
 				error(
 				function (status) {
-					console.log(status);
 				}
 			);
 

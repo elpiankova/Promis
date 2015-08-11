@@ -7,8 +7,7 @@ requestKNA.directive(
 				$(
 					function () {
 						$("#from").datepicker(
-							{
-								dateFormat: 'dd-mm-yy',
+							{ dateFormat: 'yy-mm-dd',
 								defaultDate: "+1w",
 								changeMonth: true,
 								numberOfMonths: 1,
@@ -19,7 +18,7 @@ requestKNA.directive(
 						);
 						$("#to").datepicker(
 							{
-								dateFormat: 'dd-mm-yy',
+								dateFormat: 'yy-mm-dd',
 								defaultDate: "+1w",
 								changeMonth: true,
 								numberOfMonths: 1,
