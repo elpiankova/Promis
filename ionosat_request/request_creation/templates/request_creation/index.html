@@ -16,6 +16,8 @@
 	      href = "{% static 'request_creation/bower_components/jquery-ui/themes/pepper-grinder/jquery-ui.min.css' %}">
 
 	<script src = "{% static 'request_creation/bower_components/jquery/dist/jquery.js' %}"></script>
+	<script src = "{% static 'request_creation/bower_components/jquery-ui/globalize.js' %}"></script>
+	<script src = "{% static 'request_creation/bower_components/jquery-ui/globalize.culture.de-DE.js' %}"></script>
 	<script src = "{% static 'request_creation/bower_components/jquery-ui/jquery-ui.js' %}"></script>
 	<script src = "{% static 'request_creation/bower_components/angular/angular.js' %}"></script>
 	<script src = "{% static 'request_creation/js/app.js' %}"></script>
@@ -133,37 +135,24 @@
 				     ng-repeat = "switch in claimInfo.todos">
 
 					<div class = "panel-heading"><b ng-model = "user.switches"> Прилад :
-					                                                            [[switch]]</b>
+					                                                            [[
+					                                                            switch.device]]</b>
 					</div>
 					<div class = "panel-body">
-						<div class = "alert alert-success"
-						     role = "alert">Живлення:[[claimInfo.modes.power *
-						                    claimInfo.switches.duration | date: "HH"]]<br>
-						                    Інформація:[[claimInfo.modes.data_speed]]<br>
-						                    [[claimInfo.user]]
-						</div>
 						<div class = "form-group ">
-							<label>Назва приладу</label>
+							<label>Назва приладу </label>
 							<select ng-model = "switch.device"
 							        ng-options = "applic.name as applic.name for applic in claimInfo.appliance"
 							        class = "form-control"
 							        required></select>
-
-							<select ng-model = "heloow"
-							        ng-options = " applic.name for applic in claimInfo.appliance"
-							        class = "form-control"
-							        required></select>
-
 						</div>
 
-						<div class = "form-group">
-							<label>Режим роботи:[[ mybehav.atr ]]</label>
-							<select ng-model = "todo.modes"
-							        ng-options = "behav.name for behav in heloow.modes"
-							        class = "form-control"
-							        required></select>
+						<div class = "form-group"
+						     ng-repeat = "app in claimInfo.appliance"
+						     ng-if = "app.name == switch.device">
+							<label>Режим роботи</label>
 							<select ng-model = "switch.mode"
-							        ng-options = "behav.name as behav.name for behav in heloow.modes"
+							        ng-options = "behav.name as behav.name for behav in app.modes"
 							        class = "form-control"
 							        required></select>
 						</div>
@@ -171,11 +160,13 @@
 							<div class = "col-sm-6">
 								<label>Час затримки</label>
 								<input ng-model = "switch.time_delay"
-								       type = "time"
+								       type = "text"
 								       step = "1"
+								       id = "spinner"
+								       name = "spinner"
 								       class = "form-control"
-								       ng-model = "user.time_delay"
-								       required>
+								       required
+								       time>
 							</div>
 							<div class = "col-sm-6">
 								<label>Час роботи</label>
@@ -183,7 +174,6 @@
 								       type = "time"
 								       step = "1"
 								       class = "form-control"
-								       ng-model = "user.timework"
 								       required>
 							</div>
 						</div>
