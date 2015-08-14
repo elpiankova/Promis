@@ -14,8 +14,13 @@
 	      href = "{% static 'request_creation/css/main.css' %}">
 	<link rel = "stylesheet"
 	      href = "{% static 'request_creation/bower_components/jquery-ui/themes/pepper-grinder/jquery-ui.min.css' %}">
+	<link rel = "stylesheet"
+	      href = "{% static 'request_creation/bower_components/bootstrap/dist/css/bootstrap-datetimepicker.min.css' %}">
 
 	<script src = "{% static 'request_creation/bower_components/jquery/dist/jquery.js' %}"></script>
+	<script src = "{% static 'request_creation/js/maskedinput.js' %}"></script>
+	<script src = "{% static 'request_creation/bower_components/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+	<script src = "{% static 'request_creation/bower_components/bootstrap/dist/js/bootstrap-datetimepicker.min.js' %}"></script>
 	<script src = "{% static 'request_creation/bower_components/jquery-ui/globalize.js' %}"></script>
 	<script src = "{% static 'request_creation/bower_components/jquery-ui/globalize.culture.de-DE.js' %}"></script>
 	<script src = "{% static 'request_creation/bower_components/jquery-ui/jquery-ui.js' %}"></script>
@@ -157,23 +162,24 @@
 							        required></select>
 						</div>
 						<div class = "row form-group">
-							<div class = "col-sm-6">
-								<label>Час затримки</label>
+							<div class = "col-sm-6"
+							     id = "phone">
+								<label>Час затримки[[switch]]</label>
 								<input ng-model = "switch.time_delay"
 								       type = "text"
-								       step = "1"
-								       id = "spinner"
-								       name = "spinner"
-								       class = "form-control"
-								       required
-								       time>
+								       placeholder="hh:mm:ss"
+								       class = "form-control fromtime"
+								       timespinner
+								       required>
+
 							</div>
 							<div class = "col-sm-6">
 								<label>Час роботи</label>
 								<input ng-model = "switch.duration"
-								       type = "time"
-								       step = "1"
-								       class = "form-control"
+								       type = "text"
+								       placeholder="hh:mm:ss"
+								       class = "form-control fromtime"
+								       timespinner
 								       required>
 							</div>
 						</div>
@@ -184,14 +190,6 @@
                                           rows = "3"
                                           ng-model = "text">[[ device ]]</textarea>
 						</div>
-					</div>
-					<div class = "form-group">
-						<button ng-click = "claimInfo.saveTodo()"
-						        type = "button"
-						        class = "btn btn-lg btn-primary btn-block">
-							<span class = "glyphicon glyphicon-plus"></span>
-							Зберегти пристрій
-						</button>
 					</div>
 				</div>
 
