@@ -49,3 +49,14 @@ requestKNA.directive(
 		}
 	}
 );
+
+requestKNA.directive(
+	'modeTime', function () {
+		return {
+			require: 'ngModel',
+			link: function (scope, element, attrs, ngModelCtrl) {
+
+			}
+		}
+	}
+);

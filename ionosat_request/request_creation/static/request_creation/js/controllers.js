@@ -43,12 +43,12 @@ requestKNA.controller(
 			var devswitch = claim.todos;
 			console.log(devswitch);
 
-			$http.post('/request/', request).
+			$http.post('/request/', request, data).
 				success(
 				function () {
 					var index;
 					for (index = 0; index < devswitch.length; ++index) {
-						$http.post('/devswitch/', devswitch[index]);
+						$http.post('/devswitch/', devswitch[index])
 					}
 				}
 			).
@@ -56,7 +56,44 @@ requestKNA.controller(
 				function (status) {
 				}
 			);
-		}
+		};
+		claim.timeModes = function () {
+
+			var index;
+			for (index = 0; index < claim.todos.length; ++index) {
+				var time_modes = claim.todos[index].time_duration.split(':');
+				var hh = Number(time_modes[0]);
+				var mm = Number(time_modes[1]);
+				var ss = Number(time_modes[2]);
+				var time = hh * 3600 + mm * 60 + ss;
+				var index_device;
+				for (index_device = 0; index_device < claim.appliance.length; ++index_device) {
+					if (claim.todos[index].device == claim.appliance[index_device].name) {
+						var modes = claim.appliance[index_device].modes;
+						console.log(modes);
+						var index_modes;
+						for (
+							index_modes = 0; index_modes < modes.length;
+							++index_modes
+						) {
+							if (claim.todos[index].mode == modes[index_modes].name) {
+
+								var data_amount = modes[index_modes].data_speed * time / 8;
+								claim.todos[index]["data_amount"] = data_amount;
+								claim.todos[index].data_amount = data_amount;
+								console.log(data_amount);
+
+								var power_amount = modes[index_modes].power * time / 3600;
+								claim.todos[index]["power_amount"] = power_amount;
+								claim.todos[index].power_amount = power_amount;
+								console.log(power_amount);
+
+							}
+						}
+					}
+				}
+			}
+		};
 	}
 );
 

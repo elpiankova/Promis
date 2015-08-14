@@ -144,7 +144,14 @@
 					                                                            switch.device]]</b>
 					</div>
 					<div class = "panel-body">
-						<div class = "form-group ">
+						<div class = "alert alert-success"
+						     role = "alert"
+						     ng-if = "switch.data_amount">
+							Кількість данних: [[switch.data_amount]] байт<br>
+							Потужність: [[switch.power_amount]] Ват
+						</div>
+						<div class = "form-group "
+						     ng-class = "{'has-error': loginForm.switch.device.$invalid}">
 							<label>Назва приладу </label>
 							<select ng-model = "switch.device"
 							        ng-options = "applic.name as applic.name for applic in claimInfo.appliance"
@@ -160,14 +167,16 @@
 							        ng-options = "behav.name as behav.name for behav in app.modes"
 							        class = "form-control"
 							        required></select>
+
+
 						</div>
 						<div class = "row form-group">
 							<div class = "col-sm-6"
 							     id = "phone">
-								<label>Час затримки[[switch]]</label>
+								<label>Час затримки</label>
 								<input ng-model = "switch.time_delay"
 								       type = "text"
-								       placeholder="hh:mm:ss"
+								       placeholder = "hh:mm:ss"
 								       class = "form-control fromtime"
 								       timespinner
 								       required>
@@ -175,9 +184,9 @@
 							</div>
 							<div class = "col-sm-6">
 								<label>Час роботи</label>
-								<input ng-model = "switch.duration"
+								<input ng-model = "switch.time_duration"
 								       type = "text"
-								       placeholder="hh:mm:ss"
+								       placeholder = "hh:mm:ss"
 								       class = "form-control fromtime"
 								       timespinner
 								       required>
@@ -200,6 +209,13 @@
 					        ng-class = "{'btn-warning disabled': loginForm.$invalid}">
 						<span class = "glyphicon glyphicon-plus"></span>
 						Добавити пристрій
+					</button>
+				</div>
+				<div class = "form-group">
+					<button ng-click = "claimInfo.timeModes()"
+					        type = "button"
+					        class = "btn btn-lg btn-primary btn-block">
+						Обрахувати
 					</button>
 				</div>
 				<div class = "form-group">
