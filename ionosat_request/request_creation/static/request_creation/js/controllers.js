@@ -50,14 +50,8 @@ requestKNA.controller(
 					for (index = 0; index < devswitch.length; ++index) {
 						$http.post('/devswitch/', devswitch[index])
 					}
-					var get_file = 'get_file/' + data.request_file;
-					$http.get(get_file);
-					$http.get(get_file).success(
-						function (data) {
-							console.log(data);
-						}
-					);
-					console.log(get_file)
+					claim.hash = 'get_file/' + data.request_file;
+
 				}
 			).
 				error(

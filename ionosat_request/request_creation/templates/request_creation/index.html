@@ -49,7 +49,7 @@
 				<div class = "form-group"
 				     ng-class = "{'has-error': loginForm.numbers.$invalid}">
 					<label>Номер заявки (буде приписуватись з сервера
-					       автоматично)[[claimInfo.user]]</label>
+					       автоматично)</label>
 					<input type = "number"
 					       class = "form-control"
 					       name = "numbers"
@@ -229,7 +229,15 @@
 					<span class = "glyphicon glyphicon-ok"></span>
 					Згенерувати заявку
 				</button>
-				<!--<a href="KNA.zp" class="btn btn-success btn-lg btn-block" download="KNA"><span class="glyphicon glyphicon-download-alt"></span> Скачать </a> -->
+			</div>
+
+			<div class = "form-group"
+			     ng-if = "claimInfo.hash">
+
+				<a ng-href = "http://127.0.0.1:8000/[[claimInfo.hash]]"
+				   class = "btn btn-success btn-lg btn-block">
+					Скачати заявку
+				</a>
 			</div>
 		</div>
 	</div>
