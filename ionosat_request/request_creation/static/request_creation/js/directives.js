@@ -7,7 +7,8 @@ requestKNA.directive(
 				$(
 					function () {
 						$("#from").datepicker(
-							{ dateFormat: 'yy-mm-dd',
+							{
+								dateFormat: 'yy-mm-dd',
 								defaultDate: "+1w",
 								changeMonth: true,
 								numberOfMonths: 1,
@@ -29,6 +30,32 @@ requestKNA.directive(
 						);
 					}
 				);
+			}
+		}
+	}
+);
+
+requestKNA.directive(
+	'timespinner', function () {
+		return {
+			require: 'ngModel',
+			link: function (scope, element, attrs, ngModelCtrl) {
+				jQuery(
+					function ($) {
+						$(".fromtime").mask("99:99:99");
+					}
+				);
+			}
+		}
+	}
+);
+
+requestKNA.directive(
+	'modeTime', function () {
+		return {
+			require: 'ngModel',
+			link: function (scope, element, attrs, ngModelCtrl) {
+
 			}
 		}
 	}
