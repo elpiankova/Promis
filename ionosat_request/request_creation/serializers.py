@@ -49,17 +49,20 @@ class DeviceSwitchSerializer(serializers.ModelSerializer):
         dev_list = DeviceSwitch.objects.filter(device__name=device_name, request__number=request['number'])
         if len(dev_list) > 0:
             raise ValidationError("Can not present more than one unique device")
-        argument_part = validated_data["argument_part"].split("\r\n")
-        argument_part_len = len(argument_part)
+        if "argument_part" in validated_data:
+            argument_part = validated_data["argument_part"].split("\r\n")
+            argument_part_len = len(argument_part)
+            for line in argument_part:
+                if len(line) > 60:
+                    raise ValidationError("Every line of the argument part must be shorter than 60 symbols")
+        else:
+            argument_part_len = 0
         if argument_part_len > 10:
                 raise ValidationError("Argument part must be less than 10 lines")
-        for line in argument_part:
-            if len(line) > 60:
-                raise ValidationError("Every line of the argument part must be shorter than 60 symbols")
         try:
             device = Device.objects.get(name=device_name)
         except ObjectDoesNotExist:
-            raise  ValidationError("There is not such device in Database")
+            raise ValidationError("There is not such device in Database")
         try:
             mode = DeviceMode.objects.get(name=device_mode, device=device)
         except ObjectDoesNotExist:
@@ -105,7 +108,6 @@ class RequestSerializer(serializers.ModelSerializer):
         :param validated_data: data from REST, dictionary with fields in Meta without read_only_fields
         :return: created Request instant
         """
-
         device_amount = 0
         date_start = date.strftime(validated_data["date_start"], "%d%m%y")
         number = validated_data["number"]

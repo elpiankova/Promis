@@ -59,7 +59,7 @@ class Device(models.Model):
     SSNI00 = 'System for gathering scientific information'
     PROBES = (
         (WP0000, 'Wave probe WP(count3)'),
-        (EP0000, 'Electric  probe'),
+        (EP0000, 'Electric probe'),
         (RFA000, 'Radio frequency analyser'),
         (DN0000, 'Neutral component plasma probe'),
         (DE0000, 'Electric component plasma probes'),
@@ -95,7 +95,7 @@ class DeviceSwitch(models.Model):
     argument_part_len = models.SmallIntegerField() #limit duration in validator 10
     time_delay = models.DurationField() #limit duration in validator
     time_duration = models.DurationField()
-    argument_part = models.CharField(max_length=620)
+    argument_part = models.CharField(max_length=620, blank=True, null=True)
     device = models.ForeignKey('Device')
     mode = models.ForeignKey('DeviceMode') #limit to choice to
     request = models.ForeignKey('Request', related_name='switches') # limit to choice
