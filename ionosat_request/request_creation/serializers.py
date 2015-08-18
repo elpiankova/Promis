@@ -50,7 +50,7 @@ class DeviceSwitchSerializer(serializers.ModelSerializer):
         if len(dev_list) > 0:
             raise ValidationError("Can not present more than one unique device")
         if "argument_part" in validated_data:
-            argument_part = validated_data["argument_part"].split("\r\n")
+            argument_part = validated_data["argument_part"].split("\n")
             argument_part_len = len(argument_part)
             for line in argument_part:
                 if len(line) > 60:
