@@ -49,14 +49,27 @@ requestKNA.controller(
 								var data_amount = modes[index_modes].data_speed * time / 8;
 								claim.todos[index]["data_amount"] = data_amount;
 								claim.todos[index].data_amount = data_amount;
-								claim.data_amount = data_amount;
+								if(isNaN(claim.data_amount)){
+									claim.data_amount = data_amount;
+									console.log(claim.data_amount)
+								}else{
+								claim.data_amount += data_amount;
+									console.log(claim.data_amount)
+								}
+
+
 								console.log(claim.data_amount);
 								claim.Reqest = true;
 								var power_amount = modes[index_modes].power * time / 3600;
 								claim.todos[index]["power_amount"] = power_amount;
 								claim.todos[index].power_amount = power_amount;
-								claim.power_amount = power_amount;
-								console.log(claim.power_amount);
+								if(isNaN(claim.power_amount)){
+									claim.power_amount = power_amount;
+									console.log(claim.power_amount)
+								}else{
+								claim.power_amount += power_amount;
+									console.log(claim.power_amount)
+								}
 							}
 						}
 					}
