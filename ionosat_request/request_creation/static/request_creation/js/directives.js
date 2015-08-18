@@ -1,30 +1,34 @@
 //Created by mammut
-requestKNA.directive(
+requestKNA.directive (
 	'datepicker', function () {
 		return {
 			require: 'ngModel',
-			link: function (scope, element, attrs, ngModelCtrl) {
-				$(
+			link: function ( scope, element, attrs, ngModelCtrl ) {
+				$ (
 					function () {
-						$("#from").datepicker(
+						$ ( "#from" ).datepicker (
 							{
 								dateFormat: 'yy-mm-dd',
 								defaultDate: "+1w",
 								changeMonth: true,
 								numberOfMonths: 1,
-								onClose: function (selectedDate) {
-									$("#to").datepicker("option", "minDate", selectedDate);
+								onClose: function ( selectedDate ) {
+									$ ( "#to" ).datepicker (
+										"option", "minDate", selectedDate
+									);
 								}
 							}
 						);
-						$("#to").datepicker(
+						$ ( "#to" ).datepicker (
 							{
 								dateFormat: 'yy-mm-dd',
 								defaultDate: "+1w",
 								changeMonth: true,
 								numberOfMonths: 1,
-								onClose: function (selectedDate) {
-									$("#from").datepicker("option", "maxDate", selectedDate);
+								onClose: function ( selectedDate ) {
+									$ ( "#from" ).datepicker (
+										"option", "maxDate", selectedDate
+									);
 								}
 							}
 						);
@@ -35,14 +39,14 @@ requestKNA.directive(
 	}
 );
 
-requestKNA.directive(
+requestKNA.directive (
 	'timespinner', function () {
 		return {
 			require: 'ngModel',
-			link: function (scope, element, attrs, ngModelCtrl) {
-				jQuery(
-					function ($) {
-						$(".fromtime").mask("99:99:99");
+			link: function ( scope, element, attrs, ngModelCtrl ) {
+				jQuery (
+					function ( $ ) {
+						$ ( ".fromtime" ).mask ( "99:99:99" );
 					}
 				);
 			}
@@ -50,11 +54,11 @@ requestKNA.directive(
 	}
 );
 
-requestKNA.directive(
+requestKNA.directive (
 	'modeTime', function () {
 		return {
 			require: 'ngModel',
-			link: function (scope, element, attrs, ngModelCtrl) {
+			link: function ( scope, element, attrs, ngModelCtrl ) {
 
 			}
 		}
