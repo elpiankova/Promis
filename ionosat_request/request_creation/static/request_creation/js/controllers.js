@@ -26,75 +26,75 @@ requestKNA.controller(
 			}
 		);
 
+		claim.todos = [];
+		claim.addTodo = function () {
+			claim.todos.push({});
+			claim.Reqest = false;
+		};
+
 		claim.dataReqest = function () {
-			var request = {
-				"number": claim.number,
 
-				"date_start": "2015-07-15",
+			var request = claim.user;
+			console.log(request);
+			var index;
+			for (index = 0; index < claim.todos.length; ++index) {
+				claim.todos[index]["request_number"] = claim.user.number;
 
-				"date_end": "2015-07-16",
-
-				"orbit_flag": "y",
-
-				"latitude_start": "30.0",
-
-				"longitude_left": "0.0",
-
-				"longitude_right": "359.0"
+				console.log(claim.todos[index]["argument_part"])
 			}
-			var devswitch = {
-				"request_number": claim.number,
 
-				"time_delay": "00:00:01",
+			var devswitch = claim.todos;
+			console.log(devswitch);
 
-				"time_duration": "00:00:30",
-
-				"argument_part": "qwe",
-
-				"device": "Wave probe WP(count3)",
-
-				"mode": "5KHz Frequency",
-
-				"power_amount": 0,
-
-				"data_amount": 0
-			};
 			$http.post('/request/', request).
 				success(
 				function (data) {
-					$http.post('/devswitch/', devswitch).
-						success(
-						function (data) {
-						}
-					).
-						error(
-						function (status) {
-						}
-					);
+					var index;
+					for (index = 0; index < devswitch.length; ++index) {
+						$http.post('/devswitch/', devswitch[index])
+					}
+					claim.hash = 'get_file/' + data.request_file;
+
 				}
 			).
 				error(
 				function (status) {
 				}
 			);
+		};
+		claim.timeModes = function () {
 
+			var index;
+			for (index = 0; index < claim.todos.length; ++index) {
+				var time_modes = claim.todos[index].time_duration.split(':');
+				var hh = Number(time_modes[0]);
+				var mm = Number(time_modes[1]);
+				var ss = Number(time_modes[2]);
+				var time = hh * 3600 + mm * 60 + ss;
+				var index_device;
+				for (index_device = 0; index_device < claim.appliance.length; ++index_device) {
+					if (claim.todos[index].device == claim.appliance[index_device].name) {
+						var modes = claim.appliance[index_device].modes;
+						var index_modes;
+						for (
+							index_modes = 0; index_modes < modes.length;
+							++index_modes
+						) {
+							if (claim.todos[index].mode == modes[index_modes].name) {
 
-		}
-
+								var data_amount = modes[index_modes].data_speed * time / 8;
+								claim.todos[index]["data_amount"] = data_amount;
+								claim.todos[index].data_amount = data_amount;
+								claim.Reqest = true;
+								var power_amount = modes[index_modes].power * time / 3600;
+								claim.todos[index]["power_amount"] = power_amount;
+								claim.todos[index].power_amount = power_amount;
+							}
+						}
+					}
+				}
+			}
+		};
 	}
 );
 
-requestKNA.controller(
-	'TodoListController', function () {
-		var todoList = this;
-		todoList.todos = [];
-		todoList.addTodo = function () {
-			todoList.todos.push({});
-		};
-
-		todoList.Save = function () {
-			var save = this.switches;
-			console.log(save);
-		};
-	}
-);
