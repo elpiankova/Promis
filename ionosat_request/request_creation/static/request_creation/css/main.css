@@ -41,10 +41,8 @@ label {
     background: red;
 }
 
-/*.ng-invalid {*/
-/*background-color: red;*/
-/*}*/
-
-/*.ng-valid {*/
-/*background-color: green;*/
-/*}*/
+#fixblock {
+    float: right; /* распологаем блок в левой части экрана */
+    margin: 10px;
+    position: fixed; /* параметр, при помощи которого мы фиксируем div-блок */
+}
