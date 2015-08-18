@@ -29,6 +29,7 @@ requestKNA.controller(
 		claim.todos = [];
 		claim.addTodo = function () {
 			claim.todos.push({});
+			claim.Reqest = false;
 		};
 
 		claim.dataReqest = function () {
@@ -38,6 +39,8 @@ requestKNA.controller(
 			var index;
 			for (index = 0; index < claim.todos.length; ++index) {
 				claim.todos[index]["request_number"] = claim.user.number;
+
+				console.log(claim.todos[index]["argument_part"])
 			}
 
 			var devswitch = claim.todos;
@@ -82,11 +85,10 @@ requestKNA.controller(
 								var data_amount = modes[index_modes].data_speed * time / 8;
 								claim.todos[index]["data_amount"] = data_amount;
 								claim.todos[index].data_amount = data_amount;
-
+								claim.Reqest = true;
 								var power_amount = modes[index_modes].power * time / 3600;
 								claim.todos[index]["power_amount"] = power_amount;
 								claim.todos[index].power_amount = power_amount;
-
 							}
 						}
 					}

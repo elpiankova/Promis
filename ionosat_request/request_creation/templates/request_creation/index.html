@@ -33,19 +33,20 @@
 <body ng-controller = "claimInfoCtrl as claimInfo">
 <!-- Created by mammut -->
 
-<form name = "loginForm"
-      novalidate>
-	<div class = "container">
-		<div class = "page-header">
-			<h1>Заявки на проведение научных экспериментов КНА "Ионосат-Микро" </h1>
-		</div>
-		<p class = "lead">Принять формат файла заявки на проведение научных экспериментов КНА
-		                  "Ионосат-Микро"</p>
+<div class = "container">
+	<div class = "page-header">
+		<h1>Заявки на проведение научных экспериментов КНА "Ионосат-Микро" </h1>
+	</div>
+	<p class = "lead">Принять формат файла заявки на проведение научных экспериментов КНА
+	                  "Ионосат-Микро"</p>
 
-		<div class = "panel panel-default">
+	<div class = "panel panel-default">
 
-			<div class = "panel-heading"><b>Оформлення заявки[[claimInfo.title]]</b></div>
-			<div class = "panel-body">
+		<div class = "panel-heading"><b>Оформлення заявки[[claimInfo.title]]</b></div>
+		<div class = "panel-body">
+
+			<ng-form name = "loginForm"
+			         novalidate>
 				<div class = "form-group"
 				     ng-class = "{'has-error': loginForm.numbers.$invalid}">
 					<label>Номер заявки (буде приписуватись з сервера
@@ -93,7 +94,6 @@
 					        required></select>
 					</datalist>
 				</div>
-
 				<div class = "form-group"
 				     ng-class = "{'has-error': loginForm.latitude_start.$invalid}">
 					<label>Широта начальной точки сеанса работы[[name.latitude_start]]</label>
@@ -107,7 +107,6 @@
 					       ng-model = "claimInfo.user.latitude_start"
 					       required>
 				</div>
-
 				<div class = "row form-group">
 					<div class = "col-sm-6"
 					     ng-class = "{'has-error': loginForm.longitude_left.$invalid}">
@@ -136,34 +135,38 @@
 						       required>
 					</div>
 				</div>
-				<div class = "panel panel-default"
-				     ng-repeat = "switch in claimInfo.todos">
+			</ng-form>
+			<div class = "panel panel-default"
+			     ng-repeat = "switch in claimInfo.todos">
 
-					<div class = "panel-heading"><b ng-model = "user.switches"> Прилад :
-					                                                            [[
-					                                                            switch.device]]</b>
-					</div>
-					<div class = "panel-body">
+				<div class = "panel-heading">
+					<b ng-model = "user.switches"> Прилад : [[ switch.device]]</b>
+				</div>
+				<div class = "panel-body">
+					<ng-form name = "DevForm"
+					         novalidate>
 						<div class = "alert alert-success"
 						     role = "alert"
-						     ng-if = "switch.data_amount">
+						     ng-show = "switch.data_amount">
 							Кількість данних: [[switch.data_amount]] байт<br>
 							Потужність: [[switch.power_amount | number:2 ]] Ват
 						</div>
 						<div class = "form-group "
-						     ng-class = "{'has-error': loginForm.switch.device.$invalid}">
+						     ng-class = "{'has-error': DevForm.device.$invalid}">
 							<label>Назва приладу </label>
 							<select ng-model = "switch.device"
+							        name = "device"
 							        ng-options = "applic.name as applic.name for applic in claimInfo.appliance"
 							        class = "form-control"
 							        required></select>
 						</div>
-
 						<div class = "form-group"
 						     ng-repeat = "app in claimInfo.appliance"
-						     ng-if = "app.name == switch.device">
+						     ng-if = "app.name == switch.device"
+						     ng-class = "{'has-error': DevForm.mode.$invalid}">
 							<label>Режим роботи</label>
 							<select ng-model = "switch.mode"
+							        name = "mode"
 							        ng-options = "behav.name as behav.name for behav in app.modes"
 							        class = "form-control"
 							        required></select>
@@ -172,9 +175,11 @@
 						</div>
 						<div class = "row form-group">
 							<div class = "col-sm-6"
-							     id = "phone">
+							     id = "phone"
+							     ng-class = "{'has-error': DevForm.time_delay.$invalid}">
 								<label>Час затримки</label>
 								<input ng-model = "switch.time_delay"
+								       name = "time_delay"
 								       type = "text"
 								       placeholder = "hh:mm:ss"
 								       class = "form-control fromtime"
@@ -182,9 +187,11 @@
 								       required>
 
 							</div>
-							<div class = "col-sm-6">
+							<div class = "col-sm-6"
+							     ng-class = "{'has-error': DevForm.time_duration.$invalid}">
 								<label>Час роботи</label>
 								<input ng-model = "switch.time_duration"
+								       name = "time_duration"
 								       type = "text"
 								       placeholder = "hh:mm:ss"
 								       class = "form-control fromtime"
@@ -199,49 +206,46 @@
                                           rows = "3"
                                           ng-model = "text">[[ device ]]</textarea>
 						</div>
-
-						<div class = "form-group">
-							<button ng-click = "claimInfo.timeModes()"
-							        ng-class = "{'btn-warning disabled': loginForm.switch.time_duration.$invalid}"
-							        type = "button"
-							        class = "btn btn-lg btn-primary btn-block">
-								Обрахувати
-							</button>
-						</div>
-					</div>
-				</div>
-
-				<div class = "form-group">
-					<button ng-click = "claimInfo.addTodo()"
+					</ng-form>
+					<button ng-click = "claimInfo.timeModes()"
+					        ng-class = "{'btn-warning disabled': DevForm.$invalid}"
 					        type = "button"
-					        class = "btn btn-lg btn-primary btn-block"
-					        ng-class = "{'btn-warning disabled': loginForm.$invalid}">
-						<span class = "glyphicon glyphicon-plus"></span>
-						Добавити пристрій
+					        class = "btn btn-lg btn-primary btn-block">
+						Обрахувати
 					</button>
 				</div>
 			</div>
-			<div class = "form-group">
-				<button
-						class = "btn btn-success btn-lg btn-block"
-						ng-click = "claimInfo.dataReqest()"
-						ng-class = "{'btn-warning disabled': loginForm.$invalid}">
-					<span class = "glyphicon glyphicon-ok"></span>
-					Згенерувати заявку
-				</button>
-			</div>
+		</div>
 
-			<div class = "form-group"
-			     ng-if = "claimInfo.hash">
-
-				<a ng-href = "http://127.0.0.1:8000/[[claimInfo.hash]]"
-				   class = "btn btn-success btn-lg btn-block">
-					Скачати заявку
-				</a>
-			</div>
+		<div class = "form-group">
+			<button ng-click = "claimInfo.addTodo()"
+			        type = "button"
+			        class = "btn btn-lg btn-primary btn-block"
+			        ng-class = "{'btn-warning disabled': loginForm.$invalid}">
+				<span class = "glyphicon glyphicon-plus"></span>
+				Добавити пристрій
+			</button>
 		</div>
 	</div>
-</form>
+	<div class = "form-group">
+		<button
+				class = "btn btn-success btn-lg btn-block"
+				ng-click = "claimInfo.dataReqest()"
+				ng-show = "claimInfo.Reqest">
+			<span class = "glyphicon glyphicon-ok"></span>
+			Згенерувати заявку
+		</button>
+	</div>
+
+	<div class = "form-group"
+	     ng-if = "claimInfo.hash">
+
+		<a ng-href = "http://127.0.0.1:8000/[[claimInfo.hash]]"
+		   class = "btn btn-success btn-lg btn-block">
+			Скачати заявку
+		</a>
+	</div>
+</div>
 <footer class = "footer container">
 	Копірайти та може контакти чи ще щось Created by mammut
 
