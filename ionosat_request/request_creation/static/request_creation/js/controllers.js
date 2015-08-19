@@ -36,7 +36,7 @@ requestKNA.controller (
 				var mm = Number ( time_modes[ 1 ] );
 				var ss = Number ( time_modes[ 2 ] );
 				var time = hhh * 3600 + mm * 60 + ss;
-				if(time > 999999){
+				if ( time > 999999 ) {
 					claim.todos[ index ].time_duration = 'Неверная длительность';
 					return;
 
@@ -60,7 +60,34 @@ requestKNA.controller (
 								var data_amount = modes[ index_modes ].data_speed * time / 8;
 
 								claim.todos[ index ][ "data_amount" ] = data_amount;
-								claim.todos[ index ].data_amount = data_amount;
+								var text_data_amount;
+								var Ki = 1024;
+								var Mi = Ki * 1024;
+								var Gi = Mi * 1024;
+								if ( data_amount <= Ki ){
+									text_data_amount = data_amount + " Байт";
+								}
+								else if ( data_amount > Ki ) {
+									text_data_amount = data_amount / Mi;
+									text_data_amount = text_data_amount.toFixed(1);
+									console.log(text_data_amount);
+									text_data_amount = text_data_amount + " Килобайт";
+								}
+								else if ( data_amount > Mi ) {
+									text_data_amount = data_amount / Mi;
+									text_data_amount = text_data_amount.toFixed(1);
+									console.log(text_data_amount);
+									text_data_amount = text_data_amount + " Мегабайт";
+
+								}
+								else  if ( data_amount > Gi ){
+									text_data_amount = data_amount / Gi;
+									text_data_amount = text_data_amount.toFixed(1);
+									console.log(text_data_amount);
+									text_data_amount = text_data_amount + " Гигиабайт";
+
+								}
+								claim.todos[ index ].data_amount = text_data_amount;
 
 								if ( data_amount == 0 ) {
 									claim.todos[ index ].data_amount = "0";
