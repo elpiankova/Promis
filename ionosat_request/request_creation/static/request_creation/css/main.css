@@ -42,7 +42,7 @@ label {
 }
 
 #fixblock {
-    float: right; /* распологаем блок в левой части экрана */
+    float: right;
     margin: 10px;
-    position: fixed; /* параметр, при помощи которого мы фиксируем div-блок */
+    position: fixed;
 }
