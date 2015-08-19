@@ -1,283 +1,294 @@
 [
 {
+    "model": "request_creation.device",
     "fields": {
+        "name": "\u0412\u043e\u043b\u043d\u043e\u0432\u044b\u0435 \u0437\u043e\u043d\u0434\u044b",
         "description": "",
-        "code": "WP@@@@",
-        "name": "\u0412\u043e\u043b\u043d\u043e\u0432\u044b\u0435 \u0437\u043e\u043d\u0434\u044b"
+        "code": "WP@@@@"
     },
-    "pk": 1,
-    "model": "request_creation.device"
+    "pk": 1
 },
 {
+    "model": "request_creation.device",
     "fields": {
+        "name": "\u042d\u043b\u0435\u043a\u0442\u0440\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0437\u043e\u043d\u0434",
         "description": "",
-        "code": "EP@@@@",
-        "name": "\u042d\u043b\u0435\u043a\u0442\u0440\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0437\u043e\u043d\u0434"
+        "code": "EP@@@@"
     },
-    "pk": 2,
-    "model": "request_creation.device"
+    "pk": 2
 },
 {
+    "model": "request_creation.device",
     "fields": {
+        "name": "\u0420\u0430\u0434\u0438\u043e\u0447\u0430\u0441\u0442\u043e\u0442\u043d\u044b\u0439 \u0430\u043d\u0430\u043b\u0438\u0437\u0430\u0442\u043e\u0440",
         "description": "",
-        "code": "RFA@@@",
-        "name": "\u0420\u0430\u0434\u0438\u043e\u0447\u0430\u0441\u0442\u043e\u0442\u043d\u044b\u0439 \u0430\u043d\u0430\u043b\u0438\u0437\u0430\u0442\u043e\u0440"
+        "code": "RFA@@@"
     },
-    "pk": 3,
-    "model": "request_creation.device"
+    "pk": 3
 },
 {
+    "model": "request_creation.device",
     "fields": {
+        "name": "\u0414\u0430\u0442\u0447\u0438\u043a \u043d\u0435\u0439\u0442\u0440\u0430\u043b\u044c\u043d\u043e\u0433\u043e \u043a\u043e\u043c\u043f\u043e\u043d\u0435\u043d\u0442\u0430 \u043f\u043b\u0430\u0437\u043c\u044b",
         "description": "",
-        "code": "DN@@@@",
-        "name": "\u0414\u0430\u0442\u0447\u0438\u043a \u043d\u0435\u0439\u0442\u0440\u0430\u043b\u044c\u043d\u043e\u0433\u043e \u043a\u043e\u043c\u043f\u043e\u043d\u0435\u043d\u0442\u0430 \u043f\u043b\u0430\u0437\u043c\u044b"
+        "code": "DN@@@@"
     },
-    "pk": 4,
-    "model": "request_creation.device"
+    "pk": 4
 },
 {
+    "model": "request_creation.device",
     "fields": {
+        "name": "\u0411\u043b\u043e\u043a \u0434\u0430\u0442\u0447\u0438\u043a\u043e\u0432 \u044d\u043b\u0435\u043a\u0442\u0440\u043e\u043d\u043d\u043e\u0433\u043e \u043a\u043e\u043c\u043f\u043e\u043d\u0435\u043d\u0442\u0430 \u043f\u043b\u0430\u0437\u043c\u044b",
         "description": "",
-        "code": "DE@@@@",
-        "name": "\u0411\u043b\u043e\u043a \u0434\u0430\u0442\u0447\u0438\u043a\u043e\u0432 \u044d\u043b\u0435\u043a\u0442\u0440\u043e\u043d\u043d\u043e\u0433\u043e \u043a\u043e\u043c\u043f\u043e\u043d\u0435\u043d\u0442\u0430 \u043f\u043b\u0430\u0437\u043c\u044b"
+        "code": "DE@@@@"
     },
-    "pk": 5,
-    "model": "request_creation.device"
+    "pk": 5
 },
 {
+    "model": "request_creation.device",
     "fields": {
+        "name": "\u0424\u0435\u0440\u0440\u043e\u0437\u043e\u043d\u0434\u043e\u0432\u044b\u0439 \u043c\u0430\u0433\u043d\u0438\u0442\u043e\u043c\u0435\u0442\u0440 \u043f\u043e\u0441\u0442\u043e\u044f\u043d\u043d\u043e\u0433\u043e \u043f\u043e\u043b\u044f",
         "description": "",
-        "code": "FGM@@@",
-        "name": "\u0424\u0435\u0440\u0440\u043e\u0437\u043e\u043d\u0434\u043e\u0432\u044b\u0439 \u043c\u0430\u0433\u043d\u0438\u0442\u043e\u043c\u0435\u0442\u0440 \u043f\u043e\u0441\u0442\u043e\u044f\u043d\u043d\u043e\u0433\u043e \u043f\u043e\u043b\u044f"
+        "code": "FGM@@@"
     },
-    "pk": 6,
-    "model": "request_creation.device"
+    "pk": 6
 },
 {
+    "model": "request_creation.device",
     "fields": {
+        "name": "\u0418\u043e\u043d\u043d\u044b\u0439 \u0434\u0440\u0435\u0439\u0444\u043e\u043c\u0435\u0442\u0440",
         "description": "",
-        "code": "PES@@@",
-        "name": "\u0418\u043e\u043d\u043d\u044b\u0439 \u0434\u0440\u0435\u0439\u0444\u043e\u043c\u0435\u0442\u0440"
+        "code": "PES@@@"
     },
-    "pk": 7,
-    "model": "request_creation.device"
+    "pk": 7
 },
 {
+    "model": "request_creation.device",
     "fields": {
+        "name": "\u0421\u0438\u0441\u0442\u0435\u043c\u0430 \u0441\u0431\u043e\u0440\u0430 \u043d\u0430\u0443\u0447\u043d\u043e\u0439 \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u0438",
         "description": "",
-        "code": "SSNI@@",
-        "name": "\u0421\u0438\u0441\u0442\u0435\u043c\u0430 \u0441\u0431\u043e\u0440\u0430 \u043d\u0430\u0443\u0447\u043d\u043e\u0439 \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u0438"
+        "code": "SSNI@@"
     },
-    "pk": 8,
-    "model": "request_creation.device"
+    "pk": 8
 },
 {
+    "model": "request_creation.devicemode",
     "fields": {
-        "data_speed": 0,
-        "code": "WPLUMON@",
-        "power": 0.0,
         "device": 1,
-        "name": "\u041c\u0435\u0434\u043b\u0435\u043d\u043d\u044b\u0439 \u043c\u043e\u043d\u0438\u0442\u043e\u0440\u0438\u043d\u0433"
-    },
-    "pk": 1,
-    "model": "request_creation.devicemode"
-},
-{
-    "fields": {
+        "name": "\u041c\u0435\u0434\u043b\u0435\u043d\u043d\u044b\u0439 \u043c\u043e\u043d\u0438\u0442\u043e\u0440\u0438\u043d\u0433",
         "data_speed": 0,
-        "code": "WPQUMON@",
         "power": 0.0,
-        "device": 1,
-        "name": "\u0411\u044b\u0441\u0442\u0440\u044b\u0439 \u043c\u043e\u043d\u0438\u0442\u043e\u0440\u0438\u043d\u0433"
+        "code": "WPLUMON@"
     },
-    "pk": 2,
-    "model": "request_creation.devicemode"
+    "pk": 1
 },
 {
+    "model": "request_creation.devicemode",
     "fields": {
+        "device": 1,
+        "name": "\u0411\u044b\u0441\u0442\u0440\u044b\u0439 \u043c\u043e\u043d\u0438\u0442\u043e\u0440\u0438\u043d\u0433",
+        "data_speed": 0,
+        "power": 0.0,
+        "code": "WPQUMON@"
+    },
+    "pk": 2
+},
+{
+    "model": "request_creation.devicemode",
+    "fields": {
+        "device": 2,
+        "name": "\u041c\u0435\u0434\u043b\u0435\u043d\u043d\u044b\u0439 \u043c\u043e\u043d\u0438\u0442\u043e\u0440\u0438\u043d\u0433",
         "data_speed": 124800,
-        "code": "EPLUMON@",
         "power": 12.5,
-        "device": 2,
-        "name": "\u041c\u0435\u0434\u043b\u0435\u043d\u043d\u044b\u0439 \u043c\u043e\u043d\u0438\u0442\u043e\u0440\u0438\u043d\u0433"
+        "code": "EPLUMON@"
     },
-    "pk": 3,
-    "model": "request_creation.devicemode"
+    "pk": 3
 },
 {
+    "model": "request_creation.devicemode",
     "fields": {
+        "device": 2,
+        "name": "\u0411\u044b\u0441\u0442\u0440\u044b\u0439 \u043c\u043e\u043d\u0438\u0442\u043e\u0440\u0438\u043d\u0433",
         "data_speed": 4000000,
-        "code": "EPQUMON@",
         "power": 12.5,
-        "device": 2,
-        "name": "\u0411\u044b\u0441\u0442\u0440\u044b\u0439 \u043c\u043e\u043d\u0438\u0442\u043e\u0440\u0438\u043d\u0433"
+        "code": "EPQUMON@"
     },
-    "pk": 4,
-    "model": "request_creation.devicemode"
+    "pk": 4
 },
 {
+    "model": "request_creation.devicemode",
     "fields": {
+        "device": 2,
+        "name": "\u0412\u044b\u0441\u043e\u043a\u043e\u0447\u0430\u0441\u0442\u043e\u0442\u043d\u044b\u0435 \u0438\u0437\u043c\u0435\u0440\u0435\u043d\u0438\u044f",
         "data_speed": 8000000,
-        "code": "EPHS@@@@",
         "power": 12.5,
-        "device": 2,
-        "name": "\u0412\u044b\u0441\u043e\u043a\u043e\u0447\u0430\u0441\u0442\u043e\u0442\u043d\u044b\u0435 \u0438\u0437\u043c\u0435\u0440\u0435\u043d\u0438\u044f"
+        "code": "EPHS@@@@"
     },
-    "pk": 5,
-    "model": "request_creation.devicemode"
+    "pk": 5
 },
 {
+    "model": "request_creation.devicemode",
     "fields": {
+        "device": 8,
+        "name": "\u0417\u0430\u043f\u0438\u0441\u044c \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u0438 \u041c\u0410\u0418\u0421-\u0411",
         "data_speed": 0,
-        "code": "WRITM@@@",
         "power": 21.0,
-        "device": 8,
-        "name": "\u0417\u0430\u043f\u0438\u0441\u044c \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u0438 \u041c\u0410\u0418\u0421-\u0411"
+        "code": "WRITM@@@"
     },
-    "pk": 6,
-    "model": "request_creation.devicemode"
+    "pk": 6
 },
 {
+    "model": "request_creation.devicemode",
     "fields": {
+        "device": 8,
+        "name": "\u0421\u0431\u0440\u043e\u0441 \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u0438 \u041a\u041d\u0410-\u0425",
         "data_speed": 0,
-        "code": "KNATIX@@",
         "power": 71.0,
-        "device": 8,
-        "name": "\u0421\u0431\u0440\u043e\u0441 \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u0438 \u041a\u041d\u0410-\u0425"
+        "code": "KNATIX@@"
     },
-    "pk": 7,
-    "model": "request_creation.devicemode"
+    "pk": 7
 },
 {
+    "model": "request_creation.devicemode",
     "fields": {
+        "device": 8,
+        "name": "\u0421\u0431\u0440\u043e\u0441 \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u0438 \u041a\u041d\u0410-S",
         "data_speed": 0,
-        "code": "KNATIS@@",
         "power": 31.0,
-        "device": 8,
-        "name": "\u0421\u0431\u0440\u043e\u0441 \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u0438 \u041a\u041d\u0410-S"
+        "code": "KNATIS@@"
     },
-    "pk": 8,
-    "model": "request_creation.devicemode"
+    "pk": 8
 },
 {
+    "model": "request_creation.devicemode",
     "fields": {
+        "device": 8,
+        "name": "\u0422\u0435\u0441\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u041a\u041d\u0410",
         "data_speed": 0,
-        "code": "KNATEST@",
         "power": 15.0,
-        "device": 8,
-        "name": "\u0422\u0435\u0441\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u041a\u041d\u0410"
+        "code": "KNATEST@"
     },
-    "pk": 9,
-    "model": "request_creation.devicemode"
+    "pk": 9
 },
 {
+    "model": "request_creation.devicemode",
     "fields": {
+        "device": 8,
+        "name": "\u0422\u0435\u0441\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u0440\u0430\u0434\u0438\u043e\u043b\u0438\u043d\u0438\u0438 30.72",
         "data_speed": 0,
-        "code": "KNARL@@@",
         "power": 65.0,
-        "device": 8,
-        "name": "\u0422\u0435\u0441\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u0440\u0430\u0434\u0438\u043e\u043b\u0438\u043d\u0438\u0438 30.72"
+        "code": "KNARL@@@"
     },
-    "pk": 10,
-    "model": "request_creation.devicemode"
+    "pk": 10
 },
 {
+    "model": "request_creation.devicemode",
     "fields": {
+        "device": 8,
+        "name": "\u041f\u0435\u0440\u0435\u0434\u0430\u0447\u0430 \u043c\u0430\u0441\u0441\u0438\u0432\u0430 \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u0438 \u0432 \u0421\u0421\u041d\u0418",
         "data_speed": 0,
-        "code": "DATASSNI",
         "power": 15.0,
-        "device": 8,
-        "name": "\u041f\u0435\u0440\u0435\u0434\u0430\u0447\u0430 \u043c\u0430\u0441\u0441\u0438\u0432\u0430 \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u0438 \u0432 \u0421\u0421\u041d\u0418"
+        "code": "DATASSNI"
     },
-    "pk": 11,
-    "model": "request_creation.devicemode"
+    "pk": 11
 },
 {
+    "model": "request_creation.devicemode",
     "fields": {
+        "device": 8,
+        "name": "\u041a\u043e\u0440\u0440\u0435\u043a\u0446\u0438\u044f \u041f\u041e",
         "data_speed": 0,
-        "code": "KORRSSNI",
         "power": 15.0,
-        "device": 8,
-        "name": "\u041a\u043e\u0440\u0440\u0435\u043a\u0446\u0438\u044f \u041f\u041e"
+        "code": "KORRSSNI"
     },
-    "pk": 12,
-    "model": "request_creation.devicemode"
+    "pk": 12
 },
 {
+    "model": "request_creation.devicemode",
     "fields": {
-        "data_speed": 32768,
-        "code": "SPECTRUM",
-        "power": 12.0,
         "device": 3,
-        "name": "\u0420\u0435\u0436\u0438\u043c \u0441\u043f\u0435\u043a\u0442\u0440\u0430"
-    },
-    "pk": 13,
-    "model": "request_creation.devicemode"
-},
-{
-    "fields": {
+        "name": "\u0420\u0435\u0436\u0438\u043c \u0441\u043f\u0435\u043a\u0442\u0440\u0430",
         "data_speed": 32768,
-        "code": "WAVE@@@@",
         "power": 12.0,
-        "device": 3,
-        "name": "\u0420\u0435\u0436\u0438\u043c \u0432\u043e\u043b\u043d\u043e\u0432\u044b\u0445 \u0444\u043e\u0440\u043c"
+        "code": "SPECTRUM"
     },
-    "pk": 14,
-    "model": "request_creation.devicemode"
+    "pk": 13
 },
 {
+    "model": "request_creation.devicemode",
     "fields": {
+        "device": 3,
+        "name": "\u0420\u0435\u0436\u0438\u043c \u0432\u043e\u043b\u043d\u043e\u0432\u044b\u0445 \u0444\u043e\u0440\u043c",
         "data_speed": 32768,
-        "code": "MONITOR@",
         "power": 12.0,
-        "device": 3,
-        "name": "\u0420\u0435\u0436\u0438\u043c \u043c\u043e\u043d\u0438\u0442\u043e\u0440\u0438\u043d\u0433\u0430"
+        "code": "WAVE@@@@"
     },
-    "pk": 15,
-    "model": "request_creation.devicemode"
+    "pk": 14
 },
 {
+    "model": "request_creation.devicemode",
     "fields": {
-        "data_speed": 360,
-        "code": "@@@@@@@@",
-        "power": 0.0,
+        "device": 3,
+        "name": "\u0420\u0435\u0436\u0438\u043c \u043c\u043e\u043d\u0438\u0442\u043e\u0440\u0438\u043d\u0433\u0430",
+        "data_speed": 32768,
+        "power": 12.0,
+        "code": "MONITOR@"
+    },
+    "pk": 15
+},
+{
+    "model": "request_creation.devicemode",
+    "fields": {
         "device": 6,
-        "name": "\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0440\u0435\u0436\u0438\u043c"
-    },
-    "pk": 16,
-    "model": "request_creation.devicemode"
-},
-{
-    "fields": {
-        "data_speed": 0,
-        "code": "@@@@@@@@",
+        "name": "\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0440\u0435\u0436\u0438\u043c",
+        "data_speed": 360,
         "power": 0.0,
+        "code": "@@@@@@@@"
+    },
+    "pk": 16
+},
+{
+    "model": "request_creation.devicemode",
+    "fields": {
         "device": 4,
-        "name": "\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0440\u0435\u0436\u0438\u043c"
+        "name": "\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0440\u0435\u0436\u0438\u043c",
+        "data_speed": 0,
+        "power": 0.0,
+        "code": "@@@@@@@@"
     },
-    "pk": 17,
-    "model": "request_creation.devicemode"
+    "pk": 17
 },
 {
+    "model": "request_creation.devicemode",
     "fields": {
-        "data_speed": 80000,
-        "code": "@@@@@@@@",
-        "power": 6.0,
         "device": 5,
-        "name": "\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0440\u0435\u0436\u0438\u043c"
+        "name": "\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0440\u0435\u0436\u0438\u043c",
+        "data_speed": 80000,
+        "power": 6.0,
+        "code": "@@@@@@@@"
     },
-    "pk": 18,
-    "model": "request_creation.devicemode"
+    "pk": 18
 },
 {
+    "model": "request_creation.devicemode",
     "fields": {
-        "data_speed": 16,
-        "code": "@@@@@@@@",
-        "power": 5.4,
         "device": 7,
-        "name": "\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0440\u0435\u0436\u0438\u043c"
+        "name": "\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0440\u0435\u0436\u0438\u043c",
+        "data_speed": 16,
+        "power": 5.4,
+        "code": "@@@@@@@@"
     },
-    "pk": 19,
-    "model": "request_creation.devicemode"
+    "pk": 19
+},
+{
+    "model": "request_creation.devicemode",
+    "fields": {
+        "device": 8,
+        "name": "\u0420\u0430\u0431\u043e\u0447\u0438\u0439 \u0440\u0435\u0436\u0438\u043c",
+        "data_speed": 0,
+        "power": 21.0,
+        "code": "@@@@@@@@"
+    },
+    "pk": 20
 }
 ]
