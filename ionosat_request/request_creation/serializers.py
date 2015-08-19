@@ -2,7 +2,7 @@ from rest_framework import serializers
 from .models import Device, DeviceMode, Request, DeviceSwitch
 from rest_framework.validators import ValidationError
 from datetime import date
-from django.core.exceptions import ObjectDoesNotExist
+from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
 import os
 
 class DeviceModeSerializer(serializers.ModelSerializer):
@@ -30,7 +30,7 @@ class DeviceSwitchSerializer(serializers.ModelSerializer):
     This class collects serialization methods for device switches and attributes from model DeviceSwitch
     """
     device = serializers.SlugRelatedField(slug_field='name', queryset=Device.objects.all())
-    mode = serializers.SlugRelatedField(slug_field='name', queryset=DeviceMode.objects.all())
+    mode = serializers.CharField(source='mode.name')
     request_number = serializers.IntegerField(source='request.number')
 
     class Meta:
@@ -64,9 +64,10 @@ class DeviceSwitchSerializer(serializers.ModelSerializer):
         except ObjectDoesNotExist:
             raise ValidationError("There is not such device in Database")
         try:
-            mode = DeviceMode.objects.get(name=device_mode, device=device)
+            mode = DeviceMode.objects.get(name=device_mode['name'], device=device)
         except ObjectDoesNotExist:
-            raise ValidationError("Such device have not this mode! Please try anouther")
+            raise ValidationError("Such device have not this mode! Please try another")
+
         try:
             request = Request.objects.get(number=request['number'])
         except ObjectDoesNotExist:
