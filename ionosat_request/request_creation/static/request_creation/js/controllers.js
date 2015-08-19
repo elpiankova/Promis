@@ -58,39 +58,40 @@ requestKNA.controller (
 							if ( claim.todos[ index ].mode == modes[ index_modes ].name ) {
 
 								var data_amount = modes[ index_modes ].data_speed * time / 8;
-
 								claim.todos[ index ][ "data_amount" ] = data_amount;
-								var text_data_amount;
-								var Ki = 1024;
-								var Mi = Ki * 1024;
-								var Gi = Mi * 1024;
-								if ( data_amount <= Ki ){
-									text_data_amount = data_amount + " Байт";
-								}
-								else if ( data_amount > Ki ) {
-									text_data_amount = data_amount / Mi;
-									text_data_amount = text_data_amount.toFixed(1);
-									console.log(text_data_amount);
-									text_data_amount = text_data_amount + " Килобайт";
-								}
-								else if ( data_amount > Mi ) {
-									text_data_amount = data_amount / Mi;
-									text_data_amount = text_data_amount.toFixed(1);
-									console.log(text_data_amount);
-									text_data_amount = text_data_amount + " Мегабайт";
+								var sayHi = function ( name ) {
+									var text_data_amount;
+									var Ki = 1024;
+									var Mi = Ki * 1024;
+									var Gi = Mi * 1024;
+									if ( name <= Ki ) {
+										text_data_amount = name + " Байт";
+									}
+									else if ( name > Ki ) {
+										text_data_amount = name / Mi;
+										text_data_amount = text_data_amount.toFixed ( 1 );
+										text_data_amount = text_data_amount + " Килобайт";
+									}
+									else if ( name > Mi ) {
+										text_data_amount = name / Mi;
+										text_data_amount = text_data_amount.toFixed ( 1 );
+										text_data_amount = text_data_amount + " Мегабайт";
 
-								}
-								else  if ( data_amount > Gi ){
-									text_data_amount = data_amount / Gi;
-									text_data_amount = text_data_amount.toFixed(1);
-									console.log(text_data_amount);
-									text_data_amount = text_data_amount + " Гигиабайт";
+									}
+									else if ( name > Gi ) {
+										text_data_amount = name / Gi;
+										text_data_amount = text_data_amount.toFixed ( 1 );
+										text_data_amount = text_data_amount + " Гигиабайт";
 
-								}
-								claim.todos[ index ].data_amount = text_data_amount;
+									}
+									console.log ( text_data_amount );
+									return text_data_amount;
+
+								};
+								claim.todos[ index ].data_amount = sayHi ( data_amount );
 
 								if ( data_amount == 0 ) {
-									claim.todos[ index ].data_amount = "0";
+									claim.todos[ index ].data_amount = "0 Байт";
 								}
 
 								var alldatamount;
@@ -98,6 +99,7 @@ requestKNA.controller (
 									alldatamount = 0;
 								}
 								alldatamount = alldatamount + data_amount;
+								alldatamount = sayHi ( alldatamount );
 
 								claim.data_amount = alldatamount;
 								var power_amount = modes[ index_modes ].power * time / 3600;
