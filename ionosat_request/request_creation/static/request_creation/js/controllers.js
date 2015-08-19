@@ -27,14 +27,21 @@ requestKNA.controller (
 		);
 
 		var timeModes = function () {
-
 			var index;
 			for ( index = 0; index < claim.todos.length; ++index ) {
+
+				//Count time in seconds
 				var time_modes = claim.todos[ index ].time_duration.split ( ':' );
-				var hh = Number ( time_modes[ 0 ] );
+				var hhh = Number ( time_modes[ 0 ] );
 				var mm = Number ( time_modes[ 1 ] );
 				var ss = Number ( time_modes[ 2 ] );
-				var time = hh * 3600 + mm * 60 + ss;
+				var time = hhh * 3600 + mm * 60 + ss;
+				if(time > 999999){
+					claim.todos[ index ].time_duration = 'Неверная длительность';
+					return;
+
+				}
+
 				var index_device;
 				for (
 					index_device = 0; index_device < claim.appliance.length; ++index_device
@@ -44,36 +51,42 @@ requestKNA.controller (
 						var modes = claim.appliance[ index_device ].modes;
 						var index_modes;
 						for (
-							index_modes = 0; index_modes < modes.length;
+							index_modes = 0;
+							index_modes < modes.length;
 							++index_modes
 						) {
 							if ( claim.todos[ index ].mode == modes[ index_modes ].name ) {
 
 								var data_amount = modes[ index_modes ].data_speed * time / 8;
+
 								claim.todos[ index ][ "data_amount" ] = data_amount;
 								claim.todos[ index ].data_amount = data_amount;
-								if ( isNaN ( claim.data_amount ) ) {
-									claim.data_amount = data_amount;
-									console.log ( claim.data_amount )
-								}
-								else {
-									claim.data_amount += data_amount;
-									console.log ( claim.data_amount )
+
+								if ( data_amount == 0 ) {
+									claim.todos[ index ].data_amount = "0";
 								}
 
-								console.log ( claim.data_amount );
-								claim.Reqest = true;
+								var alldatamount;
+								if ( isNaN ( alldatamount ) ) {
+									alldatamount = 0;
+								}
+								alldatamount = alldatamount + data_amount;
+
+								claim.data_amount = alldatamount;
 								var power_amount = modes[ index_modes ].power * time / 3600;
 								claim.todos[ index ][ "power_amount" ] = power_amount;
 								claim.todos[ index ].power_amount = power_amount;
-								if ( isNaN ( claim.power_amount ) ) {
-									claim.power_amount = power_amount;
-									console.log ( claim.power_amount )
+								if ( power_amount == 0 ) {
+									claim.todos[ index ].power_amount = "0";
 								}
-								else {
-									claim.power_amount += power_amount;
-									console.log ( claim.power_amount )
+								var allpoweramount;
+								if ( isNaN ( allpoweramount ) ) {
+									allpoweramount = 0;
 								}
+								allpoweramount = allpoweramount + power_amount;
+								claim.power_amount = allpoweramount;
+
+								claim.Reqest = true;
 							}
 						}
 					}
@@ -88,16 +101,12 @@ requestKNA.controller (
 
 		claim.dataReqest = function () {
 			var request = claim.user;
-			console.log ( request );
 			var index;
 			for ( index = 0; index < claim.todos.length; ++index ) {
 				claim.todos[ index ][ "request_number" ] = claim.user.number;
-
-				console.log ( claim.todos[ index ][ "argument_part" ] )
 			}
 
 			var devswitch = claim.todos;
-			console.log ( devswitch );
 
 			$http.post ( '/request/', request ).
 				success (

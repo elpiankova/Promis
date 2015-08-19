@@ -46,7 +46,7 @@ requestKNA.directive (
 			link: function ( scope, element, attrs, ngModelCtrl ) {
 				jQuery (
 					function ( $ ) {
-						$ ( ".fromtime" ).mask ( "99:99:99" );
+						$ ( ".fromtime" ).mask ( "999:99:99" );
 					}
 				);
 			}
