@@ -16,6 +16,9 @@ def create_file(request):
 
     file_path = os.path.join(BASE_DIR, 'request_files', file_name)
 
+    if request.device_amount != request.switches.count():
+        request.device_amount = request.switches.count()
+
     # This block writes first line of request file
     file = open(file_path, 'w')
     first_line = ('KNA %(number)04d %(date_start)s %(date_end)s'

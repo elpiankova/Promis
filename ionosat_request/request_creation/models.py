@@ -4,13 +4,13 @@ from request_creation.validators import *
 import os
 
 class Request(models.Model):
-    UPWARD_ORBIT = 'y'
+    UPWARD_ORBIT = 'v'
     DOWNWARD_ORBIT = 'n'
     ANY_ORBIT = 'p'
     ORBIT_FLAG = (
-        (UPWARD_ORBIT, 'upward'),
-        (DOWNWARD_ORBIT, 'downward'),
-        (ANY_ORBIT, 'any'),
+        (UPWARD_ORBIT, 'восходящая'),
+        (DOWNWARD_ORBIT, 'нисходящая'),
+        (ANY_ORBIT, 'не имеет значения'),
     )
     number = models.SmallIntegerField(validators=[request_max_number_validator], unique=True)
     date_start = models.DateField()
@@ -49,25 +49,25 @@ class Request(models.Model):
         super(Request, self).save(*args, **kwargs)
 
 class Device(models.Model):
-    WP0000 = 'Wave probe WP(count3)'
-    EP0000 = 'Electric  probe'
-    RFA000 = 'Radio frequency analyser'
-    DN0000 = 'Neutral component plasma probe'
-    DE0000 = 'Electric component plasma probes'
-    FGM000 = 'Flux-Gate magnetometer constant field'
-    PES000 = 'Total electron content'
-    SSNI00 = 'System for gathering scientific information'
-    PROBES = (
-        (WP0000, 'Wave probe WP(count3)'),
-        (EP0000, 'Electric probe'),
-        (RFA000, 'Radio frequency analyser'),
-        (DN0000, 'Neutral component plasma probe'),
-        (DE0000, 'Electric component plasma probes'),
-        (FGM000, 'Flux-Gate magnetometer constant field'),
-        (PES000, 'Total electron content'),
-        (SSNI00, 'System for gathering scientific information'),
-    )
-    name = models.CharField(max_length=255, choices=PROBES, unique=True)
+    # WP0000 = 'Wave probe WP(count3)'
+    # EP0000 = 'Electric  probe'
+    # RFA000 = 'Radio frequency analyser'
+    # DN0000 = 'Neutral component plasma probe'
+    # DE0000 = 'Electric component plasma probes'
+    # FGM000 = 'Flux-Gate magnetometer constant field'
+    # PES000 = 'Total electron content'
+    # SSNI00 = 'System for gathering scientific information'
+    # PROBES = (
+    #     (WP0000, ''),
+    #     (EP0000, 'Electric probe'),
+    #     (RFA000, 'Radio frequency analyser'),
+    #     (DN0000, 'Neutral component plasma probe'),
+    #     (DE0000, 'Electric component plasma probes'),
+    #     (FGM000, 'Flux-Gate magnetometer constant field'),
+    #     (PES000, 'Total electron content'),
+    #     (SSNI00, 'System for gathering scientific information'),
+    # )
+    name = models.CharField(max_length=255, unique=True)
     code = models.CharField(max_length=6, unique=True)
     description = models.TextField(null=True, blank=True)
 
@@ -79,7 +79,7 @@ class Device(models.Model):
 
 class DeviceMode(models.Model):
     name = models.CharField(max_length=255)
-    code = models.CharField(max_length=6)
+    code = models.CharField(max_length=8)
     power = models.FloatField(default=0)
     data_speed = models.IntegerField(default=0)
     device = models.ForeignKey('Device', related_name='modes')

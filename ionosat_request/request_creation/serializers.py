@@ -2,7 +2,7 @@ from rest_framework import serializers
 from .models import Device, DeviceMode, Request, DeviceSwitch
 from rest_framework.validators import ValidationError
 from datetime import date
-from django.core.exceptions import ObjectDoesNotExist
+from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
 import os
 
 class DeviceModeSerializer(serializers.ModelSerializer):
@@ -30,7 +30,7 @@ class DeviceSwitchSerializer(serializers.ModelSerializer):
     This class collects serialization methods for device switches and attributes from model DeviceSwitch
     """
     device = serializers.SlugRelatedField(slug_field='name', queryset=Device.objects.all())
-    mode = serializers.SlugRelatedField(slug_field='name', queryset=DeviceMode.objects.all())
+    mode = serializers.CharField(source='mode.name')
     request_number = serializers.IntegerField(source='request.number')
 
     class Meta:
@@ -43,43 +43,54 @@ class DeviceSwitchSerializer(serializers.ModelSerializer):
         #     # This block is validate a presence of one unique device
         #     # in request.
         #
+
         device_name = validated_data.pop("device")
         device_mode = validated_data.pop("mode")
         request = validated_data.pop("request")
+
         dev_list = DeviceSwitch.objects.filter(device__name=device_name, request__number=request['number'])
         if len(dev_list) > 0:
             raise ValidationError("Can not present more than one unique device")
+
         if "argument_part" in validated_data:
-            argument_part = validated_data["argument_part"].split("\r\n")
+            argument_part = validated_data["argument_part"].split("\n")
             argument_part_len = len(argument_part)
             for line in argument_part:
                 if len(line) > 60:
                     raise ValidationError("Every line of the argument part must be shorter than 60 symbols")
         else:
             argument_part_len = 0
+
         if argument_part_len > 10:
                 raise ValidationError("Argument part must be less than 10 lines")
+
         try:
             device = Device.objects.get(name=device_name)
         except ObjectDoesNotExist:
             raise ValidationError("There is not such device in Database")
+
         try:
-            mode = DeviceMode.objects.get(name=device_mode, device=device)
+            mode = DeviceMode.objects.get(name=device_mode['name'], device=device)
         except ObjectDoesNotExist:
-            raise ValidationError("Such device have not this mode! Please try anouther")
+            raise ValidationError("Such device have not this mode! Please try another")
+
         try:
             request = Request.objects.get(number=request['number'])
         except ObjectDoesNotExist:
             raise ValidationError("Request with this number does not exist yet")
+
         devswitch = DeviceSwitch(request=request, device=device, mode=mode,
                                  argument_part_len=argument_part_len, **validated_data)
-        request.device_amount += 1
-        request.save()
+
         if devswitch.data_amount != mode.data_speed*devswitch.time_duration.total_seconds()/8:
             raise ValidationError("Field data amount not equal to calculated")
         if devswitch.power_amount != mode.power*devswitch.time_duration.total_seconds()/3600:
             raise ValidationError("Field power amount nit equal to calculated")
         devswitch.save()
+
+        request.device_amount = request.switches.count()
+        request.save()
+
         return devswitch
 
 class FileNameField(serializers.CharField):
