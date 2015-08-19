@@ -33,7 +33,7 @@
 <body ng-controller = "claimInfoCtrl as claimInfo">
 <div id = "fixblock"
      class = "alert alert-success"
-     ng-show = "claimInfo.data_amount">
+     ng-show = "claimInfo.power_amount">
 	Количество данных: [[claimInfo.data_amount]] байт<br>
 	Мощность: [[claimInfo.power_amount | number:2 ]] Ват
 </div>
@@ -42,9 +42,6 @@
 	<div class = "page-header">
 		<h1>Заявки на проведение научных экспериментов КНА "Ионосат-Микро" </h1>
 	</div>
-	<p class = "lead">Принять формат файла заявки на проведение научных экспериментов КНА
-	                  "Ионосат-Микро"</p>
-
 	<div class = "panel panel-default">
 
 		<div class = "panel-heading"><b>Оформлення заявки</b>
@@ -198,7 +195,7 @@
 								<input ng-model = "switch.time_delay"
 								       name = "time_delay"
 								       type = "text"
-								       placeholder = "hh:mm:ss"
+								       placeholder = "dd:hh:mm:ss"
 								       class = "form-control fromtime"
 								       timespinner
 								       required>
@@ -210,7 +207,7 @@
 								<input ng-model = "switch.time_duration"
 								       name = "time_duration"
 								       type = "text"
-								       placeholder = "hh:mm:ss"
+								       placeholder = "dd:hh:mm:ss"
 								       class = "form-control fromtime"
 								       timespinner
 								       required>

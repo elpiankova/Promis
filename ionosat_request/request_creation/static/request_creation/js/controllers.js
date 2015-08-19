@@ -27,14 +27,14 @@ requestKNA.controller (
 		);
 
 		var timeModes = function () {
-
 			var index;
 			for ( index = 0; index < claim.todos.length; ++index ) {
 				var time_modes = claim.todos[ index ].time_duration.split ( ':' );
-				var hh = Number ( time_modes[ 0 ] );
-				var mm = Number ( time_modes[ 1 ] );
-				var ss = Number ( time_modes[ 2 ] );
-				var time = hh * 3600 + mm * 60 + ss;
+				var dd = Number ( time_modes[ 0 ] );
+				var hh = Number ( time_modes[ 1 ] );
+				var mm = Number ( time_modes[ 2 ] );
+				var ss = Number ( time_modes[ 3 ] );
+				var time = dd * 86400 + hh * 3600 + mm * 60 + ss;
 				var index_device;
 				for (
 					index_device = 0; index_device < claim.appliance.length; ++index_device
@@ -44,7 +44,8 @@ requestKNA.controller (
 						var modes = claim.appliance[ index_device ].modes;
 						var index_modes;
 						for (
-							index_modes = 0; index_modes < modes.length;
+							index_modes = 0;
+							index_modes < modes.length;
 							++index_modes
 						) {
 							if ( claim.todos[ index ].mode == modes[ index_modes ].name ) {
@@ -52,33 +53,30 @@ requestKNA.controller (
 								var data_amount = modes[ index_modes ].data_speed * time / 8;
 								claim.todos[ index ][ "data_amount" ] = data_amount;
 								claim.todos[ index ].data_amount = data_amount;
-								if(data_amount == 0){
+								if ( data_amount == 0 ) {
 									claim.todos[ index ].data_amount = "0";
 								}
-								console.log(data_amount);
-								if ( isNaN ( claim.data_amount ) ) {
-									claim.data_amount = data_amount;
-									if(data_amount == 0){
-									claim.data_amount = "0";
+								var alldatamount;
+								if ( isNaN ( alldatamount ) ) {
+									alldatamount = 0;
 								}
-								}
-								else {
-									claim.data_amount += data_amount;
-								}
+								alldatamount = alldatamount + data_amount;
+								console.log ( alldatamount );
+								claim.data_amount = alldatamount;
 								claim.Reqest = true;
 								var power_amount = modes[ index_modes ].power * time / 3600;
 								claim.todos[ index ][ "power_amount" ] = power_amount;
 								claim.todos[ index ].power_amount = power_amount;
-								if(power_amount == 0){
+								if ( power_amount == 0 ) {
 									claim.todos[ index ].power_amount = "0";
 								}
-								console.log(power_amount);
-								if ( isNaN ( claim.power_amount ) ) {
-									claim.power_amount = power_amount;
+								var allpoweramount;
+								if ( isNaN ( allpoweramount ) ) {
+									allpoweramount = 0;
 								}
-								else {
-									claim.power_amount += power_amount;
-								}
+								allpoweramount = allpoweramount + power_amount;
+								claim.power_amount = allpoweramount;
+
 							}
 						}
 					}
