@@ -29,11 +29,19 @@ requestKNA.controller (
 		var timeModes = function () {
 			var index;
 			for ( index = 0; index < claim.todos.length; ++index ) {
+
+				//Count time in seconds
 				var time_modes = claim.todos[ index ].time_duration.split ( ':' );
 				var hhh = Number ( time_modes[ 0 ] );
 				var mm = Number ( time_modes[ 1 ] );
 				var ss = Number ( time_modes[ 2 ] );
 				var time = hhh * 3600 + mm * 60 + ss;
+				if(time > 999999){
+					claim.todos[ index ].time_duration = 'Неверная длительность';
+					return;
+
+				}
+
 				var index_device;
 				for (
 					index_device = 0; index_device < claim.appliance.length; ++index_device
@@ -50,19 +58,21 @@ requestKNA.controller (
 							if ( claim.todos[ index ].mode == modes[ index_modes ].name ) {
 
 								var data_amount = modes[ index_modes ].data_speed * time / 8;
+
 								claim.todos[ index ][ "data_amount" ] = data_amount;
 								claim.todos[ index ].data_amount = data_amount;
+
 								if ( data_amount == 0 ) {
 									claim.todos[ index ].data_amount = "0";
 								}
+
 								var alldatamount;
 								if ( isNaN ( alldatamount ) ) {
 									alldatamount = 0;
 								}
 								alldatamount = alldatamount + data_amount;
-								console.log ( alldatamount );
+
 								claim.data_amount = alldatamount;
-								claim.Reqest = true;
 								var power_amount = modes[ index_modes ].power * time / 3600;
 								claim.todos[ index ][ "power_amount" ] = power_amount;
 								claim.todos[ index ].power_amount = power_amount;
@@ -76,6 +86,7 @@ requestKNA.controller (
 								allpoweramount = allpoweramount + power_amount;
 								claim.power_amount = allpoweramount;
 
+								claim.Reqest = true;
 							}
 						}
 					}
