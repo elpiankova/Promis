@@ -30,11 +30,10 @@ requestKNA.controller (
 			var index;
 			for ( index = 0; index < claim.todos.length; ++index ) {
 				var time_modes = claim.todos[ index ].time_duration.split ( ':' );
-				var dd = Number ( time_modes[ 0 ] );
-				var hh = Number ( time_modes[ 1 ] );
-				var mm = Number ( time_modes[ 2 ] );
-				var ss = Number ( time_modes[ 3 ] );
-				var time = dd * 86400 + hh * 3600 + mm * 60 + ss;
+				var hhh = Number ( time_modes[ 0 ] );
+				var mm = Number ( time_modes[ 1 ] );
+				var ss = Number ( time_modes[ 2 ] );
+				var time = hhh * 3600 + mm * 60 + ss;
 				var index_device;
 				for (
 					index_device = 0; index_device < claim.appliance.length; ++index_device
