@@ -72,6 +72,7 @@
 					     ng-class = "{'has-error': loginForm.date_start.$invalid}">
 						<label>3 Начало</label>
 						<input type = "text"
+						       pattern = "[0-9]{4}-[0-9]{2}-[0-9]{2}"
 						       class = "form-control"
 						       id = "from"
 						       name = "date_start"
@@ -84,6 +85,7 @@
 						<label>4 Окончание</label>
 						<input type = "text"
 						       id = "to"
+						       pattern = "\d{4}-\d{1,2}-\d{1,2}"
 						       class = "form-control"
 						       name = "date_end"
 						       ng-model = "claimInfo.user.date_end"
@@ -148,87 +150,88 @@
 						       required>
 					</div>
 				</div>
-			</ng-form>
-			<div class = "panel panel-default"
-			     ng-repeat = "switch in claimInfo.todos">
+				<div class = "panel panel-default"
+				     ng-repeat = "switch in claimInfo.todos">
 
-				<div class = "panel-heading">
-					<b ng-model = "user.switches"> Прибор: [[ switch.device]]</b>
-				</div>
-				<div class = "panel-body">
-					<ng-form name = "DevForm"
-					         novalidate>
+					<div class = "panel-heading">
+						<b ng-model = "user.switches"> Прибор: [[ switch.device]]</b>
+					</div>
+					<div class = "panel-body">
+						<ng-form name = "DevForm"
+						         novalidate>
 
-						<div class = "alert alert-success"
-						     role = "alert"
-						     ng-if = "switch.data_amount">
-							Количество данных: [[switch.data_amount]] байт<br>
-							Мощность: [[switch.power_amount | number:2 ]] Ват
-						</div>
-						<div class = "form-group "
-						     ng-class = "{'has-error': DevForm.device.$invalid}">
-							<label>10 Имя прибора </label>
-							<select ng-model = "switch.device"
-							        name = "device"
-							        ng-options = "applic.name as applic.name for applic in claimInfo.appliance"
-							        class = "form-control"
-							        required></select>
-						</div>
-						<div class = "form-group"
-						     ng-repeat = "app in claimInfo.appliance"
-						     ng-if = "app.name == switch.device"
-						     ng-class = "{'has-error': DevForm.mode.$invalid}">
-							<label>11 Режим работы</label>
-							<select ng-model = "switch.mode"
-							        name = "mode"
-							        ng-options = "behav.name as behav.name for behav in app.modes"
-							        class = "form-control"
-							        required></select>
+							<div class = "alert alert-success"
+							     role = "alert"
+							     ng-if = "switch.data_amount">
+								Количество данных: [[switch.data_amount]] байт<br>
+								Мощность: [[switch.power_amount | number:2 ]] Ват
+							</div>
+							<div class = "form-group "
+							     ng-class = "{'has-error': DevForm.device.$invalid}">
+								<label>10 Имя прибора </label>
+								<select ng-model = "switch.device"
+								        name = "device"
+								        ng-options = "applic.name as applic.name for applic in claimInfo.appliance"
+								        class = "form-control"
+								        required></select>
+							</div>
+							<div class = "form-group"
+							     ng-repeat = "app in claimInfo.appliance"
+							     ng-if = "app.name == switch.device"
+							     ng-class = "{'has-error': DevForm.mode.$invalid}">
+								<label>11 Режим работы</label>
+								<select ng-model = "switch.mode"
+								        name = "mode"
+								        ng-options = "behav.name as behav.name for behav in app.modes"
+								        class = "form-control"
+								        required></select>
 
-
-						</div>
-						<div class = "row form-group">
-							<div class = "col-sm-6"
-							     id = "phone"
-							     ng-class = "{'has-error': DevForm.time_delay.$invalid}">
-								<label>12 Задержка времени включения питания прибора</label>
-								<input ng-model = "switch.time_delay"
-								       name = "time_delay"
-								       type = "text"
-								       placeholder = "hhh:mm:ss"
-								       class = "form-control fromtime"
-								       timespinner
-								       required>
 
 							</div>
-							<div class = "col-sm-6"
-							     ng-class = "{'has-error': DevForm.time_duration.$invalid}">
-								<label>13 Длительность включения питания прибора</label>
-								<input ng-model = "switch.time_duration"
-								       name = "time_duration"
-								       type = "text"
-								       placeholder = "hhh:mm:ss"
-								       class = "form-control fromtime"
-								       timespinner
-								       required>
+							<div class = "row form-group">
+								<div class = "col-sm-6"
+								     id = "phone"
+								     ng-class = "{'has-error': DevForm.time_delay.$invalid}">
+									<label>12 Задержка времени включения питания
+									       прибора</label>
+									<input ng-model = "switch.time_delay"
+									       name = "time_delay"
+									       type = "text"
+									       placeholder = "hhh:mm:ss"
+									       class = "form-control fromtime"
+									       timespinner
+									       required>
+
+								</div>
+								<div class = "col-sm-6"
+								     ng-class = "{'has-error': DevForm.time_duration.$invalid}">
+									<label>13 Длительность включения питания прибора</label>
+									<input ng-model = "switch.time_duration"
+									       name = "time_duration"
+									       type = "text"
+									       placeholder = "hhh:mm:ss"
+									       class = "form-control fromtime"
+									       timespinner
+									       required>
+								</div>
 							</div>
-						</div>
-						<div class = "form-group">
-							<label>Аргументная часть</label>
+							<div class = "form-group">
+								<label>Аргументная часть</label>
                                 <textarea ng-model = "switch.argument_part"
                                           class = "form-control"
                                           rows = "3"
                                           ng-model = "text">[[ device ]]</textarea>
-						</div>
-					</ng-form>
-					<button ng-click = "claimInfo.timeModes()"
-					        ng-class = "{'btn-warning disabled': DevForm.$invalid}"
-					        type = "button"
-					        class = "btn btn-lg btn-primary btn-block">
-						Пересчитать
-					</button>
+							</div>
+						</ng-form>
+						<button ng-click = "claimInfo.timeModes()"
+						        ng-class = "{'btn-warning disabled': DevForm.$invalid}"
+						        type = "button"
+						        class = "btn btn-lg btn-primary btn-block">
+							Пересчитать
+						</button>
+					</div>
 				</div>
-			</div>
+			</ng-form>
 		</div>
 
 		<div class = "form-group">
@@ -245,7 +248,8 @@
 		<button
 				class = "btn btn-success btn-lg btn-block"
 				ng-click = "claimInfo.dataReqest()"
-				ng-show = "claimInfo.Reqest">
+				ng-show = "claimInfo.Reqest"
+				ng-class = "{'btn-warning disabled': loginForm.$invalid}">
 			<span class = "glyphicon glyphicon-ok"></span>
 			Сгенерировать заявку
 		</button>
