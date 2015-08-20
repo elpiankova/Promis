@@ -35,12 +35,12 @@
      class = "alert alert-success"
      ng-show = "claimInfo.amount">
 	Количество данных: [[claimInfo.data_amount | formatText]]<br>
-	Мощность: [[claimInfo.power_amount | number:2 ]] Ват
+	Мощность: [[claimInfo.power_amount | number:2 ]] Вт⋅ч
 </div>
 <!-- Created by mammut -->
 <div class = "container">
 	<div class = "page-header">
-		<h1>Заявки на проведение научных экспериментов КНА "Ионосат-Микро" </h1>
+		<h1>Заявки на включения КНА <br> "Ионосат-Микро" </h1>
 	</div>
 	<div class = "panel panel-default">
 
@@ -164,7 +164,7 @@
 							     role = "alert"
 							     ng-if = "switch.amount">
 								Количество данных: [[switch.data_amount | formatText]]<br>
-								Мощность: [[switch.power_amount | number:2 ]] Ват
+								Мощность: [[switch.power_amount | number:2 ]] Вт⋅ч
 							</div>
 							<div class = "form-group "
 							     ng-class = "{'has-error': DevForm.device.$invalid}">

@@ -46,3 +46,8 @@ label {
     margin: 10px;
     position: fixed;
 }
+
+.page-header {
+
+    text-align: center;
+}
