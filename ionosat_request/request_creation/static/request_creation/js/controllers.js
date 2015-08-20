@@ -58,48 +58,21 @@ requestKNA.controller (
 							if ( claim.todos[ index ].mode == modes[ index_modes ].name ) {
 
 								var data_amount = modes[ index_modes ].data_speed * time / 8;
+								console.log ( claim.todos[ index ][ "data_amount" ] );
+
 								claim.todos[ index ][ "data_amount" ] = data_amount;
-								var sayHi = function ( name ) {
-									var text_data_amount;
-									var Ki = 1024;
-									var Mi = Ki * 1024;
-									var Gi = Mi * 1024;
-									if ( name <= Ki ) {
-										text_data_amount = name + " Байт";
-									}
-									else if ( name > Ki ) {
-										text_data_amount = name / Mi;
-										text_data_amount = text_data_amount.toFixed ( 1 );
-										text_data_amount = text_data_amount + " Килобайт";
-									}
-									else if ( name > Mi ) {
-										text_data_amount = name / Mi;
-										text_data_amount = text_data_amount.toFixed ( 1 );
-										text_data_amount = text_data_amount + " Мегабайт";
-
-									}
-									else if ( name > Gi ) {
-										text_data_amount = name / Gi;
-										text_data_amount = text_data_amount.toFixed ( 1 );
-										text_data_amount = text_data_amount + " Гигиабайт";
-
-									}
-									console.log ( text_data_amount );
-									return text_data_amount;
-
-								};
-								claim.todos[ index ].data_amount = sayHi ( data_amount );
+								claim.todos[ index ].data_amount = data_amount;
 
 								if ( data_amount == 0 ) {
 									claim.todos[ index ].data_amount = "0 Байт";
 								}
 
+								claim.todos[ index ][ "data_amount" ] = data_amount;
 								var alldatamount;
 								if ( isNaN ( alldatamount ) ) {
 									alldatamount = 0;
 								}
 								alldatamount = alldatamount + data_amount;
-								alldatamount = sayHi ( alldatamount );
 
 								claim.data_amount = alldatamount;
 								var power_amount = modes[ index_modes ].power * time / 3600;
@@ -142,18 +115,27 @@ requestKNA.controller (
 				function ( data ) {
 					var index;
 					for ( index = 0; index < devswitch.length; ++index ) {
-						$http.post ( '/devswitch/', devswitch[ index ] )
+						$http.post ( '/devswitch/', devswitch[ index ] ).success (
+							claim.hash = 'get_file/' + data.request_file
+						).error (
+							function () {
+
+								console.log ( devswitch[ index ] );
+							}
+						);
 					}
-					claim.hash = 'get_file/' + data.request_file;
 
 				}
 			).
 				error (
 				function ( status ) {
+					console.log ( status.number );
 				}
 			);
 		};
 		claim.timeModes = timeModes;
 	}
 );
+
+
 

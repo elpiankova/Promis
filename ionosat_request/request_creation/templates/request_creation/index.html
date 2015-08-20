@@ -34,7 +34,7 @@
 <div id = "fixblock"
      class = "alert alert-success"
      ng-show = "claimInfo.power_amount">
-	Количество данных: [[claimInfo.data_amount]]<br>
+	Количество данных: [[claimInfo.data_amount  | formatText]]<br>
 	Мощность: [[claimInfo.power_amount | number:2 ]] Ват
 </div>
 <!-- Created by mammut -->
@@ -154,7 +154,7 @@
 				     ng-repeat = "switch in claimInfo.todos">
 
 					<div class = "panel-heading">
-						<b ng-model = "user.switches"> Прибор: [[ switch.device]]</b>
+						<b ng-model = "user.switches"> Прибор: [[ switch]]</b>
 					</div>
 					<div class = "panel-body">
 						<ng-form name = "DevForm"
@@ -163,7 +163,7 @@
 							<div class = "alert alert-success"
 							     role = "alert"
 							     ng-if = "switch.data_amount">
-								Количество данных: [[switch.data_amount]]<br>
+								Количество данных: [[switch.data_amount | formatText]]<br>
 								Мощность: [[switch.power_amount | number:2 ]]
 							</div>
 							<div class = "form-group "
