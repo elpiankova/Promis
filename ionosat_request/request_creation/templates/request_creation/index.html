@@ -33,8 +33,8 @@
 <body ng-controller = "claimInfoCtrl as claimInfo">
 <div id = "fixblock"
      class = "alert alert-success"
-     ng-show = "claimInfo.power_amount">
-	Количество данных: [[claimInfo.data_amount  | formatText]]<br>
+     ng-show = "claimInfo.amount">
+	Количество данных: [[claimInfo.data_amount | formatText]]<br>
 	Мощность: [[claimInfo.power_amount | number:2 ]] Ват
 </div>
 <!-- Created by mammut -->
@@ -162,9 +162,9 @@
 
 							<div class = "alert alert-success"
 							     role = "alert"
-							     ng-if = "switch.data_amount">
+							     ng-if = "switch.amount">
 								Количество данных: [[switch.data_amount | formatText]]<br>
-								Мощность: [[switch.power_amount | number:2 ]]
+								Мощность: [[switch.power_amount | number:2 ]] Ват
 							</div>
 							<div class = "form-group "
 							     ng-class = "{'has-error': DevForm.device.$invalid}">
@@ -251,7 +251,7 @@
 		<button
 				class = "btn btn-success btn-lg btn-block"
 				ng-click = "claimInfo.dataReqest()"
-				ng-show = "claimInfo.Reqest"
+				ng-show = "claimInfo.Reqest && claimInfo.todos[0]"
 				ng-class = "{'btn-warning disabled': loginForm.$invalid}">
 			<span class = "glyphicon glyphicon-ok"></span>
 			Сгенерировать заявку

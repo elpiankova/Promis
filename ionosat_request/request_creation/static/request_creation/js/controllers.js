@@ -66,11 +66,8 @@ requestKNA.controller (
 								// Показуємо що у нас є на кожен пристрій
 								claim.todos[ index ][ "data_amount" ] = data_amount;
 								claim.todos[ index ].data_amount = data_amount;
-
+								claim.todos[ index ].amount = true;
 								// Потрібно виводити якщо значення є нуль
-								if ( data_amount == 0 ) {
-									claim.todos[ index ].data_amount = "0 Байт";
-								}
 								// Загальна кількість даних
 								var alldatamount;
 								if ( isNaN ( alldatamount ) ) {
@@ -78,16 +75,13 @@ requestKNA.controller (
 								}
 								alldatamount = alldatamount + data_amount;
 								claim.data_amount = alldatamount;
+								claim.amount = true;
 
 								// Переводимо дані у потрібний вигляд
 								var power_amount = modes[ index_modes ].power * time / 3600;
 								claim.todos[ index ][ "power_amount" ] = power_amount;
 								claim.todos[ index ].power_amount = power_amount;
-
-								// Потрібно виводити якщо значення є нуль
-								if ( power_amount == 0 ) {
-									claim.todos[ index ].power_amount = "0";
-								}
+								claim.todos[ index ].amount = true;
 								// Загальна кількість даних
 								var allpoweramount;
 								if ( isNaN ( allpoweramount ) ) {
@@ -95,6 +89,7 @@ requestKNA.controller (
 								}
 								allpoweramount = allpoweramount + power_amount;
 								claim.power_amount = allpoweramount;
+								claim.amount = true;
 
 								// Показуємо кнопку згенерувати заявку та добавити пристрій
 								claim.Reqest = true;
