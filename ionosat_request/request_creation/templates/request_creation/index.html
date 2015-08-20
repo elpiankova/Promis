@@ -154,7 +154,7 @@
 				     ng-repeat = "switch in claimInfo.todos">
 
 					<div class = "panel-heading">
-						<b ng-model = "user.switches"> Прибор: [[ switch]]</b>
+						<b ng-model = "user.switches"> Прибор: [[ switch.device]]</b>
 					</div>
 					<div class = "panel-body">
 						<ng-form name = "DevForm"
@@ -240,6 +240,7 @@
 			<button ng-click = "claimInfo.addTodo()"
 			        type = "button"
 			        class = "btn btn-lg btn-primary btn-block"
+			        ng-show = "claimInfo.Reqest"
 			        ng-class = "{'btn-warning disabled': loginForm.$invalid}">
 				<span class = "glyphicon glyphicon-plus"></span>
 				Добавить устройство
