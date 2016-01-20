@@ -1,5 +1,5 @@
 from geoprom.models import Satellite,Session
-from geoprom.serializers import SatelliteSerializer,SessionSerializer
+from geoprom.serializers import SatelliteSerializer,SessionSerializer,DataSerializer
 from django.http import Http404
 from rest_framework.views import APIView 
 from rest_framework.response import Response
@@ -9,6 +9,9 @@ from django.contrib.auth.models import User
 from rest_framework import generics
 from geoprom.serializers import UserSerializer
 from rest_framework import permissions
+from rest_framework_mongoengine.viewsets import ModelViewSet
+from geoprom.mongo_models import Data
+
 
 class UserList(generics.ListAPIView):
     queryset = User.objects.all()
@@ -86,3 +89,7 @@ class SatelliteSession(APIView):
         session = self.get_object(pk)
         serializer = SessionSerializer(session)
         return Response(serializer.data)
+
+class DataViewSet(ModelViewSet):
+    queryset = Data.objects.all()
+    serializer_class = DataSerializer

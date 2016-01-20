@@ -6,7 +6,8 @@ from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
 import os
 from django.contrib.auth.models import User
 from rest_framework_gis.serializers import GeoFeatureModelSerializer
-
+from geoprom.mongo_models import Data
+from rest_framework_mongoengine.serializers import DocumentSerializer
 
 
 
@@ -45,5 +46,9 @@ class SessionSerializer(GeoFeatureModelSerializer):
         geo_field = "geo_line"
         fields =('time_begin','time_end',)
     
-
+class DataSerializer(DocumentSerializer):
+    class Meta:
+        model = Data
+        fields = ('magnetic_field',)
+    
     #owner = serializers.ReadOnlyField(source='owner.username')

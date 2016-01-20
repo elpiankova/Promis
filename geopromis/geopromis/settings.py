@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'geoprom',
     'rest_framework',
     'rest_framework_gis',
+    'rest_framework_mongoengine',
 )
 
 MIDDLEWARE_CLASSES = (

@@ -25,8 +25,12 @@ class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
+
+
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
+#router = routers.MongoSimpleRouter()
+#router.register(r'datas', views.DataViewSet)
 router.register(r'users', UserViewSet)
 router.include_format_suffixes = False
 
@@ -38,7 +42,8 @@ urlpatterns = [
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^satellites/$', views.SatelliteList.as_view()),
     url(r'^satellites/(?P<pk>[a-zA-Z]+)$', views.SatelliteDetail.as_view()),
-    url(r'^sessions/(?P<pk>[0-9]+)$', views.SatelliteSession.as_view()),    
+    url(r'^sessions/(?P<pk>[0-9]+)$', views.SatelliteSession.as_view()), 
+    url(r'^datas/$', views.DataViewSet.as_view({'get': 'list','post': 'create'})),     
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
