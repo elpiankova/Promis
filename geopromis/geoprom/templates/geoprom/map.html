@@ -1,0 +1,48 @@
+{% extends 'main.html' %}
+{% load staticfiles %}
+
+{% block maps %}
+<hr>
+<div class="row">
+	<div class="col-md-1">
+	</div>
+	<div class="col-md-11">
+	<div id="map">
+					<script>
+    					    					
+						function getval( callback ){
+    						jQuery.getJSON('http://127.0.0.1:8000/sessions/15', function(data) {
+        						// We can't use .return because return is a JavaScript keyword.
+       							callback(data['geometry'].coordinates);
+    						});
+						}
+						$(function () {
+        						$(document).ready(function() {
+        						getval( function ( coordinates ) {
+        							var map = new GMaps({
+			      					div: '#map',
+			      					width: '800px',
+									height: '600px',
+									zoom: 2,
+			      					lat: 50.043333,
+			      					lng: 30.028333
+			    					});
+			    					path = coordinates[0].concat(coordinates[1])          						
+            						map.drawPolyline({
+  									path: path,
+  									strokeColor: '#131540',
+			  						strokeOpacity: 0.6,
+			  						strokeWeight: 6
+									});
+			    					console.log(coordinates[0],path);
+        						});
+    						});
+        				});
+						
+						
+					</script>
+				</div>	      
+	</div>
+</div>
+</hr>
+{% endblock %}

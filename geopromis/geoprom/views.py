@@ -5,29 +5,20 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
-from django.contrib.auth.models import User
-from rest_framework import generics
-from geoprom.serializers import UserSerializer
 from rest_framework import permissions
 from rest_framework_mongoengine.viewsets import ModelViewSet
 from geoprom.mongo_models import Data
+from django.shortcuts import get_object_or_404, render
 
 
-class UserList(generics.ListAPIView):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
-
-
-class UserDetail(generics.RetrieveAPIView):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
-
+def MainView(request):
+    return render(request, 'index.html')
 
 class SatelliteList(APIView):
     """
     List all satellites, or create a new satellite.
     """
-    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+    permission_classes = (permissions.IsAuthenticated,)
     
     def get(self, request, format=None):
         satellites = Satellite.objects.all()
@@ -91,5 +82,6 @@ class SatelliteSession(APIView):
         return Response(serializer.data)
 
 class DataViewSet(ModelViewSet):
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
     queryset = Data.objects.all()
     serializer_class = DataSerializer

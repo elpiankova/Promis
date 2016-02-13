@@ -1,6 +1,7 @@
 import numpy as np
+
 class PlacePoint(object):
-    """Agregation xyz and lat,long"""
+    """This is base class for measurements points. Agregation xyz and lat,long"""
     def __init__(self, rx_ifr,ry_ifr,rz_ifr):
         super(PlacePoint, self).__init__()
         self.rx_ifr = rx_ifr
@@ -19,4 +20,4 @@ class PlacePoint(object):
         tanlambda = sinlambda/coslambda
         self.latitude = 180*(np.arctan(tanfi))/np.pi
         self.longitude = 180*(np.arctan2(sinlambda, coslambda))/np.pi
-        self.lonlat = (self.longitude,self.latitude)
+        self.lonlat = (self.longitude, self.latitude)

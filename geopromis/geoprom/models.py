@@ -1,16 +1,10 @@
-#import django.db.models.options as options
-#from django.db import models
 from django.contrib.gis.db import models
-from pygments.lexers import get_lexer_by_name
-from pygments.formatters.html import HtmlFormatter
-from pygments import highlight
-#from geoprom.orbit_parser import ImportFile
-#options.DEFAULT_NAMES = options.DEFAULT_NAMES + ('in_db',)
+
 
 class Satellite(models.Model):
     ''' Class representing an satellite
-    This is the class storing the satellite name and description
-    Satellite name must be unique
+    This is the class storing the satellite title and description
+    Satellite title must be unique
     '''
     title = models.CharField(max_length=255, primary_key=True)
     description = models.TextField(blank=True)
@@ -29,7 +23,7 @@ class Device(models.Model):
     ''' Class representing a scientific device of satellite
         that performs measurements
 
-    This is the class storing the device name, description and satellite
+    This is the class storing the device title, description and satellite
     FOREIGN KEY `satellite_title`
     '''
     # Django creates the next field automatically:
@@ -47,12 +41,10 @@ class Device(models.Model):
         unique_together = (("title", "satellite"),)
         ordering = ["title"]
 
-
 class ChannelManager(models.Manager):
     def get_by_natural_key(self, title, device_name):
         device = Device.objects.get(title=device_name)
         return self.get(title=title, device=device)
-
 
 class Channel(models.Model):
     ''' Class representing measuring channels of devices
@@ -257,4 +249,4 @@ class FrameWindow(models.Model):
 
     def __str__(self):
         return self.name
- Create your models here.'''
+'''

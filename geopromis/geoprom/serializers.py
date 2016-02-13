@@ -1,22 +1,9 @@
 from rest_framework import serializers
 from .models import Satellite,Session
-from rest_framework.validators import ValidationError
-from datetime import date
-from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
-import os
-from django.contrib.auth.models import User
 from rest_framework_gis.serializers import GeoFeatureModelSerializer
 from geoprom.mongo_models import Data
 from rest_framework_mongoengine.serializers import DocumentSerializer
 
-
-
-class UserSerializer(serializers.ModelSerializer):
-    satellites = serializers.PrimaryKeyRelatedField(many=True, queryset=Satellite.objects.all())
-
-    class Meta:
-        model = User
-        fields = ('id', 'username', 'satellites')
 
 class SatelliteSerializer(serializers.ModelSerializer):
     """
@@ -41,14 +28,18 @@ class SatelliteSerializer(serializers.ModelSerializer):
         return instance
 
 class SessionSerializer(GeoFeatureModelSerializer):
+    """
+    This class collects serialization methods for sessions from model Session
+    """
     class Meta:
         model = Session
         geo_field = "geo_line"
         fields =('time_begin','time_end',)
     
 class DataSerializer(DocumentSerializer):
+    """
+    This class collects serialization methods for testing mongo_models fields
+    """
     class Meta:
         model = Data
-        fields = ('magnetic_field',)
-    
-    #owner = serializers.ReadOnlyField(source='owner.username')
+        fields = ('magnetic_field',)   
