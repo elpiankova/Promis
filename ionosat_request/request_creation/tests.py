@@ -3,12 +3,9 @@ from .models import Request
 import datetime
 from decimal import Decimal
 from django.core.exceptions import ValidationError
+
+
 class RequestValidatorTests(TestCase):
-
-
-
-
-
 
     def setUp(self):
         self.list_number = [1233, 12333]
