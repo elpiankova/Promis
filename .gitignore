@@ -1,4 +1,10 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+
+# Database files
 ionosat_request/db.sqlite3
-ionosat_request/request_creation/migrations/*
-ionosat_request/request_files/*
-ionosat_request/dump.json
+
+# ionosat_request/dump.json
