@@ -22,7 +22,7 @@ def create_file(request):
     # This block writes first line of request file
     file = open(file_path, 'w')
     first_line = ('KNA %(number)04d %(date_start)s %(date_end)s'
-                  ' %(orbit_flag)s %(latitude_start)+04.1f'
+                  ' %(orbit_flag)s %(latitude_start)+05.1f'
                   ' %(longitude_left)05.1f %(longitude_right)05.1f'
                   ' %(device_amount)1d\r\n'
                   % {
