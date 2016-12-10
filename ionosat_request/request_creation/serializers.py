@@ -93,12 +93,14 @@ class DeviceSwitchSerializer(serializers.ModelSerializer):
 
         return devswitch
 
+
 class FileNameField(serializers.CharField):
     """
     This class redefined request_file name without full path
     """
     def to_representation(self, obj):
         return os.path.basename(obj)
+
 
 class RequestSerializer(serializers.ModelSerializer):
     """

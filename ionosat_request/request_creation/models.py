@@ -28,16 +28,13 @@ class Request(models.Model):
                                                       request_min_longitude_validator])
 
     device_amount = models.SmallIntegerField(null=True, validators=[device_amount_max_val_validator,
-                                                         device_amount_min_val_validator])
+                                                                    device_amount_min_val_validator])
     request_file = models.FilePathField(path=os.path.join(BASE_DIR, 'request_files'),
                                         validators=[request_file_validator], null=True)
     creation_date = models.DateTimeField(auto_now_add=True)
     update_date = models.DateTimeField(auto_now=True)
     total_data_amount = models.BigIntegerField(default=0)
     total_power_amount = models.FloatField(default=0)
-
-
-##  device_switch_list = models.ManyToManyField('DeviceSwitch')
 
     class Meta:
         db_table = 'requests'
@@ -48,6 +45,7 @@ class Request(models.Model):
     def save(self, *args, **kwargs):
         self.clean_fields()
         super(Request, self).save(*args, **kwargs)
+
 
 class Device(models.Model):
     # WP0000 = 'Wave probe WP(count3)'
@@ -78,6 +76,7 @@ class Device(models.Model):
     def __str__(self):
         return self.name
 
+
 class DeviceMode(models.Model):
     name = models.CharField(max_length=255)
     code = models.CharField(max_length=8)
@@ -94,12 +93,12 @@ class DeviceMode(models.Model):
 
 
 class DeviceSwitch(models.Model):
-    argument_part_len = models.SmallIntegerField() #limit duration in validator 10
+    argument_part_len = models.SmallIntegerField()   # limit duration in validator 10
     time_delay = models.DurationField(validators=[time_delay_validator])
     time_duration = models.DurationField(validators=[time_duration_validator])
     argument_part = models.CharField(max_length=620, blank=True, null=True)
     device = models.ForeignKey('Device')
-    mode = models.ForeignKey('DeviceMode') #limit to choice to
+    mode = models.ForeignKey('DeviceMode')     # limit to choice to
     request = models.ForeignKey('Request', related_name='switches') # limit to choice
     data_amount = models.BigIntegerField(default=0)
     power_amount = models.FloatField(default=0)
