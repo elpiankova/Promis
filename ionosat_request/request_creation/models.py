@@ -3,6 +3,7 @@ from ionosat_request.settings import BASE_DIR
 from request_creation.validators import *
 import os
 
+
 class Request(models.Model):
     UPWARD_ORBIT = 'v'
     DOWNWARD_ORBIT = 'n'
@@ -91,10 +92,11 @@ class DeviceMode(models.Model):
     def __str__(self):
         return self.name
 
+
 class DeviceSwitch(models.Model):
     argument_part_len = models.SmallIntegerField() #limit duration in validator 10
-    time_delay = models.DurationField() #limit duration in validator
-    time_duration = models.DurationField()
+    time_delay = models.DurationField(validators=[time_delay_validator])
+    time_duration = models.DurationField(validators=[time_duration_validator])
     argument_part = models.CharField(max_length=620, blank=True, null=True)
     device = models.ForeignKey('Device')
     mode = models.ForeignKey('DeviceMode') #limit to choice to
