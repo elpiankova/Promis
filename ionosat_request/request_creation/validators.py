@@ -5,7 +5,7 @@ from datetime import timedelta
 
 
 request_max_number_validator = MaxValueValidator(9999, message='Request number must be less than 9999')
-request_max_latitude_start_validator = MaxValueValidator(Decimal('82.0'),
+request_max_latitude_start_validator = MaxValueValidator(Decimal('90.0'),
                                                          message='Request latitude start must be less then 82.0')
 request_min_latitude_start_validator = MinValueValidator(Decimal('-82.0'),
                                                          message='Request latitude start must be greater than -82.0')
