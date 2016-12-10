@@ -43,7 +43,7 @@ def create_file(request):
         mode = device_switch.mode
         #argument_part_len = len(device_switch.argument_part.split("\r\n"))
         line = ('%(device_code)6s %(mode_code)-8s %(time_delay)06.0f'
-                ' %(time_duration)06.0f %(argument_part_len)02d\r\n'
+                ' %(time_duration)06.0f %(argument_part_len)04d\r\n'
                 % {
                     "device_code": device.code,
                     "mode_code": mode.code,
@@ -54,14 +54,18 @@ def create_file(request):
         file.write(line)
 
         # This block writes correct end of lines in argument part
-        arg_lines = device_switch.argument_part
-        if arg_lines:
-            if arg_lines[-2:] != '\r\n':
-                if arg_lines[-1] == '\n':
-                    arg_lines = arg_lines.rstrip('\n')
-                arg_lines += '\r\n'
+        arg_lines = device_switch.argument_part.split('\n')
+        for line in arg_lines:
+            new_line = line.rstrip() + ' ' * (60 - len(line)) + '\r\n'
+            file.write(new_line)
 
-            file.write(arg_lines)
+        # if arg_lines:
+        #     if arg_lines[-2:] != '\r\n':
+        #         if arg_lines[-1] == '\n':
+        #             arg_lines = arg_lines.rstrip('\n')
+        #         arg_lines += '\r\n'
+        #
+        #     file.write(arg_lines)
 
     file.close()
 
