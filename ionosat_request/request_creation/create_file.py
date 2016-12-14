@@ -54,10 +54,12 @@ def create_file(request):
         file.write(line)
 
         # This block writes correct end of lines in argument part
-        arg_lines = device_switch.argument_part.split('\n')
-        for line in arg_lines:
-            new_line = line.rstrip() + ' ' * (60 - len(line)) + '\r\n'
-            file.write(new_line)
+        arg_part = device_switch.argument_part
+        if arg_part:
+            arg_lines = arg_part.split('\n')
+            for line in arg_lines:
+                new_line = line.rstrip() + ' ' * (60 - len(line)) + '\r\n'
+                file.write(new_line)
 
         # if arg_lines:
         #     if arg_lines[-2:] != '\r\n':
