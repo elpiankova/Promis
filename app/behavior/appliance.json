@@ -1,0 +1,67 @@
+[
+
+  {
+
+    "name": "Волновые зонды WP",
+
+    "code": "WP0000",
+
+    "modes": [
+
+      {
+
+        "name": "700 Hz Frequency",
+
+        "code": "MODE1"
+
+      },
+      {
+
+        "name": "6yyy Hz Frequency",
+
+        "code": "MODE2"
+
+      }
+
+    ]
+
+  },
+  {
+
+    "name": "2",
+
+    "code": "WP0000",
+
+    "modes": [
+
+      {
+
+        "name": "700 Hz Frequency",
+
+        "code": "MODE1"
+
+      }
+
+    ]
+
+  },
+  {
+
+    "name": "3",
+
+    "code": "WP0000",
+
+    "modes": [
+
+      {
+
+        "name": "700 Hz Frequency",
+
+        "code": "MODE1"
+
+      }
+
+    ]
+
+  }
+]
