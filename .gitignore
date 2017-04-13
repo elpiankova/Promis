@@ -3,6 +3,12 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+.idea/
+
+# virtualenv
+venv/
+ENV/
+env/
 
 # Database and request files
 ionosat_request/db.sqlite3
